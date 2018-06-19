@@ -1,0 +1,29 @@
+﻿@using BlazorTests.Shared
+@page "/customer"
+@inherits IndexPageModel
+
+<h1>@Title</h1>
+
+
+@if (@Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Customers)
+            {
+                <tr>
+                    <td>@customer.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

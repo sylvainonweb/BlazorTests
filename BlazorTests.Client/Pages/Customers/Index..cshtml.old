@@ -1,0 +1,39 @@
+﻿<!-- @using BlazorTests.Shared
+@page "/customer"
+@inject HttpClient Http
+
+<h1>@title</h1>
+
+
+@if (customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in customers)
+            {
+                <tr>
+                    <td>@customer.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@functions {
+    string title = "Clients";
+    Customer[] customers;
+
+    protected override async Task OnInitAsync()
+    {
+        customers = await Http.GetJsonAsync<Customer[]>("api/Customer/Customers");
+    }
+} -->
