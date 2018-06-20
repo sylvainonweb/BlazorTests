@@ -1,0 +1,4 @@
+C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseSpecific\obj\Debug\netstandard2.0\BlazorTests.Server.EntitiesDBSpecific.csprojAssemblyReference.cache
+C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseSpecific\obj\Debug\netstandard2.0\BlazorTests.Server.EntitiesDBSpecific.csproj.CoreCompileInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseSpecific\obj\Debug\netstandard2.0\BlazorTests.Server.EntitiesDBSpecific.AssemblyInfoInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseSpecific\obj\Debug\netstandard2.0\BlazorTests.Server.EntitiesDBSpecific.AssemblyInfo.cs

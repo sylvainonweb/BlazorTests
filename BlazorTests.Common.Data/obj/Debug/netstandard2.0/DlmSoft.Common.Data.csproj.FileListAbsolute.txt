@@ -1,0 +1,11 @@
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\bin\Debug\netstandard2.0\DlmSoft.Common.Data.deps.json
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\bin\Debug\netstandard2.0\DlmSoft.Common.Data.dll
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\bin\Debug\netstandard2.0\DlmSoft.Common.Data.pdb
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\bin\Debug\netstandard2.0\SD.LLBLGen.Pro.ORMSupportClasses.dll
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.csprojAssemblyReference.cache
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.csproj.CoreCompileInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.AssemblyInfoInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.AssemblyInfo.cs
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.csproj.CopyComplete
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.dll
+C:\Users\sylvain.blanchard\Source\Repos\Enedis.DispoPlus\DlmSoft.Common.Data\obj\Debug\netstandard2.0\DlmSoft.Common.Data.pdb

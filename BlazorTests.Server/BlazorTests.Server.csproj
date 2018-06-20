@@ -12,7 +12,19 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorTests.Client\BlazorTests.Client.csproj" />
+    <ProjectReference Include="..\BlazorTests.Common.Technical\BlazorTests.Common.Technical.csproj" />
+    <ProjectReference Include="..\BlazorTests.Server.Entities\DatabaseSpecific\BlazorTests.Server.EntitiesDBSpecific.csproj" />
     <ProjectReference Include="..\BlazorTests.Shared\BlazorTests.Shared.csproj" />
+    <ProjectReference Include="..\BlazorTests.Server.Entities\DatabaseGeneric\BlazorTests.Server.Entities.csproj" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <Reference Include="SD.LLBLGen.Pro.DQE.SqlServer">
+      <HintPath>..\lib\SD.LLBLGen.Pro.DQE.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SD.LLBLGen.Pro.ORMSupportClasses">
+      <HintPath>..\lib\SD.LLBLGen.Pro.ORMSupportClasses.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

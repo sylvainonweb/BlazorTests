@@ -18,9 +18,9 @@ C:\Users\sylvain\Source\Repos\BlazorTests\BlazorTests.Shared\obj\Debug\netstanda
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\bin\Debug\netstandard2.0\BlazorTests.Shared.deps.json
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\bin\Debug\netstandard2.0\BlazorTests.Shared.dll
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\bin\Debug\netstandard2.0\BlazorTests.Shared.pdb
-C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.csprojAssemblyReference.cache
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.csproj.CoreCompileInputs.cache
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.AssemblyInfoInputs.cache
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.AssemblyInfo.cs
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.dll
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.pdb
+C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Shared\obj\Debug\netstandard2.0\BlazorTests.Shared.csprojAssemblyReference.cache

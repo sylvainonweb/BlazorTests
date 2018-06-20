@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Blazor.Server;
+﻿using BlazorTests.Common.Technical.Database;
+using Microsoft.AspNetCore.Blazor.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
+using SD.LLBLGen.Pro.DQE.SqlServer;
+using SD.LLBLGen.Pro.ORMSupportClasses;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
 
@@ -16,6 +19,9 @@ namespace BlazorTests.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // AJOUT
+            services.RegisterIocObjects();
 
             services.AddResponseCompression(options =>
             {
@@ -43,6 +49,42 @@ namespace BlazorTests.Server
             });
 
             app.UseBlazor<Client.Program>();
+
+            // AJOUT
+            app.UseLLBLGen();
+        }
+    }
+
+    public static class ObjectContainer
+    {
+        public static IServiceCollection RegisterIocObjects(this IServiceCollection services)
+        {
+            // Action filters (Page Filters à venir)
+
+            // Base de données
+            services.AddScoped<FunctionMappingStore, SqlServerDatabaseFunctionMappingStore>();
+            services.AddScoped<IDataAccessAdapterEx, DataAccessAdapter>();
+            services.AddScoped<IRepository, Repository>();
+
+            return services;
+        }
+    }
+
+    public static class LLBLGenExtensions
+    {
+        public static IApplicationBuilder UseLLBLGen(this IApplicationBuilder app)
+        {
+            // ... this code is placed in a method called at application startup
+            RuntimeConfiguration.AddConnectionString(
+                "ConnectionString.SQL Server (SqlClient)",
+                "data source=.\\SQLEXPRESS_2016;initial catalog=WebTestsDatabase;User ID=sa;Password=**BlazorTests2005;persist security info=False;packet size=4096");
+
+            // Configure the DQE
+            RuntimeConfiguration.ConfigureDQE<SQLServerDQEConfiguration>(c => c.SetTraceLevel(TraceLevel.Verbose)
+                .AddDbProviderFactory(typeof(System.Data.SqlClient.SqlClientFactory))
+                .SetDefaultCompatibilityLevel(SqlServerCompatibilityLevel.SqlServer2012));
+
+            return app;
         }
     }
 }
