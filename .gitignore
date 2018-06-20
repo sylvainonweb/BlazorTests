@@ -122,3 +122,13 @@ BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.csprojAssemblyRef
 BlazorTests.Client/BlazorTests.Client.csproj.user
 .vs/BlazorTests/v15/.suo
 .vs/config/applicationhost.config
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.dll
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.pdb
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.AssemblyInfo.cs
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.assets.cache
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.csproj.CoreCompileInputs.cache
+BlazorTests.Shared/obj/Debug/netstandard2.0/BlazorTests.Shared.csproj.FileListAbsolute.txt
+BlazorTests.Shared/bin/Debug/netstandard2.0/BlazorTests.Shared.dll
+BlazorTests.Shared/bin/Debug/netstandard2.0/BlazorTests.Shared.pdb
+BlazorTests.Shared/obj/BlazorTests.Shared.csproj.nuget.cache
+BlazorTests.Shared/obj/BlazorTests.Shared.csproj.nuget.g.props
