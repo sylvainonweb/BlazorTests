@@ -7,26 +7,38 @@ using Microsoft.AspNetCore.Blazor.Browser.Interop;
 using Microsoft.AspNetCore.Blazor.Components;
 using System.Net.Http;
 using Microsoft.AspNetCore.Blazor.Services;
+using BlazorTests.Client.Services;
 
-public class IndexPageModel : BlazorComponent
+namespace BlazorTests.Client
 {
-    [Inject]
-    protected IUriHelper UriHelper { get; set; }
- 
-    [Inject]
-    protected HttpClient HttpClient { get; set; }
- 
-    protected string Title { get; private set; }
-    protected IList<Customer> Customers { get; set; }
- 
-    protected override async Task OnInitAsync()
+    public class IndexComponent : BaseComponent
     {
-        this.Title = "Clients";
-        await LoadCustomers();
+        protected Customer[] Customers { get; set; }
+
+        [Inject]
+        protected CustomerService CustomerService { get; set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Title = "Clients";
+            this.Customers = await CustomerService.GetCustomers();
+        }
+    
+        protected async Task EditCustomer(int id)
+        {
+        }
+
+        protected void ConfirmDelete()
+        {
+            RegisteredFunction.Invoke<bool>("confirmDelete", "Suppression");
+        }
+
+        protected async Task DeleteCustomer()
+        {
+            //RegisteredFunction.Invoke<bool>("hideDeleteDialog");
+
+            // await BooksClient.DeleteBook(DeleteId);
+            // await LoadBooks(int.Parse(Page));
+        }
     }
- 
-    protected async Task LoadCustomers()
-    {
-        this.Customers = await HttpClient.GetJsonAsync<Customer[]>("api/Customer/Customers");
-    }
- }
+}

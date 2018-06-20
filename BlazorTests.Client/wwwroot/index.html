@@ -12,5 +12,19 @@
     <app>Loading...</app>
 
     <script type="blazor-boot"></script>
+
+    <script>
+        Blazor.registerFunction('confirmDelete', () => {
+            $('#myModal').modal('show');
+            return true;
+        });
+        // Blazor.registerFunction('hideDeleteDialog', () => {
+        //     $('#myModal').modal('hide');
+        //     return true;
+        // });
+    </script>
+
+    
+
 </body>
 </html>
