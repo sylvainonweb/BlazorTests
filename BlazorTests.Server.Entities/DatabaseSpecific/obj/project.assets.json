@@ -262,11 +262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\BlazorTests.Server.EntitiesDBSpecific.csproj",
+      "projectUniqueName": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\BlazorTests.Server.EntitiesDBSpecific.csproj",
       "projectName": "BlazorTests.Server.EntitiesDBSpecific",
-      "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\BlazorTests.Server.EntitiesDBSpecific.csproj",
+      "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\BlazorTests.Server.EntitiesDBSpecific.csproj",
       "packagesPath": "C:\\Users\\sylvain.blanchard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\obj\\",
+      "outputPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseSpecific\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -287,8 +287,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Common.Technical\\BlazorTests.Common.Technical.csproj": {
-              "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Common.Technical\\BlazorTests.Common.Technical.csproj"
+            "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Common.Technical\\BlazorTests.Common.Technical.csproj": {
+              "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Common.Technical\\BlazorTests.Common.Technical.csproj"
             }
           }
         }

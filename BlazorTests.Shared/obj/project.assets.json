@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
       "projectName": "BlazorTests.Shared",
-      "projectPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
+      "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
       "packagesPath": "C:\\Users\\sylvain.blanchard\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\obj\\",
+      "outputPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

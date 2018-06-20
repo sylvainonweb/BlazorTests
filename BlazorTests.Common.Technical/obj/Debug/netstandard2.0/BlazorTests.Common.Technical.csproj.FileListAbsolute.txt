@@ -11,3 +11,16 @@ C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Common.Te
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.csproj.CopyComplete
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.dll
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.pdb
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\BlazorTests.Common.Technical.deps.json
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\BlazorTests.Common.Technical.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\BlazorTests.Common.Technical.pdb
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\BlazorTests.Common.Data.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\SD.LLBLGen.Pro.ORMSupportClasses.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\bin\Debug\netstandard2.0\BlazorTests.Common.Data.pdb
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.csprojAssemblyReference.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.csproj.CoreCompileInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.AssemblyInfoInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.AssemblyInfo.cs
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.csproj.CopyComplete
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Common.Technical\obj\Debug\netstandard2.0\BlazorTests.Common.Technical.pdb

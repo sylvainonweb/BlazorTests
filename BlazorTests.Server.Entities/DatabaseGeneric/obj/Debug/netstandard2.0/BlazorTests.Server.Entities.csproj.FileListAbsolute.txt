@@ -6,3 +6,12 @@ C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.En
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.AssemblyInfo.cs
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.dll
 C:\Users\sylvain.blanchard\Source\Repos\Blazor\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.pdb
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\bin\Debug\netstandard2.0\BlazorTests.Server.Entities.deps.json
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\bin\Debug\netstandard2.0\BlazorTests.Server.Entities.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\bin\Debug\netstandard2.0\BlazorTests.Server.Entities.pdb
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.csprojAssemblyReference.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.csproj.CoreCompileInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.AssemblyInfoInputs.cache
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.AssemblyInfo.cs
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.dll
+C:\Users\sylvain.blanchard\Source\Repos\BlazorTests\BlazorTests\BlazorTests.Server.Entities\DatabaseGeneric\obj\Debug\netstandard2.0\BlazorTests.Server.Entities.pdb

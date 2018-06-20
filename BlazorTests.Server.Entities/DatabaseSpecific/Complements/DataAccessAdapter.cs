@@ -2,7 +2,7 @@
 using BlazorTests.Common.Technical.Database;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 
-namespace Enedis.DispoPlus.Data.Entities.DatabaseSpecific
+namespace BlazorTests.Server.Entities.DatabaseSpecific
 {
     public partial class DataAccessAdapter : IDataAccessAdapterEx
     {

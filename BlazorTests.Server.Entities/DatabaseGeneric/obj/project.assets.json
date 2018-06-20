@@ -205,11 +205,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\BlazorTests.Server.Entities.csproj",
+      "projectUniqueName": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\BlazorTests.Server.Entities.csproj",
       "projectName": "BlazorTests.Server.Entities",
-      "projectPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\BlazorTests.Server.Entities.csproj",
+      "projectPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\BlazorTests.Server.Entities.csproj",
       "packagesPath": "C:\\Users\\sylvain.blanchard\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\obj\\",
+      "outputPath": "C:\\Users\\sylvain.blanchard\\Source\\Repos\\BlazorTests\\BlazorTests\\BlazorTests.Server.Entities\\DatabaseGeneric\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
