@@ -176,23 +176,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sylvain\\.nuget\\packages\\": {},
+    "C:\\Users\\sylvain.blanchard\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sylvain\\Source\\Repos\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
+      "projectUniqueName": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
       "projectName": "BlazorTests.Shared",
-      "projectPath": "C:\\Users\\sylvain\\Source\\Repos\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
-      "packagesPath": "C:\\Users\\sylvain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sylvain\\Source\\Repos\\BlazorTests\\BlazorTests.Shared\\obj\\",
+      "projectPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\BlazorTests.Shared.csproj",
+      "packagesPath": "C:\\Users\\sylvain.blanchard\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\sylvain.blanchard\\Source\\Repos\\Blazor\\BlazorTests\\BlazorTests.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\sylvain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sylvain.blanchard\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -200,7 +200,9 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://tfsbuild/nuget": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/nuget": {}
       },
       "frameworks": {
         "netstandard2.0": {
