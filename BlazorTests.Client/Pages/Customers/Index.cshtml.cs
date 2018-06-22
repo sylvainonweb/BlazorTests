@@ -30,11 +30,12 @@ namespace BlazorTests.Client
 
         protected async Task DeleteCustomer(int customerId)
         {
-            if (RegisteredFunction.Invoke<bool>("confirmDeletion", string.Empty))
+            if (MessageBox.ShowDeletionConfirmation())
             {
                 await CustomerService.DeleteCustomer(customerId);
+                MessageBox.ShowAlert("Suppression effectué");
                 this.Customers = await CustomerService.GetCustomers();
             }
-        }
+        }       
     }
 }

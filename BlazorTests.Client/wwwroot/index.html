@@ -15,10 +15,10 @@
     </script>
 
     <script>
-        Blazor.registerFunction("confirmDeletion", () => {
+        Blazor.registerFunction("showDeletionConfirmation", () => {
             return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');
         });
-        Blazor.registerFunction('alert', (message) => {
+        Blazor.registerFunction('showAlert', (message) => {
             return alert(message);
         });
     </script>

@@ -29,7 +29,6 @@ namespace BlazorTests.Client.Services
 
         public Task<HttpResponseMessage> DeleteCustomer(int customerId)
         {
-            RegisteredFunction.Invoke<string>("alert", customerId);
             return HttpClient.DeleteAsync($"api/Customer/{customerId}");
         }
     }
