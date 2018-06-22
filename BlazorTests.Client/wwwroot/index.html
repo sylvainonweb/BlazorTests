@@ -11,20 +11,17 @@
 <body>
     <app>Loading...</app>
 
-    <script type="blazor-boot"></script>
-
-    <script>
-        Blazor.registerFunction('confirmDelete', () => {
-            $('#myModal').modal('show');
-            return true;
-        });
-        // Blazor.registerFunction('hideDeleteDialog', () => {
-        //     $('#myModal').modal('hide');
-        //     return true;
-        // });
+    <script type="blazor-boot">
     </script>
 
-    
+    <script>
+        Blazor.registerFunction("confirmDeletion", () => {
+            return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');
+        });
+        Blazor.registerFunction('alert', (message) => {
+            return alert(message);
+        });
+    </script>
 
 </body>
 </html>

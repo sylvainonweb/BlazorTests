@@ -28,17 +28,13 @@ namespace BlazorTests.Client
         {
         }
 
-        protected void ConfirmDelete()
+        protected async Task DeleteCustomer(int customerId)
         {
-            RegisteredFunction.Invoke<bool>("confirmDelete", "Suppression");
-        }
-
-        protected async Task DeleteCustomer()
-        {
-            //RegisteredFunction.Invoke<bool>("hideDeleteDialog");
-
-            // await BooksClient.DeleteBook(DeleteId);
-            // await LoadBooks(int.Parse(Page));
+            if (RegisteredFunction.Invoke<bool>("confirmDeletion", string.Empty))
+            {
+                await CustomerService.DeleteCustomer(customerId);
+                this.Customers = await CustomerService.GetCustomers();
+            }
         }
     }
 }

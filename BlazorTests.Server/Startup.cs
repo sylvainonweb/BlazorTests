@@ -79,7 +79,7 @@ namespace BlazorTests.Server
             // ... this code is placed in a method called at application startup
             RuntimeConfiguration.AddConnectionString(
                 "ConnectionString.SQL Server (SqlClient)",
-                "data source=.\\SQLEXPRESS_2016;initial catalog=WebTestsDatabase;User ID=sa;Password=**BlazorTests2005;persist security info=False;packet size=4096");
+                "data source=.\\SQLEXPRESS_2016;initial catalog=WebTestsDatabase;User ID=sa;Password=**DLMSOFT2005;persist security info=False;packet size=4096");
 
             // Configure the DQE
             RuntimeConfiguration.ConfigureDQE<SQLServerDQEConfiguration>(c => c.SetTraceLevel(TraceLevel.Verbose)

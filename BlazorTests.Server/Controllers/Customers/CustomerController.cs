@@ -20,8 +20,14 @@ namespace BlazorTests.Server.Controllers
             this.Repository = repository;
         }
 
-        [HttpGet("[action]")]
-        public IEnumerable<Customer> Customers()
+        [HttpGet()]
+        public IEnumerable<Customer> GetCustomers()
+        {
+            var query = GetCustomersQuery();
+            return Repository.FetchQuery(query);
+        }
+
+        private DynamicQuery<Customer> GetCustomersQuery()
         {
             QueryFactory qf = new QueryFactory();
             var query = qf.Customer
@@ -31,8 +37,22 @@ namespace BlazorTests.Server.Controllers
                     Name = CustomerFields.Name.ToValue<string>(),
                     FirstName = CustomerFields.FirstName.ToValue<string>(),
                 });
+            return query;
+        }
 
-            return Repository.FetchQuery(query);
+        [HttpGet("{customerId:int}")]
+        public Customer GetCustomer(int customerId)
+        {
+            var query = GetCustomersQuery();
+            query = query.Where(CustomerFields.Id == customerId);
+            return Repository.FetchFirst(query);
+        }
+
+        [HttpDelete("{customerId:int}")]
+        public void DeleteCustomer(int customerId)
+        {
+            CustomerEntity customer = Repository.Get<CustomerEntity, int>(customerId);
+            Repository.Delete(customer);
         }
     }
 
