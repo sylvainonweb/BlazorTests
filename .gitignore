@@ -132,3 +132,5 @@ BlazorTests.Shared/bin/Debug/netstandard2.0/BlazorTests.Shared.dll
 BlazorTests.Shared/bin/Debug/netstandard2.0/BlazorTests.Shared.pdb
 BlazorTests.Shared/obj/BlazorTests.Shared.csproj.nuget.cache
 BlazorTests.Shared/obj/BlazorTests.Shared.csproj.nuget.g.props
+BlazorTests.Common.Technical/obj/Debug/netstandard2.0/BlazorTests.Common.Technical.csprojAssemblyReference.cache
+BlazorTests.Server.Entities/DatabaseSpecific/obj/Debug/netstandard2.0/BlazorTests.Server.EntitiesDBSpecific.csprojAssemblyReference.cache
