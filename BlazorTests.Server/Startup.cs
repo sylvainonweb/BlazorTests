@@ -90,16 +90,15 @@ namespace BlazorTests.Server
             return app;
         }
 
-        private string GetConnectionString()
+        private static string GetConnectionString()
         {
+            string datasource= "SQLEXPRESS_2016";
             if (Environment.MachineName == "DESKTOP-91MFTP0")
             {
-                return "data source=.\\SQLEXPRESS_2017;User ID=sa;Password=SQLSERVER_2017;initial catalog=WebTestsDatabase;persist security info=False;packet size=4096";
+                datasource = "SQLEXPRESS_2017";
             }
-            else
-            {
-                return "data source=.\\SQLEXPRESS_2016;initial catalog=WebTestsDatabase;User ID=sa;Password=**DLMSOFT2005;persist security info=False;packet size=4096";
-            }
+
+            return $"data source=.\\{datasource};initial catalog=WebTestsDatabase;User ID=WebTestsDatabaseUser;Password=WebTestsDatabaseUser;persist security info=False;packet size=4096";
         }
     }
 }
