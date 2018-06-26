@@ -13,9 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Server.Entities
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Server.EntitiesDBSpecific", "BlazorTests.Server.Entities\DatabaseSpecific\BlazorTests.Server.EntitiesDBSpecific.csproj", "{11C8B31D-CD85-41D4-A2C8-95C0C00BA87A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTests.Common.Technical", "BlazorTests.Common.Technical\BlazorTests.Common.Technical.csproj", "{443E1CC7-0212-4317-8DF5-31EF4603B24C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Common.Technical", "BlazorTests.Common.Technical\BlazorTests.Common.Technical.csproj", "{443E1CC7-0212-4317-8DF5-31EF4603B24C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Common.Data", "BlazorTests.Common.Data\BlazorTests.Common.Data.csproj", "{A90FB4B7-0651-4470-AA68-29F2A0AB305F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{175D9BEE-1DD1-40C4-90CA-82C28E859114}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
