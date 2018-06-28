@@ -25,16 +25,18 @@ else
         <tbody>
             @foreach (var customer in Customers)
             {
-            <tr>
-                <td>@customer.Id</td>
-                <td>@customer.Name</td>
-                <td>@customer.FirstName</td>
-                <td>
-                    <button class="btn green" onclick="@(() => EditCustomer(customer.Id) )">...</button>
-                    <button class="btn red" onclick="@(() => DeleteCustomer(customer.Id) )">x</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.FirstName</td>
+                    <td>
+                        <a href="/customer/edit/@customer.Id">Modifier</a>
+                        @*<button class="btn green" onclick="@(() => EditCustomer(customer.Id) )">Modifier</button>*@
+                        <button class="btn red" onclick="@(() => DeleteCustomer(customer.Id) )">Supprimer</button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+    <button class="btn green" onclick="@(() => AddCustomer() )">Ajouter</button>
 }

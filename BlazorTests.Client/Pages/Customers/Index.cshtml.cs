@@ -23,9 +23,15 @@ namespace BlazorTests.Client
             this.Title = "Clients";
             this.Customers = await CustomerService.GetCustomers();
         }
-    
+
+        protected async Task AddCustomer()
+        {
+            UriHelper.NavigateTo($"/customer/edit");
+        }
+
         protected async Task EditCustomer(int id)
         {
+            UriHelper.NavigateTo($"/customer/edit/{id}");
         }
 
         protected async Task DeleteCustomer(int customerId)
@@ -33,7 +39,7 @@ namespace BlazorTests.Client
             if (MessageBox.ShowDeletionConfirmation())
             {
                 await CustomerService.DeleteCustomer(customerId);
-                MessageBox.ShowAlert("Suppression effectué");
+                MessageBox.ShowAlert("Suppression effectuï¿½");
                 this.Customers = await CustomerService.GetCustomers();
             }
         }       

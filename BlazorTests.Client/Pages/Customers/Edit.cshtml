@@ -1,0 +1,25 @@
+﻿@page "/customer/edit"
+@page "/customer/edit/{Id}"
+@inherits EditComponent
+
+
+<h1>@Title</h1>
+
+
+<div class="panel-body">
+
+    <div class="form-group ">
+        <label class="control-label col-md-2">Nom</label>
+        <div class="col-md-5">
+            <input class="form-control" type="text" bind=@Name />
+        </div>
+    </div>
+
+    <div class="form-group ">
+        <label class="control-label col-md-2">Prénom</label>
+        <div class="col-md-5">
+            <input class="form-control" type="text" bind=@FirstName />
+        </div>
+    </div>
+
+</div>

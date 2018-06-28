@@ -31,6 +31,11 @@ namespace BlazorTests.Client.Services
         {
             return HttpClient.DeleteAsync($"api/Customer/{customerId}");
         }
+
+        public Task SaveCustomer(Customer customer)
+        {
+            return HttpClient.PostJsonAsync("api/Customer/Save", customer);
+        }
     }
 
     public abstract class ServiceBase
