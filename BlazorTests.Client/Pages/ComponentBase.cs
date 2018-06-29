@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Blazor.Services;
 
 namespace BlazorTests.Client
 {
-    public abstract class BaseComponent : BlazorComponent
+    public abstract class ComponentBase : BlazorComponent
     {
         protected string Title { get; set; }
 

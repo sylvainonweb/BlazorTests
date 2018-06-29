@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BlazorTests.Client.Services;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
 
 namespace BlazorTests.Client
 {
-    public class EditComponent : BaseComponent
+    public class EditComponent : EditComponentBase
     {
         #region Services
 
@@ -18,9 +15,6 @@ namespace BlazorTests.Client
         #endregion
 
         #region Propriétés bindées
-
-        [Parameter]
-        private string Id { get; set; }
 
         public string Name { get; set; }
         public string FirstName { get; set; }
@@ -39,7 +33,7 @@ namespace BlazorTests.Client
             {
                 this.Title = "Modifier un client";
 
-                Customer customer = await CustomerService.GetCustomer(int.Parse(Id));
+                Customer customer = await CustomerService.GetCustomer(Id.Value);
                 this.Name = customer.Name;
                 this.FirstName = customer.FirstName;
             }
@@ -48,7 +42,8 @@ namespace BlazorTests.Client
         #endregion
 
         #region Sauvegarde
-        protected async Task Save()
+
+        protected override async Task Save()
         {
             Customer customer = null;
             if (IsNew())
@@ -57,27 +52,22 @@ namespace BlazorTests.Client
             }
             else
             {
-                customer = await CustomerService.GetCustomer(int.Parse(Id));
+                customer = await CustomerService.GetCustomer(Id.Value);
             }
 
             customer.Name = this.Name;
             customer.FirstName = this.FirstName;
 
             await CustomerService.SaveCustomer(customer);
-            UriHelper.NavigateTo("/");
+            UriHelper.NavigateTo("/customer");
+        }
+
+        protected override void Close()
+        {
+            UriHelper.NavigateTo("/customer");
         }
 
         #endregion
-
-        private bool IsNew()
-        {
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                return true;
-            }
-
-            return false;
-        }
     }
 }
 
