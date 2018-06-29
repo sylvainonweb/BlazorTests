@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
+using Microsoft.AspNetCore.Blazor.Layouts;
 using Microsoft.AspNetCore.Blazor.Services;
 
 namespace BlazorTests.Client

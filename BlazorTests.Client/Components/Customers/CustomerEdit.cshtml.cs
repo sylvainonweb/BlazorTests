@@ -2,10 +2,11 @@
 using BlazorTests.Client.Services;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
+using Microsoft.AspNetCore.Blazor.Layouts;
 
 namespace BlazorTests.Client
 {
-    public class EditComponent : EditComponentBase
+    public class CustomerEditComponent : EditComponentBase
     {
         #region Services
 

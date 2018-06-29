@@ -1,6 +1,8 @@
 ﻿@using BlazorTests.Shared
+@layout MainLayout
+@page "/"
 @page "/customer"
-@inherits IndexComponent
+@inherits CustomerIndexComponent
 
 
 
@@ -30,8 +32,7 @@ else
                     <td>@customer.Name</td>
                     <td>@customer.FirstName</td>
                     <td>
-                        <a href="/customer/edit/@customer.Id">Modifier</a>
-                        @*<button class="btn green" onclick="@(() => EditCustomer(customer.Id) )">Modifier</button>*@
+                        <button class="btn green" onclick="@(() => EditCustomer(customer.Id) )">Modifier</button>
                         <button class="btn red" onclick="@(() => DeleteCustomer(customer.Id) )">Supprimer</button>
                     </td>
                 </tr>

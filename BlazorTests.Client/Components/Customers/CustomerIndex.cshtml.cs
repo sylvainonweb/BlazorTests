@@ -11,7 +11,7 @@ using BlazorTests.Client.Services;
 
 namespace BlazorTests.Client
 {
-    public class IndexComponent : ComponentBase
+    public class CustomerIndexComponent : ComponentBase
     {
         protected Customer[] Customers { get; set; }
 
