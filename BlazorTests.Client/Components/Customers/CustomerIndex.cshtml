@@ -16,28 +16,43 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in Customers)
-            {
-                <tr>
-                    <td>@customer.Id</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.FirstName</td>
-                    <td>
-                        <button class="btn green" onclick="@(() => EditCustomer(customer.Id) )">Modifier</button>
-                        <button class="btn red" onclick="@(() => DeleteCustomer(customer.Id) )">Supprimer</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <button class="btn green" onclick="@(() => AddCustomer() )">Ajouter</button>
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-light float-left" onclick="@(() => AddCustomer() )">
+                <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
+            </button>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Customers)
+                    {
+                        <tr>
+                            <td>@customer.Id</td>
+                            <td>@customer.Name</td>
+                            <td>@customer.FirstName</td>
+                            <td class="autoSizeToContent">
+                                <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomer(customer.Id) )">
+                                    <span class="oi oi-pencil" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-outline-danger btn-xs gridColumnButton" onclick="@(() => DeleteCustomer(customer.Id) )">
+                                    <span class="oi oi-trash" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+        </div>
+    </div>
 }
