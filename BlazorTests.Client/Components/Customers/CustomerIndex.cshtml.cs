@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Blazor.Components;
 using System.Net.Http;
 using Microsoft.AspNetCore.Blazor.Services;
 using BlazorTests.Client.Services;
+using BlazorTests.Client.Shared;
 
 namespace BlazorTests.Client
 {

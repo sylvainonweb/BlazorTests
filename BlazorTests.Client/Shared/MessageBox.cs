@@ -1,10 +1,6 @@
-using System.Net.Http;
-using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Browser.Interop;
-using Microsoft.AspNetCore.Blazor.Components;
-using Microsoft.AspNetCore.Blazor.Services;
 
-namespace BlazorTests.Client
+namespace BlazorTests.Client.Shared
 {
     public class MessageBox
     {
