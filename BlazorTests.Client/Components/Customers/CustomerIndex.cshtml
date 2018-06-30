@@ -5,24 +5,21 @@
 @inherits CustomerIndexComponent
 
 
+<div class="card">
+    <div class="card-header">
+        <h1>@Title</h1>
+    </div>
+    <div class="card-body">
+        @if (@Customers == null)
+        {
+            <p><em>Chargement en cours ...</em></p>
+        }
+        else
+        {
 
-<h1>@Title</h1>
-
-
-
-@if (@Customers == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <div class="card">
-        <div class="card-header">
             <button class="btn btn-light float-left" onclick="@(() => AddCustomer() )">
                 <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
             </button>
-        </div>
-        <div class="card-body">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
@@ -36,7 +33,7 @@ else
                     @foreach (var customer in Customers)
                     {
                         <tr>
-                            <td>@customer.Id</td>
+                            <td class="autoSizeToContent">@customer.Id</td>
                             <td>@customer.Name</td>
                             <td>@customer.FirstName</td>
                             <td class="autoSizeToContent">
@@ -51,8 +48,7 @@ else
                     }
                 </tbody>
             </table>
-        </div>
-        <div class="card-footer">
-        </div>
+        }
     </div>
-}
+</div>
+

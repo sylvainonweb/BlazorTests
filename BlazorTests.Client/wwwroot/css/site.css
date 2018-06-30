@@ -138,15 +138,3 @@ td.autoSizeToContent {
 .btn.gridColumnButton {
     border: 0px solid transparent; /* this was 1px earlier */
 }
-
-/*.iconic.oi.plus {
-    fill:blue;
-}
-
-.iconic.oi.pencil {
-    fill: green;
-}
-
-.iconic.oi.trash {
-    fill: red;
-}*/
