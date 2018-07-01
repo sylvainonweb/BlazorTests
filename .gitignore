@@ -23,3 +23,7 @@ BlazorTests.Server.Entities/DatabaseSpecific/bin/
 .vs/BlazorTests/v15/.suo
 .vs/config/applicationhost.config
 BlazorTests.Client/BlazorTests.Client.csproj.user
+*/bin/
+*/obj/
+*.vs/
+*.csproj.user
