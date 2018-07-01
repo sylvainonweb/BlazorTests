@@ -18,22 +18,14 @@ namespace BlazorTests.Client
 
         #region Propriétés bindées
 
-        public string Name { get; set; }
-        public string FirstName { get; set; }
-        public int CustomerTypeId { get; set; }
-        public IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
+        protected string Name { get; set; }
+        protected string FirstName { get; set; }
+        protected int CustomerTypeId { get; set; }
+        protected IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
 
         #endregion
 
         #region Initialisation
-
-        private void LogCustomerTypes()
-        {
-            foreach (var customerType in this.CustomerTypes)
-            {
-                System.Console.WriteLine($"Id={customerType.Id}, Text={customerType.Text}");
-            }
-        }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -84,6 +76,14 @@ namespace BlazorTests.Client
 
         #endregion
     }
+
+    //private void LogCustomerTypes()
+    //{
+    //    foreach (var customerType in this.CustomerTypes)
+    //    {
+    //        System.Console.WriteLine($"Id={customerType.Id}, Text={customerType.Text}");
+    //    }
+    //}
 }
 
 

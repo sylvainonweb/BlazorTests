@@ -16,10 +16,29 @@
         }
         else
         {
-
-            <button class="btn btn-light float-left" onclick="@(() => AddCustomer() )">
-                <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
-            </button>
+            @*<div class="card">
+                <div class="car-body">*@
+                    <div class="row">
+                        <label class="control-label col-md-1 font-weight-bold">Type</label>
+                        <div class="col-md-2">
+                            <select class="form-control" onchange="@((newValue) => { CustomerTypeId = int.Parse((string)newValue.Value); LoadCustomers(); })">
+                                <option value=""></option>
+                                @foreach (var customerType in CustomerTypes)
+                                {
+                                    <option value="@customerType.Id">@customerType.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                @*</div>
+            </div>*@
+            
+            <div class="form-group mt-3">
+                <button class="btn btn-light float-left" onclick="@(() => AddCustomer() )">
+                    <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
+                </button>
+            </div>
+            
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>

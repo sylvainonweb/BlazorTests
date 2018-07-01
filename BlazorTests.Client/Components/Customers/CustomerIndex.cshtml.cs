@@ -14,16 +14,38 @@ namespace BlazorTests.Client
 {
     public class CustomerIndexComponent : ComponentBase
     {
-        protected Customer[] Customers { get; set; }
+        #region Services
 
         [Inject]
         protected CustomerService CustomerService { get; set; }
 
+        #endregion
+
+        #region Propriétés bindées
+
+        protected IList<Customer> Customers { get; set; } = new List<Customer>();
+        protected IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
+        protected int CustomerTypeId { get; set; }
+
+        #endregion
+
+        #region Initialisation
+
         protected override async Task OnInitAsync()
         {
             this.Title = "Clients";
-            this.Customers = await CustomerService.GetCustomers();
+            this.CustomerTypes = await CustomerService.GetCustomerTypes();
+            await LoadCustomers();
         }
+
+        protected async Task LoadCustomers()
+        {
+            this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
+        }
+
+        #endregion
+
+        #region  Gestion des clients
 
         protected void AddCustomer()
         {
@@ -41,8 +63,10 @@ namespace BlazorTests.Client
             {
                 await CustomerService.DeleteCustomer(customerId);
                 MessageBox.ShowAlert("Suppression effectu�");
-                this.Customers = await CustomerService.GetCustomers();
+                this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
             }
-        }       
+        }
+
+        #endregion
     }
 }

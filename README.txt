@@ -1,23 +1,29 @@
 //==================================================
 //
-// LAYOUTS
+// FONCTIONNALITES ATTENDUES ET PROBLEMES
 //
 //==================================================
-* Placer Save et Close dans EditLayout. Comment appeler les fonctions Save et Close de EditComponentBase ?
-* Placer le titre dans ViewLayout
+* Utilisation d'une feuille de style
+	* Définir le style des boutons Ajouter/Modifier/Supprimer/Sauvegarder/Fermer une bonne fois pour toutes
+	=> voir pour la couleur des icones des boutons
+* Responsive
+* Performant
+* Partage du code entre le client et le serveur (règles métier ?)
+* Sécurisé (Open Id Connect)
+* Dockerable
+* Gestion des filtres (liés aux grilles ou pas)
+* Export PDF, Excel, ...
+* Validation des champs obligatoires
+	* Pas encore implémenté dans Blazor
+* Création de contrôles personnalisés
+	* ComboBox
+		* Utiliser SelectListItem afin de ne pas avoir à ajouter une ligne vide
+		* bind et onchange ne peuvent pas être utilisés simultanément
+* Gestion de l'ajout/modification/suppression (confirmation de suppression) : OK
+* Utilisation d'un layout (titre, boutons Sauvegarder/Fermer si Edit)
+	* Placer Save et Close dans EditLayout. Comment appeler les fonctions Save et Close de EditComponentBase ?
+	* Placer le titre dans ViewLayout. A ce jour, Steve Sanderson préconise de créer un wrapper de type composant (et pas un layout) contenant
+	  la propriété Title et dans chaque composant, ajouter le code <ViewLayout Title=@Title> ... </ViewLayout>
+* Gestion des nullables
+	* Pas encore implémenté dans Blazor => remplacer toutes les 
 
-
-//==================================================
-//
-// STYLES
-//
-//==================================================
-* Définir le style des boutons Ajouter/Modifier/Supprimer/Sauvegarder/Fermer une bonne fois pour toutes
-  => voir pour la couleur des icones des boutons
-
-//==================================================
-//
-// VALIDATION
-//
-//==================================================
-* Pas encore implémenté dans Blazor

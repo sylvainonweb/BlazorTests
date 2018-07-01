@@ -20,10 +20,14 @@ namespace BlazorTests.Server.Controllers
             this.Repository = repository;
         }
 
-        [HttpGet()]
-        public IEnumerable<Customer> GetCustomers()
+        [HttpGet("{customerTypeId:int?}")]
+        public IList<Customer> GetCustomers(int? customerTypeId)
         {
             var query = GetCustomersQuery();
+            //if (customerTypeId.HasValue)
+            //{
+            //    query = query.Where(CustomerFields.CustomerTypeId == customerTypeId.Value);
+            //}
             return Repository.FetchQuery(query);
         }
 
