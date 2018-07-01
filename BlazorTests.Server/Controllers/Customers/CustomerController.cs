@@ -54,6 +54,21 @@ namespace BlazorTests.Server.Controllers
             CustomerEntity customer = Repository.Get<CustomerEntity, int>(customerId);
             Repository.Delete(customer);
         }
+
+        [HttpPost("Save")]
+        public void SaveCustomer([FromBody] Customer customer)
+        {
+            CustomerEntity customerEntity = Repository.Get<CustomerEntity, int>(customer.Id, null, false);
+            if(customerEntity == null)
+            {
+                customerEntity = new CustomerEntity();
+            }
+
+            customerEntity.Name = customer.Name;
+            customerEntity.FirstName = customer.FirstName;
+
+            Repository.Save(customerEntity);
+        }
     }
 
     public class ControllerEx : Controller
