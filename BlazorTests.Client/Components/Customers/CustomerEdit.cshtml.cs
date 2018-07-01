@@ -21,12 +21,19 @@ namespace BlazorTests.Client
         public string Name { get; set; }
         public string FirstName { get; set; }
         public int CustomerTypeId { get; set; }
-
-        public CustomerType[] CustomerTypes { get; set; }
+        public IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
 
         #endregion
 
         #region Initialisation
+
+        private void LogCustomerTypes()
+        {
+            foreach (var customerType in this.CustomerTypes)
+            {
+                System.Console.WriteLine($"Id={customerType.Id}, Text={customerType.Text}");
+            }
+        }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -64,7 +71,7 @@ namespace BlazorTests.Client
 
             customer.Name = this.Name;
             customer.FirstName = this.FirstName;
-            customer.CustomerTypeId = this.CustomerTypeId;
+            //customer.CustomerTypeId = this.CustomerTypeId;
 
             await CustomerService.SaveCustomer(customer);
             UriHelper.NavigateTo("/customer");

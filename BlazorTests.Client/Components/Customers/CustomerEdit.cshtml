@@ -1,7 +1,9 @@
-﻿@layout EditLayout
+﻿@using BlazorTests.Shared
+@layout EditLayout
 @page "/customer/edit"
 @page "/customer/edit/{IdAsString}"
 @inherits CustomerEditComponent
+
 
 <div class="card">
     <div class="card-header">
@@ -26,7 +28,8 @@
         <div class="form-group ">
             <label class="control-label col-md-2">Type</label>
             <div class="col-md-5">
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" bind="@CustomerTypeId">
+                    <option value=""></option>
                     @foreach (var customerType in CustomerTypes)
                     {
                         <option value="@customerType.Id">@customerType.Text</option>
@@ -47,5 +50,31 @@
             </button>
         </div>
     </div>
+    @*<button input="button" class="btn btn-light" onclick="@(() => Load())">
+        Charger
+    </button>
+    <input type="text" value="@CustomerTypesCount"/>*@
 
 </div>
+
+@*@functions {
+
+    public int CustomerTypesCount;
+
+    public async Task Load()
+    {
+        CustomerTypesCount = -1;
+
+        var customerTypes = await CustomerService.GetCustomerTypes();
+        CustomerTypesCount = -2;
+        if (customerTypes != null)
+        {
+            CustomerTypesCount = -4;
+            CustomerTypesCount = customerTypes.Count();
+        }
+        else
+        {
+            CustomerTypesCount = -3;
+        }
+    }*@
+}

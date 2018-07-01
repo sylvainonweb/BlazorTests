@@ -22,9 +22,9 @@ namespace BlazorTests.Client.Services
             return HttpClient.GetJsonAsync<Customer[]>("api/Customer");
         }
 
-        public Task<CustomerType[]> GetCustomerTypes()
+        public Task<IList<CustomerType>> GetCustomerTypes()
         {
-            return HttpClient.GetJsonAsync<CustomerType[]>("api/CustomerType");
+            return HttpClient.GetJsonAsync<IList<CustomerType>>("api/Administration/CustomerType");
         }        
 
         public Task<Customer> GetCustomer(int customerId)

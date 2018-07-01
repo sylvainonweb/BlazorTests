@@ -20,17 +20,22 @@ namespace BlazorTests.Server.Controllers
             this.Repository = repository;
         }
 
-        [HttpGet("customerType")]
-        public IEnumerable<CustomerType> GetCustomerTypes()
+        [HttpGet("CustomerType")]
+        public IList<CustomerType> GetCustomerTypes()
         {
-            QueryFactory qf = new QueryFactory();
-            var query = qf.CustomerType
-                .Select(() => new CustomerType
-                {
-                    Id = CustomerTypeFields.Id.ToValue<int>(),
-                    Text = CustomerTypeFields.Text.ToValue<string>(),
-                });
-            return Repository.FetchQuery(query);
+            IList<CustomerType> customerTypes = new List<CustomerType>();
+            customerTypes.Add(new CustomerType { Id = 1, Text = "Professionnel" });
+            customerTypes.Add(new CustomerType { Id = 2, Text = "Particulier" });
+            return customerTypes;
+
+            //QueryFactory qf = new QueryFactory();
+            //var query = qf.CustomerType
+            //    .Select(() => new CustomerType
+            //    {
+            //        Id = CustomerTypeFields.Id.ToValue<int>(),
+            //        Text = CustomerTypeFields.Text.ToValue<string>(),
+            //    });
+            //return Repository.FetchQuery(query);
         }
     }
 }

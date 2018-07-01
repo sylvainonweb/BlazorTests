@@ -25,12 +25,12 @@ namespace BlazorTests.Client
             this.Customers = await CustomerService.GetCustomers();
         }
 
-        protected async Task AddCustomer()
+        protected void AddCustomer()
         {
             UriHelper.NavigateTo($"/customer/edit");
         }
 
-        protected async Task EditCustomer(int id)
+        protected void EditCustomer(int id)
         {
             UriHelper.NavigateTo($"/customer/edit/{id}");
         }
