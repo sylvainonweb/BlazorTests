@@ -42,6 +42,7 @@ namespace BlazorTests.Client
                 Customer customer = await CustomerService.GetCustomer(Id.Value);
                 this.Name = customer.Name;
                 this.FirstName = customer.FirstName;
+                this.CustomerTypeId = customer.CustomerTypeId;
             }
         }
 
@@ -63,7 +64,7 @@ namespace BlazorTests.Client
 
             customer.Name = this.Name;
             customer.FirstName = this.FirstName;
-            //customer.CustomerTypeId = this.CustomerTypeId;
+            customer.CustomerTypeId = this.CustomerTypeId;
 
             await CustomerService.SaveCustomer(customer);
             UriHelper.NavigateTo("/customer");

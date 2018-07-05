@@ -111,6 +111,12 @@ namespace BlazorTests.Server.Entities.FactoryClasses
 			get { return Create<CustomerEntity>(); }
 		}
 
+		/// <summary>Creates and returns a new EntityQuery for the CustomerType entity</summary>
+		public EntityQuery<CustomerTypeEntity> CustomerType
+		{
+			get { return Create<CustomerTypeEntity>(); }
+		}
+
 
  
 	}

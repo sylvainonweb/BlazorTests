@@ -31,6 +31,26 @@ namespace BlazorTests.Server.Entities.HelperClasses
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(CustomerFieldIndex.FirstName);}
 		}
+		/// <summary>Creates a new CustomerEntity.CustomerTypeId field instance</summary>
+		public static EntityField2 CustomerTypeId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(CustomerFieldIndex.CustomerTypeId);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity CustomerTypeEntity</summary>
+	public partial class CustomerTypeFields
+	{
+		/// <summary>Creates a new CustomerTypeEntity.Id field instance</summary>
+		public static EntityField2 Id
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(CustomerTypeFieldIndex.Id);}
+		}
+		/// <summary>Creates a new CustomerTypeEntity.Text field instance</summary>
+		public static EntityField2 Text
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(CustomerTypeFieldIndex.Text);}
+		}
 	}
 	
 

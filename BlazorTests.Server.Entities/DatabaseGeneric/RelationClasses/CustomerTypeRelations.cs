@@ -16,41 +16,41 @@ using SD.LLBLGen.Pro.ORMSupportClasses;
 
 namespace BlazorTests.Server.Entities.RelationClasses
 {
-	/// <summary>Implements the relations factory for the entity: Customer. </summary>
-	public partial class CustomerRelations
+	/// <summary>Implements the relations factory for the entity: CustomerType. </summary>
+	public partial class CustomerTypeRelations
 	{
 		/// <summary>CTor</summary>
-		public CustomerRelations()
+		public CustomerTypeRelations()
 		{
 		}
 
-		/// <summary>Gets all relations of the CustomerEntity as a list of IEntityRelation objects.</summary>
+		/// <summary>Gets all relations of the CustomerTypeEntity as a list of IEntityRelation objects.</summary>
 		/// <returns>a list of IEntityRelation objects</returns>
 		public virtual List<IEntityRelation> GetAllRelations()
 		{
 			List<IEntityRelation> toReturn = new List<IEntityRelation>();
-			toReturn.Add(this.CustomerTypeEntityUsingCustomerTypeId);
+			toReturn.Add(this.CustomerEntityUsingCustomerTypeId);
 			return toReturn;
 		}
 
 		#region Class Property Declarations
 
-
-
-		/// <summary>Returns a new IEntityRelation object, between CustomerEntity and CustomerTypeEntity over the m:1 relation they have, using the relation between the fields:
-		/// Customer.CustomerTypeId - CustomerType.Id
+		/// <summary>Returns a new IEntityRelation object, between CustomerTypeEntity and CustomerEntity over the 1:n relation they have, using the relation between the fields:
+		/// CustomerType.Id - Customer.CustomerTypeId
 		/// </summary>
-		public virtual IEntityRelation CustomerTypeEntityUsingCustomerTypeId
+		public virtual IEntityRelation CustomerEntityUsingCustomerTypeId
 		{
 			get
 			{
-				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne, "CustomerType", false);
+				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany, "Customers" , true);
 				relation.AddEntityFieldPair(CustomerTypeFields.Id, CustomerFields.CustomerTypeId);
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CustomerTypeEntity", false);
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CustomerEntity", true);
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CustomerTypeEntity", true);
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("CustomerEntity", false);
 				return relation;
 			}
 		}
+
+
 		/// <summary>stub, not used in this entity, only for TargetPerEntity entities.</summary>
 		public virtual IEntityRelation GetSubTypeRelation(string subTypeEntityName) { return null; }
 		/// <summary>stub, not used in this entity, only for TargetPerEntity entities.</summary>
@@ -63,12 +63,12 @@ namespace BlazorTests.Server.Entities.RelationClasses
 	}
 	
 	/// <summary>Static class which is used for providing relationship instances which are re-used internally for syncing</summary>
-	internal static class StaticCustomerRelations
+	internal static class StaticCustomerTypeRelations
 	{
-		internal static readonly IEntityRelation CustomerTypeEntityUsingCustomerTypeIdStatic = new CustomerRelations().CustomerTypeEntityUsingCustomerTypeId;
+		internal static readonly IEntityRelation CustomerEntityUsingCustomerTypeIdStatic = new CustomerTypeRelations().CustomerEntityUsingCustomerTypeId;
 
 		/// <summary>CTor</summary>
-		static StaticCustomerRelations()
+		static StaticCustomerTypeRelations()
 		{
 		}
 	}

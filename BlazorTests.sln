@@ -19,8 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Common.Data", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{175D9BEE-1DD1-40C4-90CA-82C28E859114}"
 	ProjectSection(SolutionItems) = preProject
-		README.txt = README.txt
+		BlazorTests.Server.Entities.llblgenproj = BlazorTests.Server.Entities.llblgenproj
 		InitDatabase.sql = InitDatabase.sql
+		README.txt = README.txt
 	EndProjectSection
 EndProject
 Global

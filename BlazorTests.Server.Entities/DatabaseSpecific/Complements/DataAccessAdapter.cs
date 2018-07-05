@@ -13,7 +13,8 @@ namespace BlazorTests.Server.Entities.DatabaseSpecific
 
         protected override void OnBeforeEntitySave(IEntity2 entitySaved, bool insertAction)
         {
-            EntityAuditFieldSetter.DefineAuditFields(entitySaved, insertAction, this.User);
+            //FIXME : A décommenté si besoin
+            //EntityAuditFieldSetter.DefineAuditFields(entitySaved, insertAction, this.User);
             base.OnBeforeEntitySave(entitySaved, insertAction);
         }
 

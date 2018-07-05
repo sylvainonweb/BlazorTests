@@ -19,6 +19,18 @@ namespace BlazorTests.Server.Entities
 		Name,
 		///<summary>FirstName. </summary>
 		FirstName,
+		///<summary>CustomerTypeId. </summary>
+		CustomerTypeId,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: CustomerType.</summary>
+	public enum CustomerTypeFieldIndex
+	{
+		///<summary>Id. </summary>
+		Id,
+		///<summary>Text. </summary>
+		Text,
 		/// <summary></summary>
 		AmountOfFields
 	}
@@ -29,7 +41,9 @@ namespace BlazorTests.Server.Entities
 	public enum EntityType
 	{
 		///<summary>Customer</summary>
-		CustomerEntity
+		CustomerEntity,
+		///<summary>CustomerType</summary>
+		CustomerTypeEntity
 	}
 
 

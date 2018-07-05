@@ -136,26 +136,13 @@
     <EntityDefinitions>
       <EntityDefinition Name="Customer" ObjectID="fcf73e49-2137-4e24-a1ba-b68b87bf31f5">
         <Fields>
-          <Field Name="CustomerTypeId" Type="int" Precision="10" IsAutoCreated="true" FieldIndex="3" />
-          <Field Name="FirstName" Type="string" MaxLength="255" FieldIndex="2" />
+          <Field Name="FirstName" Type="string" IsOptional="true" MaxLength="255" FieldIndex="2" />
           <Field Name="Id" Type="int" Precision="10" IsPrimaryKey="true" FieldIndex="0" />
           <Field Name="Name" Type="string" MaxLength="255" FieldIndex="1" />
         </Fields>
       </EntityDefinition>
-      <EntityDefinition Name="CustomerType" ObjectID="1b5a3063-c8ca-4131-bd3d-346487c570ac">
-        <Fields>
-          <Field Name="Id" Type="int" Precision="10" IsPrimaryKey="true" />
-          <Field Name="Text" Type="string" MaxLength="255" />
-        </Fields>
-      </EntityDefinition>
     </EntityDefinitions>
-    <Relationships>
-      <NormalRelationship Name="Customer.CustomerType-CustomerType.Customers" Start=":Customer" End=":CustomerType" StartNavigator="CustomerType" EndNavigator="Customers" Type="4">
-        <FieldRelationships>
-          <FieldFieldRelationship FkField="CustomerTypeId" PkField="Id" />
-        </FieldRelationships>
-      </NormalRelationship>
-    </Relationships>
+    <Relationships />
     <InheritanceHierarchies />
   </EntityModel>
   <TargetDatabases>
@@ -173,34 +160,19 @@
       <Catalogs>
         <Catalog Name="WebTestsDatabase">
           <Schemas>
-            <Schema Name="dbo" SyncSource="2" LastSyncWithDatabase="2018-07-05T09:46:33.2932739Z">
+            <Schema Name="dbo" SyncSource="2" LastSyncWithDatabase="2018-06-20T11:08:12.630087Z">
               <Tables>
                 <Table Name="Customer">
                   <PkConstraintName Name="PK_Customer" />
                   <Fields>
                     <Field Name="Id" Ordinal="1" IsPrimaryKey="true" DbType="8" Precision="10" />
                     <Field Name="Name" Ordinal="2" DbType="12" Length="255" />
-                    <Field Name="FirstName" Ordinal="3" DbType="12" Length="255" />
-                    <Field Name="CustomerTypeId" Ordinal="4" DbType="8" Precision="10" />
-                  </Fields>
-                </Table>
-                <Table Name="CustomerType">
-                  <PkConstraintName Name="PK_CustomerType" />
-                  <Fields>
-                    <Field Name="Id" Ordinal="1" IsPrimaryKey="true" DbType="8" Precision="10" />
-                    <Field Name="Text" Ordinal="2" DbType="12" Length="255" />
+                    <Field Name="FirstName" Ordinal="3" IsOptional="true" DbType="12" Length="255" />
                   </Fields>
                 </Table>
               </Tables>
             </Schema>
           </Schemas>
-          <ForeignKeyConstraints>
-            <ForeignKeyConstraint Name="dbo:Customer:FK_Customer_CustomerType">
-              <FieldPairs>
-                <FieldPair PkField="dbo:CustomerType:Id" FkField="dbo:Customer:CustomerTypeId" />
-              </FieldPairs>
-            </ForeignKeyConstraint>
-          </ForeignKeyConstraints>
         </Catalog>
       </Catalogs>
     </TargetDatabase>
@@ -210,16 +182,9 @@
       <EntityMappings>
         <EntityMapping EntityName=":Customer" TargetName="WebTestsDatabase:dbo:Customer">
           <FieldMappings>
-            <FieldMapping FieldName="CustomerTypeId" TargetFieldName="CustomerTypeId" />
             <FieldMapping FieldName="FirstName" TargetFieldName="FirstName" />
             <FieldMapping FieldName="Id" TargetFieldName="Id" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
-          </FieldMappings>
-        </EntityMapping>
-        <EntityMapping EntityName=":CustomerType" TargetName="WebTestsDatabase:dbo:CustomerType">
-          <FieldMappings>
-            <FieldMapping FieldName="Id" TargetFieldName="Id" />
-            <FieldMapping FieldName="Text" TargetFieldName="Text" />
           </FieldMappings>
         </EntityMapping>
       </EntityMappings>

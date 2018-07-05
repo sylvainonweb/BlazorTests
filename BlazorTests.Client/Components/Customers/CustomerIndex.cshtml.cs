@@ -62,7 +62,7 @@ namespace BlazorTests.Client
             if (MessageBox.ShowDeletionConfirmation())
             {
                 await CustomerService.DeleteCustomer(customerId);
-                MessageBox.ShowAlert("Suppression effectu�");
+                MessageBox.ShowAlert("Suppression effectuée");
                 this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
             }
         }

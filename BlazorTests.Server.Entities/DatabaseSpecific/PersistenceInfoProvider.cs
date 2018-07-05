@@ -47,15 +47,25 @@ namespace BlazorTests.Server.Entities.DatabaseSpecific
 		{
 			this.InitClass();
 			InitCustomerEntityMappings();
+			InitCustomerTypeEntityMappings();
 		}
 
 		/// <summary>Inits CustomerEntity's mappings</summary>
 		private void InitCustomerEntityMappings()
 		{
-			this.AddElementMapping("CustomerEntity", @"WebTestsDatabase", @"dbo", "Customer", 3, 0);
+			this.AddElementMapping("CustomerEntity", @"WebTestsDatabase", @"dbo", "Customer", 4, 0);
 			this.AddElementFieldMapping("CustomerEntity", "Id", "Id", false, "Int", 0, 10, 0, false, "", null, typeof(System.Int32), 0);
 			this.AddElementFieldMapping("CustomerEntity", "Name", "Name", false, "NVarChar", 255, 0, 0, false, "", null, typeof(System.String), 1);
-			this.AddElementFieldMapping("CustomerEntity", "FirstName", "FirstName", true, "NVarChar", 255, 0, 0, false, "", null, typeof(System.String), 2);
+			this.AddElementFieldMapping("CustomerEntity", "FirstName", "FirstName", false, "NVarChar", 255, 0, 0, false, "", null, typeof(System.String), 2);
+			this.AddElementFieldMapping("CustomerEntity", "CustomerTypeId", "CustomerTypeId", false, "Int", 0, 10, 0, false, "", null, typeof(System.Int32), 3);
+		}
+
+		/// <summary>Inits CustomerTypeEntity's mappings</summary>
+		private void InitCustomerTypeEntityMappings()
+		{
+			this.AddElementMapping("CustomerTypeEntity", @"WebTestsDatabase", @"dbo", "CustomerType", 2, 0);
+			this.AddElementFieldMapping("CustomerTypeEntity", "Id", "Id", false, "Int", 0, 10, 0, false, "", null, typeof(System.Int32), 0);
+			this.AddElementFieldMapping("CustomerTypeEntity", "Text", "Text", false, "NVarChar", 255, 0, 0, false, "", null, typeof(System.String), 1);
 		}
 
 	}

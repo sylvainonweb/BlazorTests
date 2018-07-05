@@ -50,6 +50,7 @@ namespace BlazorTests.Server.Entities.HelperClasses
 		{
 			this.InitClass();
 			InitCustomerEntityInfos();
+			InitCustomerTypeEntityInfos();
 
 			this.ConstructElementFieldStructures(InheritanceInfoProviderSingleton.GetInstance());
 		}
@@ -60,7 +61,15 @@ namespace BlazorTests.Server.Entities.HelperClasses
 			this.AddFieldIndexEnumForElementName(typeof(CustomerFieldIndex), "CustomerEntity");
 			this.AddElementFieldInfo("CustomerEntity", "Id", typeof(System.Int32), true, false, false, false,  (int)CustomerFieldIndex.Id, 0, 0, 10);
 			this.AddElementFieldInfo("CustomerEntity", "Name", typeof(System.String), false, false, false, false,  (int)CustomerFieldIndex.Name, 255, 0, 0);
-			this.AddElementFieldInfo("CustomerEntity", "FirstName", typeof(System.String), false, false, false, true,  (int)CustomerFieldIndex.FirstName, 255, 0, 0);
+			this.AddElementFieldInfo("CustomerEntity", "FirstName", typeof(System.String), false, false, false, false,  (int)CustomerFieldIndex.FirstName, 255, 0, 0);
+			this.AddElementFieldInfo("CustomerEntity", "CustomerTypeId", typeof(System.Int32), false, true, false, false,  (int)CustomerFieldIndex.CustomerTypeId, 0, 0, 10);
+		}
+		/// <summary>Inits CustomerTypeEntity's FieldInfo objects</summary>
+		private void InitCustomerTypeEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(CustomerTypeFieldIndex), "CustomerTypeEntity");
+			this.AddElementFieldInfo("CustomerTypeEntity", "Id", typeof(System.Int32), true, false, false, false,  (int)CustomerTypeFieldIndex.Id, 0, 0, 10);
+			this.AddElementFieldInfo("CustomerTypeEntity", "Text", typeof(System.String), false, false, false, false,  (int)CustomerTypeFieldIndex.Text, 255, 0, 0);
 		}
 		
 	}

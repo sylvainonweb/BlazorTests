@@ -45,25 +45,27 @@
                         <th>Id</th>
                         <th>Nom</th>
                         <th>Prénom</th>
+                        <th>Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var customer in Customers)
                     {
-                        <tr>
-                            <td class="autoSizeToContent">@customer.Id</td>
-                            <td>@customer.Name</td>
-                            <td>@customer.FirstName</td>
-                            <td class="autoSizeToContent">
-                                <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomer(customer.Id) )">
-                                    <span class="oi oi-pencil" aria-hidden="true"></span>
-                                </button>
-                                <button class="btn btn-outline-danger btn-xs gridColumnButton" onclick="@(() => DeleteCustomer(customer.Id) )">
-                                    <span class="oi oi-trash" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="autoSizeToContent">@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.FirstName</td>
+                        <td>@customer.CustomerTypeText</td>
+                        <td class="autoSizeToContent">
+                            <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomer(customer.Id) )">
+                                <span class="oi oi-pencil" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-outline-danger btn-xs gridColumnButton" onclick="@(() => DeleteCustomer(customer.Id) )">
+                                <span class="oi oi-trash" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -64,6 +64,9 @@ namespace BlazorTests.Server.Entities.Linq
 				case BlazorTests.Server.Entities.EntityType.CustomerEntity:
 					toReturn = this.Customer;
 					break;
+				case BlazorTests.Server.Entities.EntityType.CustomerTypeEntity:
+					toReturn = this.CustomerType;
+					break;
 				default:
 					toReturn = null;
 					break;
@@ -84,6 +87,12 @@ namespace BlazorTests.Server.Entities.Linq
 		public DataSource2<CustomerEntity> Customer
 		{
 			get { return new DataSource2<CustomerEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting CustomerTypeEntity instances in the database.</summary>
+		public DataSource2<CustomerTypeEntity> CustomerType
+		{
+			get { return new DataSource2<CustomerTypeEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 

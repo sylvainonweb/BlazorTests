@@ -24,10 +24,10 @@ namespace BlazorTests.Server.Controllers
         public IList<Customer> GetCustomers(int? customerTypeId)
         {
             var query = GetCustomersQuery();
-            //if (customerTypeId.HasValue)
-            //{
-            //    query = query.Where(CustomerFields.CustomerTypeId == customerTypeId.Value);
-            //}
+            if (customerTypeId.HasValue)
+            {
+                query = query.Where(CustomerFields.CustomerTypeId == customerTypeId.Value);
+            }
             return Repository.FetchQuery(query);
         }
 
@@ -35,11 +35,15 @@ namespace BlazorTests.Server.Controllers
         {
             QueryFactory qf = new QueryFactory();
             var query = qf.Customer
+                .From(qf.Customer
+                    .InnerJoin(CustomerEntity.Relations.CustomerTypeEntityUsingCustomerTypeId))
                 .Select(() => new Customer
                 {
                     Id = CustomerFields.Id.ToValue<int>(),
                     Name = CustomerFields.Name.ToValue<string>(),
                     FirstName = CustomerFields.FirstName.ToValue<string>(),
+                    CustomerTypeId = CustomerFields.CustomerTypeId.ToValue<int>(),
+                    CustomerTypeText = CustomerTypeFields.Text.ToValue<string>(),
                 });
             return query;
         }
@@ -70,6 +74,7 @@ namespace BlazorTests.Server.Controllers
 
             customerEntity.Name = customer.Name;
             customerEntity.FirstName = customer.FirstName;
+            customerEntity.CustomerTypeId = customer.CustomerTypeId;
 
             Repository.Save(customerEntity);
         }

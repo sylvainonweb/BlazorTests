@@ -118,6 +118,27 @@ namespace BlazorTests.Server.Entities.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty CustomerTypeEntity objects.</summary>
+	[Serializable]
+	public partial class CustomerTypeEntityFactory : EntityFactoryBase2<CustomerTypeEntity> {
+		/// <summary>CTor</summary>
+		public CustomerTypeEntityFactory() : base("CustomerTypeEntity", BlazorTests.Server.Entities.EntityType.CustomerTypeEntity, false) { }
+		
+		/// <summary>Creates a new CustomerTypeEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new CustomerTypeEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewCustomerTypeUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty Entity objects based on the entity type specified. Uses  entity specific factory objects</summary>
 	[Serializable]
 	public partial class GeneralEntityFactory
@@ -132,6 +153,9 @@ namespace BlazorTests.Server.Entities.FactoryClasses
 			{
 				case BlazorTests.Server.Entities.EntityType.CustomerEntity:
 					factoryToUse = new CustomerEntityFactory();
+					break;
+				case BlazorTests.Server.Entities.EntityType.CustomerTypeEntity:
+					factoryToUse = new CustomerTypeEntityFactory();
 					break;
 			}
 			IEntity2 toReturn = null;

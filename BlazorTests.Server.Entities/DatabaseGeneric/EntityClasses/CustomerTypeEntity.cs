@@ -22,17 +22,20 @@ namespace BlazorTests.Server.Entities.EntityClasses
 {
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
 	// __LLBLGENPRO_USER_CODE_REGION_END
-	/// <summary>Entity class which represents the entity 'Customer'.<br/><br/></summary>
+	
+	/// <summary>Entity class which represents the entity 'CustomerType'.<br/><br/></summary>
 	[Serializable]
-	public partial class CustomerEntity : CommonEntityBase
+	public partial class CustomerTypeEntity : CommonEntityBase
 		// __LLBLGENPRO_USER_CODE_REGION_START AdditionalInterfaces
-		// __LLBLGENPRO_USER_CODE_REGION_END	
+		// __LLBLGENPRO_USER_CODE_REGION_END
+			
 	{
 		#region Class Member Declarations
-		private CustomerTypeEntity _customerType;
+		private EntityCollection<CustomerEntity> _customers;
 
 		// __LLBLGENPRO_USER_CODE_REGION_START PrivateMembers
 		// __LLBLGENPRO_USER_CODE_REGION_END
+		
 		#endregion
 
 		#region Statics
@@ -42,19 +45,19 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		/// <summary>All names of fields mapped onto a relation. Usable for in-memory filtering</summary>
 		public static partial class MemberNames
 		{
-			/// <summary>Member name CustomerType</summary>
-			public static readonly string CustomerType = "CustomerType";
+			/// <summary>Member name Customers</summary>
+			public static readonly string Customers = "Customers";
 		}
 		#endregion
 		
 		/// <summary> Static CTor for setting up custom property hashtables. Is executed before the first instance of this entity class or derived classes is constructed. </summary>
-		static CustomerEntity()
+		static CustomerTypeEntity()
 		{
 			SetupCustomPropertyHashtables();
 		}
 		
 		/// <summary> CTor</summary>
-		public CustomerEntity():base("CustomerEntity")
+		public CustomerTypeEntity():base("CustomerTypeEntity")
 		{
 			InitClassEmpty(null, null);
 		}
@@ -62,32 +65,32 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		/// <summary> CTor</summary>
 		/// <remarks>For framework usage.</remarks>
 		/// <param name="fields">Fields object to set as the fields for this entity.</param>
-		public CustomerEntity(IEntityFields2 fields):base("CustomerEntity")
+		public CustomerTypeEntity(IEntityFields2 fields):base("CustomerTypeEntity")
 		{
 			InitClassEmpty(null, fields);
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="validator">The custom validator object for this CustomerEntity</param>
-		public CustomerEntity(IValidator validator):base("CustomerEntity")
+		/// <param name="validator">The custom validator object for this CustomerTypeEntity</param>
+		public CustomerTypeEntity(IValidator validator):base("CustomerTypeEntity")
 		{
 			InitClassEmpty(validator, null);
 		}
 				
 		/// <summary> CTor</summary>
-		/// <param name="id">PK value for Customer which data should be fetched into this Customer object</param>
+		/// <param name="id">PK value for CustomerType which data should be fetched into this CustomerType object</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public CustomerEntity(System.Int32 id):base("CustomerEntity")
+		public CustomerTypeEntity(System.Int32 id):base("CustomerTypeEntity")
 		{
 			InitClassEmpty(null, null);
 			this.Id = id;
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="id">PK value for Customer which data should be fetched into this Customer object</param>
-		/// <param name="validator">The custom validator object for this CustomerEntity</param>
+		/// <param name="id">PK value for CustomerType which data should be fetched into this CustomerType object</param>
+		/// <param name="validator">The custom validator object for this CustomerTypeEntity</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public CustomerEntity(System.Int32 id, IValidator validator):base("CustomerEntity")
+		public CustomerTypeEntity(System.Int32 id, IValidator validator):base("CustomerTypeEntity")
 		{
 			InitClassEmpty(validator, null);
 			this.Id = id;
@@ -97,36 +100,18 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		/// <param name="info"></param>
 		/// <param name="context"></param>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected CustomerEntity(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected CustomerTypeEntity(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 			if(SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				_customerType = (CustomerTypeEntity)info.GetValue("_customerType", typeof(CustomerTypeEntity));
-				if(_customerType!=null)
-				{
-					_customerType.AfterSave+=new EventHandler(OnEntityAfterSave);
-				}
+				_customers = (EntityCollection<CustomerEntity>)info.GetValue("_customers", typeof(EntityCollection<CustomerEntity>));
 				this.FixupDeserialization(FieldInfoProviderSingleton.GetInstance());
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START DeserializationConstructor
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 		}
 
-		
-		/// <summary>Performs the desync setup when an FK field has been changed. The entity referenced based on the FK field will be dereferenced and sync info will be removed.</summary>
-		/// <param name="fieldIndex">The fieldindex.</param>
-		protected override void PerformDesyncSetupFKFieldChange(int fieldIndex)
-		{
-			switch((CustomerFieldIndex)fieldIndex)
-			{
-				case CustomerFieldIndex.CustomerTypeId:
-					DesetupSyncCustomerType(true, false);
-					break;
-				default:
-					base.PerformDesyncSetupFKFieldChange(fieldIndex);
-					break;
-			}
-		}
 
 		/// <summary> Sets the related entity property to the entity specified. If the property is a collection, it will add the entity specified to that collection.</summary>
 		/// <param name="propertyName">Name of the property.</param>
@@ -136,8 +121,8 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		{
 			switch(propertyName)
 			{
-				case "CustomerType":
-					this.CustomerType = (CustomerTypeEntity)entity;
+				case "Customers":
+					this.Customers.Add((CustomerEntity)entity);
 					break;
 				default:
 					this.OnSetRelatedEntityProperty(propertyName, entity);
@@ -161,8 +146,8 @@ namespace BlazorTests.Server.Entities.EntityClasses
 			RelationCollection toReturn = new RelationCollection();
 			switch(fieldName)
 			{
-				case "CustomerType":
-					toReturn.Add(Relations.CustomerTypeEntityUsingCustomerTypeId);
+				case "Customers":
+					toReturn.Add(Relations.CustomerEntityUsingCustomerTypeId);
 					break;
 				default:
 					break;				
@@ -192,8 +177,8 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "CustomerType":
-					SetupSyncCustomerType(relatedEntity);
+				case "Customers":
+					this.Customers.Add((CustomerEntity)relatedEntity);
 					break;
 				default:
 					break;
@@ -208,8 +193,8 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "CustomerType":
-					DesetupSyncCustomerType(false, true);
+				case "Customers":
+					this.PerformRelatedEntityRemoval(this.Customers, relatedEntity, signalRelatedEntityManyToOne);
 					break;
 				default:
 					break;
@@ -230,10 +215,6 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override List<IEntity2> GetDependentRelatedEntities()
 		{
 			List<IEntity2> toReturn = new List<IEntity2>();
-			if(_customerType!=null)
-			{
-				toReturn.Add(_customerType);
-			}
 			return toReturn;
 		}
 		
@@ -242,6 +223,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override List<IEntityCollection2> GetMemberEntityCollections()
 		{
 			List<IEntityCollection2> toReturn = new List<IEntityCollection2>();
+			toReturn.Add(this.Customers);
 			return toReturn;
 		}
 
@@ -253,10 +235,11 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		{
 			if (SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				info.AddValue("_customerType", (!this.MarkedForDeletion?_customerType:null));
+				info.AddValue("_customers", ((_customers!=null) && (_customers.Count>0) && !this.MarkedForDeletion)?_customers:null);
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			base.GetObjectData(info, context);
 		}
 
@@ -266,15 +249,15 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		/// <returns>A list of all the EntityRelation objects the type of this instance has. Hierarchy relations are excluded.</returns>
 		protected override List<IEntityRelation> GetAllRelations()
 		{
-			return new CustomerRelations().GetAllRelations();
+			return new CustomerTypeRelations().GetAllRelations();
 		}
 
-		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entity of type 'CustomerType' to this entity.</summary>
+		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entities of type 'Customer' to this entity.</summary>
 		/// <returns></returns>
-		public virtual IRelationPredicateBucket GetRelationInfoCustomerType()
+		public virtual IRelationPredicateBucket GetRelationInfoCustomers()
 		{
 			IRelationPredicateBucket bucket = new RelationPredicateBucket();
-			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(CustomerTypeFields.Id, null, ComparisonOperator.Equal, this.CustomerTypeId));
+			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(CustomerFields.CustomerTypeId, null, ComparisonOperator.Equal, this.Id));
 			return bucket;
 		}
 		
@@ -282,7 +265,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		/// <summary>Creates a new instance of the factory related to this entity</summary>
 		protected override IEntityFactory2 CreateEntityFactory()
 		{
-			return EntityFactoryCache2.GetEntityFactory(typeof(CustomerEntityFactory));
+			return EntityFactoryCache2.GetEntityFactory(typeof(CustomerTypeEntityFactory));
 		}
 
 		/// <summary>Adds the member collections to the collections queue (base first)</summary>
@@ -290,6 +273,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override void AddToMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue) 
 		{
 			base.AddToMemberEntityCollectionsQueue(collectionsQueue);
+			collectionsQueue.Enqueue(this._customers);
 		}
 		
 		/// <summary>Gets the member collections queue from the queue (base first)</summary>
@@ -297,6 +281,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override void GetFromMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue)
 		{
 			base.GetFromMemberEntityCollectionsQueue(collectionsQueue);
+			this._customers = (EntityCollection<CustomerEntity>) collectionsQueue.Dequeue();
 
 		}
 		
@@ -305,6 +290,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override bool HasPopulatedMemberEntityCollections()
 		{
 			bool toReturn = false;
+			toReturn |=(this._customers != null);
 			return toReturn ? true : base.HasPopulatedMemberEntityCollections();
 		}
 		
@@ -314,6 +300,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override void CreateMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue, Queue<bool> requiredQueue) 
 		{
 			base.CreateMemberEntityCollectionsQueue(collectionsQueue, requiredQueue);
+			collectionsQueue.Enqueue(requiredQueue.Dequeue() ? new EntityCollection<CustomerEntity>(EntityFactoryCache2.GetEntityFactory(typeof(CustomerEntityFactory))) : null);
 		}
 
 		/// <summary>Gets all related data objects, stored by name. The name is the field name mapped onto the relation for that particular data element.</summary>
@@ -321,7 +308,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		protected override Dictionary<string, object> GetRelatedData()
 		{
 			Dictionary<string, object> toReturn = new Dictionary<string, object>();
-			toReturn.Add("CustomerType", _customerType);
+			toReturn.Add("Customers", _customers);
 			return toReturn;
 		}
 
@@ -332,6 +319,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 			
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			OnInitClassMembersComplete();
 		}
 
@@ -346,43 +334,12 @@ namespace BlazorTests.Server.Entities.EntityClasses
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("Id", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Name", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("FirstName", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("CustomerTypeId", fieldHashtable);
+			_fieldsCustomProperties.Add("Text", fieldHashtable);
 		}
 		#endregion
 
-		/// <summary> Removes the sync logic for member _customerType</summary>
-		/// <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
-		/// <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
-		private void DesetupSyncCustomerType(bool signalRelatedEntity, bool resetFKFields)
-		{
-			DesetupSync(signalRelatedEntity, resetFKFields, ref _customerType, new PropertyChangedEventHandler(OnCustomerTypePropertyChanged), "CustomerType", "Customers", BlazorTests.Server.Entities.RelationClasses.StaticCustomerRelations.CustomerTypeEntityUsingCustomerTypeIdStatic, true, new int[] { (int)CustomerFieldIndex.CustomerTypeId });
-		}
-
-		/// <summary> setups the sync logic for member _customerType</summary>
-		/// <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
-		private void SetupSyncCustomerType(IEntityCore relatedEntity)
-		{
-			SetupSync(relatedEntity, ref _customerType, new PropertyChangedEventHandler( OnCustomerTypePropertyChanged ), "CustomerType", "Customers", BlazorTests.Server.Entities.RelationClasses.StaticCustomerRelations.CustomerTypeEntityUsingCustomerTypeIdStatic, true, new string[] {  }, new int[] { (int)CustomerFieldIndex.CustomerTypeId }); 
-		}
-		
-		/// <summary>Handles property change events of properties in a related entity.</summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnCustomerTypePropertyChanged( object sender, PropertyChangedEventArgs e )
-		{
-			switch( e.PropertyName )
-			{
-				default:
-					break;
-			}
-		}
-
 		/// <summary> Initializes the class with empty data, as if it is a new Entity.</summary>
-		/// <param name="validator">The validator object for this CustomerEntity</param>
+		/// <param name="validator">The validator object for this CustomerTypeEntity</param>
 		/// <param name="fields">Fields of this entity</param>
 		private void InitClassEmpty(IValidator validator, IEntityFields2 fields)
 		{
@@ -393,6 +350,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassEmpty
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 
 			OnInitialized();
 
@@ -400,9 +358,9 @@ namespace BlazorTests.Server.Entities.EntityClasses
 
 		#region Class Property Declarations
 		/// <summary> The relations object holding all relations of this entity with other entity classes.</summary>
-		public  static CustomerRelations Relations
+		public  static CustomerTypeRelations Relations
 		{
-			get	{ return new CustomerRelations(); }
+			get	{ return new CustomerTypeRelations(); }
 		}
 		
 		/// <summary> The custom properties for this entity type.</summary>
@@ -412,11 +370,11 @@ namespace BlazorTests.Server.Entities.EntityClasses
 			get { return _customProperties;}
 		}
 
-		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'CustomerType' for this entity.</summary>
+		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'Customer' for this entity.</summary>
 		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
-		public static IPrefetchPathElement2 PrefetchPathCustomerType
+		public static IPrefetchPathElement2 PrefetchPathCustomers
 		{
-			get	{ return new PrefetchPathElement2(new EntityCollection(EntityFactoryCache2.GetEntityFactory(typeof(CustomerTypeEntityFactory))),	(IEntityRelation)GetRelationsForField("CustomerType")[0], (int)BlazorTests.Server.Entities.EntityType.CustomerEntity, (int)BlazorTests.Server.Entities.EntityType.CustomerTypeEntity, 0, null, null, null, null, "CustomerType", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne); }
+			get	{ return new PrefetchPathElement2( new EntityCollection<CustomerEntity>(EntityFactoryCache2.GetEntityFactory(typeof(CustomerEntityFactory))), (IEntityRelation)GetRelationsForField("Customers")[0], (int)BlazorTests.Server.Entities.EntityType.CustomerTypeEntity, (int)BlazorTests.Server.Entities.EntityType.CustomerEntity, 0, null, null, null, null, "Customers", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany);	}
 		}
 
 
@@ -443,62 +401,31 @@ namespace BlazorTests.Server.Entities.EntityClasses
 			get { return FieldsCustomProperties;}
 		}
 
-		/// <summary> The Id property of the Entity Customer<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "Customer"."Id"<br/>
+		/// <summary> The Id property of the Entity CustomerType<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "CustomerType"."Id"<br/>
 		/// Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, true, false</remarks>
 		public virtual System.Int32 Id
 		{
-			get { return (System.Int32)GetValue((int)CustomerFieldIndex.Id, true); }
-			set	{ SetValue((int)CustomerFieldIndex.Id, value); }
+			get { return (System.Int32)GetValue((int)CustomerTypeFieldIndex.Id, true); }
+			set	{ SetValue((int)CustomerTypeFieldIndex.Id, value); }
 		}
 
-		/// <summary> The Name property of the Entity Customer<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "Customer"."Name"<br/>
+		/// <summary> The Text property of the Entity CustomerType<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "CustomerType"."Text"<br/>
 		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 255<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		public virtual System.String Name
+		public virtual System.String Text
 		{
-			get { return (System.String)GetValue((int)CustomerFieldIndex.Name, true); }
-			set	{ SetValue((int)CustomerFieldIndex.Name, value); }
+			get { return (System.String)GetValue((int)CustomerTypeFieldIndex.Text, true); }
+			set	{ SetValue((int)CustomerTypeFieldIndex.Text, value); }
 		}
 
-		/// <summary> The FirstName property of the Entity Customer<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "Customer"."FirstName"<br/>
-		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 255<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		public virtual System.String FirstName
+		/// <summary> Gets the EntityCollection with the related entities of type 'CustomerEntity' which are related to this entity via a relation of type '1:n'. If the EntityCollection hasn't been fetched yet, the collection returned will be empty.<br/><br/></summary>
+		[TypeContainedAttribute(typeof(CustomerEntity))]
+		public virtual EntityCollection<CustomerEntity> Customers
 		{
-			get { return (System.String)GetValue((int)CustomerFieldIndex.FirstName, true); }
-			set	{ SetValue((int)CustomerFieldIndex.FirstName, value); }
-		}
-
-		/// <summary> The CustomerTypeId property of the Entity Customer<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "Customer"."CustomerTypeId"<br/>
-		/// Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		public virtual System.Int32 CustomerTypeId
-		{
-			get { return (System.Int32)GetValue((int)CustomerFieldIndex.CustomerTypeId, true); }
-			set	{ SetValue((int)CustomerFieldIndex.CustomerTypeId, value); }
-		}
-
-		/// <summary> Gets / sets related entity of type 'CustomerTypeEntity' which has to be set using a fetch action earlier. If no related entity is set for this property, null is returned..<br/><br/></summary>
-		[Browsable(false)]
-		public virtual CustomerTypeEntity CustomerType
-		{
-			get	{ return _customerType; }
-			set
-			{
-				if(this.IsDeserializing)
-				{
-					SetupSyncCustomerType(value);
-				}
-				else
-				{
-					SetSingleRelatedEntityNavigator(value, "Customers", "CustomerType", _customerType, true); 
-				}
-			}
+			get { return GetOrCreateEntityCollection<CustomerEntity, CustomerEntityFactory>("CustomerType", true, false, ref _customers);	}
 		}
 	
 		/// <summary> Gets the type of the hierarchy this entity is in. </summary>
@@ -517,7 +444,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		[Browsable(false), XmlIgnore]
 		protected override int LLBLGenProEntityTypeValue 
 		{ 
-			get { return (int)BlazorTests.Server.Entities.EntityType.CustomerEntity; }
+			get { return (int)BlazorTests.Server.Entities.EntityType.CustomerTypeEntity; }
 		}
 
 		#endregion
@@ -527,6 +454,7 @@ namespace BlazorTests.Server.Entities.EntityClasses
 		
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
+		
 		#endregion
 
 		#region Included code
