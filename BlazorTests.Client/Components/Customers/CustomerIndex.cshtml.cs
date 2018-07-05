@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
 using BlazorTests.Client.Services;
 using BlazorTests.Client.Shared;
-using BlazorTests.Client.Controls;
+using BlazorTests.Client.Controls.SelectList;
 
 namespace BlazorTests.Client
 {

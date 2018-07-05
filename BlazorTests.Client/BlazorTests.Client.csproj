@@ -22,10 +22,10 @@
     <Content Update="Components\Administration\CustomerTypes\CustomerTypeIndex.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Components\EditComponentWrapper.cshtml">
+    <Content Update="Controls\Wrappers\EditComponentWrapper.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Components\ComponentWrapper.cshtml">
+    <Content Update="Controls\Wrappers\ComponentWrapper.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>
