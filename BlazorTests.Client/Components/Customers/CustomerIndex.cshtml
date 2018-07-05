@@ -1,56 +1,47 @@
 ﻿@using BlazorTests.Shared
-@layout MainLayout
 @page "/"
 @page "/Customer"
 @inherits CustomerIndexComponent
 
+<ComponentWrapper Title="@Title">
 
-<div class="card">
-    <div class="card-header">
-        <h1>@Title</h1>
-    </div>
-    <div class="card-body">
-        @if (@Customers == null)
-        {
-            <p><em>Chargement en cours ...</em></p>
-        }
-        else
-        {
-            @*<div class="card">
-                <div class="car-body">*@
-                    <div class="row">
-                        <label class="control-label col-md-1 font-weight-bold">Type</label>
-                        <div class="col-md-2">
-                            <select class="form-control" value="@CustomerTypeId" onchange="@((e) => OnCustomerTypeChanged(e))">
-                                @foreach (var customerType in CustomerTypes)
-                                {
-                                    <option value="@customerType.Id">@customerType.Text</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                @*</div>
-            </div>*@
-            
-            <div class="form-group mt-3">
-                <button class="btn btn-light float-left" onclick="@(() => AddCustomer())">
-                    <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
-                </button>
-            </div>
-            
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Type</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var customer in Customers)
+    @if (@Customers == null)
+    {
+        <p><em>Chargement en cours ...</em></p>
+    }
+    else
+    {
+        <div class="row">
+            <label class="control-label col-md-1 font-weight-bold">Type</label>
+            <div class="col-md-2">
+                <select class="form-control" value="@CustomerTypeId" onchange="@((e) => OnCustomerTypeChanged(e))">
+                    @foreach (var customerType in CustomerTypes)
                     {
+                        <option value="@customerType.Id">@customerType.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <button class="btn btn-light float-left" onclick="@(() => AddCustomer())">
+                <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
+            </button>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Customers)
+                {
                     <tr>
                         <td class="autoSizeToContent">@customer.Id</td>
                         <td>@customer.Name</td>
@@ -65,10 +56,10 @@
                             </button>
                         </td>
                     </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </div>
-</div>
+                }
+            </tbody>
+        </table>
+    }
+
+</ComponentWrapper>
 
