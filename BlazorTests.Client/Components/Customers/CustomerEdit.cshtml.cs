@@ -12,6 +12,9 @@ namespace BlazorTests.Client
         #region Services
 
         [Inject]
+        protected AdministrationService AdministrationService { get; set; }
+
+        [Inject]
         protected CustomerService CustomerService { get; set; }
 
         #endregion
@@ -29,7 +32,7 @@ namespace BlazorTests.Client
 
         protected override async Task OnParametersSetAsync()
         {
-            this.CustomerTypes = await CustomerService.GetCustomerTypes();
+            this.CustomerTypes = await AdministrationService.GetCustomerTypes();
 
             if (IsNew())
             {
@@ -67,24 +70,16 @@ namespace BlazorTests.Client
             customer.CustomerTypeId = this.CustomerTypeId;
 
             await CustomerService.SaveCustomer(customer);
-            UriHelper.NavigateTo("/customer");
+            UriHelper.NavigateTo("/Customer");
         }
 
         protected override void Close()
         {
-            UriHelper.NavigateTo("/customer");
+            UriHelper.NavigateTo("/Customer");
         }
 
         #endregion
     }
-
-    //private void LogCustomerTypes()
-    //{
-    //    foreach (var customerType in this.CustomerTypes)
-    //    {
-    //        System.Console.WriteLine($"Id={customerType.Id}, Text={customerType.Text}");
-    //    }
-    //}
 }
 
 

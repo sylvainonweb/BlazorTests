@@ -1,0 +1,53 @@
+﻿@using BlazorTests.Shared
+@layout MainLayout
+@page "/Administration/CustomerType"
+@inherits CustomerTypeIndexComponent
+
+
+<div class="card">
+    <div class="card-header">
+        <h1>@Title</h1>
+    </div>
+    <div class="card-body">
+        @if (@CustomerTypes == null)
+        {
+            <p><em>Chargement en cours ...</em></p>
+        }
+        else
+        {
+            <div class="form-group mt-3">
+                <button class="btn btn-light float-left" onclick="@(() => AddCustomerType())">
+                    <span class="oi oi-plus" style="color:green" aria-hidden="true"></span> Ajouter
+                </button>
+            </div>
+            
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Libellé</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customerType in CustomerTypes)
+                    {
+                    <tr>
+                        <td class="autoSizeToContent">@customerType.Id</td>
+                        <td>@customerType.Text</td>
+                        <td class="autoSizeToContent">
+                            <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomerType(customerType.Id))">
+                                <span class="oi oi-pencil" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-outline-danger btn-xs gridColumnButton" onclick="@(() => DeleteCustomerType(customerType.Id))">
+                                <span class="oi oi-trash" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+

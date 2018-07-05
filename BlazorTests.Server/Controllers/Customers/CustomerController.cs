@@ -78,10 +78,5 @@ namespace BlazorTests.Server.Controllers
 
             Repository.Save(customerEntity);
         }
-    }
-
-    public class ControllerEx : Controller
-    {
-        public IRepository Repository {get; set;}
-    }
+    }   
 }

@@ -1,20 +1,20 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
 using Microsoft.AspNetCore.Blazor.Components;
-using System.Net.Http;
-using Microsoft.AspNetCore.Blazor.Services;
 using BlazorTests.Client.Services;
 using BlazorTests.Client.Shared;
+using BlazorTests.Client.Controls;
 
 namespace BlazorTests.Client
 {
     public class CustomerIndexComponent : ComponentBase
     {
         #region Services
+
+        [Inject]
+        protected AdministrationService AdministrationService { get; set; }
 
         [Inject]
         protected CustomerService CustomerService { get; set; }
@@ -24,7 +24,7 @@ namespace BlazorTests.Client
         #region Propriétés bindées
 
         protected IList<Customer> Customers { get; set; } = new List<Customer>();
-        protected IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
+        protected IList<SelectListItem> CustomerTypes { get; set; } = new List<SelectListItem>();
         protected int CustomerTypeId { get; set; }
 
         #endregion
@@ -34,13 +34,12 @@ namespace BlazorTests.Client
         protected override async Task OnInitAsync()
         {
             this.Title = "Clients";
-            this.CustomerTypes = await CustomerService.GetCustomerTypes();
+            this.CustomerTypes = SelectListItems.Convert(await AdministrationService.GetCustomerTypes(), (src, dest) =>
+            {
+                dest.Id = src.Id;
+                dest.Text = src.Text;
+            });
             await LoadCustomers();
-        }
-
-        protected async Task LoadCustomers()
-        {
-            this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
         }
 
         #endregion
@@ -49,12 +48,12 @@ namespace BlazorTests.Client
 
         protected void AddCustomer()
         {
-            UriHelper.NavigateTo($"/customer/edit");
+            UriHelper.NavigateTo($"/Customer/Edit");
         }
 
         protected void EditCustomer(int id)
         {
-            UriHelper.NavigateTo($"/customer/edit/{id}");
+            UriHelper.NavigateTo($"/Customer/Edit/{id}");
         }
 
         protected async Task DeleteCustomer(int customerId)
@@ -63,8 +62,27 @@ namespace BlazorTests.Client
             {
                 await CustomerService.DeleteCustomer(customerId);
                 MessageBox.ShowAlert("Suppression effectuée");
-                this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
+
+                LoadCustomers();
             }
+        }
+
+        protected async Task LoadCustomers()
+        {
+            this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
+            StateHasChanged();
+        }
+
+        #endregion
+
+        #region Evénements
+
+        protected void OnCustomerTypeChanged(UIChangeEventArgs e)
+        {
+            System.Console.WriteLine($"e.Value = {e.Value.ToString()}");
+            CustomerTypeId = int.Parse(e.Value.ToString());
+
+            LoadCustomers();
         }
 
         #endregion

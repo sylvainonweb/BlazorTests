@@ -19,9 +19,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTests.Common.Data", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{175D9BEE-1DD1-40C4-90CA-82C28E859114}"
 	ProjectSection(SolutionItems) = preProject
-		BlazorTests.Server.Entities.llblgenproj = BlazorTests.Server.Entities.llblgenproj
-		InitDatabase.sql = InitDatabase.sql
 		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{D97D7B43-7CC9-40C7-9BBC-171A33932766}"
+	ProjectSection(SolutionItems) = preProject
+		BlazorTests.Server.Entities.llblgenproj = BlazorTests.Server.Entities.llblgenproj
+		Scripts\Database - Create.sql = Scripts\Database - Create.sql
+		Scripts\Database - Define users.sql = Scripts\Database - Define users.sql
 	EndProjectSection
 EndProject
 Global
@@ -61,6 +66,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D97D7B43-7CC9-40C7-9BBC-171A33932766} = {175D9BEE-1DD1-40C4-90CA-82C28E859114}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD89C56F-BDAC-46D2-9534-84890CCD243B}

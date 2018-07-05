@@ -14,6 +14,7 @@ namespace BlazorTests.Client
             var serviceProvider = new BrowserServiceProvider(services =>
             {
                 services.AddSingleton<CustomerService, CustomerService>();
+                services.AddSingleton<AdministrationService, AdministrationService>();
             });
 
             new BrowserRenderer(serviceProvider).AddComponent<App>("app");

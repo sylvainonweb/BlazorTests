@@ -15,4 +15,13 @@
     <ProjectReference Include="..\BlazorTests.Shared\BlazorTests.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Administration\CustomerTypes\CustomerTypeEdit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Components\Administration\CustomerTypes\CustomerTypeIndex.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -19,12 +19,14 @@ namespace BlazorTests.Client.Services
 
         public Task<IList<Customer>> GetCustomers(int? customerTypeId)
         {
-            return HttpClient.GetJsonAsync<IList<Customer>>($"api/Customer/{customerTypeId}");
-        }
-
-        public Task<IList<CustomerType>> GetCustomerTypes()
-        {
-            return HttpClient.GetJsonAsync<IList<CustomerType>>("api/Administration/CustomerType");
+            if (customerTypeId.HasValue)
+            {
+                return HttpClient.GetJsonAsync<IList<Customer>>($"api/Customer?customerTypeId={GetIntAsString(customerTypeId)}");
+            }
+            else
+            {
+                return HttpClient.GetJsonAsync<IList<Customer>>($"api/Customer");
+            }            
         }
 
         public Task<Customer> GetCustomer(int customerId)
@@ -41,10 +43,5 @@ namespace BlazorTests.Client.Services
         {
             return HttpClient.PostJsonAsync("api/Customer/Save", customer);
         }
-    }
-
-    public abstract class ServiceBase
-    {
-        protected HttpClient HttpClient { get; set; }
     }
 }
