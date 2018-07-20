@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Blazor.Browser.Interop;
 
-namespace BlazorTests.Client.Shared
+namespace BlazorTests.Client.Controls
 {
     public class MessageBox
     {

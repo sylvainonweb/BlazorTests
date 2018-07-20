@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
 
-namespace BlazorTests.Client.Controls.Wrappers
+namespace BlazorTests.Client.Controls
 {
     public class EditComponentWrapperComponent : BlazorComponent
     {

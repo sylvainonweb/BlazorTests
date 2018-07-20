@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BlazorTests.Client.Controls.SelectList
+namespace BlazorTests.Client.Controls
 {
     public class SelectListItem<T>
     {
