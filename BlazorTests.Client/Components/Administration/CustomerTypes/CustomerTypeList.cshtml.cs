@@ -7,7 +7,7 @@ using BlazorTests.Client.Controls;
 
 namespace BlazorTests.Client
 {
-    public class CustomerTypeIndexComponent : ComponentBase
+    public class CustomerTypeListComponent : ComponentBase
     {
         #region Services
 

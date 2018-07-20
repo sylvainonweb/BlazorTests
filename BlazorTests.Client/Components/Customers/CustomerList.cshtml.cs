@@ -8,7 +8,7 @@ using BlazorTests.Client.Controls;
 
 namespace BlazorTests.Client
 {
-    public class CustomerIndexComponent : ComponentBase
+    public class CustomerListComponent : ComponentBase
     {
         #region Services
 
