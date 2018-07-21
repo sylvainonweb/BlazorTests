@@ -15,18 +15,18 @@ namespace BlazorTests.Client.Controls
         protected string Title { get; set; }
 
         [Parameter]
-        private Action SaveAction { get; set; }
+        private Action CheckAndSaveAction { get; set; }
 
         [Parameter]
         private Action CloseAction { get; set; }
 
         #endregion
 
-        #region  Sauvegarde / Femreture
+        #region  Sauvegarde / Fermeture
 
-        protected void Save()
+        protected void CheckAndSave()
         {
-            SaveAction.Invoke();
+            CheckAndSaveAction.Invoke();
         }
 
         protected void Close()

@@ -22,10 +22,16 @@ namespace BlazorTests.Client
 
         #region Propriétés bindées
 
-        protected string Name { get; set; }
-        protected string FirstName { get; set; }
-        protected int CustomerTypeId { get; set; }
-        protected IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
+        [RequiredEx("Nom")]
+        public string Name { get; set; }
+
+        [RequiredEx("Prénom")]
+        public string FirstName { get; set; }
+
+        [RequiredEx("Type")]
+        public int CustomerTypeId { get; set; }
+
+        public IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
 
         #endregion
 

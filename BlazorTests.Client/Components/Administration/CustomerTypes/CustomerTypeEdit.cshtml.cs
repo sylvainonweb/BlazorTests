@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BlazorTests.Client.Controls;
 using BlazorTests.Client.Services;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
@@ -18,7 +19,8 @@ namespace BlazorTests.Client
 
         #region Propriétés bindées
 
-        protected string Text { get; set; }
+        [RequiredEx("Libellé")]
+        public string Text { get; set; }
 
         #endregion
 
@@ -45,6 +47,12 @@ namespace BlazorTests.Client
 
         protected override async Task Save()
         {
+            IList<string> errors = CheckRequiredFields();
+            if (errors.Count > 0)
+            {
+                MessageBox.ShowAlert(errors[0]);
+            }
+
             CustomerType customerType = null;
             if (IsNew())
             {

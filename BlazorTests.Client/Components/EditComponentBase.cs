@@ -1,5 +1,12 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
+using BlazorTests.Client.Controls;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
 using Microsoft.AspNetCore.Blazor.Layouts;
@@ -12,7 +19,7 @@ namespace BlazorTests.Client
         [Parameter]
         private string IdAsString { get; set; }
 
-        public int? Id
+        protected int? Id
         {
             get
             {
@@ -35,7 +42,100 @@ namespace BlazorTests.Client
             return false;
         }
 
+        protected async Task CheckAndSave()
+        {
+            IList<string> errors = CheckRequiredFields();
+            if (errors.Count > 0)
+            {
+                MessageBox.ShowAlert(string.Join("\r\n", errors));
+            }
+            else
+            {
+                await Save();
+            }
+
+            return;
+        }
+
         protected abstract Task Save();
         protected abstract void Close();
+
+        #region Vérification des champs obligatoires
+
+        protected IList<string> CheckRequiredFields()
+        {
+            IList<string> errors = new List<string>();
+
+            PropertyInfo[] infos = this.GetType().GetProperties();
+            if (infos != null)
+            {
+                foreach (var info in infos)
+                {
+                    var requiredAttribute = info.GetCustomAttribute(typeof(RequiredExAttribute), true) as RequiredExAttribute;
+                    if (requiredAttribute != null)
+                    {
+                        object o = info.GetValue(this);
+                        if (CheckRequiredField(o) == false)
+                        {
+                            errors.Add($"Le champ {requiredAttribute.Label} est obligatoire");
+                        }
+                    }
+                }
+            }
+
+            return errors;
+        }
+
+        private bool CheckRequiredField(object value)
+        {
+            if (value == null)
+            {
+                return false;
+            }
+            else
+            {
+                // Dans le cas d'une chaîne, on vérifie aussi qu'elle n'est pas vide
+                if (value is string && string.IsNullOrWhiteSpace((string)value))
+                {
+                    return false;
+                }
+
+                // Dans le cas d'une liste, on vérifie aussi qu'elle contient un élément
+                if (value is IList && ((IList)value).Count == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        protected IList<string> GetPropertyInfos()
+        {
+            IList<string> propertyNames = new List<string>();
+
+            PropertyInfo[] infos = this.GetType().GetProperties(BindingFlags.Instance);
+            if (infos != null)
+            {
+                foreach (PropertyInfo info in infos)
+                {
+                    propertyNames.Add(info.Name);
+                }
+            }
+
+            return propertyNames;
+        }
+
+        #endregion
+    }
+
+    public class RequiredExAttribute : Attribute
+    {
+        public string Label { get; set; }
+
+        public RequiredExAttribute(string label)
+        {
+            this.Label = label;
+        }
     }
 }

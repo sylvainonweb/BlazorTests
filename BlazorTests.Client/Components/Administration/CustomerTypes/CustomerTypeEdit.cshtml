@@ -4,7 +4,7 @@
 @inherits CustomerTypeEditComponent
 
 
-<EditComponentWrapper Title="@Title" SaveAction="@(() => Save())" CloseAction="@(() => Close())">
+<EditComponentWrapper Title="@Title" CheckAndSaveAction="@(() => CheckAndSave())" CloseAction="@(() => Close())">
 
     <div class="form-group ">
         <label class="control-label col-md-2">Libellé</label>

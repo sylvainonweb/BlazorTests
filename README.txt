@@ -20,7 +20,7 @@
 	* Export PDF, Excel, ...
 * Ecran de type Saisie
 	* Validation des champs obligatoires
-		* Pas encore implémenté dans Blazor
+		* Pas encore implémenté dans Blazor => j'ai fair quelque chose (pour les chaines en tout cas car pour le reste, les nullables ne sont pas encore gérés)
 * Création de contrôles personnalisés
 	* ComboBox
 		* Utiliser SelectListItem afin de ne pas avoir à ajouter une ligne vide
