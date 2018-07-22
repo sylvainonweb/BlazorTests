@@ -23,7 +23,6 @@
         <label class="control-label col-md-2">Type</label>
         <div class="col-md-5">
             <select class="form-control" bind="@CustomerTypeId">
-                <option value=""></option>
                 @foreach (var customerType in CustomerTypes)
                 {
                     <option value="@customerType.Id">@customerType.Text</option>

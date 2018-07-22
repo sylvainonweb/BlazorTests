@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BlazorTests.Client.Controls;
 using BlazorTests.Client.Services;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
@@ -31,7 +32,7 @@ namespace BlazorTests.Client
         [RequiredEx("Type")]
         public int CustomerTypeId { get; set; }
 
-        public IList<CustomerType> CustomerTypes { get; set; } = new List<CustomerType>();
+        protected IList<SelectListItem> CustomerTypes { get; set; } = new List<SelectListItem>();
 
         #endregion
 
@@ -39,7 +40,12 @@ namespace BlazorTests.Client
 
         protected override async Task OnParametersSetAsync()
         {
-            this.CustomerTypes = await AdministrationService.GetCustomerTypes();
+            this.CustomerTypes = SelectListItems.Convert(await AdministrationService.GetCustomerTypes(), (src, dest) =>
+            {
+                dest.Id = src.Id;
+                dest.Text = src.Text;
+            });
+
 
             if (IsNew())
             {

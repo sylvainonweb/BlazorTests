@@ -24,11 +24,12 @@
 * Création de contrôles personnalisés
 	* ComboBox
 		* Utiliser SelectListItem afin de ne pas avoir à ajouter une ligne vide
-		* bind et onchange ne peuvent pas être utilisés simultanément
+		* bind et onchange ne peuvent pas être utilisés simultanément => si on change, alors value
 * Utilisation d'un layout (titre, boutons Sauvegarder/Fermer si Edit)
 	* Placer Save et Close dans EditLayout. Comment appeler les fonctions Save et Close de EditComponentBase ?
 	* Placer le titre dans ViewLayout. A ce jour, Steve Sanderson préconise de créer un wrapper de type composant (et pas un layout) contenant
 	  la propriété Title et dans chaque composant, ajouter le code <ViewLayout Title=@Title> ... </ViewLayout>
+* Utilisation de transition entre les pages
 * Gestion des nullables
 	* Pas encore implémenté dans Blazor
 
