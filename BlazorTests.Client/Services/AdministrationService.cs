@@ -1,6 +1,5 @@
 ﻿using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
 using Microsoft.AspNetCore.Blazor.Components;
 using System;
 using System.Collections.Generic;
