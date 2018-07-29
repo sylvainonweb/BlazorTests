@@ -22,7 +22,7 @@ namespace BlazorTests.Client.Controls
 
         #endregion
 
-        #region  Sauvegarde / Femreture
+        #region  Sauvegarde / Fermeture
 
         protected void Save()
         {

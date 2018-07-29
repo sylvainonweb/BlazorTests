@@ -57,13 +57,9 @@ namespace BlazorTests.Client
 
         protected async Task DeleteCustomer(int customerId)
         {
-            if (await MessageBox.ShowDeletionConfirmation())
-            {
-                await CustomerService.DeleteCustomer(customerId);
-                await MessageBox.ShowAlert("Suppression effectuée");
-
-                await LoadCustomers();
-            }
+            await CustomerService.DeleteCustomer(customerId);
+            await MessageBox.ShowAlert("Suppression effectuée");
+            await LoadCustomers();
         }
 
         protected async Task LoadCustomers()

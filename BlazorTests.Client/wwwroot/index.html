@@ -16,9 +16,6 @@
     <script src="_framework/blazor.webassembly.js"></script>
 
     <script>
-        Blazor.registerFunction("showDeletionConfirmation", () => {
-            return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');
-        });
         Blazor.registerFunction('showAlert', (message) => {
             return alert(message);
         });
