@@ -7,9 +7,11 @@ namespace BlazorTests.Client.Controls
 {
     public class MessageBox
     {
-        public static Task<bool> ShowAlert(string message)
+        public static Task<string> ShowAlert(string message)
         {
-            return JSRuntime.Current.InvokeAsync<bool>("exampleJsFunctions.showAlert", message);
+            return JSRuntime.Current.InvokeAsync<string>(
+                "JavascriptFunctions.showAlert",
+                message);
         }
     }
 }
