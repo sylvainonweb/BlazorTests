@@ -11,18 +11,16 @@
     }
     else
     {
-        <div class="form-group mt-3">
-            <button class="btn btn-light float-left" onclick="@(() => AddCustomerType())">
-                <span class="oi oi-plus" style="color:green" aria-hidden="true"></span>
-            </button>
-        </div>
-
-        <table class="table table-bordered table-striped table-hover">
+        <table class="table table-sm table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Libellé</th>
-                    <th>Actions</th>
+                    <th>
+                        <button class="btn btn-outline-light btn-xs gridColumnButton" onclick="@(() => AddCustomerType())">
+                            <span class="oi oi-plus" aria-hidden="true"></span>
+                        </button>
+                    </th>
                 </tr>
             </thead>
             <tbody>

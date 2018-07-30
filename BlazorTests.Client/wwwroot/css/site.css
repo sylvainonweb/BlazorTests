@@ -2,7 +2,7 @@
 
 html, body {
 	font-family: 'Open sans', Georgia, Arial;
-	/*background-color: #EEEEEE;*/
+	background-color: white;
 }
 
 app {
@@ -22,8 +22,8 @@ app {
 }
 
     .main .top-row {
-        background-color: #e6e6e6;
-        border-bottom: 1px solid #d6d5d5;
+        background-color: rgba(81,91,116,1);
+        color: white;
     }
 
 /* ===========================================================================
@@ -32,16 +32,17 @@ app {
 
    ===========================================================================*/
 .sidebar {
-	background-color: #494746;
+    background-color: rgba(81,91,116,1);
 }
 
-	.sidebar .top-row {
-		background-color: rgba(0,0,0,0.4);
-	}
+    .sidebar .top-row {
+        background-color: rgba(81,91,116,1);
+    }
 
-	.sidebar .navbar-brand {
-		font-size: 1.1rem;
-	}
+    .sidebar .navbar-brand {
+        font-size: 1.2rem;
+        color: rgba(255,255,255,255);
+    }
 
 	.sidebar .oi {
 		width: 2rem;
@@ -64,7 +65,7 @@ app {
 	}
 
 	.nav-item a {
-		color: #d7d7d7;
+		color: white;
 		border-radius: 4px;
 		height: 3rem;
 		display: flex;
@@ -147,20 +148,17 @@ app {
 	border-collapse: separate;
 	border-spacing: 0 15px;
 }*/
-
 /*tbody tr {
 	border: solid thin;
 	background-color: white;
 	box-shadow: 1px 1px 1px #DBDBDB;
 }*/
-
 /* Arrondi des 1ers td */
 /*thead tr th:first-child,
 tbody tr td:first-child {
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
 }*/
-
 /* Arrondi des 1ers td */
 /*thead tr th:last-child,
 tbody tr td:last-child {
@@ -170,8 +168,20 @@ tbody tr td:last-child {
 
 /* Permet à une colonne de se redimensionner en fonction de son contenu */
 td.autoSizeToContent {
-	width: 1px;
-	white-space: nowrap;
+    width: 1px;
+    white-space: nowrap;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    background-color: rgba(81,91,116,1²);
+}
+
+td {
+    text-align: center;
+    vertical-align: central;
 }
 
 
