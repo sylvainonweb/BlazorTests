@@ -16,9 +16,11 @@
     <script src="_framework/blazor.webassembly.js"></script>
 
     <script>
-        Blazor.registerFunction('showAlert', (message) => {
-            return alert(message);
-        });
+        window.exampleJsFunctions = {
+            showAlert: showAlert (message) {
+                return alert(message);
+            }
+        };
     </script>
 
 </body>

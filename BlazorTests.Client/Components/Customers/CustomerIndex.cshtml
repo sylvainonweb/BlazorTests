@@ -54,7 +54,7 @@
                             <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomer(customer.Id))">
                                 <span class="oi oi-pencil" aria-hidden="true"></span>
                             </button>
-                            <DeleteButton DeleteAction="@(async () => await DeleteCustomer(customer.Id))"></DeleteButton>
+                            <DeleteButton DeleteAction="@(() => DeleteCustomer(customer.Id))"></DeleteButton>
                         </td>
                     </tr>
                 }                

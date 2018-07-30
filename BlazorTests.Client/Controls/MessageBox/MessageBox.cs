@@ -9,7 +9,7 @@ namespace BlazorTests.Client.Controls
     {
         public static Task<bool> ShowAlert(string message)
         {
-            return JSRuntime.Current.InvokeAsync<bool>("showAlert", message);
+            return JSRuntime.Current.InvokeAsync<bool>("exampleJsFunctions.showAlert", message);
         }
     }
 }
