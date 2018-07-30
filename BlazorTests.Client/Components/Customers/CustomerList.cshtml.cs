@@ -57,13 +57,9 @@ namespace BlazorTests.Client
 
         protected async Task DeleteCustomer(int customerId)
         {
-            if (MessageBox.ShowDeletionConfirmation())
-            {
-                await CustomerService.DeleteCustomer(customerId);
-                MessageBox.ShowAlert("Suppression effectuée");
-
-                LoadCustomers();
-            }
+            await CustomerService.DeleteCustomer(customerId);
+            await MessageBox.ShowAlert("Suppression effectuée");
+            await LoadCustomers();
         }
 
         protected async Task LoadCustomers()
@@ -76,12 +72,12 @@ namespace BlazorTests.Client
 
         #region Evénements
 
-        protected void OnCustomerTypeChanged(UIChangeEventArgs e)
+        protected async void OnCustomerTypeChanged(UIChangeEventArgs e)
         {
             System.Console.WriteLine($"e.Value = {e.Value.ToString()}");
             CustomerTypeId = int.Parse(e.Value.ToString());
 
-            LoadCustomers();
+            await LoadCustomers();
         }
 
         #endregion

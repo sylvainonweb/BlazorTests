@@ -46,13 +46,10 @@ namespace BlazorTests.Client
 
         protected async Task DeleteCustomerType(int customerTypeId)
         {
-            if (MessageBox.ShowDeletionConfirmation())
-            {
-                await AdministrationService.DeleteCustomerType(customerTypeId);
-                MessageBox.ShowAlert("Suppression effectuée");
+            await AdministrationService.DeleteCustomerType(customerTypeId);
+            await MessageBox.ShowAlert("Suppression effectuée");
 
-                LoadCustomerTypes();
-            }
+            await LoadCustomerTypes();
         }
 
         protected async Task LoadCustomerTypes()

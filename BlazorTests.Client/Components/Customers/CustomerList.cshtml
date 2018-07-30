@@ -52,9 +52,7 @@
                             <button class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCustomer(customer.Id))">
                                 <span class="oi oi-pencil" aria-hidden="true"></span>
                             </button>
-                            <button class="btn btn-outline-danger btn-xs gridColumnButton" onclick="@(() => DeleteCustomer(customer.Id))">
-                                <span class="oi oi-trash" aria-hidden="true"></span>
-                            </button>
+                            <DeleteButton DeleteAction="@(() => DeleteCustomer(customer.Id))"></DeleteButton>
                         </td>
                     </tr>
                 }

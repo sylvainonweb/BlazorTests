@@ -1,17 +1,15 @@
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
+
+
+using Microsoft.JSInterop;
+using System.Threading.Tasks;
 
 namespace BlazorTests.Client.Controls
 {
     public class MessageBox
     {
-        public static bool ShowDeletionConfirmation()
+        public static Task<bool> ShowAlert(string message)
         {
-            return RegisteredFunction.Invoke<bool>("showDeletionConfirmation", string.Empty);
-        }
-
-        public static bool ShowAlert(string message)
-        {
-            return RegisteredFunction.Invoke<bool>("showAlert", message);
+            return JSRuntime.Current.InvokeAsync<bool>("exampleJsFunctions.showAlert", message);
         }
     }
 }

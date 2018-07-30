@@ -13,16 +13,14 @@
 <body>
     <app>Loading...</app>
 
-    <script type="blazor-boot">
-    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
 
     <script>
-        Blazor.registerFunction("showDeletionConfirmation", () => {
-            return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');
-        });
-        Blazor.registerFunction('showAlert', (message) => {
-            return alert(message);
-        });
+        window.exampleJsFunctions = {
+            showAlert: showAlert (message) {
+                return alert(message);
+            }
+        };
     </script>
 
 </body>
