@@ -184,6 +184,11 @@ td {
     vertical-align: middle;
 }
 
+/* Colorisation des lignes impairs des tables */
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: rgba(216,232,247,0.4);
+}
 
 /* ===========================================================================
 
