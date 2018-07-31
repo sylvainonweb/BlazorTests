@@ -1,5 +1,4 @@
 using System.Net.Http;
-using BlazorTests.Client.Shared;
 using BlazorTests.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
 using Microsoft.AspNetCore.Blazor.Layouts;

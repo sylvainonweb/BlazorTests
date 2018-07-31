@@ -32,7 +32,7 @@ app {
 
    ===========================================================================*/
 .sidebar {
-    background-color: rgba(81,91,116,1);
+    background: linear-gradient(135deg, #515B74 0%, #515B74 30%, #515B7D 85%, #515B7D 100%);
 }
 
     .sidebar .top-row {
@@ -176,7 +176,9 @@ th {
     text-align: center;
     vertical-align: middle;
     color: white;
-    background-color: rgba(81,91,116,0.7);
+    /*background: linear-gradient(135deg, #cb60b3 0%, #c146a1 30%, #a80077 85%, #db36a4 100%);*/
+    background-color: #cb60b3;
+    /*background-color: rgba(81,91,116,0.7);*/
 }
 
 td {
