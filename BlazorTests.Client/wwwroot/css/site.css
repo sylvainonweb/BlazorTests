@@ -181,7 +181,7 @@ th {
 
 td {
     text-align: center;
-    vertical-align: central;
+    vertical-align: middle;
 }
 
 
@@ -193,4 +193,5 @@ td {
 /* Bouton positionné dans une colonne d'une grille (on enlève la bordure) */
 .btn.gridColumnButton {
 	border: 0px solid transparent;
+    display:inline;
 }
