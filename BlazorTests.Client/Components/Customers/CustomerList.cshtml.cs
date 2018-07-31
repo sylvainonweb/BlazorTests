@@ -39,6 +39,8 @@ namespace BlazorTests.Client
                 dest.Text = src.Text;
             });
             await LoadCustomers();
+
+            await JavascriptFunctions.InitTable("customerTable");
         }
 
         #endregion
@@ -58,7 +60,7 @@ namespace BlazorTests.Client
         protected async Task DeleteCustomer(int customerId)
         {
             await CustomerService.DeleteCustomer(customerId);
-            await MessageBox.ShowAlert("Suppression effectuée");
+            await JavascriptFunctions.ShowAlert("Suppression effectuée");
             await LoadCustomers();
         }
 

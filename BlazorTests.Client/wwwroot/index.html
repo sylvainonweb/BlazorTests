@@ -7,7 +7,13 @@
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' />
+
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 
 </head>
 <body>
@@ -17,8 +23,12 @@
 
     <script>
         window.JavascriptFunctions = {
-            showAlert: function (message) {
-                return alert(message);
+            //showAlert: function (message) {
+            //    return alert(message);
+            //}
+
+            initTable: function (tableId) {
+                $('#' + tableId).DataTable();
             }
         };
     </script>

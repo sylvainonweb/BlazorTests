@@ -47,7 +47,7 @@ namespace BlazorTests.Client
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
             {
-                MessageBox.ShowAlert(string.Join("\r\n", errors));
+                JavascriptFunctions.ShowAlert(string.Join("\r\n", errors));
             }
             else
             {

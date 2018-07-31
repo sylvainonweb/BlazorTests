@@ -28,6 +28,8 @@ namespace BlazorTests.Client
         {
             this.Title = "Types de client";
             await LoadCustomerTypes();
+
+            await JavascriptFunctions.InitTable("customerTypeTable");
         }
         
         #endregion
@@ -47,7 +49,7 @@ namespace BlazorTests.Client
         protected async Task DeleteCustomerType(int customerTypeId)
         {
             await AdministrationService.DeleteCustomerType(customerTypeId);
-            await MessageBox.ShowAlert("Suppression effectuée");
+            await JavascriptFunctions.ShowAlert("Suppression effectuée");
 
             await LoadCustomerTypes();
         }
