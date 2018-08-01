@@ -225,3 +225,31 @@ div.dt-buttons {
 	border: 0px solid transparent;
     display:inline;
 }
+
+/* ===========================================================================
+
+   TRANSITIONS ENTRE LES PAGES (COMPOSANTS)
+
+   ===========================================================================*/
+.componentTransition {
+    -webkit-animation: fade 1.5s ease both;
+    animation: fade 1.5s ease both;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+} 
