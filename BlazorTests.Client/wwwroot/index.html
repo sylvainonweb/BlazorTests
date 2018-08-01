@@ -9,11 +9,29 @@
     <link href="css/site.css" rel="stylesheet" />
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' />
 
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- JQuery -->
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <link rel='stylesheet' type='text/css' href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <!-- JQuery Datatable -->
+    <script type='text/javascript' src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
+    <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' />
+
+    <!-- JQuery Datatable - Export -->
+    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js'></script>
+    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js'></script>
+    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js'></script>
+    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js'></script>
+
+    <!--<script ssrc="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
+    <!--<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/jquery-ui.min.css" />-->
+
+    <!-- JQuery tableExport -->
+    <!--<link rel='stylesheet' type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.min.css"/>-->
+
 
 </head>
 <body>
@@ -28,7 +46,30 @@
             //}
 
             initTable: function (tableId) {
-                $('#' + tableId).DataTable();
+                var table = $('#' + tableId).DataTable({
+                    pagingType: "simple",
+                    oLanguage: {
+                        sSearch: "",
+                        sInfo: "de _START_ à _END_ sur _TOTAL_",
+                        oPaginate: {
+                            sPrevious: "Préc.",
+                            sNext: "Suiv.",
+                        sLengthMenu: "_MENU_"
+                        }                        
+                    },
+                    dom: 'frtipB',
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: 'Excel',
+                            className: 'exportExcel',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'all'
+                                }
+                            }
+                        }]
+                });
             }
         };
     </script>
