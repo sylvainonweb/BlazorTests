@@ -196,23 +196,20 @@ td {
    JQUERY DATATABLES
 
    ===========================================================================*/
-/* Placement du bouton Rechercher à gauche */
+/* Placement du bouton Rechercher */
 .dataTables_filter {
     float: left !important;
 }
 
-/* Placement des boutons d'export à gauche */
+/* Placement des boutons d'export, de pagination, ... */
 div.dt-buttons {
     position: relative;
     float: left !important;
 }
-
-/* Placement des boutons d'export à gauche */
 .dataTables_info {
     position: relative;
     float: right !important;
 }
-
 .dataTables_paginate {
     position: relative;
     float: right !important;
