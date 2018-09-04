@@ -24,7 +24,7 @@ namespace BlazorTests.Client
 
         protected IList<Customer> Customers { get; set; } = new List<Customer>();
         protected IList<SelectListItem> CustomerTypes { get; set; } = new List<SelectListItem>();
-        protected int CustomerTypeId { get; set; }
+        // protected int CustomerTypeId { get; set; }
 
         #endregion
 
@@ -66,22 +66,23 @@ namespace BlazorTests.Client
 
         protected async Task LoadCustomers()
         {
-            this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
+            //this.Customers = await CustomerService.GetCustomers(GetNullableInt(this.CustomerTypeId));
+            this.Customers = await CustomerService.GetCustomers(null);
             StateHasChanged();
         }
 
         #endregion
 
-        #region Evénements
+        // #region Evénements
 
-        protected async void OnCustomerTypeChanged(UIChangeEventArgs e)
-        {
-            System.Console.WriteLine($"e.Value = {e.Value.ToString()}");
-            CustomerTypeId = int.Parse(e.Value.ToString());
+        // protected async void OnCustomerTypeChanged(UIChangeEventArgs e)
+        // {
+        //     System.Console.WriteLine($"e.Value = {e.Value.ToString()}");
+        //     CustomerTypeId = int.Parse(e.Value.ToString());
 
-            await LoadCustomers();
-        }
+        //     await LoadCustomers();
+        // }
 
-        #endregion
+        // #endregion
     }
 }

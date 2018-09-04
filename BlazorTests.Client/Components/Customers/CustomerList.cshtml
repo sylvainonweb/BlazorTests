@@ -12,33 +12,26 @@
     }
     else
     {
-        <div class="form-group">
-            <div class="row">
-                <label class="control-label col-md-1">Type</label>
-                <div class="col-md-2">
-                    <select class="form-control custom-select" value="@CustomerTypeId" onchange="@((e) => OnCustomerTypeChanged(e))">
-                        @foreach (var customerType in CustomerTypes)
-                        {
-                            <option value="@customerType.Id">@customerType.Text</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-
         <table id ="customerTable" class="table table-sm table-bordered table-striped table-hover">
-            <thead>
+            <thead>  
                 <tr>
-                    <th>ID</th>
-                    <th>NOM</th>
-                    <th>PRENOM</th>
-                    <th>TYPE</th>
+                    <th class="headerFilter"></th>
+                    <th class="headerFilter"></th>
+                    <th class="headerFilter"></th>
+                    <th class="headerFilter"></th>
+                    <th class="headerWithoutFilter"></th>
+                </tr>                                                           
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Type</th>
                     <th>
                         <button class="btn btn-outline-light btn-xs gridColumnButton" onclick="@(() => AddCustomer())">
                             <span class="oi oi-plus" aria-hidden="true"></span>
                         </button>
                     </th>
-                </tr>
+                </tr>                                            
             </thead>
             <tbody>
                 @foreach (var customer in Customers)
