@@ -47,7 +47,7 @@ namespace BlazorTests.Client
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
             {
-                JavascriptFunctions.ShowAlert(string.Join("\r\n", errors));
+                await JavascriptFunctions.ShowAlert(string.Join("\r\n", errors));
             }
             else
             {
@@ -60,7 +60,7 @@ namespace BlazorTests.Client
         protected abstract Task Save();
         protected abstract void Close();
 
-        #region Vérification des champs obligatoires
+        #region Vï¿½rification des champs obligatoires
 
         protected IList<string> CheckRequiredFields()
         {
@@ -94,13 +94,13 @@ namespace BlazorTests.Client
             }
             else
             {
-                // Dans le cas d'une chaîne, on vérifie aussi qu'elle n'est pas vide
+                // Dans le cas d'une chaï¿½ne, on vï¿½rifie aussi qu'elle n'est pas vide
                 if (value is string && string.IsNullOrWhiteSpace((string)value))
                 {
                     return false;
                 }
 
-                // Dans le cas d'une liste, on vérifie aussi qu'elle contient un élément
+                // Dans le cas d'une liste, on vï¿½rifie aussi qu'elle contient un ï¿½lï¿½ment
                 if (value is IList && ((IList)value).Count == 0)
                 {
                     return false;

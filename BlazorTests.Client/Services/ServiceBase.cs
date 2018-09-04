@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlazorTests.Client.Services
 {
-    public abstract class ServiceBase
+    public abstract class HttpServiceBase
     {
         protected HttpClient HttpClient { get; set; }
 

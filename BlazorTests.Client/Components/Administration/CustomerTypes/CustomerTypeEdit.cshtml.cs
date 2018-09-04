@@ -50,7 +50,7 @@ namespace BlazorTests.Client
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
             {
-                JavascriptFunctions.ShowAlert(errors[0]);
+                await JavascriptFunctions.ShowAlert(errors[0]);
             }
 
             CustomerType customerType = null;
