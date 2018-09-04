@@ -5,30 +5,34 @@
 
 <EditComponentWrapper Title="@Title" CheckAndSaveAction="@(() => CheckAndSave())" CloseAction="@(() => Close())">
 
-    <div class="form-group ">
-        <label class="control-label col-md-2">Nom</label>
-        <div class="col-md-5">
+
+    <div class="row form-group">
+        <label class="col-form-label col-md-1">Nom</label>
+        <div class="col-md-4">
             <input class="form-control" type="text" bind=@Name />
         </div>
     </div>
 
-    <div class="form-group ">
-        <label class="control-label col-md-2">Prénom</label>
-        <div class="col-md-5">
-            <input class="form-control" type="text" bind=@FirstName />
-        </div>
+	<div class="row form-group ">
+		<label class="col-form-label col-md-1">Prénom</label>
+		<div class="col-md-4">
+			<input class="form-control" type="text" bind=@FirstName />
+		</div>
     </div>
 
-    <div class="form-group ">
-        <label class="control-label col-md-2">Type</label>
-        <div class="col-md-5">
-            <select class="form-control" bind="@CustomerTypeId">
-                @foreach (var customerType in CustomerTypes)
-                {
-                    <option value="@customerType.Id">@customerType.Text</option>
-                }
-            </select>
-        </div>
-    </div>
+	<div class="row form-group ">
+		<label class="col-form-label col-md-1">Type</label>
+		<div class="col-md-4">
+			<select class="form-control custom-select" bind="@CustomerTypeId">
+				@foreach (var customerType in CustomerTypes)
+				{
+					<option value="@customerType.Id">@customerType.Text</option>
+				}
+			</select>
+		</div>
+	</div>
+
 
 </EditComponentWrapper>
+
+  
