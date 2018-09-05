@@ -1,85 +1,89 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width">
-    <title>BlazorTests</title>
-    <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
+        <title>BlazorTests</title>
+        <base href="/" />
+        <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' />
 
-    <!-- JQuery -->
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+        <!-- JQuery -->
+        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
-    <!-- JQuery Datatable -->
-    <script type='text/javascript' src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
-    <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' />
+        <!-- JQuery Datatable -->
+        <script type='text/javascript' src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
+        <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' />
 
-    <!-- JQuery Datatable - Export -->
-    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js'></script>
-    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js'></script>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js'></script>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js'></script>
-    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js'></script>
-    <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js'></script>
+        <!-- JQuery Datatable - Export -->
+        <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js'></script>
+        <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js'></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js'></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js'></script>
+        <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js'></script>
+        <script type='text/javascript' src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js'></script>
 
-</head>
-<body>
-    <app>Chargement en cours...</app>
+    </head>
+    <body>
+        <app>Chargement en cours...</app>
 
-    <script src="_framework/blazor.webassembly.js"></script>
+        <script src="_framework/blazor.webassembly.js"></script>
 
-    <script>
-        window.JavascriptFunctions = {
-            initTable: function (tableId) {
-                var table = $('#' + tableId).DataTable({
-                    // pagingType: "simple",
+        <script>
+            window.JavascriptFunctions = {
+                showAlert: function (message) {
+                return alert(message);
+                },
+                            
+                initTable: function (tableId) {
+                    var table = $('#' + tableId).DataTable({
+                        // pagingType: "simple",
 
-                    // Traduction
-                    oLanguage: {
-                        sSearch: "Rechercher",
-                        sInfo: "de _START_ à _END_ sur _TOTAL_",
-                        oPaginate: {
-                            sPrevious: "Préc.",
-                            sNext: "Suiv.",
-                        sLengthMenu: "_MENU_"
-                        }                        
-                    },
+                        // Traduction
+                        oLanguage: {
+                            sSearch: "Rechercher",
+                            sInfo: "de _START_ à _END_ sur _TOTAL_",
+                            oPaginate: {
+                                sPrevious: "Préc.",
+                                sNext: "Suiv.",
+                            sLengthMenu: "_MENU_"
+                            }                        
+                        },
 
-                    // Définition des éléments de la grille à afficher
-                    dom: 'frtipB',
+                        // Définition des éléments de la grille à afficher
+                        dom: 'frtipB',
 
-                    // Customisation du bouton d'export Excel (icone, couleur, ...)
-                    buttons: [
-                        {
-                            extend: 'excel',
-                            text: "<span class='oi oi-data-transfer-download' aria-hidden='true'></span> Exporter",
-                            className: 'btn btn-success excelButton',
-                            exportOptions: {
-                                modifier: {
-                                    page: 'all'
+                        // Customisation du bouton d'export Excel (icone, couleur, ...)
+                        buttons: [
+                            {
+                                extend: 'excel',
+                                text: "<span class='oi oi-data-transfer-download' aria-hidden='true'></span> Exporter",
+                                className: 'btn btn-success excelButton',
+                                exportOptions: {
+                                    modifier: {
+                                        page: 'all'
+                                    }
                                 }
-                            }
-                        }]
-                });        
+                            }]
+                    });        
 
-                // Ajout de filtres de type ComboBox sur l'ensemble des colonnes
-                $(".headerFilter").each( function ( i ) {
-                    var select = $('<select class="custom-select"><option value=""></option></select>')
-                        .appendTo( $(this).empty() )
-                        .on( 'change', function () {
-                        var term = $(this).val();
-                            table.column( i ).search(term, false, false ).draw();
-                        } );
-                    table.column( i ).data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                    // Ajout de filtres de type ComboBox sur l'ensemble des colonnes
+                    $(".headerFilter").each( function ( i ) {
+                        var select = $('<select class="custom-select"><option value=""></option></select>')
+                            .appendTo( $(this).empty() )
+                            .on( 'change', function () {
+                            var term = $(this).val();
+                                table.column( i ).search(term, false, false ).draw();
+                            } );
+                        table.column( i ).data().unique().sort().each( function ( d, j ) {
+                                select.append( '<option value="'+d+'">'+d+'</option>' )
+                        });
                     });
-                });
-            }
-        };
-    </script>
+                }
+            };
+        </script>
 
-</body>
+    </body>
 </html>
