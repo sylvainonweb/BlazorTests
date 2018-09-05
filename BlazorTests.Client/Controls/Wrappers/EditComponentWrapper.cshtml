@@ -6,14 +6,12 @@
 
 <div class="main">
     <div class="top-row px-4">
-    </div>
-    <div class="card-header">
         <h2>@Title</h2>
     </div>
-    <div class="card-body componentTransition">
+    <div class="card-body bg-white componentTransition" style="margin:20px;">
         @ChildContent
     </div>
-    <div class="card-footer" style="height:60px;">
+    <div class="card-footer bg-white" style="margin:20px;height:60px;">
         <div class="form-group float-right">
             <button input="button" class="btn btn-light" onclick="@(() => CheckAndSave())">
                 <span class="oi oi-check" style="color:green" aria-hidden="true"></span> Sauvegarder

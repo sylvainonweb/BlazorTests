@@ -34,7 +34,7 @@ namespace BlazorTests.Client
             }
             else
             {
-                this.Title = "Modifier type de client";
+                this.Title = "Modifier un type de client";
 
                 CustomerType customerType = await AdministrationService.GetCustomerType(Id.Value);
                 this.Text = customerType.Text;
