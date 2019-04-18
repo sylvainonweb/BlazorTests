@@ -1,0 +1,29 @@
+﻿@page "/libraries/syncfusion"
+@using BlazorTests.Services
+@inject WeatherForecastService ForecastService
+@using Syncfusion.EJ2.RazorComponents.Grids
+
+
+@*https://ej2.syncfusion.com/aspnet-core-razor-components/Calendar/DefaultFunctionalities*@
+@*https://blog.syncfusion.com/post/introducing-syncfusions-asp-net-core-blazor-razor-components.aspx*@
+@*nuget : Syncfusion.EJ2.AspNet.Core.RazorComponents*@
+
+<h1>Syncfusion</h1>
+
+<EjsGrid id="Grid" DataSource="@forecasts" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowFiltering="true">
+        <GridColumns>
+            <GridColumn Field=@nameof(WeatherForecast.Date) HeaderText="Date" Format="yMd" Type="date" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(WeatherForecast.TemperatureC) HeaderText="Temp. (C)" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(WeatherForecast.TemperatureF) HeaderText="Temp. (F)" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(WeatherForecast.Summary) HeaderText="Summary" Width="130"></GridColumn>
+        </GridColumns>
+    </EjsGrid>
+
+@functions {
+    WeatherForecast[] forecasts;
+
+    protected override async Task OnInitAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}

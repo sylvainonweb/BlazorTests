@@ -1,0 +1,33 @@
+﻿@page "/"
+@page "/parameters"
+@using BlazorTests.Models
+
+@inject BlazorTests.Services.ParameterService ParameterService
+
+
+<h1>Tableau de bord</h1>
+
+<div>
+    <div class="form-group row">
+        <div class="col-12">
+            <ParameterSearchCriteriaView OnSearchAsked=Search></ParameterSearchCriteriaView>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <ParameterSearchResultsView ParameterValues="@ParameterValues"></ParameterSearchResultsView>
+        </div>
+    </div>
+</div>
+@functions {
+
+    public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
+
+    public async Task Search(string parameterId, DateTime? startDate, DateTime? endDate)
+    {
+        ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId, startDate, endDate);
+        this.StateHasChanged();
+    }
+}
+
