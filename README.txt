@@ -3,6 +3,7 @@
 
 Les moins
 	* Le hot reload ne semble pas fonctionner
+	* On peut mal nommé un composant dans le html => le composant ne s'affiche pas mais pas d'erreur à la compilation
 
 Attention
 	* Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
@@ -19,6 +20,7 @@ A voir
 	* Grid : https://medium.com/swlh/how-to-create-a-reusable-grid-component-for-blazor-9de4b7a669d9
 	* Site magnifique fait en Blazor : https://discordapp.com/invite/Xg9ja5s
 	* Librairie Telerik : https://docs.telerik.com/blazor/introduction
+	* Police Open Iconic : https://aalmiray.github.io/ikonli/cheat-sheet-openiconic.html
 
 
 

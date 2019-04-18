@@ -1,7 +1,7 @@
 ﻿@using BlazorTests.Models
-@using Syncfusion.EJ2.RazorComponents.Grids
 @using Syncfusion.EJ2.RazorComponents.Charts
-
+@using BlazorTests.Helpers
+@inject IJSRuntime JSRuntime
 
 @* Obligé de tester null sinon le binding plante. Surement corrigé avec des contrôles tiers mais bon *@
 @if (ParameterValues != null && ParameterValues.Length > 0)
@@ -9,7 +9,7 @@
     <div class="form-group row">
         <div class="col-md-6 col-12">
             <p class="text-center font-weight-bold">Données</p>
-            <table class="table">
+            <table id="resultsTable" class="table table-sm table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -40,7 +40,7 @@
                         <ChartTooltipsettings enable="true"></ChartTooltipsettings>
                         <ChartSeriesCollection>
                             <ChartSeries dataSource="@ParameterValues" xName="Date" yName="Value"
-                                            name="Valeur du paramètre" width=5 type="@GraphType">
+                                         name="Valeur du paramètre" width=5 type="@GraphType">
                             </ChartSeries>
                         </ChartSeriesCollection>
                     </EjsChart>
@@ -83,8 +83,8 @@
                     </select>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 }
 else
 {

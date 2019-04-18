@@ -1,4 +1,4 @@
-﻿@page "/parameters/add"
+﻿@page "/parameter/edit"
 @using BlazorTests.Models
 
 @inject BlazorTests.Services.ParameterService ParameterService
@@ -24,7 +24,7 @@
 @functions {
 
     public string Text { get; set; }
-    [Parameter] public BlazorTests.Models.Parameter  Parameter{ get; set; }
+    [Parameter] public BlazorTests.Models.Parameter  Parameter{ get; private set; }
 
     protected override Task OnInitAsync()
     {

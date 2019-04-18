@@ -1,0 +1,50 @@
+﻿@page "/parameter/list"
+@using BlazorTests.Models
+@using BlazorTests.Helpers
+
+@inject BlazorTests.Services.ParameterService ParameterService
+@inject IJSRuntime JSRuntime
+
+<h1>Liste des paramètres </h1>
+
+<div class="form-group row">
+    <div class="col-md-6 col-12">
+        <table id="parametersTable" class="table table-sm table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Libellé</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var parameter in Parameters)
+                {
+                    <tr>
+                        <td>@parameter.Text</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-auto col-12">
+        <button class="btn btn-primary" onclick="@Save">Sauvegarder</button>
+    </div>
+</div>
+
+@functions {
+
+    public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        Parameters = await ParameterService.GetParametersAsync();
+    }
+
+    public async Task Save()
+    {
+        await JavascriptFunctions.ShowAlert(JSRuntime, "SALUT");
+    }
+}
+
