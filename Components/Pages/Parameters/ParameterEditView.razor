@@ -1,4 +1,8 @@
 ﻿@page "/parameter/edit"
+
+<h1>Saisie d'un paramètre</h1>
+
+    @*@page "/parameter/edit"
 @using BlazorTests.Models
 
 @inject BlazorTests.Services.ParameterService ParameterService
@@ -24,7 +28,7 @@
 @functions {
 
     public string Text { get; set; }
-    [Parameter] public BlazorTests.Models.Parameter  Parameter{ get; private set; }
+    [Parameter] public BlazorTests.Models.Parameter Parameter { get; private set; }
 
     protected override Task OnInitAsync()
     {
@@ -35,5 +39,5 @@
     {
         ParameterService.AddParameter(this.Parameter);
     }
-}
+}*@
 

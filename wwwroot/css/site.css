@@ -133,3 +133,30 @@ app {
         display: block;
     }
 }
+
+
+/* ===========================================================================
+
+   BOUTONS
+
+   ===========================================================================*/
+/* Bouton positionné dans une colonne d'une grille (on enlève la bordure) */
+.btn.gridColumnButton {
+	padding: 2px 5px 0px 5px;
+	border: 0px solid transparent;
+	display: inline;
+}
+
+
+
+
+/* ===========================================================================
+
+   TABLES 
+
+   ===========================================================================*/
+/* Permet à une colonne de se redimensionner en fonction de son contenu */
+td.autoSizeToContent {
+	width: 1px;
+	white-space: nowrap;
+}

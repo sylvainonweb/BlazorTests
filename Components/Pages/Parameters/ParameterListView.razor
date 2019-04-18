@@ -4,32 +4,40 @@
 
 @inject BlazorTests.Services.ParameterService ParameterService
 @inject IJSRuntime JSRuntime
+@inject Microsoft.AspNetCore.Components.Services.IUriHelper UriHelper
 
 <h1>Liste des paramètres </h1>
 
 <div class="form-group row">
     <div class="col-md-6 col-12">
-        <table id="parametersTable" class="table table-sm table-bordered table-striped table-hover">
+        <table class="table table-sm table-bordered table-striped table-hover">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Libellé</th>
+                    <th>
+                        <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddParameter())">
+                            <span class="oi oi-plus" aria-hidden="true"></span>
+                        </button>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var parameter in Parameters)
                 {
                     <tr>
+                        <td class="autoSizeToContent">@parameter.Id</td>
                         <td>@parameter.Text</td>
+                        <td class="autoSizeToContent">
+                            <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditParameter(@parameter.Id))">
+                                <span class="oi oi-pencil" aria-hidden="true"></span>
+                            </button>
+                            @*<DeleteButton DeleteAction="@(() => DeleteParameter(parameter.Id))"></DeleteButton>*@
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-auto col-12">
-        <button class="btn btn-primary" onclick="@Save">Sauvegarder</button>
     </div>
 </div>
 
@@ -42,9 +50,14 @@
         Parameters = await ParameterService.GetParametersAsync();
     }
 
-    public async Task Save()
+    public void AddParameter()
     {
-        await JavascriptFunctions.ShowAlert(JSRuntime, "SALUT");
+        UriHelper.NavigateTo("/parameter/edit");
+    }
+
+    public void EditParameter(string parameterId)
+    {
+        UriHelper.NavigateTo("/parameter/edit");
     }
 }
 
