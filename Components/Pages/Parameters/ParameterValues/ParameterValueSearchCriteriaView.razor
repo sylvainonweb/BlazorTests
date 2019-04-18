@@ -65,12 +65,6 @@
         Parameters = await ParameterService.GetParametersAsync();
     }
 
-    /* Commenté car je ne trouve plus UriHelper.NavigateTo
-    public void AddParameter()
-    {
-    }    
-    */
-
     [Parameter] public Func<string, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
     public void Search()
     {

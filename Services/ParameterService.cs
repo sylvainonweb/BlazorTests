@@ -39,6 +39,12 @@ namespace BlazorTests.Services
             this.Parameters.Add(parameter);
         }
 
+        public void DeleteParameter(string parameterId)
+        {
+            var parameter = this.Parameters.Where(o => o.Id == parameterId).Single();
+            this.Parameters.Remove(parameter);
+        }
+
         private IList<Parameter> parameters = null;
         public IList<Parameter> Parameters
         {
