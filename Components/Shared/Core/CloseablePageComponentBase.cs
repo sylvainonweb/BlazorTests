@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace BlazorTests.Components
 {
-    public abstract class CloseableComponentBase : ComponentBaseEx
+    public abstract class CloseablePageComponentBase : PageComponentBase
     {
-        protected abstract Task Close();
+        protected virtual async Task Close()
+        {
+            await JsInteropService.ReturnToCallerPage();
+        }
     }
 }

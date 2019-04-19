@@ -1,80 +1,76 @@
-﻿@inherits CloseableComponentBase
+﻿@inherits CloseablePageComponentBase
 @page "/parameter/list"
 @inject ParameterService ParameterService
 
-<h1>@Title</h1>
 
-@if (@Parameters == null)
-{
-    <p><em>Chargement en cours ...</em></p>
-}
-else
-{
-    <div class="form-group row">
-        <div class="col-md-6 col-12">
-            <table class="table table-sm table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Libellé</th>
-                        <th>
-                            <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddParameter())">
-                                <span class="oi oi-plus" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var parameter in Parameters)
-                    {
+<PageComponentWrapper Title="@Title">
+
+    @if (@Parameters == null)
+    {
+        <p><em>Chargement en cours ...</em></p>
+    }
+    else
+    {
+        <div class="form-group row">
+            <div class="col-md-6 col-12">
+                <table class="table table-sm table-bordered table-striped table-hover">
+                    <thead>
                         <tr>
-                            <td class="autoSizeToContent">@parameter.Id</td>
-                            <td>@parameter.Text</td>
-                            <td class="autoSizeToContent">
-                                <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditParameter(@parameter.Id))">
-                                    <span class="oi oi-pencil" aria-hidden="true"></span>
+                            <th>Id</th>
+                            <th>Libellé</th>
+                            <th>
+                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddParameter())">
+                                    <span class="oi oi-plus" aria-hidden="true"></span>
                                 </button>
-                                <DeleteButton DeleteAction="@(() => DeleteParameter(@parameter.Id))"></DeleteButton>
-                            </td>
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var parameter in Parameters)
+                        {
+                            <tr>
+                                <td class="autoSizeToContent">@parameter.Id</td>
+                                <td>@parameter.Text</td>
+                                <td class="autoSizeToContent">
+                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditParameter(@parameter.Id))">
+                                        <span class="oi oi-pencil" aria-hidden="true"></span>
+                                    </button>
+                                    <DeleteButton DeleteAction="@(() => DeleteParameter(@parameter.Id))"></DeleteButton>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
-    <button class="btn btn-secondary" onclick="@Close">Fermer</button>
-}
-
-@functions {
-
-    public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
-
-    protected override async Task OnInitAsync()
-    {
-        this.Title = "Liste des paramètres";
-        Parameters = await ParameterService.GetParametersAsync();
+        <button class="btn btn-secondary" onclick="@Close">Fermer</button>
     }
 
-    public void AddParameter()
-    {
-        UriHelper.NavigateTo("/parameter/add");
-    }
+    @functions {
 
-    public void EditParameter(int parameterId)
-    {
-        UriHelper.NavigateTo($"/parameter/edit/{parameterId}");
-    }
+        public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
 
-    public void DeleteParameter(int parameterId)
-    {
-        ParameterService.DeleteParameter(parameterId);
-        this.StateHasChanged();
-    }
+        protected override async Task OnInitAsync()
+        {
+            this.Title = "Liste des paramètres";
+            Parameters = await ParameterService.GetParametersAsync();
+        }
 
-    protected override async Task Close()
-    {
-        await JsInteropService.ReturnToCallerPage();
-    }
-}
+        public void AddParameter()
+        {
+            UriHelper.NavigateTo("/parameter/add");
+        }
 
+        public void EditParameter(int parameterId)
+        {
+            UriHelper.NavigateTo($"/parameter/edit/{parameterId}");
+        }
+
+        public void DeleteParameter(int parameterId)
+        {
+            ParameterService.DeleteParameter(parameterId);
+            this.StateHasChanged();
+        }
+    }
+</PageComponentWrapper>

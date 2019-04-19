@@ -1,4 +1,4 @@
-﻿@inherits ComponentBaseEx
+﻿@inherits PageComponentBase
 @page "/"
 @page "/parameter-value/list"
 @using BlazorTests.Models
@@ -6,41 +6,42 @@
 @inject BlazorTests.Services.ParameterService ParameterService
 
 
-<h1>@Title</h1>
+<PageComponentWrapper Title="@Title">
 
-<div>
-    <div class="form-group row">
-        <div class="col-12">
-            <ParameterValueSearchCriteriaView OnSearchAsked=Search></ParameterValueSearchCriteriaView>
+    <div>
+        <div class="form-group row">
+            <div class="col-12">
+                <ParameterValueSearchCriteriaView OnSearchAsked=Search></ParameterValueSearchCriteriaView>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <ParameterValueSearchResultsView ParameterValues="@ParameterValues"></ParameterValueSearchResultsView>
+            </div>
         </div>
     </div>
+    @functions {
 
-    <div class="form-group row">
-        <div class="col-12">
-            <ParameterValueSearchResultsView ParameterValues="@ParameterValues"></ParameterValueSearchResultsView>
-        </div>
-    </div>
-</div>
-@functions {
+        public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
 
-    public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
-
-    protected override void OnInit()
-    {
-        this.Title = "Tableau de bord";
-    }
-
-    public async Task Search(int? parameterId, DateTime? startDate, DateTime? endDate)
-    {
-        if (parameterId.HasValue)
+        protected override void OnInit()
         {
-            ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId.Value, startDate, endDate);
+            this.Title = "Tableau de bord";
         }
-        else
+
+        public async Task Search(int? parameterId, DateTime? startDate, DateTime? endDate)
         {
-            ParameterValues = new ParameterValue[0];
+            if (parameterId.HasValue)
+            {
+                ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId.Value, startDate, endDate);
+            }
+            else
+            {
+                ParameterValues = new ParameterValue[0];
+            }
+            this.StateHasChanged();
         }
-        this.StateHasChanged();
     }
-}
+</PageComponentWrapper>
 

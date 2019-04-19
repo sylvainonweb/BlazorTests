@@ -15,11 +15,13 @@
 
   <ItemGroup>
     <Compile Remove="Components\JsInteropService.old.cs" />
+    <Compile Remove="Components\Shared\Wrappers\EditComponentWrapper.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Components\JsInteropService - Copy.razor" />
     <Content Remove="Components\JsInteropService.razor" />
+    <Content Remove="Components\Shared\Wrappers\EditComponentWrapper.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controls\Wrappers\" />
     <Folder Include="wwwroot\data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\Shared\Wrappers\PageComponentWrapper.cshtml" />
   </ItemGroup>
 
 </Project>

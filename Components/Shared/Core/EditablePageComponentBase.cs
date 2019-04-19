@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorTests.Components
 {
-    public abstract class EditableComponentBase : CloseableComponentBase
+    public abstract class EditablePageComponentBase : CloseablePageComponentBase
     {
         [Parameter]
         private string IdAsString { get; set; }
