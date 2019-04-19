@@ -6,6 +6,7 @@ namespace BlazorTests.Models
     public class Parameter
     {
         //public int Id { get; set; }
+        //[Required]
         public string Id { get; set; }
 
         [Required]

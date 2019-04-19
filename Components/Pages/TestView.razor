@@ -1,43 +1,30 @@
 ﻿@page "/test"
 
-@using Telerik.Blazor;
+@using System.ComponentModel.DataAnnotations
 
-<TelerikChart>
-    <TelerikChartTitle Text="Site Visitors Stats"></TelerikChartTitle>
-    <TelerikChartLegend Visible="false"></TelerikChartLegend>
+<EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-    <TelerikChartSeriesItems>
-        <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Total Visits" Data="@Series1Data">
-        </TelerikChartSeries>
-        <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Unique visitors" Data="@Series2Data">
-        </TelerikChartSeries>
-    </TelerikChartSeriesItems>
+    <InputText id="name" bind-Value="@exampleModel.Name" />
 
-    <TelerikChartValueAxes>
-        <TelerikChartValueAxis Max="140000"></TelerikChartValueAxis>
-    </TelerikChartValueAxes>
-
-    <TelerikChartCategoryAxes>
-        <TelerikChartCategoryAxis Categories="@Categories"></TelerikChartCategoryAxis>
-    </TelerikChartCategoryAxes>
-
-</TelerikChart>
+    <button type="submit">Submit</button>
+</EditForm>
 
 @functions {
-    public class ModelData
+
+    private ExampleModel exampleModel = new ExampleModel();
+
+    private void HandleValidSubmit()
     {
-        public int Value { get; set; }
+        Console.WriteLine("OnValidSubmit");
     }
 
-    public List<ModelData> Data = new List<ModelData>()
-{
-        new ModelData() { Value = 1 },
-        new ModelData() { Value = 3 },
-        new ModelData() { Value = 2 },
-    };
-
-    public List<object> Series1Data = new List<object>() { 56000, 63000, 74000, 91000, 117000, 138000 };
-    public List<object> Series2Data = new List<object>() { 52000, 34000, 23000, 48000, 67000, 83000 };
-    public string[] Categories = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" };
+    public class ExampleModel
+    {
+        [Required]
+        [StringLength(10, ErrorMessage = "Name is too long.")]
+        public string Name { get; set; }
+    }
 
 }

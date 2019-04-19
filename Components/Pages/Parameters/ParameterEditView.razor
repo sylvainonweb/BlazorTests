@@ -1,41 +1,39 @@
 ﻿@page "/parameter/edit"
 @inject BlazorTests.Services.ParameterService ParameterService
-@using BlazorTests.Models
+@inject IJSRuntime JSRuntime
+@*@using System.ComponentModel.DataAnnotations*@
+@using BlazorTests.Helpers
 
 <h1>Saisie d'un paramètre</h1>
 
-
-<EditForm Model="@Parameter" OnValidSubmit="@Save">
+<EditForm Model="@parameter" OnValidSubmit="@Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <div>
         <div class="form-group row">
             <div class="col-md-auto col-12">
                 <label>Libellé :</label>
             </div>
             <div class="col-md-6 col-12">
-                <input type="text" bind="@Text" />
+                <input type="text" bind="@parameter.Text" />
+                @*<InputText id="text" bind-Value="@parameter.Text" />*@
             </div>
             <div class="col-md-auto col-12">
                 <button class="btn btn-primary" type="submit">Sauvegarder</button>
             </div>
         </div>
     </div>
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+
 </EditForm>
 
 @functions {
 
-    public string Text { get; set; }
-    [Parameter] public BlazorTests.Models.Parameter Parameter { get; private set; }
+    //[Parameter] public BlazorTests.Models.Parameter Parameter { get; private set; }
+    BlazorTests.Models.Parameter parameter = new BlazorTests.Models.Parameter();
 
-    protected override Task OnInitAsync()
+    private void Save()
     {
-        return base.OnInitAsync();
-    }
-
-    public void Save()
-    {
-        ParameterService.AddParameter(this.Parameter);
+        ParameterService.AddParameter(parameter);
+        JavascriptFunctions.ReturnToCallerPage(JSRuntime);
     }
 }
-

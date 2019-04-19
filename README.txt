@@ -4,6 +4,9 @@
 Les moins
 	* Le hot reload ne semble pas fonctionner
 	* On peut mal nommé un composant dans le html => le composant ne s'affiche pas mais pas d'erreur à la compilation
+	* Un modèle est différent d'une entité car même si en base la colonne Id est obligatoire, il n'est pas possible
+	  d'ajouter l'attribut [Required] sur cette colonne sinon la validation des champs obligatoires déclencherait une erreur
+	  => un écran = un modèle
 
 Attention
 	* Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
