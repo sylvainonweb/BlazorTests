@@ -8,7 +8,10 @@ Les moins
 Attention
 	* Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
 	* les contrôles Telerik ont besoin du réseau (même en dev) pour s'afficher (cdn en ligne)
-	* 
+
+A faire		
+	* Voir pour placer les fichiers css, js (jquery, syncfusion, ...) dans un fichier séparé
+	* Déployer le site via Docker (Alpine)
 
 A voir
 	* EditForm (InputText, InputDate, ...) : https://www.telerik.com/blogs/first-look-forms-and-validation-in-razor-components
