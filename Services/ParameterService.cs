@@ -34,9 +34,23 @@ namespace BlazorTests.Services
             return await Task.FromResult(parameterValues.ToArray());
         }
 
+        public Parameter GetParameter(int parameterId)
+        {
+            return this.Parameters.Where(o => o.Id == parameterId).Single();
+        }
+
         public void AddParameter(Parameter parameter)
         {
+            var parameters = this.Parameters;
+            parameter.Id = parameters.Max(o => o.Id) + 1;
             this.Parameters.Add(parameter);
+        }
+
+        public void UpdateParameter(Parameter parameter)
+        {
+            var existingParameter = GetParameter(parameter.Id);
+            existingParameter.Text = parameter.Text;
+            this.Parameters.Add(existingParameter);
         }
 
         public void DeleteParameter(int parameterId)

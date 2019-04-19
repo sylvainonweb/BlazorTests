@@ -1,8 +1,6 @@
-﻿@page "/parameter/list"
-@using BlazorTests.Helpers
-@inject BlazorTests.Services.ParameterService ParameterService
-@inject IJSRuntime JSRuntime
-@inject Microsoft.AspNetCore.Components.Services.IUriHelper UriHelper
+﻿@inherits CloseableComponentBase
+@page "/parameter/list"
+@inject ParameterService ParameterService
 
 <h1>Liste des paramètres </h1>
 
@@ -59,12 +57,12 @@ else
 
     public void AddParameter()
     {
-        UriHelper.NavigateTo("/parameter/edit");
+        UriHelper.NavigateTo("/parameter/add");
     }
 
     public void EditParameter(int parameterId)
     {
-        UriHelper.NavigateTo("/parameter/edit");
+        UriHelper.NavigateTo($"/parameter/edit/{parameterId}");
     }
 
     public void DeleteParameter(int parameterId)
@@ -73,9 +71,9 @@ else
         this.StateHasChanged();
     }
 
-    public void Close()
+    protected override async Task Close()
     {
-        JavascriptFunctions.ReturnToCallerPage(JSRuntime);
+        await JsInteropService.ReturnToCallerPage();
     }
 }
 

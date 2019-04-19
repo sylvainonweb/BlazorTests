@@ -1,5 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
+@inject Microsoft.JSInterop.IJSRuntime JSRuntime
+@inject JsInteropService JsInteropService
+
 @*SBD : MATBLAZOR*@
 <MatBlazorInstall />
 
@@ -16,3 +19,15 @@
         @Body
     </div>
 </div>
+
+
+@functions { 
+
+    protected override void OnInit()
+    {
+        // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
+        // on utilise le 1er composant de l'application pour définir manuellement la propriété
+        // statique de JsInteropService.
+        JsInteropService.JSRuntime = JSRuntime;
+    }
+}

@@ -29,6 +29,7 @@
 #A NOTER
 * Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
 * les contrôles Telerik ont besoin du réseau (même en dev) pour s'afficher (cdn en ligne)
+* Le passage de paramètre à un composant de type Page se fait comme ceci : https://stackoverflow.com/questions/54303437/redirecting-in-blazor-with-parameter
 
 #LIENS INTERESSANTS
 * EditForm (InputText, InputDate, ...) : https://www.telerik.com/blogs/first-look-forms-and-validation-in-razor-components

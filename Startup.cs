@@ -24,8 +24,11 @@ namespace BlazorTests
 
             services.AddRazorComponents();            
 
-            // SBD : TELERIK
+            // SBD : Telerik
             services.AddTelerikBlazor();
+
+            // SBD : Services
+            services.AddSingleton<JsInteropService>();
 
             services.AddSingleton<ParameterService>();
             services.AddSingleton<WeatherForecastService>();
