@@ -46,6 +46,8 @@ else
             </table>
         </div>
     </div>
+
+    <button class="btn btn-secondary" onclick="@Close">Fermer</button>
 }
 
 @functions {
@@ -71,6 +73,11 @@ else
     {
         ParameterService.DeleteParameter(parameterId);
         this.StateHasChanged();
+    }
+
+    public void Close()
+    {
+        JavascriptFunctions.ReturnToCallerPage(JSRuntime);
     }
 }
 

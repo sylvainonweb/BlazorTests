@@ -1,11 +1,9 @@
 ﻿@page "/parameter/edit"
+@inject BlazorTests.Services.ParameterService ParameterService
+@using BlazorTests.Models
 
 <h1>Saisie d'un paramètre</h1>
 
-    @*@page "/parameter/edit"
-@using BlazorTests.Models
-
-@inject BlazorTests.Services.ParameterService ParameterService
 
 <EditForm Model="@Parameter" OnValidSubmit="@Save">
     <div>
@@ -39,5 +37,5 @@
     {
         ParameterService.AddParameter(this.Parameter);
     }
-}*@
+}
 

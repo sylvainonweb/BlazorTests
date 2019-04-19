@@ -1,4 +1,9 @@
 ﻿window.JavascriptFunctions = {
+
+    returnToCallerPage: function () {
+        return history.back();
+    },
+
     showAlert: function (message) {
         return alert(message);
     },

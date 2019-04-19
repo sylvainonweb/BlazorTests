@@ -7,6 +7,11 @@ namespace BlazorTests.Helpers
 {
     public static class JavascriptFunctions
     {
+        public static Task ReturnToCallerPage(IJSRuntime jsRuntime)
+        {
+            return jsRuntime.InvokeAsync<string>("JavascriptFunctions.returnToCallerPage");
+        }
+
         public static Task<string> ShowAlert(IJSRuntime jsRuntime, string message)
         {
             return jsRuntime.InvokeAsync<string>("JavascriptFunctions.showAlert", message);
