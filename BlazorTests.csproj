@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\Wrappers\" />
+    <Folder Include="Controls\" />
     <Folder Include="wwwroot\data\" />
   </ItemGroup>
 

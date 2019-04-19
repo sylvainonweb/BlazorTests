@@ -1,10 +1,10 @@
 using System;
 using Microsoft.AspNetCore.Blazor;
-using Microsoft.AspNetCore.Blazor.Components;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorTests.Client.Controls
 {
-    public class EditComponentWrapperComponent : BlazorComponent
+    public partial class EditablePageComponentWrapper : ComponentBase
     {
         #region Propriétés bindées
 

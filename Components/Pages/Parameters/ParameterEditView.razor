@@ -4,62 +4,55 @@
 
 @inject ParameterService ParameterService
 
-<h1>@Title</h1>
+<EditablePageComponentWrapper Title="@Title" CheckAndSaveAction="@(() => CheckAndSave(true))" CloseAction="@(() => Close())">
 
-<EditForm Model="@Parameter" OnValidSubmit="@Save">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div>
-        <div class="form-group row">
-            <div class="col-md-auto col-12">
-                <label>Libellé :</label>
-            </div>
-            <div class="col-md-6 col-12">
-                <input type="text" bind="@Parameter.Text" />
-                @*<InputText id="text" bind-Value="@parameter.Text" />*@
-            </div>
-            <div class="col-md-auto col-12">
-                <button class="btn btn-primary" type="submit">Sauvegarder</button>
+
+    <EditForm Model="@Parameter" OnValidSubmit="@Save">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <div class="form-group row">
+                <div class="col-md-auto col-12">
+                    <label>Libellé :</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" bind="@Parameter.Text" />
+                    @*<InputText id="text" bind-Value="@parameter.Text" />*@
+                </div>
             </div>
         </div>
-    </div>
 
-</EditForm>
+    </EditForm>
 
-@functions {
+    @functions {
 
-    BlazorTests.Models.Parameter Parameter { get; set; }
+        BlazorTests.Models.Parameter Parameter { get; set; }
 
-    protected override void OnInit()
-    {
-        if (this.Id.HasValue == false)
+        protected override void OnInit()
         {
-            this.Title = "Nouveau paramètre";
-            this.Parameter = new BlazorTests.Models.Parameter();
+            if (this.Id.HasValue == false)
+            {
+                this.Title = "Nouveau paramètre";
+                this.Parameter = new BlazorTests.Models.Parameter();
+            }
+            else
+            {
+                this.Title = "Modifier un paramètre";
+                this.Parameter = ParameterService.GetParameter(this.Id.Value);
+            }
         }
-        else
+
+        protected override async Task Save()
         {
-            this.Title = "Modifier un paramètre";
-            this.Parameter = ParameterService.GetParameter(this.Id.Value);
+            if (this.Id.HasValue == false)
+            {
+                ParameterService.AddParameter(this.Parameter);
+            }
+            else
+            {
+                ParameterService.UpdateParameter(this.Parameter);
+            }
         }
     }
 
-    protected override async Task Save()
-    {
-        if (this.Id.HasValue == false)
-        {
-            ParameterService.AddParameter(this.Parameter);
-        }
-        else
-        {
-            ParameterService.UpdateParameter(this.Parameter);
-        }
-
-        await Close();
-    }
-
-    protected override async Task Close()
-    {
-        await JsInteropService.ReturnToCallerPage();
-    }
-}
+</EditablePageComponentWrapper>

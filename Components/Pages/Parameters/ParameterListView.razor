@@ -3,7 +3,7 @@
 @inject ParameterService ParameterService
 
 
-<PageComponentWrapper Title="@Title">
+<CloseablePageComponentWrapper Title="@Title" CloseAction="@(() => Close())">
 
     @if (@Parameters == null)
     {
@@ -73,4 +73,4 @@
             this.StateHasChanged();
         }
     }
-</PageComponentWrapper>
+</CloseablePageComponentWrapper>

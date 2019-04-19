@@ -36,7 +36,7 @@ namespace BlazorTests.Components
             return false;
         }
 
-        protected async Task CheckAndSave()
+        protected async Task CheckAndSave(bool closeAfterSave)
         {
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
@@ -46,6 +46,11 @@ namespace BlazorTests.Components
             else
             {
                 await Save();
+
+                if (closeAfterSave)
+                {
+                    await Close();
+                }
             }
 
             return;

@@ -1,8 +1,4 @@
-﻿@inherits EditComponentWrapperComponent
-
-<div class="sidebar">
-    <Menu />
-</div>
+﻿@inherits ComponentBase
 
 <div class="main">
     <div class="top-row px-4">
@@ -13,12 +9,34 @@
     </div>
     <div class="card-footer bg-white" style="margin:20px;height:60px;">
         <div class="form-group float-right">
-            <button input="button" class="btn btn-light" onclick="@(() => CheckAndSave())">
-                <span class="oi oi-check" style="color:green" aria-hidden="true"></span> Sauvegarder
-            </button>
             <button input="button" class="btn btn-light" onclick="@(() => Close())">
                 <span class="oi oi-x" style="color:red" aria-hidden="true"></span> Fermer
             </button>
         </div>
     </div>
 </div>
+
+@functions {
+
+    #region Propriétés bindées
+
+    [Parameter]
+    protected RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    protected string Title { get; set; }
+
+    [Parameter]
+    private Func<Task> CloseAction { get; set; }
+
+    #endregion
+
+    #region  Fermeture
+
+    protected Task Close()
+    {
+        return CloseAction.Invoke();
+    }
+
+    #endregion
+}
