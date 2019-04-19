@@ -2,7 +2,7 @@
 @page "/parameter/list"
 @inject ParameterService ParameterService
 
-<h1>Liste des paramètres </h1>
+<h1>@Title</h1>
 
 @if (@Parameters == null)
 {
@@ -52,6 +52,7 @@ else
 
     protected override async Task OnInitAsync()
     {
+        this.Title = "Liste des paramètres";
         Parameters = await ParameterService.GetParametersAsync();
     }
 

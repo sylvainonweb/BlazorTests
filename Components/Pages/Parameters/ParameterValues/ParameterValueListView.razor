@@ -1,11 +1,12 @@
-﻿@page "/"
+﻿@inherits ComponentBaseEx
+@page "/"
 @page "/parameter-value/list"
 @using BlazorTests.Models
 
 @inject BlazorTests.Services.ParameterService ParameterService
 
 
-<h1>Tableau de bord</h1>
+<h1>@Title</h1>
 
 <div>
     <div class="form-group row">
@@ -23,6 +24,11 @@
 @functions {
 
     public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
+
+    protected override void OnInit()
+    {
+        this.Title = "Tableau de bord";
+    }
 
     public async Task Search(int? parameterId, DateTime? startDate, DateTime? endDate)
     {
