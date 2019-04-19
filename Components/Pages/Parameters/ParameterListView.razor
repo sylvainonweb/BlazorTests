@@ -62,12 +62,12 @@ else
         UriHelper.NavigateTo("/parameter/edit");
     }
 
-    public void EditParameter(string parameterId)
+    public void EditParameter(int parameterId)
     {
         UriHelper.NavigateTo("/parameter/edit");
     }
 
-    public void DeleteParameter(string parameterId)
+    public void DeleteParameter(int parameterId)
     {
         ParameterService.DeleteParameter(parameterId);
         this.StateHasChanged();

@@ -1,106 +1,106 @@
 [
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/01",
     "Value": "1"
   },
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/02",
     "Value": "2"
   },
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/03",
     "Value": "3"
   },
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/04",
     "Value": "4"
   },
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/05",
     "Value": "5"
   },
   {
-    "ParameterId": "1",
+    "ParameterId": 1,
     "Date": "2019/01/06",
     "Value": "6"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/01",
     "Value": "0"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/02",
     "Value": "4"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/03",
     "Value": "6"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/04",
     "Value": "5"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/05",
     "Value": "4"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/06",
     "Value": "6"
   },
   {
-    "ParameterId": "2",
+    "ParameterId": 2,
     "Date": "2019/02/07",
     "Value": "4"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/01",
     "Value": "8"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/02",
     "Value": "7"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/03",
     "Value": "6"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/04",
     "Value": "5"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/05",
     "Value": "4"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/06",
     "Value": "3"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/07",
     "Value": "2"
   },
   {
-    "ParameterId": "3",
+    "ParameterId": 3,
     "Date": "2019/03/08",
     "Value": "1"
   }

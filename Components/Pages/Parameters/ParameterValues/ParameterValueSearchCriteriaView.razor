@@ -56,7 +56,7 @@
 @functions {
 
     public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
-    public string ParameterId { get; set; }
+    public int? ParameterId { get; set; }
     public DateTime StartDate { get; set; } // Les nullables ne sont pas acceptés
     public DateTime EndDate { get; set; }   // Les nullables ne sont pas acceptés
 
@@ -65,7 +65,7 @@
         Parameters = await ParameterService.GetParametersAsync();
     }
 
-    [Parameter] public Func<string, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
+    [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
     public void Search()
     {
         var parameterId = this.ParameterId;

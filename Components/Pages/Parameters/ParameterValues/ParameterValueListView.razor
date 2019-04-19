@@ -24,9 +24,16 @@
 
     public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
 
-    public async Task Search(string parameterId, DateTime? startDate, DateTime? endDate)
+    public async Task Search(int? parameterId, DateTime? startDate, DateTime? endDate)
     {
-        ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId, startDate, endDate);
+        if (parameterId.HasValue)
+        {
+            ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId.Value, startDate, endDate);
+        }
+        else
+        {
+            ParameterValues = new ParameterValue[0];
+        }
         this.StateHasChanged();
     }
 }

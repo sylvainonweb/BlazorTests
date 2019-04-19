@@ -1,14 +1,14 @@
 [
   {
-    "Id": "1",
+    "Id": 1,
     "Text": "Temps de fonctionnement"
   },
   {
-    "Id": "2",
+    "Id": 2,
     "Text": "Nombre de demarrage"
   },
   {
-    "Id": "3",
+    "Id": 3,
     "Text": "Pluviometrie"
   }
 ]

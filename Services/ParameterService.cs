@@ -23,7 +23,7 @@ namespace BlazorTests.Services
             return Task.FromResult(this.Parameters);
         }
 
-        public async Task<ParameterValue[]> GetParameterValuesAsync(string parameterId, DateTime? startDate, DateTime? endDate)
+        public async Task<ParameterValue[]> GetParameterValuesAsync(int parameterId, DateTime? startDate, DateTime? endDate)
         {
             string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/parameters-values.json"));
             var allParameterValues = JsonConvert.DeserializeObject<ParameterValue[]>(fileContent);
@@ -39,7 +39,7 @@ namespace BlazorTests.Services
             this.Parameters.Add(parameter);
         }
 
-        public void DeleteParameter(string parameterId)
+        public void DeleteParameter(int parameterId)
         {
             var parameter = this.Parameters.Where(o => o.Id == parameterId).Single();
             this.Parameters.Remove(parameter);
