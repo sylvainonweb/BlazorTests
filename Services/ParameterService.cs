@@ -50,7 +50,6 @@ namespace BlazorTests.Services
         {
             var existingParameter = GetParameter(parameter.Id);
             existingParameter.Text = parameter.Text;
-            this.Parameters.Add(existingParameter);
         }
 
         public void DeleteParameter(int parameterId)
