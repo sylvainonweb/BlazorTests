@@ -36,7 +36,7 @@
             <!-- Le filtre Date de fin -->
             <div class="col-3">Fin :</div>
             <div class="col-9">
-                <input type="date" bind="@EndDate" format-value="yyyy-MM-dd" />
+                 <input type="date" bind="@EndDate" format-value="yyyy-MM-dd" />
             </div>
         </div>
     </div>
@@ -59,8 +59,8 @@
 
     public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
     public int? ParameterId { get; set; }
-    public DateTime StartDate { get; set; } // Les nullables ne sont pas acceptés
-    public DateTime EndDate { get; set; }   // Les nullables ne sont pas acceptés
+    public DateTime StartDate { get; set; } // En attendant, les nullables ne sont pas acceptés pour les dates
+    public DateTime EndDate { get; set; }   // En attendant, les nullables ne sont pas acceptés pour les dates
 
     protected override async Task OnInitAsync()
     {
@@ -70,19 +70,16 @@
     [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
     public void Search()
     {
-        var parameterId = this.ParameterId;
-        var startDate = (StartDate == DateTime.MinValue ? new DateTime?() : StartDate);
-        var endDate = (EndDate == DateTime.MinValue ? new DateTime?() : EndDate);
-
-
-        OnSearchAsked?.Invoke(parameterId, startDate, endDate);
+        OnSearchAsked?.Invoke(this.ParameterId, 
+            NullableDateTimeConverter.ConvertToNullableDateTime(StartDate), 
+            NullableDateTimeConverter.ConvertToNullableDateTime(EndDate));
     }
 
     public void ResetFilters()
     {
-        this.StartDate = DateTime.MinValue;
-        this.EndDate = DateTime.MaxValue;
         this.ParameterId = null;
+        this.StartDate = NullableDateTimeConverter.ConvertToDateTime(null);
+        this.EndDate = NullableDateTimeConverter.ConvertToDateTime(null);
 
         Search();
     }

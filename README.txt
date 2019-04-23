@@ -2,7 +2,8 @@
 * Voir pour gérer correctement les champs obligatoires. En effet, si la vérification des champs obligatoires se fait 
 	via un attribut [Required] et que cet attibut est ajouté conformément aux champs obligatoires de la base, la vérification
 	va déclencher une erreur car la propriété Id n'est pas renseigné lors d'un ajout
-* Voir pour pouvoir binder des champs nullables aux contrôles
+* Voir pour pouvoir binder des champs nullables aux contrôles (notamment les dates). 
+  Semble avoir été pris en compte : public DateTimeOffset? OptionalExpiryDate { get; set; } (trouvé dans le code source de Github)
 
 #A FAIRE
 * Voir pour placer les fichiers css, js (jquery, syncfusion, ...) dans un fichier séparé
