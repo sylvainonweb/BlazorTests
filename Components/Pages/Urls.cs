@@ -11,6 +11,7 @@ namespace BlazorTests.Components
         public static string CompanyAdd = "/company/add";
         public static string CompanyEditSimple = "/company/edit/";
         public static string CompanyEditFull = "/company/detail/";
+        public static string CompanyContactAdd = "/company-contact/add/"; 
 
         public static string ContactList = "/contact/list";
         public static string ContactAdd = "/contact/add";

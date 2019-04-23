@@ -1,5 +1,7 @@
 ﻿@inherits ComponentBaseEx
 
+@inject ContactService ContactService
+
 <div class="row">
     <div class="col-12">
         <label class="font-weight-bold">Contacts(@Contacts.Count)</label>
@@ -9,24 +11,42 @@
     <div class="col-md-6 col-12">
         @if (@Contacts != null)
         {
-            @foreach (var contact in @Contacts)
-            {
-                <button onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
-            }
+            <table>
+                @foreach(var contact in @Contacts)
+                {
+                <tr>
+                    <td>
+                        <button onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
+                    </td>
+                </tr>
+                }
+            </table>
         }
     </div>
 </div>
 
-@functions {
-    [Parameter] public List<Contact> Contacts { get; private set; }
+<div class="row">
+    <div class="col-md-6 col-12">
+        <button onclick="@AddContactToCompany" class="oi oi-plus">Ajouter un contact</button>
+    </div>
+</div>
 
-    public void EditContact(int contactId)
+@functions {
+    public List<Contact> Contacts { get; private set; }
+    [Parameter] public int CompanyId { get; private set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Contacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
+        }
+
+        public void EditContact(int contactId)
     {
         UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
     }
 
-    public string GetEditContactUrl(int contactId)
+    public void AddContactToCompany()
     {
-        return Urls.ContactEditFull + contactId;
+        UriHelper.NavigateTo(Urls.CompanyContactAdd + this.CompanyId);
     }
 }

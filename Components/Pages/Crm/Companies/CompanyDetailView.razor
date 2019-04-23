@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <CompanyContactListView Contacts="@Contacts"></CompanyContactListView>
+        <CompanyContactListView CompanyId="@Id.Value"></CompanyContactListView>
 
     @functions {
 
@@ -25,8 +25,7 @@
 
         protected override async Task OnInitAsync()
         {
-            this.Company = CompanyService.GetCompany(this.Id.Value);
-            this.Contacts = await ContactService.GetCompanyContactsAsync(this.Id.Value);
+            this.Company = await CompanyService.GetCompany(this.Id.Value);
             this.Title = $"{Company.Name}";
         }
 

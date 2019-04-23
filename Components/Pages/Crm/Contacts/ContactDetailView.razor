@@ -26,13 +26,13 @@
 
             BlazorTests.Models.Contact Contact { get; set; }
 
-            protected override void OnInit()
+            protected override async Task OnInitAsync()
             {
-                this.Contact = ContactService.GetContact(this.Id.Value);
+                this.Contact = await ContactService.GetContact(this.Id.Value);
                 this.Title = $"{Contact.LastName} {Contact.FirstName}";
             }
 
-            private void EditContact()
+            private async Task EditContact()
             {
                 UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
             }

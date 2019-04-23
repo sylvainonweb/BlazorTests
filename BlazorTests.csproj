@@ -14,6 +14,7 @@
   <ItemGroup>
     <Content Remove="Components\JsInteropService - Copy.razor" />
     <Content Remove="Components\JsInteropService.razor" />
+    <Content Remove="Components\Pages\Crm\Companies\CompanyContacts\CompanyContactSelectionView.razor" />
     <Content Remove="Components\Shared\Core\CloseablePageComponentWrapper.cshtml" />
   </ItemGroup>
 

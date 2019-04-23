@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorTests.Components.Shared;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorTests.Components
 {
@@ -11,16 +12,11 @@ namespace BlazorTests.Components
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(IdAsString))
-                {
-                    return null;
-                }
-
-                return int.Parse(IdAsString);
+                return StringToNullableIntConverter.ConvertToInt(IdAsString);
             }
             set
             {
-                this.IdAsString = value != null ? value.ToString() : null;
+                this.IdAsString = StringToNullableIntConverter.ConvertToString(value);
             }
         }
 

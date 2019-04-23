@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Nom :</label>
-                    <InputText Class="col-md-4 col-12" id="text" bind-Value="@Company.Name" />
+                    <InputText Class="col-md-4 col-12" bind-Value="@Company.Name" />
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
 
         BlazorTests.Models.Company Company { get; set; }
 
-        protected override void OnInit()
+        protected override async Task OnInitAsync()
         {
             if (this.Id.HasValue == false)
             {
@@ -34,7 +34,7 @@
             else
             {
                 this.Title = "Modifier une société";
-                this.Company = CompanyService.GetCompany(this.Id.Value);
+                this.Company = await CompanyService.GetCompany(this.Id.Value);
             }
         }
 

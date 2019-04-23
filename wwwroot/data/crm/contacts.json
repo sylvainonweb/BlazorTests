@@ -6,6 +6,33 @@
     "SexId": 1,
     "Email": "robert.patterson@gmail.com",
     "PhoneNumber": "07 65 78 78 98",
-    "CompanyId" :  1
+    "CompanyId" :  1,
+  },
+  {
+    "Id": 2,
+    "LastName": "SMITH",
+    "FirstName": "Patty",
+    "SexId": 2,
+    "Email": "patty.smith@gmail.com",
+    "PhoneNumber": "06 70 78 78 98",
+    "CompanyId": null
+  },
+  {
+    "Id": 3,
+    "LastName": "DE NIRO",
+    "FirstName": "Robert",
+    "SexId": 1,
+    "Email": "robert.deniro@gmail.com",
+    "PhoneNumber": "09 70 78 78 98",
+    "CompanyId": null
+  },
+  {
+    "Id": 4,
+    "LastName": "DI CAPRIO",
+    "FirstName": "Léonardo",
+    "SexId": 1,
+    "Email": "leonardo.dicaprio@gmail.com",
+    "PhoneNumber": "09 71 72 78 98",
+    "CompanyId": null
   }  
 ]

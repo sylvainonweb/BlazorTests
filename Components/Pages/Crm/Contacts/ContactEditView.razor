@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Nom :</label>
-                    <InputText Class="col-md-4 col-12" id="text" bind-Value="@Contact.LastName" />
+                    <InputText Class="col-md-4 col-12" bind-Value="@Contact.LastName" />
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Prénom :</label>
-                    <InputText Class="col-md-4 col-12" id="text" bind-Value="@Contact.FirstName" />
+                    <InputText Class="col-md-4 col-12" bind-Value="@Contact.FirstName" />
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
 
         BlazorTests.Models.Contact Contact { get; set; }
 
-        protected override void OnInit()
+        protected override async Task OnInitAsync()
         {
             if (this.Id.HasValue == false)
             {
@@ -43,7 +43,7 @@
             else
             {
                 this.Title = "Modifier un contact";
-                this.Contact = ContactService.GetContact(this.Id.Value);
+                this.Contact = await ContactService.GetContact(this.Id.Value);
             }
         }
 
