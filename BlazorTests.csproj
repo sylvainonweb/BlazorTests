@@ -7,19 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controls\**" />
-    <Content Remove="Controls\**" />
-    <EmbeddedResource Remove="Controls\**" />
-    <None Remove="Controls\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Components\JsInteropService.old.cs" />
+    <Compile Remove="Components\Shared\Core\CloseablePageComponentBase.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Components\JsInteropService - Copy.razor" />
     <Content Remove="Components\JsInteropService.razor" />
+    <Content Remove="Components\Shared\Core\CloseablePageComponentWrapper.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,12 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="wwwroot\data\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Components\Shared\Core\PageComponentWrapper.cshtml" />
+    <None Include="Components\Shared\Core\Wrappers\PageComponentWrapper.cshtml" />
   </ItemGroup>
 
 </Project>

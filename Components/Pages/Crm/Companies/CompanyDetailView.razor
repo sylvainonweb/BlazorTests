@@ -1,0 +1,44 @@
+﻿@inherits DetailPageComponentBase
+@page "/company/detail/{IdAsString}"
+
+@inject CompanyService CompanyService
+
+<PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+
+    <div>
+        <div class="form-group row">
+            <div class="col-md-1 col-12">
+                <label>Nom :</label>
+            </div>
+            <div class="col-md-6 col-12">
+                <label>@Company.Name</label>
+            </div>
+            <div class="col-auto">
+                <button class="oi oi-pencil" onclick="@EditCompany"/>
+            </div>
+        </div>
+    </div>
+
+    @functions {
+
+        BlazorTests.Models.Company Company { get; set; }
+
+        protected override void OnInit()
+        {
+            this.Company = CompanyService.GetCompany(this.Id.Value);
+            this.Title = $"Société {Company.Name}";
+        }
+
+        private void EditCompany()
+        {
+            UriHelper.NavigateTo(Urls.CompanyEditSimple + this.Id);
+        }
+
+        protected Task OnClose()
+        {
+            UriHelper.NavigateTo(Urls.CompanyList);
+            return Task.FromResult(0);
+        }
+    }
+
+</PageComponentWrapper>

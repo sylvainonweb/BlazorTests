@@ -25,7 +25,7 @@ namespace BlazorTests.Services
 
         public async Task<ParameterValue[]> GetParameterValuesAsync(int parameterId, DateTime? startDate, DateTime? endDate)
         {
-            string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/parameters-values.json"));
+            string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/parameters/parameters-values.json"));
             var allParameterValues = JsonConvert.DeserializeObject<ParameterValue[]>(fileContent);
             var parameterValues = allParameterValues
                 .Where(o => o.ParameterId == parameterId)
@@ -65,7 +65,7 @@ namespace BlazorTests.Services
             {
                 if (parameters == null)
                 {
-                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/parameters.json"));
+                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/parameters/parameters.json"));
                     parameters = JsonConvert.DeserializeObject<IList<Parameter>>(fileContent);
                 }
 

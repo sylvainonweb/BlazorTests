@@ -8,35 +8,11 @@ using System.Threading.Tasks;
 
 namespace BlazorTests.Components
 {
-    public abstract class EditablePageComponentBase : CloseablePageComponentBase
-    {
-        [Parameter]
-        private string IdAsString { get; set; }
+    public abstract class EditablePageComponentBase : DetailPageComponentBase
+    { 
+        #region Gestion de la sauvegarde
 
-        protected int? Id
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(IdAsString))
-                {
-                    return null;
-                }
-
-                return int.Parse(IdAsString);
-            }
-        }
-
-        protected bool IsNew()
-        {
-            if (Id.HasValue == false)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        protected async Task CheckAndSave(bool closeAfterSave)
+        protected async Task Save()
         {
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
@@ -45,18 +21,33 @@ namespace BlazorTests.Components
             }
             else
             {
-                await Save();
-
-                if (closeAfterSave)
-                {
-                    await Close();
-                }
+                await OnSave();
+                await OnAfterSave();
             }
 
             return;
         }
 
-        protected abstract Task Save();
+        protected abstract Task OnSave();
+        protected virtual Task OnAfterSave()
+        {
+            return Task.FromResult(0);
+        }
+
+        #endregion
+
+        #region Gestion de l'annulation
+
+        protected virtual async Task Cancel()
+        {
+            // Pour 2 méthodes (Cancel et OnCancel) ?
+            // => pour être identique à Save et OnSave
+            await OnCancel();
+        }
+
+        protected abstract Task OnCancel();
+
+        #endregion
 
         #region Vérification des champs obligatoires
 

@@ -1,0 +1,72 @@
+﻿@inherits EditablePageComponentBase
+@page "/contact/add"
+@page "/contact/edit/{IdAsString}"
+
+@inject ContactService ContactService
+
+<EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
+
+
+    <EditForm Model="@Contact" OnValidSubmit="@Save">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Nom :</label>
+                    <InputText Class="col-md-4 col-12" id="text" bind-Value="@Contact.LastName" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Prénom :</label>
+                    <InputText Class="col-md-4 col-12" id="text" bind-Value="@Contact.FirstName" />
+                </div>
+            </div>
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+
+    @functions {
+
+        BlazorTests.Models.Contact Contact { get; set; }
+
+        protected override void OnInit()
+        {
+            if (this.Id.HasValue == false)
+            {
+                this.Title = "Nouveau contact";
+                this.Contact = new BlazorTests.Models.Contact();
+            }
+            else
+            {
+                this.Title = "Modifier un contact";
+                this.Contact = ContactService.GetContact(this.Id.Value);
+            }
+        }
+
+        protected override async Task OnSave()
+        {
+            if (this.Id.HasValue == false)
+            {
+                ContactService.AddContact(this.Contact);
+                this.Id = this.Contact.Id;
+            }
+            else
+            {
+                ContactService.UpdateContact(this.Contact);
+            }
+
+            // On redirige vers la vue complète d'un contact
+            UriHelper.NavigateTo(Urls.ContactEditFull + Id);
+        }
+
+        protected override async Task OnCancel()
+        {
+            await ReturnToCallerPage();
+        }
+    }
+
+</EditablePageComponentWrapper>

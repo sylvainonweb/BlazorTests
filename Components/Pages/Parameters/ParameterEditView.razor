@@ -4,7 +4,7 @@
 
 @inject ParameterService ParameterService
 
-<EditablePageComponentWrapper Title="@Title" CheckAndSaveAction="@(() => CheckAndSave(true))" CloseAction="@(() => Close())">
+<EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
 
 
     <EditForm Model="@Parameter" OnValidSubmit="@Save">
@@ -41,17 +41,28 @@
             }
         }
 
-        protected override async Task Save()
+        protected override async Task OnSave()
         {
-            if (this.Id.HasValue == false)
-            {
-                ParameterService.AddParameter(this.Parameter);
-            }
-            else
-            {
-                ParameterService.UpdateParameter(this.Parameter);
-            }
+            await Task.Factory.StartNew(() => {
+                if (this.Id.HasValue == false)
+                {
+                    ParameterService.AddParameter(this.Parameter);
+                }
+                else
+                {
+                    ParameterService.UpdateParameter(this.Parameter);
+                }
+            });
+
+            UriHelper.NavigateTo(Urls.ParameterList);
+        }
+
+        protected override Task OnCancel()
+        {
+            UriHelper.NavigateTo(Urls.ParameterList);
+            return Task.FromResult(0);
         }
     }
+}
 
 </EditablePageComponentWrapper>

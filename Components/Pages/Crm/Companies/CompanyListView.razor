@@ -1,0 +1,75 @@
+﻿@inherits PageComponentBase
+@page "/"
+@page "/company/list"
+@inject CompanyService CompanyService
+
+
+<PageComponentWrapper Title="@Title">
+
+    @if (@Companies == null)
+    {
+        <p><em>Chargement en cours ...</em></p>
+    }
+    else
+    {
+        <div class="form-group row">
+            <div class="col-md-6 col-12">
+                <table class="table table-sm table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>
+                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddCompany())">
+                                    <span class="oi oi-plus" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var company in @Companies)
+                        {
+                            <tr>
+                                <td class="autoSizeToContent">@company.Id</td>
+                                <td>@company.Name</td>
+                                <td class="autoSizeToContent">
+                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
+                                        <span class="oi oi-pencil" aria-hidden="true"></span>
+                                    </button>
+                                    <DeleteButton DeleteAction="@(() => DeleteCompany(@company.Id))"></DeleteButton>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    @functions {
+
+        public IList<BlazorTests.Models.Company> @Companies { get; set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Title = "Liste des sociétés";
+            @Companies = await CompanyService.GetCompaniesAsync();
+        }
+
+        public void AddCompany()
+        {
+            UriHelper.NavigateTo(Urls.CompanyAdd);
+        }
+
+        public void EditCompany(int companyId)
+        {
+            UriHelper.NavigateTo(Urls.CompanyEditFull + companyId);
+        }
+
+        public void DeleteCompany(int companyId)
+        {
+            CompanyService.DeleteCompany(companyId);
+            this.StateHasChanged();
+        }
+    }
+</PageComponentWrapper>

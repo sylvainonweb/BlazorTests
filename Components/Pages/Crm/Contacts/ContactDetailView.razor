@@ -1,0 +1,47 @@
+﻿@inherits DetailPageComponentBase
+@page "/contact/detail/{IdAsString}"
+
+@inject ContactService ContactService
+
+    <PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Nom :</label>
+                    <label class="col-md-4 col-12">@Contact.LastName</label>
+                    <button class="col-auto oi oi-pencil" onclick="@EditContact" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Prénom :</label>
+                    <label class="col-md-4 col-12">@Contact.FirstName</label>
+                </div>
+            </div>
+        </div>
+
+        @functions {
+
+            BlazorTests.Models.Contact Contact { get; set; }
+
+            protected override void OnInit()
+            {
+                this.Contact = ContactService.GetContact(this.Id.Value);
+                this.Title = $"{Contact.LastName} {Contact.FirstName}";
+            }
+
+            private void EditContact()
+            {
+                UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
+            }
+
+            protected Task OnClose()
+            {
+                UriHelper.NavigateTo(Urls.ContactList);
+                return Task.FromResult(0);
+            }
+        }
+
+    </PageComponentWrapper>

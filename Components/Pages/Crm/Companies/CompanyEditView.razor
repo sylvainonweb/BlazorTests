@@ -1,0 +1,65 @@
+﻿@inherits EditablePageComponentBase
+@page "/company/add"
+@page "/company/edit/{IdAsString}"
+
+@inject CompanyService CompanyService
+
+<EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
+
+
+    <EditForm Model="@Company" OnValidSubmit="@Save">
+        <div>
+            <div class="form-group row">
+                <div class="col-md-auto col-12">
+                    <label>Nom :</label>
+                </div>
+                <div class="col-md-6 col-12">
+                    <InputText id="text" bind-Value="@Company.Name" />
+                </div>
+            </div>
+        </div>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+
+    @functions {
+
+        BlazorTests.Models.Company Company { get; set; }
+
+        protected override void OnInit()
+        {
+            if (this.Id.HasValue == false)
+            {
+                this.Title = "Nouvelle société";
+                this.Company = new BlazorTests.Models.Company();
+            }
+            else
+            {
+                this.Title = "Modifier une société";
+                this.Company = CompanyService.GetCompany(this.Id.Value);
+            }
+        }
+
+        protected override async Task OnSave()
+        {
+            if (this.Id.HasValue == false)
+            {
+                CompanyService.AddCompany(this.Company);
+                this.Id = this.Company.Id;
+            }
+            else
+            {
+                CompanyService.UpdateCompany(this.Company);
+            }
+
+            // On redirige vers la vue complète d'une société
+            UriHelper.NavigateTo(Urls.CompanyEditFull + Id);
+        }
+
+        protected override async Task OnCancel()
+        {
+            await ReturnToCallerPage();
+        }
+    }
+
+</EditablePageComponentWrapper>

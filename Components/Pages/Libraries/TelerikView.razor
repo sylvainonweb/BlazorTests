@@ -2,7 +2,6 @@
 @using BlazorTests.Services
 @using Telerik.Blazor;
 
-@inject CustomerService CustomerService
 @*https://docs.telerik.com/blazor/getting-started/server-blazor*@
 @*https://www.telerik.com/blogs/introducing-the-telerik-ui-for-blazor-early-preview*@
 @*https://www.telerik.com/blogs/dynamically-loading-the-kendogrid-in-blazor*@
@@ -46,10 +45,23 @@
 </TelerikButton>
 
 @functions {
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+    }
+
     Customer[] customers;
     protected override async Task OnInitAsync()
     {
-        customers = await CustomerService.GetCustomersAsync();
+        await Task.FromResult(Enumerable.Range(1, 5).Select(index => new Customer
+        {
+            Id = index,
+            FirstName = "Prénom " + index,
+            LastName = "Nom " + index
+        }).ToArray());
     }
 
     public void Save()

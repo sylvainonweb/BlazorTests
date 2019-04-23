@@ -30,9 +30,10 @@ namespace BlazorTests
             // SBD : Services
             services.AddSingleton<JsInteropService>();
 
+            services.AddSingleton<CompanyService>();
+            services.AddSingleton<ContactService>();
             services.AddSingleton<ParameterService>();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

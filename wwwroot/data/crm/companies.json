@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Name": "Microsoft"
+  },
+  {
+    "Id": 2,
+    "Name": "Google"
+  },
+  {
+    "Id": 3,
+    "Name": "Amazon"
+  }  
+]

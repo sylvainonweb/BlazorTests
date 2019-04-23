@@ -9,10 +9,10 @@
     </div>
     <div class="card-footer bg-white" style="margin-top:20px;height:60px;">
         <div class="form-group float-right">
-            <button input="button" class="btn btn-light" onclick="@(() => CheckAndSave())">
+            <button input="button" class="btn btn-light" onclick="@(() => Save())">
                 <span class="oi oi-check" style="color:green" aria-hidden="true"></span> Sauvegarder
             </button>
-            <button input="button" class="btn btn-light" onclick="@(() => Close())">
+            <button input="button" class="btn btn-light" onclick="@(() => Cancel())">
                 <span class="oi oi-x" style="color:red" aria-hidden="true"></span> Fermer
             </button>
         </div>
@@ -29,23 +29,23 @@
     protected string Title { get; set; }
 
     [Parameter]
-    private Func<Task> CheckAndSaveAction { get; set; }
+    private Func<Task> SaveAction { get; set; }
 
     [Parameter]
-    private Func<Task> CloseAction { get; set; }
+    private Func<Task> CancelAction { get; set; }
 
     #endregion
 
     #region  Sauvegarde / Fermeture
 
-    protected Task CheckAndSave()
+    protected Task Save()
     {
-        return CheckAndSaveAction.Invoke();
+        return SaveAction.Invoke();
     }
 
-    protected Task Close()
+    protected Task Cancel()
     {
-        return CloseAction.Invoke();
+        return CancelAction.Invoke();
     }
 
     #endregion
