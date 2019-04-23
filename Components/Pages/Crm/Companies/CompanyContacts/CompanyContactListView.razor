@@ -1,6 +1,5 @@
 ﻿@inherits ComponentBaseEx
 
-
 <div class="row">
     <div class="col-12">
         <label class="font-weight-bold">Contacts(@Contacts.Count)</label>
@@ -8,10 +7,26 @@
 </div>
 <div class="row">
     <div class="col-md-6 col-12">
-        @foreach (var contact in @Contacts)
+        @if (@Contacts != null)
         {
-            <NavLink>@contact.LastName @contact.FirstName</NavLink>
+            @foreach (var contact in @Contacts)
+            {
+                <button onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
+            }
         }
     </div>
 </div>
 
+@functions {
+    [Parameter] public List<Contact> Contacts { get; private set; }
+
+    public void EditContact(int contactId)
+    {
+        UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
+    }
+
+    public string GetEditContactUrl(int contactId)
+    {
+        return Urls.ContactEditFull + contactId;
+    }
+}

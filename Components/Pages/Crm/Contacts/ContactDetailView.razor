@@ -37,10 +37,9 @@
                 UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
             }
 
-            protected Task OnClose()
+            protected async Task OnClose()
             {
-                UriHelper.NavigateTo(Urls.ContactList);
-                return Task.FromResult(0);
+                await ReturnToCallerPage();
             }
         }
 

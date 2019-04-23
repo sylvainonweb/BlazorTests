@@ -8,6 +8,7 @@
 #A FAIRE
 * Voir pour placer les fichiers css, js (jquery, syncfusion, ...) dans un fichier séparé
 * Déployer le site via Docker (Alpine)
+* Voir si possible d'utiliser du scss
 
 #RESSENTI
 * Les plus

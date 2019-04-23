@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Components\Pages\Crm\Companies\CompanyContacts\**" />
-    <Content Remove="Components\Pages\Crm\Companies\CompanyContacts\**" />
-    <EmbeddedResource Remove="Components\Pages\Crm\Companies\CompanyContacts\**" />
-    <None Remove="Components\Pages\Crm\Companies\CompanyContacts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Components\JsInteropService.old.cs" />
     <Compile Remove="Components\Shared\Core\CloseablePageComponentBase.cs" />
   </ItemGroup>
@@ -33,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Components\Pages\Crm\Companies\CompanyContacts\CompanyContactListView.razor" />
     <None Include="Components\Shared\Core\Wrappers\PageComponentWrapper.cshtml" />
   </ItemGroup>
 

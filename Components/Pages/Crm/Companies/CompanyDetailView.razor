@@ -4,31 +4,19 @@
 @inject CompanyService CompanyService
 @inject ContactService ContactService
 
-<PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+    <PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
 
-    <div class="row">
-        <div class="col-12">
-            <div class="form-group">
-                <label class="col-md-2 col-12">Nom :</label>
-                <label class="col-md-4 col-12">@Company.Name</label>
-                <button class="col-auto oi oi-pencil" onclick="@EditCompany" />
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Nom :</label>
+                    <label class="col-md-4 col-12">@Company.Name</label>
+                    <button class="col-auto oi oi-pencil" onclick="@EditCompany" />
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <label class="font-weight-bold">Contacts(@Contacts.Count)</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-12">
-            @foreach (var contact in @Contacts)
-            {
-                <NavLink>@contact.LastName @contact.FirstName</NavLink>
-            }
-        </div>
-    </div>
+        <CompanyContactListView Contacts="@Contacts"></CompanyContactListView>
 
     @functions {
 
