@@ -23,6 +23,13 @@ namespace BlazorTests.Services
             return Task.FromResult(this.Contacts);
         }
 
+        public Task<List<Contact>> GetCompanyContactsAsync(int companyId)
+        {
+            return Task.FromResult(
+                this.Contacts.Where(o => o.CompanyId == companyId).ToList()
+            );
+        }
+
         public Contact GetContact(int contactId)
         {
             return this.Contacts.Where(o => o.Id == contactId).Single();

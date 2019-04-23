@@ -1,0 +1,17 @@
+﻿@inherits ComponentBaseEx
+
+
+<div class="row">
+    <div class="col-12">
+        <label class="font-weight-bold">Contacts(@Contacts.Count)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        @foreach (var contact in @Contacts)
+        {
+            <NavLink>@contact.LastName @contact.FirstName</NavLink>
+        }
+    </div>
+</div>
+
