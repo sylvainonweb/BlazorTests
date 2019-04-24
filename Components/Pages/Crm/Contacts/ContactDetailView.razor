@@ -21,14 +21,22 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Civilité :</label>
+                    <label class="col-md-4 col-12">@Contact.CivilityText</label>
+                </div>
+            </div>
+        </div>
 
         @functions {
 
-            BlazorTests.Models.Contact Contact { get; set; }
+            BlazorTests.Models.ContactView Contact { get; set; }
 
             protected override async Task OnInitAsync()
             {
-                this.Contact = await ContactService.GetContact(this.Id.Value);
+                this.Contact = await ContactService.GetContactForDetail(this.Id.Value);
                 this.Title = $"{Contact.LastName} {Contact.FirstName}";
             }
 

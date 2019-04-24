@@ -3,6 +3,7 @@
 @page "/contact/edit/{IdAsString}"
 
 @inject ContactService ContactService
+@inject ReferenceService ReferenceService
 
 <EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
 
@@ -24,6 +25,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Civilité :</label>
+                    <select class="col-md-4 col-12 custom-select" bind="@Contact.CivilityId">
+                        <option value=null></option>
+                        @foreach (var civility in Civilities)
+                        {
+                            <option value=@civility.Id>@civility.Text</option>
+                        }
+                    </select>
+                    @*<InputSelect class="col-md-4 col-12" bind-Value="@Contact.CivilityId">
+            <option value=null></option>
+            @foreach (var civility in Civilities)
+            {
+                <option value="@civility.Id">@civility.Text</option>
+            }
+        </InputSelect>>*@
+                </div>
+            </div>
+        </div>
 
         <DataAnnotationsValidator />
         <ValidationSummary />
@@ -32,9 +54,12 @@
     @functions {
 
         BlazorTests.Models.Contact Contact { get; set; }
+        IList<BlazorTests.Models.Civility> Civilities { get; set; }
 
         protected override async Task OnInitAsync()
         {
+            this.Civilities = await ReferenceService.GetCivilitiesAsync();
+
             if (this.Id.HasValue == false)
             {
                 this.Title = "Nouveau contact";
@@ -43,7 +68,7 @@
             else
             {
                 this.Title = "Modifier un contact";
-                this.Contact = await ContactService.GetContact(this.Id.Value);
+                this.Contact = await ContactService.GetContactForEdit(this.Id.Value);
             }
         }
 

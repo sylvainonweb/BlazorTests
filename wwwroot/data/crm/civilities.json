@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Text": "Monsieur"
+  },
+  {
+    "Id": 2,
+    "Text": "Madame"
+  },
+  {
+    "Id": 3,
+    "Text": "Mademoiselle"
+  }
+]

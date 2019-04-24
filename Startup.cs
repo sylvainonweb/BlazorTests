@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorTests.Components;
 using BlazorTests.Services;
+using BlazorTests.Services.Business;
 
 namespace BlazorTests
 {
@@ -30,8 +31,11 @@ namespace BlazorTests
             // SBD : Services
             services.AddSingleton<JsInteropService>();
 
+            services.AddSingleton<Repository>();
             services.AddSingleton<CompanyService>();
             services.AddSingleton<ContactService>();
+            services.AddSingleton<ReferenceService>();
+
             services.AddSingleton<ParameterService>();
             services.AddSingleton<WeatherForecastService>();
         }

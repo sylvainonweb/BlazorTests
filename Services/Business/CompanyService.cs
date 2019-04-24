@@ -1,42 +1,19 @@
-using Microsoft.AspNetCore.Hosting;
+
 using BlazorTests.Models;
-using Newtonsoft.Json;
-using System;
+using BlazorTests.Services.Business;
 using System.Collections.Generic;
-using System.IO;
+
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorTests.Services
 {
-    public class CompanyService
+    public class CompanyService : ServiceBase
     {
-        #region Variables
-
-        private IWebHostEnvironment WebHostEnvironment { get; set; }
-
-        private IList<Company> companies = null;
-        public IList<Company> Companies
-        {
-            get
-            {
-                if (companies == null)
-                {
-                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/crm/companies.json"));
-                    companies = JsonConvert.DeserializeObject<IList<Company>>(fileContent);
-                }
-
-                return companies;
-            }
-        }
-
-        #endregion
-
         #region Initialisation
 
-        public CompanyService(IWebHostEnvironment env)
+        public CompanyService(Repository repository) : base(repository)
         {
-            this.WebHostEnvironment = env;
         }
 
         #endregion
@@ -45,21 +22,21 @@ namespace BlazorTests.Services
 
         public Task<IList<Company>> GetCompaniesAsync()
         {
-            return Task.FromResult(this.Companies);
+            return Task.FromResult(this.Repository.Companies);
         }
 
         public Task<Company> GetCompany(int companyId)
         {
-            return Task.FromResult(this.Companies.Where(o => o.Id == companyId).Single());
+            return Task.FromResult(this.Repository.Companies.Where(o => o.Id == companyId).Single());
         }
 
         public async Task AddCompany(Company company)
         {
             await Task.Factory.StartNew(() =>
             {
-                var companies = this.Companies;
+                var companies = this.Repository.Companies;
                 company.Id = companies.Max(o => o.Id) + 1;
-                this.Companies.Add(company);
+                this.Repository.Companies.Add(company);
             });
         }
 
@@ -73,8 +50,8 @@ namespace BlazorTests.Services
         {
             await Task.Factory.StartNew(() =>
             {
-                var company = this.Companies.Where(o => o.Id == companyId).Single();
-                this.Companies.Remove(company);
+                var company = this.Repository.Companies.Where(o => o.Id == companyId).Single();
+                this.Repository.Companies.Remove(company);
             });
         }
 

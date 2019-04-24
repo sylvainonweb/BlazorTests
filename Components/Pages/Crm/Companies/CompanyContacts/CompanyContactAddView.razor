@@ -65,19 +65,19 @@
     }
 
     public string SearchFilter { get; set; }
-    public List<Contact> @UnassignedContacts { get; set; }
-    public List<Contact> @AssignedContacts { get; set; }
+    public IList<ContactView> @UnassignedContacts { get; set; }
+    public IList<ContactView> @AssignedContacts { get; set; }
 
     protected override async Task OnInitAsync()
     {
         var company = await CompanyService.GetCompany(this.CompanyId);
-        this.@AssignedContacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
+        this.@AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
         this.Title = $"Gérer les contacts de la société {company.Name}";
     }
 
     public async Task Search(UIKeyboardEventArgs args)
     {
-        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContactsAsync(SearchFilter, this.CompanyId);
+        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
     }
 
     public async Task AddContactToCompany(int contactId)
@@ -85,8 +85,8 @@
         await ContactService.AddContactToCompany(contactId, this.CompanyId);
 
         // On rafraichit les listes
-        this.@AssignedContacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
-        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContactsAsync(SearchFilter, this.CompanyId);
+        this.@AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
+        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
 
         this.StateHasChanged();
     }
@@ -96,8 +96,8 @@
         await ContactService.RemoveContactFromCompany(contactId, this.CompanyId);
 
         // On rafraichit les listes
-        this.@AssignedContacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
-        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContactsAsync(SearchFilter, this.CompanyId);
+        this.@AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
+        this.@UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
 
         this.StateHasChanged();
     }

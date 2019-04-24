@@ -32,12 +32,12 @@
 </div>
 
 @functions {
-    public List<Contact> Contacts { get; private set; }
+    public IList<ContactView> Contacts { get; private set; }
     [Parameter] public int CompanyId { get; private set; }
 
         protected override async Task OnInitAsync()
         {
-            this.Contacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
+            this.Contacts = await ContactService.GetCompanyContacts(this.CompanyId);
         }
 
         public void EditContact(int contactId)
