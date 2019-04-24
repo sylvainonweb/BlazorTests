@@ -36,7 +36,7 @@
                                     <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
                                         <span class="oi oi-pencil" aria-hidden="true"></span>
                                     </button>
-                                    <DeleteButton DeleteAction="@(() => DeleteCompany(@company.Id))"></DeleteButton>
+                                    <DeleteButton DeleteAction="@(async() => await DeleteCompany(@company.Id))"></DeleteButton>
                                 </td>
                             </tr>
                         }
@@ -66,9 +66,9 @@
             UriHelper.NavigateTo(Urls.CompanyEditFull + companyId);
         }
 
-        public void DeleteCompany(int companyId)
+        public async Task DeleteCompany(int companyId)
         {
-            CompanyService.DeleteCompany(companyId);
+            await CompanyService.DeleteCompany(companyId);
             this.StateHasChanged();
         }
     }

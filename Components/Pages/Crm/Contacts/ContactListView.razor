@@ -37,7 +37,7 @@
                                 <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditContact(@contact.Id))">
                                     <span class="oi oi-pencil" aria-hidden="true"></span>
                                 </button>
-                                <DeleteButton DeleteAction="@(() => DeleteContact(@contact.Id))"></DeleteButton>
+                                <DeleteButton DeleteAction="@(async () => await DeleteContact(@contact.Id))"></DeleteButton>
                             </td>
                         </tr>
                         }
@@ -67,9 +67,9 @@
             UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
         }
 
-        public void DeleteContact(int contactId)
+        public async Task DeleteContact(int contactId)
         {
-            ContactService.DeleteContact(contactId);
+            await ContactService.DeleteContact(contactId);
             this.StateHasChanged();
         }
     }

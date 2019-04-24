@@ -32,7 +32,7 @@
                 this.Title = $"{Contact.LastName} {Contact.FirstName}";
             }
 
-            private async Task EditContact()
+            private void EditContact()
             {
                 UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
             }

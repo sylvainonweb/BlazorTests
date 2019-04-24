@@ -42,12 +42,12 @@
         {
             if (this.Id.HasValue == false)
             {
-                CompanyService.AddCompany(this.Company);
+                await CompanyService.AddCompany(this.Company);
                 this.Id = this.Company.Id;
             }
             else
             {
-                CompanyService.UpdateCompany(this.Company);
+                await CompanyService.UpdateCompany(this.Company);
             }
 
             // On redirige vers la vue complète d'une société
