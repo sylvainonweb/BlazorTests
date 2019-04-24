@@ -48,7 +48,6 @@
     <Watch Remove="Pages\Tests\Libraries\SyncfusionTestView.razor" />
     <Watch Remove="Pages\Tests\Libraries\TelerikTestView.razor" />
     <Watch Remove="Pages\Tests\LongRunningProcessButtonTestView.razor" />
-    <Watch Remove="Pages\Tests\MandatoryFieldTestView.razor" />
     <Watch Remove="Pages\Tests\TestView.razor" />
     <Watch Remove="Pages\_Imports.razor" />
   </ItemGroup>

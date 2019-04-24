@@ -37,7 +37,6 @@ namespace BlazorTests
             services.AddSingleton<ReferenceService>();
 
             services.AddSingleton<ParameterService>();
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

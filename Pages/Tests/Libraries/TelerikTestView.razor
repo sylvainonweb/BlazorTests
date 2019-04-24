@@ -46,24 +46,6 @@
         Sauvegarder
     </TelerikButton>*@
 
-<TelerikChart>
-    <TelerikChartSeriesItems>
-        <TelerikChartSeries Type="ChartSeriesType.Line" Name="Product 1" Data="@series1Data">
-        </TelerikChartSeries>
-        <TelerikChartSeries Type="ChartSeriesType.Line" Name="Product 2" Data="@series2Data">
-        </TelerikChartSeries>
-    </TelerikChartSeriesItems>
-
-    <TelerikChartCategoryAxes>
-        <TelerikChartCategoryAxis Categories="@xAxisItems"></TelerikChartCategoryAxis>
-    </TelerikChartCategoryAxes>
-
-    <TelerikChartTitle Text="Quarterly revenue per product"></TelerikChartTitle>
-
-    <TelerikChartLegend Position="ChartLegendPosition.Right">
-    </TelerikChartLegend>
-</TelerikChart>
-
 @functions {
 
     public class Customer
@@ -87,11 +69,6 @@
     public void Save()
     {
     }
-
-    public List<object> series1Data = new List<object>() { 10, 2, 5, 6 };
-    public List<object> series2Data = new List<object>() { 5, 8, 2, 7 };
-    public string[] xAxisItems = new string[] { "Q1", "Q2", "Q3", "Q4" };
-
 
     public class ModelData
     {
