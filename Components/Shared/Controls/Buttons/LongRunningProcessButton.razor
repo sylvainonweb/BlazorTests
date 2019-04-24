@@ -2,18 +2,19 @@
 
 @if (IsProcessing)
 {
-    <button class="btn btn-primary width disabled" disabled><span class='fa-left fas fa-sync-alt spinning'></span>@ButtonText</button>
+    <button class="@CssClass" disabled><span class='fa-left fas fa-sync-alt spinning'></span>@Text</button>
 }
 else
 {
-    <button class="btn btn-primary btn-outline-primary width" onclick="@OnProcessAsync">@ButtonText</button>
+    <button class="@CssClass" onclick="@OnProcessAsync">@Text</button>
 }
 
     @functions {
 
         protected bool IsProcessing { get; set; }
         [Parameter] private Func<Task> Action { get; set; }
-        [Parameter] private string ButtonText { get; set; }
+        [Parameter] private string Text { get; set; }
+        [Parameter] private string CssClass { get; set; }
 
         public async Task OnProcessAsync()
         {
