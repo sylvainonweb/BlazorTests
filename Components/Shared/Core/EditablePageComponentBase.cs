@@ -21,7 +21,7 @@ namespace BlazorTests.Components
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
             {
-                ToastService.ShowToast(string.Join("\r\n", errors), ToastLevel.Error);
+                ToastService.ShowToast(string.Join("\r\n", errors), ToastLevel.Error, "Erreur");
                 //await JsInteropService.ShowAlert(string.Join("\r\n", errors));
             }
             else

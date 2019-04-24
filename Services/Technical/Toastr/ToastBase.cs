@@ -20,42 +20,42 @@ namespace BlazorTests.Services
             ToastService.OnHide += HideToast;
         }
 
-        private void ShowToast(string message, ToastLevel level)
+        private void ShowToast(string message, ToastLevel level, string heading = null)
         {
-            BuildToastSettings(level, message);
+            BuildToastSettings(level, message, heading);
             IsVisible = true;
-            StateHasChanged();
+            Invoke(() => StateHasChanged());
         }
 
         private void HideToast()
         {
             IsVisible = false;
-            StateHasChanged();
+            Invoke(() => StateHasChanged());
         }
 
-        private void BuildToastSettings(ToastLevel level, string message)
+        private void BuildToastSettings(ToastLevel level, string message, string heading)
         {
             switch (level)
             {
                 case ToastLevel.Info:
                     BackgroundCssClass = "bg-info";
                     IconCssClass = "info";
-                    Heading = "Info";
+                    Heading = heading != null ? heading : "Info";
                     break;
                 case ToastLevel.Success:
                     BackgroundCssClass = "bg-success";
                     IconCssClass = "check";
-                    Heading = "Success";
+                    Heading = heading != null ? heading : "Succès";
                     break;
                 case ToastLevel.Warning:
                     BackgroundCssClass = "bg-warning";
                     IconCssClass = "exclamation";
-                    Heading = "Warning";
+                    Heading = heading != null ? heading : "Warning";
                     break;
                 case ToastLevel.Error:
                     BackgroundCssClass = "bg-danger";
                     IconCssClass = "times";
-                    Heading = "Error";
+                    Heading = heading != null ? heading : "Erreur";
                     break;
             }
 
