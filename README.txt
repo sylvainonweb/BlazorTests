@@ -31,8 +31,9 @@
 	  Note : les répertoires Views contiennent les pages mais aussi les composants utilisées pour cette page
 
 #A NOTER
+* Pour retrouver l'ip du conteneur Docker sous Windows, ipconfig et rechercher Carte Ethernet vEthernet (DockerNAT)
 * Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
-* les contrôles Telerik ont besoin du réseau (même en dev) pour s'afficher (cdn en ligne)
+* Les contrôles Telerik ont besoin du réseau (même en dev) pour s'afficher (cdn en ligne)
 * Le passage de paramètre à un composant de type Page se fait comme ceci : https://stackoverflow.com/questions/54303437/redirecting-in-blazor-with-parameter
 
 #LIENS INTERESSANTS
@@ -46,3 +47,5 @@
 * Site magnifique fait en Blazor : https://discordapp.com/invite/Xg9ja5s
 * Librairie Telerik : https://docs.telerik.com/blazor/introduction
 * Police Open Iconic : https://aalmiray.github.io/ikonli/cheat-sheet-openiconic.html
+* libman : permet d'installer facilement (bouton droit Add\Client side libraries) les librairies client présentes sur https://cdnjs.com
+  voir https://github.com/aspnet/LibraryManager et https://docs.microsoft.com/fr-fr/aspnet/core/client-side/libman/libman-vs?view=aspnetcore-2.2

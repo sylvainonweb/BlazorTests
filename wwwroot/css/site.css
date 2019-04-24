@@ -1,4 +1,9 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url('../lib/font-awesome/css/all.min.css');
+
+/*doit se trouver dans le répertoire wwwroot et pas à côté du composant pour que cela fonctionne */
+@import url('search-button.css');
+
 
 html, body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -189,3 +194,4 @@ td.autoSizeToContent {
 .buttonAsLink:hover {
 	text-decoration: underline;
 }
+
