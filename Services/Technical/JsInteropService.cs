@@ -12,9 +12,6 @@ namespace BlazorTests.Services
         /// ATTENTION : JSRuntime n'est pas en l'état "injectable" dans une classe autre qu'un composant. 
         /// => on définit la propriété dans le 1er composant de l'application à savoir MainLayout
         /// </summary>
-        //public static IJSRuntime JSRuntime { get; set; }
-
-        [Inject]
         public static IJSRuntime JSRuntime { get; set; }
 
         public static async Task ReturnToCallerPage()
