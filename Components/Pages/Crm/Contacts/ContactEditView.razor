@@ -2,6 +2,7 @@
 @page "/contact/add"
 @page "/contact/edit/{IdAsString}"
 @using BlazorTests.Components.Shared.Core
+@using  System.ComponentModel.DataAnnotations
 @inject ContactService ContactService
 @inject ReferenceService ReferenceService
 
@@ -50,8 +51,26 @@
             </div>
         </div>
 
-        @*<DataAnnotationsValidator />
-        <ValidationSummary />*@
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Date de naissance :</label>
+                    <InputDate class="col-md-4 col-12" bind-Value="@BirthDate" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Marié :</label>
+                    <InputCheckbox class="col-auto" bind-Value="@Married" />
+                </div>
+            </div>
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
     </EditForm>
 
     @functions {
@@ -66,6 +85,10 @@
         public string FirstName { get; set; }
         [RequiredEx("Civilité")]
         public int? CivilityId { get; set; }
+        [RequiredEx("Date de naissance")]
+        public DateTime? BirthDate { get; set; }
+        [RequiredEx("Marrié")]
+        public bool Married { get; set; }
 
         IList<BlazorTests.Data.CivilityEntity> Civilities { get; set; }
 
@@ -84,25 +107,29 @@
                 this.LastName = contactEntity.LastName;
                 this.FirstName = contactEntity.FirstName;
                 this.CivilityId = contactEntity.CivilityId;
+                this.BirthDate = contactEntity.BirthDate;
+                this.Married = contactEntity.Married;
             }
         }
 
         protected override async Task OnSave()
         {
-            var contact = new ContactEntity();
-            contact.LastName = this.LastName;
-            contact.FirstName = this.FirstName;
-            contact.CivilityId = this.CivilityId;
+            var contactEntity = new ContactEntity();
+            contactEntity.LastName = this.LastName;
+            contactEntity.FirstName = this.FirstName;
+            contactEntity.CivilityId = this.CivilityId;
+            contactEntity.BirthDate = this.BirthDate;
+            contactEntity.Married = this.Married;
 
             if (this.Id.HasValue == false)
             {
-                await ContactService.AddContact(contact);
-                this.Id = contact.Id;
+                await ContactService.AddContact(contactEntity);
+                this.Id = contactEntity.Id;
             }
             else
             {
-                contact.Id = this.Id.Value;
-                await ContactService.UpdateContact(contact);
+                contactEntity.Id = this.Id.Value;
+                await ContactService.UpdateContact(contactEntity);
             }
 
             // On redirige vers la vue complète d'un contact

@@ -13,5 +13,8 @@ namespace BlazorTests.Data
 
         public int? CompanyId { get; set; }
         public string CompanyName { get; set; }
+
+        public DateTime? BirthDate { get; set; }
+        public bool Married { get; set; }
     }
 }

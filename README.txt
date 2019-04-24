@@ -1,40 +1,48 @@
 ﻿#BLOQUANT
-* Voir pour gérer correctement les champs obligatoires. En effet, si la vérification des champs obligatoires se fait 
-	via un attribut [Required] et que cet attibut est ajouté conformément aux champs obligatoires de la base, la vérification
-	va déclencher une erreur car la propriété Id n'est pas renseigné lors d'un ajout
-* Voir pour pouvoir binder des champs nullables aux contrôles (notamment les dates). 
-  Semble avoir été pris en compte : public DateTimeOffset? OptionalExpiryDate { get; set; } (trouvé dans le code source de Github)
+
 
 #A FAIRE
-* Voir pour placer les fichiers css, js (jquery, syncfusion, ...) dans un fichier séparé
-* Déployer le site via Docker (Alpine)
-* Voir si possible d'utiliser du scss
 * Voir si possible d'ajouter un attribut ConvertToString à une propriété afin de regénérer une propriété du type Id / IdAsString
+* Voir si la notion de modèle proposée par LLBLGEN ne permettrait pas de générer les modèles à utiliser pour les écrans de saisie
 * Faire fonctionner le hot reload
+* Voir si possible d'utiliser du scss
+* Déployer le site via Docker (Alpine)
 
-#RESSENTI
-* Les plus
-	* ajouter une page est super simple. NavMenu + page razor avec route et c'est fini
-* Les moins
-	* On peut mal nommé un composant dans le html => le composant ne s'affiche pas mais pas d'erreur à la compilation
-	* Obligé de définir les paramètres d'url en string et donc de créer 2 propriétés, une en string l'autre dans le bon type
-	* Impossible de réorganiser les répertoires comme je le veux (le projet ne compile plus). Exemple de structure
-		Areas
-			Parameters
-				Views
-				Models
-				Services
-			Customers
-				Views
-				Models
-				Services
-	  Note : les répertoires Views contiennent les pages mais aussi les composants utilisées pour cette page
+#IMPORTANT
+* Pour pouvoir binder des champs nullables aux contrôles (notamment les dates), il faut forcément utiliser les contrôles 
+  InputXXX (exemple : InputDate) sinon erreur du type "CS0029 Cannot implicitly convert type 'string' to 'System.DateTime?'
 
-#A NOTER
+* Pour moi, un modèle est différent d'une entité. Dans le cas de Blazor, je dirai que cela revient à ce qu'on a
+  pour WPF à savoir des entités (données en base) et des ViewModels (présentation des données)
+  1) Même si en base, l'id est obligatoire, il ne faut pas ajouter l'attribut Required sur cette propriété car il 
+  interdirait la validation de l'écran de saisie alors qu'il est auto généré.
+  2) Quid des entités renseignées en plusieurs fois
+	a) En base, les champs non renseignés dans le 1er écran doivent être NULLABLES sinon on ne pourrait pas sauvegarder le 1er écran
+	b) Il faut diviser l'entitié en 2 (1 classe par écran) pour pouvoir ajouter les attributs Required en fonction de l'écran
+	car ce n'est pas parce qu'un champ est nullable en base qu'on ne veut pas forcer l'utilisateur à le saisir quand il 
+	est sur un écran particulier. Exemple : si je demande les informations sur la banque (nom de la banque, IBAN, ...), je peux vouloir
+	le tout ou rien.
+
+ * Possibilité de séparer les fichiers css via la commande import. Exemple @import url('search-button.css');
+ * Le passage de paramètre à un composant de type Page se fait comme ceci : https://stackoverflow.com/questions/54303437/redirecting-in-blazor-with-parameter
+ * On peut mal nommé un composant dans le html => le composant ne s'affiche pas mais pas d'erreur à la compilation
+ * Obligé de définir les paramètres d'url en string et donc de créer 2 propriétés, une en string l'autre dans le bon type
+* Impossible de réorganiser les répertoires comme je le veux (le projet ne compile plus). Exemple de structure
+	Areas
+		Parameters
+			Views
+			Models
+			Services
+		Customers
+			Views
+			Models
+			Services
+	Note : les répertoires Views contiennent les pages mais aussi les composants utilisées pour cette page
+
 * Pour retrouver l'ip du conteneur Docker sous Windows, ipconfig et rechercher Carte Ethernet vEthernet (DockerNAT)
 * Ne pas utiliser de uniquement des majuscules dans une partie d'un namespace. Exemple Neptune.AC. car à la compilation, ça plante car il convertit en Neptune.Ac
 * Les contrôles Telerik ont besoin du réseau (même en dev) pour s'afficher (cdn en ligne)
-* Le passage de paramètre à un composant de type Page se fait comme ceci : https://stackoverflow.com/questions/54303437/redirecting-in-blazor-with-parameter
+
 
 #LIENS INTERESSANTS
 * EditForm (InputText, InputDate, ...) : https://www.telerik.com/blogs/first-look-forms-and-validation-in-razor-components

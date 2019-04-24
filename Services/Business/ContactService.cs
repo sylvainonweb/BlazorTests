@@ -47,6 +47,8 @@ namespace BlazorTests.Services
                 contact.Id = contactEntity.Id;
                 contact.LastName = contactEntity.LastName;
                 contact.FirstName = contactEntity.FirstName;
+                contact.BirthDate = contactEntity.BirthDate;
+                contact.Married = contactEntity.Married;
                 if (contactEntity.CivilityId.HasValue)
                 {
                     contact.CivilityId = contactEntity.CivilityId;
@@ -80,6 +82,8 @@ namespace BlazorTests.Services
             existingContactEntity.LastName = contactEntity.LastName;
             existingContactEntity.FirstName = contactEntity.FirstName;
             existingContactEntity.CivilityId = contactEntity.CivilityId;
+            existingContactEntity.BirthDate = contactEntity.BirthDate;
+            existingContactEntity.Married = contactEntity.Married;
         }
 
         public async Task DeleteContact(int contactId)
