@@ -9,6 +9,7 @@
 * Voir pour placer les fichiers css, js (jquery, syncfusion, ...) dans un fichier séparé
 * Déployer le site via Docker (Alpine)
 * Voir si possible d'utiliser du scss
+* Voir si possible d'ajouter un attribut ConvertToString à une propriété afin de regénérer une propriété du type Id / IdAsString
 
 #RESSENTI
 * Les plus
@@ -16,6 +17,7 @@
 * Les moins
 	* Le hot reload ne semble pas fonctionner
 	* On peut mal nommé un composant dans le html => le composant ne s'affiche pas mais pas d'erreur à la compilation
+	* Obligé de définir les paramètres d'url en string et donc de créer 2 propriétés, une en string l'autre dans le bon type
 	* Impossible de réorganiser les répertoires comme je le veux (le projet ne compile plus). Exemple de structure
 		Areas
 			Parameters

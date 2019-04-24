@@ -2,6 +2,7 @@
 @page "/company-contact/add/{CompanyIdAsString}"
 
 @inject ContactService  ContactService
+@inject CompanyService CompanyService
 
     <PageComponentWrapper Title="@Title" CloseAction="@OnCancel">
 
@@ -24,7 +25,7 @@
                                     <label>@contact.LastName @contact.FirstName</label>
                                 </td>
                                 <td>
-                                    <button onclick="@(() => @AddContactToCompany(contact.Id))">Ajouter</button>
+                                    <button class="oi oi-plus" onclick="@(() => @AddContactToCompany(contact.Id))" style="margin-left:10px;"></button>
                                 </td>
                             </tr>
                         }
@@ -43,7 +44,7 @@
                                     <label>@contact.LastName @contact.FirstName</label>
                                 </td>
                                 <td>
-                                    <button onclick="@(() => @RemoveContactFromCompany(contact.Id))">Supprimer</button>
+                                    <button class="oi oi-x" onclick="@(() => @RemoveContactFromCompany(contact.Id))" style="margin-left:10px;"></button>
                                 </td>
                             </tr>
                         }
@@ -69,9 +70,9 @@
 
     protected override async Task OnInitAsync()
     {
-        this.Title = "Associer un contact";
+        var company = await CompanyService.GetCompany(this.CompanyId);
         this.@AssignedContacts = await ContactService.GetCompanyContactsAsync(this.CompanyId);
-
+        this.Title = $"Gérer les contacts de la société {company.Name}";
     }
 
     public async Task Search(UIKeyboardEventArgs args)

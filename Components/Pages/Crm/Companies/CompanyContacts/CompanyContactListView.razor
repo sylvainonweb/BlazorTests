@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-md-6 col-12">
-        <button onclick="@AddContactToCompany" class="oi oi-plus">Ajouter un contact</button>
+        <button class="btn btn-secondary" onclick="@ManageCompanyContacts" >Gérer les contacts</button>
     </div>
 </div>
 
@@ -45,7 +45,7 @@
         UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
     }
 
-    public void AddContactToCompany()
+    public void ManageCompanyContacts()
     {
         UriHelper.NavigateTo(Urls.CompanyContactAdd + this.CompanyId);
     }

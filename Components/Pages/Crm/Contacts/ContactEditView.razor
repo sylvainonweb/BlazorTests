@@ -51,12 +51,12 @@
         {
             if (this.Id.HasValue == false)
             {
-                ContactService.AddContact(this.Contact);
+                await ContactService.AddContact(this.Contact);
                 this.Id = this.Contact.Id;
             }
             else
             {
-                ContactService.UpdateContact(this.Contact);
+                await ContactService.UpdateContact(this.Contact);
             }
 
             // On redirige vers la vue complète d'un contact
