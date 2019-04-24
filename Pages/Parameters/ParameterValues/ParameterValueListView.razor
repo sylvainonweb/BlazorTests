@@ -1,0 +1,47 @@
+﻿@inherits BlazorTests.Pages.PageComponentBase
+@page "/parameter-value/list"
+@using BlazorTests.Data
+
+@inject BlazorTests.Services.ParameterService ParameterService
+
+
+<PageComponentWrapper Title="@Title">
+
+    <div>
+        <div class="form-group row">
+            <div class="col-12">
+                <ParameterValueSearchCriteriaView OnSearchAsked=Search></ParameterValueSearchCriteriaView>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <ParameterValueSearchResultsView ParameterValues="@ParameterValues"></ParameterValueSearchResultsView>
+            </div>
+        </div>
+    </div>
+
+    @functions {
+
+        public BlazorTests.Data.ParameterValue[] ParameterValues { get; set; }
+
+        protected override void OnInit()
+        {
+            this.Title = "Tableau de bord";
+        }
+
+        public async Task Search(int? parameterId, DateTime? startDate, DateTime? endDate)
+        {
+            if (parameterId.HasValue)
+            {
+                ParameterValues = await ParameterService.GetParameterValuesAsync(parameterId.Value, startDate, endDate);
+            }
+            else
+            {
+                ParameterValues = new ParameterValue[0];
+            }
+            this.StateHasChanged();
+        }
+    }
+</PageComponentWrapper>
+

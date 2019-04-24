@@ -1,0 +1,113 @@
+﻿@inherits BlazorTests.Pages.PageComponentBase
+@page "/company-contact/add/{CompanyIdAsString}"
+
+@using BlazorTests.Data
+@using BlazorTests.Shared
+@inject BlazorTests.Services.ContactService  ContactService
+@inject BlazorTests.Services.CompanyService CompanyService
+
+
+<PageComponentWrapper Title="@Title" CloseAction="@OnCancel">
+
+    <div class="row">
+        <div class="col-12">
+            <input type="text" bind-value-oninput="@SearchFilter" onkeyup="@Search" placeholder="Rechercher par le nom" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label class="font-weight-bold">Contacts trouvés</label>
+            @if (@UnassignedContacts != null)
+            {
+                <table>
+                    @foreach (var contact in UnassignedContacts)
+                    {
+                        <tr>
+                            <td>
+                                <label>@contact.LastName @contact.FirstName</label>
+                            </td>
+                            <td>
+                                <button class="fa fa-plus" onclick="@(() => @AddContactToCompany(contact.Id))" style="margin-left:10px;"></button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+        <div class="col-6">
+            <label class="font-weight-bold">Contacts déja associés</label>
+            @if (@AssignedContacts != null)
+            {
+                <table>
+                    @foreach (var contact in AssignedContacts)
+                    {
+                        <tr>
+                            <td>
+                                <label>@contact.LastName @contact.FirstName</label>
+                            </td>
+                            <td>
+                                <button class="fa fa-times" onclick="@(() => @RemoveContactFromCompany(contact.Id))" style="margin-left:10px;"></button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</PageComponentWrapper>
+
+
+@functions {
+
+    [Parameter] public string CompanyIdAsString { get; private set; }
+    protected int CompanyId
+    {
+        get { return StringToNullableIntConverter.ConvertToInt(CompanyIdAsString).Value; }
+        set { this.CompanyIdAsString = StringToNullableIntConverter.ConvertToString(value); }
+    }
+
+    public string SearchFilter { get; set; }
+    public IList<Contact> UnassignedContacts { get; set; }
+    public IList<Contact> AssignedContacts { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        var company = await CompanyService.GetCompany(this.CompanyId);
+        this.AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
+        this.Title = $"Gérer les contacts de la société {company.Name}";
+    }
+
+    public async Task Search(UIKeyboardEventArgs args)
+    {
+        this.UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
+    }
+
+    public async Task AddContactToCompany(int contactId)
+    {
+        await ContactService.AddContactToCompany(contactId, this.CompanyId);
+
+        // On rafraichit les listes
+        this.AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
+        this.UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
+
+        this.StateHasChanged();
+    }
+
+    public async Task RemoveContactFromCompany(int contactId)
+    {
+        await ContactService.RemoveContactFromCompany(contactId, this.CompanyId);
+
+        // On rafraichit les listes
+        this.AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
+        this.UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
+
+        this.StateHasChanged();
+    }
+
+    public async Task OnCancel()
+    {
+        await ReturnToCallerPage();
+    }
+}
+

@@ -1,0 +1,36 @@
+﻿@inherits Microsoft.AspNetCore.Components.Layouts.LayoutComponentBase
+
+@*@inject Microsoft.JSInterop.IJSRuntime JSRuntime
+@inject BlazorTests.Services.JsInteropService JsInteropService*@
+
+@*SBD : Toast *@
+<Toast></Toast>
+
+@*SBD : MATBLAZOR*@
+<MatBlazorInstall />
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <a href="https://docs.microsoft.com/en-us/aspnet/" target="_blank" class="ml-md-auto">About</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
+
+@*@functions {
+
+    protected override void OnInit()
+    {
+        // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
+        // on utilise le 1er composant de l'application pour définir manuellement la propriété
+        // statique de JsInteropService.
+        JsInteropService.JSRuntime = JSRuntime;
+    }
+}*@

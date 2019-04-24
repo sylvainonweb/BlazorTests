@@ -1,0 +1,103 @@
+﻿@inherits BlazorTests.Pages.ComponentBaseEx
+
+@using BlazorTests.Data
+@using Syncfusion.EJ2.RazorComponents.Charts
+
+@* Obligé de tester null sinon le binding plante. Surement corrigé avec des contrôles tiers mais bon *@
+@if (ParameterValues != null && ParameterValues.Length > 0)
+{
+    <div class="form-group row">
+        <div class="col-md-6 col-12">
+            <p class="text-center font-weight-bold">Données</p>
+            <table class="table table-sm table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Valeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var parameterValue in ParameterValues)
+                    {
+                        <tr>
+                            <td>@parameterValue.Date.ToShortDateString()</td>
+                            <td>@parameterValue.Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <div class="form-group row">
+                <div class="col-12">
+                    <p class="text-center font-weight-bold">Graphe</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12">
+                    <EjsChart id="bar" primaryXAxis="@ParameterValuesGridxAxis" primaryYAxis="@ParameterValuesGridyAxis">
+                        <ChartTooltipsettings enable="true"></ChartTooltipsettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries dataSource="@ParameterValues" xName="Date" yName="Value"
+                                         name="Valeur du paramètre" width=5 type="@GraphType">
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </EjsChart>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12">
+                    <select class="custom-select" bind=@GraphType>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Line>Line</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Column>Column</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Area>Area</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Bar>Bar</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Histogram>Histogram</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingColumn>StackingColumn</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingArea>StackingArea</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingLine>StackingLine</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingBar>StackingBar</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StepLine>StepLine</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StepArea>StepArea</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.SplineArea>SplineArea</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Scatter>Scatter</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Spline>Spline</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingColumn100>StackingColumn100</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingBar100>StackingBar100</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingLine100>StackingLine100</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingArea100>StackingArea100</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.RangeColumn>RangeColumn</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Hilo>Hilo</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.HiloOpenClose>HiloOpenClose</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Waterfall>Waterfall</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.RangeArea>RangeArea</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Bubble>Bubble</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Candle>Candle</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Polar>Polar</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Radar>Radar</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.BoxAndWhisker>BoxAndWhisker</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.MultiColoredLine>MultiColoredLine</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.MultiColoredArea>MultiColoredArea</option>
+                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Pareto>Pareto</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Aucune donnée</p>
+}
+
+@functions {
+
+    [Parameter] public BlazorTests.Data.ParameterValue[] ParameterValues { get; private set; }
+
+    // Pour le graphe
+    public Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType GraphType { get; set; }
+    public Object ParameterValuesGridxAxis = new { valueType = "DateTime", labelFormat = "dd/MM/yyyy", };
+    public Object ParameterValuesGridyAxis = new { labelFormat = "{value}" };
+}
+

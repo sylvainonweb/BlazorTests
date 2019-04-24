@@ -1,0 +1,39 @@
+﻿@inherits ComponentBase
+
+@*Ce composant a besoin d'un fichier CSS (voir wwwroot/css)*@
+
+@if (IsProcessing)
+{
+    <button class="@CssClass" disabled><span class='fa-left fas fa-sync-alt spinning'></span>@Text</button>
+}
+else
+{
+    <button class="@CssClass" onclick="@OnProcessAsync">@Text</button>
+}
+
+@functions {
+
+    protected bool IsProcessing { get; set; }
+    [Parameter] private Func<Task> Action { get; set; }
+    [Parameter] private string Text { get; set; }
+    [Parameter] private string CssClass { get; set; }
+
+    public async Task OnProcessAsync()
+    {
+        try
+        {
+            IsProcessing = true;
+            StateHasChanged();
+
+            await Action.Invoke();
+
+        }
+        finally
+        {
+            IsProcessing = false;
+            StateHasChanged();
+        }
+    }
+}
+
+

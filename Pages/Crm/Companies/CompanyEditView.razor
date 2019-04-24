@@ -1,0 +1,81 @@
+﻿@inherits BlazorTests.Pages.EditablePageComponentBase
+@page "/company/add"
+@page "/company/edit/{IdAsString}"
+
+@inject BlazorTests.Services.CompanyService CompanyService
+@inject BlazorTests.Services.ReferenceService ReferenceService
+
+<EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
+
+
+    <EditForm Model="@Company" OnValidSubmit="@Save">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Nom :</label>
+                    <InputText Class="col-md-4 col-12" bind-Value="@Company.Name" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="col-md-2 col-12">Activité :</label>
+                    <select class="col-md-4 col-12 custom-select" bind="@Company.ActivityId">
+                        <option value=null></option>
+                        @foreach (var activity in Activities)
+                        {
+                            <option value=@activity.Id>@activity.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+
+    @functions {
+
+        BlazorTests.Data.CompanyEntity Company { get; set; }
+        IList<BlazorTests.Data.ActivityEntity> Activities { get; set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Activities = await ReferenceService.GetActivityEntities();
+
+            if (this.Id.HasValue == false)
+            {
+                this.Title = "Nouvelle société";
+                this.Company = new BlazorTests.Data.CompanyEntity();
+            }
+            else
+            {
+                this.Title = "Modifier une société";
+                this.Company = await CompanyService.GetCompanyEntity(this.Id.Value);
+            }
+        }
+
+        protected override async Task OnSave()
+        {
+            if (this.Id.HasValue == false)
+            {
+                await CompanyService.AddCompany(this.Company);
+                this.Id = this.Company.Id;
+            }
+            else
+            {
+                await CompanyService.UpdateCompany(this.Company);
+            }
+
+            // On redirige vers la vue complète d'une société
+            UriHelper.NavigateTo(Urls.CompanyEditFull + Id);
+        }
+
+        protected override async Task OnCancel()
+        {
+            await ReturnToCallerPage();
+        }
+    }
+
+</EditablePageComponentWrapper>

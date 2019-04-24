@@ -1,0 +1,52 @@
+﻿@inherits BlazorTests.Pages.ComponentBaseEx
+@using BlazorTests.Data
+@inject BlazorTests.Services.ContactService ContactService
+
+<div class="row">
+    <div class="col-12">
+        <label class="font-weight-bold">Contacts(@Contacts.Count)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        @if (@Contacts != null)
+        {
+            <table>
+                @foreach (var contact in @Contacts)
+                {
+                    <tr>
+                        <td>
+                            <button onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-12">
+        <button class="btn btn-secondary" onclick="@ManageCompanyContacts">Gérer les contacts</button>
+    </div>
+</div>
+
+@functions {
+    public IList<Contact> Contacts { get; private set; }
+    [Parameter] public int CompanyId { get; private set; }
+
+    protected override async Task OnInitAsync()
+    {
+        this.Contacts = await ContactService.GetCompanyContacts(this.CompanyId);
+    }
+
+    public void EditContact(int contactId)
+    {
+        UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
+    }
+
+    public void ManageCompanyContacts()
+    {
+        UriHelper.NavigateTo(Urls.CompanyContactAdd + this.CompanyId);
+    }
+}

@@ -1,0 +1,68 @@
+﻿@inherits BlazorTests.Pages.EditablePageComponentBase
+@page "/parameter/add"
+@page "/parameter/edit/{IdAsString}"
+
+@inject BlazorTests.Services.ParameterService ParameterService
+
+<EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
+
+
+    <EditForm Model="@Parameter" OnValidSubmit="@(() => Save())">
+        <div>
+            <div class="form-group row">
+                <div class="col-md-auto col-12">
+                    <label>Libellé :</label>
+                </div>
+                <div class="col-md-6 col-12">
+                    <InputText id="text" bind-Value="@Parameter.Text" />
+                    @*<input type="text" bind="@Parameter.Text" /> Required ne marche pas avec le input normal *@
+                </div>
+            </div>
+        </div>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+
+    @functions {
+
+        BlazorTests.Data.Parameter Parameter { get; set; }
+
+        protected override void OnInit()
+        {
+            if (this.Id.HasValue == false)
+            {
+                this.Title = "Nouveau paramètre";
+                this.Parameter = new BlazorTests.Data.Parameter();
+            }
+            else
+            {
+                this.Title = "Modifier un paramètre";
+                this.Parameter = ParameterService.GetParameter(this.Id.Value);
+            }
+        }
+
+        protected override async Task OnSave()
+        {
+            await Task.Factory.StartNew(() => {
+                if (this.Id.HasValue == false)
+                {
+                    ParameterService.AddParameter(this.Parameter);
+                }
+                else
+                {
+                    ParameterService.UpdateParameter(this.Parameter);
+                }
+            });
+
+            UriHelper.NavigateTo(Urls.ParameterList);
+        }
+
+        protected override Task OnCancel()
+        {
+            UriHelper.NavigateTo(Urls.ParameterList);
+            return Task.FromResult(0);
+        }
+    }
+}
+
+</EditablePageComponentWrapper>

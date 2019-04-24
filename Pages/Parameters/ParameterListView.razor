@@ -1,0 +1,79 @@
+﻿@inherits BlazorTests.Pages.PageComponentBase
+@page "/parameter/list"
+@inject BlazorTests.Services.ParameterService ParameterService
+
+
+<PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+
+    @if (@Parameters == null)
+    {
+        <p><em>Chargement en cours ...</em></p>
+    }
+    else
+    {
+        <div class="form-group row">
+            <div class="col-md-6 col-12">
+                <table class="table table-sm table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Libellé</th>
+                            <th>
+                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddParameter())">
+                                    <span class="fa fa-plus" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var parameter in Parameters)
+                        {
+                            <tr>
+                                <td class="autoSizeToContent">@parameter.Id</td>
+                                <td>@parameter.Text</td>
+                                <td class="autoSizeToContent">
+                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditParameter(@parameter.Id))">
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                                    </button>
+                                    <DeleteButton DeleteAction="@(() => DeleteParameter(@parameter.Id))"></DeleteButton>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+@functions {
+
+    public IList<BlazorTests.Data.Parameter> Parameters { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        this.Title = "Liste des paramètres";
+        Parameters = await ParameterService.GetParametersAsync();
+    }
+
+    public void AddParameter()
+    {
+        UriHelper.NavigateTo(Urls.ParameterAdd);
+    }
+
+    public void EditParameter(int parameterId)
+    {
+        UriHelper.NavigateTo(Urls.ParameterEdit + parameterId);
+    }
+
+    public void DeleteParameter(int parameterId)
+    {
+        ParameterService.DeleteParameter(parameterId);
+        this.StateHasChanged();
+    }
+
+    public async Task OnClose()
+    {
+        await ReturnToCallerPage();
+    }
+}
+</PageComponentWrapper>

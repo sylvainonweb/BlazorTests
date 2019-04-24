@@ -1,0 +1,111 @@
+﻿@page "/libraries/telerik"
+@using BlazorTests.Services
+@using Telerik.Blazor;
+
+@using Telerik.Blazor.Components.Chart
+
+@*https://docs.telerik.com/blazor/getting-started/server-blazor*@
+@*https://www.telerik.com/blogs/introducing-the-telerik-ui-for-blazor-early-preview*@
+@*https://www.telerik.com/blogs/dynamically-loading-the-kendogrid-in-blazor*@
+@*https://www.telerik.com/blogs/integrating-web-services-with-kendogrid-blazor-and-razor-components*@
+@*https://www.telerik.com/blogs/telerik-ui-for-blazor-grid-component-basics*@
+
+<h1>Telerik</h1>
+
+<TelerikGrid Data="@customers" Pageable="true" Sortable="true">
+    <TelerikGridColumns>
+        <TelerikGridColumn Field="Id" Title="Customer Id" />
+        <TelerikGridColumn Field="FirstName" Title="First Name" />
+        <TelerikGridColumn Field="LastName" Title="Last Name" />
+    </TelerikGridColumns>
+</TelerikGrid>
+
+@*<TelerikChart>
+        <TelerikChartTitle Text="Site Visitors Stats"></TelerikChartTitle>
+        <TelerikChartLegend Visible="false"></TelerikChartLegend>
+
+        <TelerikChartSeriesItems>
+            <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Total Visits" Data="@Series1Data">
+            </TelerikChartSeries>
+            <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Unique visitors" Data="@Series2Data">
+            </TelerikChartSeries>
+        </TelerikChartSeriesItems>
+
+        <TelerikChartValueAxes>
+            <TelerikChartValueAxis Max="140000"></TelerikChartValueAxis>
+        </TelerikChartValueAxes>
+
+        <TelerikChartCategoryAxes>
+            <TelerikChartCategoryAxis Categories="@Categories"></TelerikChartCategoryAxis>
+        </TelerikChartCategoryAxes>
+
+    </TelerikChart>
+
+
+    <TelerikButton onclick="@Save">
+        Sauvegarder
+    </TelerikButton>*@
+
+<TelerikChart>
+    <TelerikChartSeriesItems>
+        <TelerikChartSeries Type="ChartSeriesType.Line" Name="Product 1" Data="@series1Data">
+        </TelerikChartSeries>
+        <TelerikChartSeries Type="ChartSeriesType.Line" Name="Product 2" Data="@series2Data">
+        </TelerikChartSeries>
+    </TelerikChartSeriesItems>
+
+    <TelerikChartCategoryAxes>
+        <TelerikChartCategoryAxis Categories="@xAxisItems"></TelerikChartCategoryAxis>
+    </TelerikChartCategoryAxes>
+
+    <TelerikChartTitle Text="Quarterly revenue per product"></TelerikChartTitle>
+
+    <TelerikChartLegend Position="ChartLegendPosition.Right">
+    </TelerikChartLegend>
+</TelerikChart>
+
+@functions {
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    Customer[] customers = null;
+    protected override async Task OnInitAsync()
+    {
+        await Task.FromResult(Enumerable.Range(1, 5).Select(index => new Customer
+        {
+            Id = index,
+            FirstName = "Prénom " + index,
+            LastName = "Nom " + index
+        }).ToArray());
+    }
+
+    public void Save()
+    {
+    }
+
+    public List<object> series1Data = new List<object>() { 10, 2, 5, 6 };
+    public List<object> series2Data = new List<object>() { 5, 8, 2, 7 };
+    public string[] xAxisItems = new string[] { "Q1", "Q2", "Q3", "Q4" };
+
+
+    public class ModelData
+    {
+        public int Value { get; set; }
+    }
+
+    public List<ModelData> Data = new List<ModelData>()
+{
+        new ModelData() { Value = 1 },
+        new ModelData() { Value = 3 },
+        new ModelData() { Value = 2 },
+    };
+
+    public List<object> Series1Data = new List<object>() { 56000, 63000, 74000, 91000, 117000, 138000 };
+    public List<object> Series2Data = new List<object>() { 52000, 34000, 23000, 48000, 67000, 83000 };
+    public string[] Categories = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" };
+}
