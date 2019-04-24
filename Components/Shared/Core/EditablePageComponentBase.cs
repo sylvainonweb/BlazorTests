@@ -1,4 +1,5 @@
-﻿using BlazorTests.Services;
+﻿using BlazorTests.Components.Shared.Core;
+using BlazorTests.Services;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections;
@@ -116,15 +117,5 @@ namespace BlazorTests.Components
         }
 
         #endregion
-    }
-
-    public class RequiredExAttribute : Attribute
-    {
-        public string Label { get; set; }
-
-        public RequiredExAttribute(string label)
-        {
-            this.Label = label;
-        }
     }
 }
