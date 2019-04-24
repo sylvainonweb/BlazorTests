@@ -1,0 +1,10 @@
+﻿@page "/test.long-running-process-button"
+
+<LongRunningProcessButton CssClass="btn btn-primary width" Text="Rechercher" Action="@Search"></LongRunningProcessButton>
+
+@functions {
+    private async Task Search()
+    {
+        await Task.Delay(1000);
+    }
+}
