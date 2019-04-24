@@ -1,0 +1,36 @@
+﻿@*Ce composant a besoin d'un fichier CSS (voir wwwroot/css)*@
+
+@if (IsProcessing)
+{
+    <button class="btn btn-primary width disabled" disabled><span class='fa-left fas fa-sync-alt spinning'></span>@ButtonText</button>
+}
+else
+{
+    <button class="btn btn-primary btn-outline-primary width" onclick="@OnProcessAsync">@ButtonText</button>
+}
+
+    @functions {
+
+        protected bool IsProcessing { get; set; }
+        [Parameter] private Func<Task> Action { get; set; }
+        [Parameter] private string ButtonText { get; set; }
+
+        public async Task OnProcessAsync()
+        {
+            try
+            {
+                IsProcessing = true;
+                StateHasChanged();
+
+                await Action.Invoke();
+
+            }
+            finally
+            {
+                IsProcessing = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+

@@ -1,3 +1,10 @@
 ﻿@page "/test"
 
-<SearchButton></SearchButton>
+<LongRunningProcessButton ButtonText="Rechercher" Action="@Search"></LongRunningProcessButton>
+
+@functions {
+    private async Task Search()
+    {
+        await Task.Delay(1000);
+    }
+}
