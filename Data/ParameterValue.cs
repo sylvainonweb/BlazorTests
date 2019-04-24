@@ -1,6 +1,6 @@
 using System;
 
-namespace BlazorTests.Models
+namespace BlazorTests.Data
 {
     public class ParameterValue
     {

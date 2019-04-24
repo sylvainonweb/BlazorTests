@@ -1,6 +1,6 @@
 ﻿@inherits PageComponentBase
 @page "/parameter-value/list"
-@using BlazorTests.Models
+@using BlazorTests.Data
 
 @inject BlazorTests.Services.ParameterService ParameterService
 
@@ -23,7 +23,7 @@
 
     @functions {
 
-        public BlazorTests.Models.ParameterValue[] ParameterValues { get; set; }
+        public BlazorTests.Data.ParameterValue[] ParameterValues { get; set; }
 
         protected override void OnInit()
         {

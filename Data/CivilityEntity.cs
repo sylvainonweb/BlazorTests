@@ -1,8 +1,8 @@
 using System;
 
-namespace BlazorTests.Models
+namespace BlazorTests.Data
 {
-    public class Civility
+    public class CivilityEntity
     {
         public int Id { get; set; }
         public string Text { get; set; }

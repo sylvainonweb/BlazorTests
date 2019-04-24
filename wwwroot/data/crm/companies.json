@@ -1,14 +1,27 @@
 [
   {
     "Id": 1,
-    "Name": "Microsoft"
+    "Name": "Microsoft",
+    "ActivityId" :  1,
   },
   {
     "Id": 2,
-    "Name": "Google"
+    "Name": "Google",
+    "ActivityId": 1
   },
   {
     "Id": 3,
-    "Name": "Amazon"
-  }  
+    "Name": "Amazon",
+    "ActivityId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Orange",
+    "ActivityId": 2
+  },
+  {
+    "Id": 5,
+    "Name": "Afflelou",
+    "ActivityId": 3
+  }
 ]

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using BlazorTests.Models;
+using BlazorTests.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,72 +22,72 @@ namespace BlazorTests.Services
 
         #region Gestion des contacts
 
-        public async Task<IList<ContactView>> GetContactsForList()
+        public Task<ContactEntity> GetContactEntity(int contactId)
         {
-            return await GetContactViews(this.Repository.Contacts);
-        }  
-
-        public Task<Contact> GetContactForEdit(int contactId)
-        {
-            return Task.FromResult(this.Repository.Contacts.Where(o => o.Id == contactId).Single());
+            return Task.FromResult(this.Repository.ContactEntities.Where(o => o.Id == contactId).Single());
         }
 
-        public async Task<ContactView> GetContactForDetail(int contactId)
+        public async Task<IList<Contact>> GetContacts()
         {
-            var contactViews = await GetContactViews(this.Repository.Contacts.Where(o => o.Id == contactId).ToList());
+            return await GetContacts(this.Repository.ContactEntities);
+        }  
+
+        public async Task<Contact> GetContact(int contactId)
+        {
+            var contactViews = await GetContacts(this.Repository.ContactEntities.Where(o => o.Id == contactId).ToList());
             return contactViews[0];
         }
 
-        private Task<IList<ContactView>> GetContactViews(IList<Contact> contacts)
+        private Task<IList<Contact>> GetContacts(IList<ContactEntity> contactEntities)
         {
-            IList<ContactView> contactViews = new List<ContactView>();
-            foreach (var contact in contacts)
+            IList<Contact> contacts = new List<Contact>();
+            foreach (var contactEntity in contactEntities)
             {
-                var contactView = new ContactView();
-                contactView.Id = contact.Id;
-                contactView.LastName = contact.LastName;
-                contactView.FirstName = contact.FirstName;
-                if (contact.CivilityId.HasValue)
+                var contact = new Contact();
+                contact.Id = contactEntity.Id;
+                contact.LastName = contactEntity.LastName;
+                contact.FirstName = contactEntity.FirstName;
+                if (contactEntity.CivilityId.HasValue)
                 {
-                    contactView.CivilityId = contact.CivilityId;
-                    contactView.CivilityText = this.Repository.Civilities.Where(o => o.Id == contact.CivilityId).Single().Text;
+                    contact.CivilityId = contactEntity.CivilityId;
+                    contact.CivilityText = this.Repository.CivilityEntities.Where(o => o.Id == contactEntity.CivilityId).Single().Text;
                 }
-                if (contact.CompanyId.HasValue)
+                if (contactEntity.CompanyId.HasValue)
                 {
-                    contactView.CompanyId = contact.CompanyId;
-                    contactView.CompanyName = this.Repository.Companies.Where(o => o.Id == contact.CompanyId).Single().Name;
+                    contact.CompanyId = contactEntity.CompanyId;
+                    contact.CompanyName = this.Repository.CompanyEntities.Where(o => o.Id == contactEntity.CompanyId).Single().Name;
                 }
 
-                contactViews.Add(contactView);
+                contacts.Add(contact);
             }
 
-            return Task.FromResult(contactViews);
+            return Task.FromResult(contacts);
         }
 
-        public async Task AddContact(Contact contact)
+        public async Task AddContact(ContactEntity contactEntity)
         {
             await Task.Factory.StartNew(() =>
             {
-                var contacts = this.Repository.Contacts;
-                contact.Id = contacts.Max(o => o.Id) + 1;
-                this.Repository.Contacts.Add(contact);
+                var contactEntities = this.Repository.ContactEntities;
+                contactEntity.Id = contactEntities.Max(o => o.Id) + 1;
+                this.Repository.ContactEntities.Add(contactEntity);
             });
         }
 
-        public async Task UpdateContact(Contact contact)
+        public async Task UpdateContact(ContactEntity contactEntity)
         {
-            var existingContact = await GetContactForEdit(contact.Id);
-            existingContact.LastName = contact.LastName;
-            existingContact.FirstName = contact.FirstName;
-            existingContact.CivilityId = contact.CivilityId;
+            var existingContactEntity = await GetContactEntity(contactEntity.Id);
+            existingContactEntity.LastName = contactEntity.LastName;
+            existingContactEntity.FirstName = contactEntity.FirstName;
+            existingContactEntity.CivilityId = contactEntity.CivilityId;
         }
 
         public async Task DeleteContact(int contactId)
         {
             await Task.Factory.StartNew(() =>
             {
-                var contact = this.Repository.Contacts.Where(o => o.Id == contactId).Single();
-                this.Repository.Contacts.Remove(contact);
+                var contactEntity = this.Repository.ContactEntities.Where(o => o.Id == contactId).Single();
+                this.Repository.ContactEntities.Remove(contactEntity);
             });
         }
 
@@ -95,20 +95,20 @@ namespace BlazorTests.Services
 
         #region Gestion des contacts d'une société
 
-        public async Task<IList<ContactView>> GetCompanyContacts(int companyId)
+        public async Task<IList<Contact>> GetCompanyContacts(int companyId)
         {
-            return await GetContactViews(this.Repository.Contacts.Where(o => o.CompanyId == companyId).ToList());
+            return await GetContacts(this.Repository.ContactEntities.Where(o => o.CompanyId == companyId).ToList());
         }
 
-        public async Task<IList<ContactView>> GetUnassignedCompanyContacts(string searchFilter, int companyId)
+        public async Task<IList<Contact>> GetUnassignedCompanyContacts(string searchFilter, int companyId)
         {
             if (string.IsNullOrWhiteSpace(searchFilter))
             {
-                IList<ContactView> contactsViews = new List<ContactView>();
-                return await Task.FromResult(contactsViews);
+                IList<Contact> contacts = new List<Contact>();
+                return await Task.FromResult(contacts);
             }
 
-            return await GetContactViews(this.Repository.Contacts
+            return await GetContacts(this.Repository.ContactEntities
                 .Where(o => string.Concat(o.LastName, " ", o.FirstName).ToLower().Contains(searchFilter.ToLower()))
                 .Where(o => o.CompanyId == null)
                 .ToList());
@@ -116,14 +116,14 @@ namespace BlazorTests.Services
 
         public async Task AddContactToCompany(int contactId, int companyId)
         {
-            var existingContact = await GetContactForEdit(contactId);
-            existingContact.CompanyId = companyId;
+            var existingContactEntity = await GetContactEntity(contactId);
+            existingContactEntity.CompanyId = companyId;
         }
 
         public async Task RemoveContactFromCompany(int contactId, int companyId /* Ne sert à rien mais plus logique */)
         {
-            var existingContact = await GetContactForEdit(contactId);
-            existingContact.CompanyId = null;
+            var existingContactEntity = await GetContactEntity(contactId);
+            existingContactEntity.CompanyId = null;
         }        
 
         #endregion

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using BlazorTests.Models;
+using BlazorTests.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,9 +22,18 @@ namespace BlazorTests.Services
 
         #region Gestion des civilités       
 
-        public Task<IList<Civility>> GetCivilitiesAsync()
+        public Task<IList<CivilityEntity>> GetCivilityEntities()
         {
-            return Task.FromResult(this.Repository.Civilities);
+            return Task.FromResult(this.Repository.CivilityEntities);
+        }
+
+        #endregion
+
+        #region Gestion des activités       
+
+        public Task<IList<ActivityEntity>> GetActivityEntities()
+        {
+            return Task.FromResult(this.Repository.ActivityEntities);
         }
 
         #endregion

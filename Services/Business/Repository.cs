@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using BlazorTests.Models;
+using BlazorTests.Data;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -18,49 +18,51 @@ namespace BlazorTests.Services.Business
             this.WebHostEnvironment = env;
         }
 
-        private IList<Contact> contacts = null;
-        public IList<Contact> Contacts
+        private IList<ContactEntity> contactEntities = null;
+        public IList<ContactEntity> ContactEntities
         {
             get
             {
-                if (contacts == null)
-                {
-                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/crm/contacts.json"));
-                    contacts = JsonConvert.DeserializeObject<IList<Contact>>(fileContent);
-                }
-
-                return contacts;
+                return GetList<ContactEntity>("data/crm/contacts.json", ref contactEntities);
             }
         }
 
-        private IList<Company> companies = null;
-        public IList<Company> Companies
+        private IList<CompanyEntity> companyEntities = null;
+        public IList<CompanyEntity> CompanyEntities
         {
             get
             {
-                if (companies == null)
-                {
-                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/crm/companies.json"));
-                    companies = JsonConvert.DeserializeObject<IList<Company>>(fileContent);
-                }
-
-                return companies;
+                return GetList<CompanyEntity>("data/crm/companies.json", ref companyEntities);
             }
         }
 
-        private IList<Civility> civilities = null;
-        public IList<Civility> Civilities
+        private IList<CivilityEntity> civilityEntities = null;
+        public IList<CivilityEntity> CivilityEntities
         {
             get
             {
-                if (civilities == null)
-                {
-                    string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, "data/crm/civilities.json"));
-                    civilities = JsonConvert.DeserializeObject<IList<Civility>>(fileContent);
-                }
-
-                return civilities;
+                return  GetList<CivilityEntity>("data/crm/civilities.json", ref civilityEntities);
             }
+        }
+
+        private IList<ActivityEntity> activityEntities = null;
+        public IList<ActivityEntity> ActivityEntities
+        {
+            get
+            {
+                return GetList<ActivityEntity>("data/crm/activities.json", ref activityEntities);
+            }
+        }
+
+        public IList<T> GetList<T>(string filePath, ref IList<T> entities)
+        {
+            if (entities == null)
+            {
+                string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, filePath));
+                entities = JsonConvert.DeserializeObject<IList<T>>(fileContent);
+            }
+
+            return entities;
         }
     }
 }

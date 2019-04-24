@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazorTests.Models
+namespace BlazorTests.Data
 {
     public class Parameter
     {

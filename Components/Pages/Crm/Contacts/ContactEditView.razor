@@ -1,7 +1,6 @@
 ﻿@inherits EditablePageComponentBase
 @page "/contact/add"
 @page "/contact/edit/{IdAsString}"
-@using System.ComponentModel.DataAnnotations
 @using BlazorTests.Components.Shared.Core
 @inject ContactService ContactService
 @inject ReferenceService ReferenceService
@@ -51,12 +50,16 @@
             </div>
         </div>
 
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+        @*<DataAnnotationsValidator />
+        <ValidationSummary />*@
     </EditForm>
 
     @functions {
 
+        // La validation des champs obligatoires ne peut pas se faire sur les entités directement car :
+        // * l'id est obligatoire mais on ne peut pas placer un attribut Required (alors qu'il est obligatoire) sur ce champ car il est généré
+        // * Si l'entitié est renseignée via 2 écrans, il faut 1 "modèle" par écran, chaque modèle ayant les attributs correspondant aux champs obligatoires de l'écran.
+        // Du coup, il me semble mieux de reproduire la même chose qu'en WPF à savoir des propriétés propres à l'écran
         [RequiredEx("Nom")]
         public string LastName { get; set; }
         [RequiredEx("Prénom")]
@@ -64,11 +67,11 @@
         [RequiredEx("Civilité")]
         public int? CivilityId { get; set; }
 
-        IList<BlazorTests.Models.Civility> Civilities { get; set; }
+        IList<BlazorTests.Data.CivilityEntity> Civilities { get; set; }
 
         protected override async Task OnInitAsync()
         {
-            this.Civilities = await ReferenceService.GetCivilitiesAsync();
+            this.Civilities = await ReferenceService.GetCivilityEntities();
 
             if (this.Id.HasValue == false)
             {
@@ -77,16 +80,16 @@
             else
             {
                 this.Title = "Modifier un contact";
-                var contact = await ContactService.GetContactForEdit(this.Id.Value);
-                this.LastName = contact.LastName;
-                this.FirstName = contact.FirstName;
-                this.CivilityId = contact.CivilityId;
+                var contactEntity = await ContactService.GetContactEntity(this.Id.Value);
+                this.LastName = contactEntity.LastName;
+                this.FirstName = contactEntity.FirstName;
+                this.CivilityId = contactEntity.CivilityId;
             }
         }
 
         protected override async Task OnSave()
         {
-            var contact = new Contact();
+            var contact = new ContactEntity();
             contact.LastName = this.LastName;
             contact.FirstName = this.FirstName;
             contact.CivilityId = this.CivilityId;

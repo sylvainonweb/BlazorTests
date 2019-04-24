@@ -19,6 +19,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nom</th>
+                            <th>Activité</th>
                             <th>
                                 <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddCompany())">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
@@ -29,16 +30,17 @@
                     <tbody>
                         @foreach (var company in @Companies)
                         {
-                            <tr>
-                                <td class="autoSizeToContent">@company.Id</td>
-                                <td>@company.Name</td>
-                                <td class="autoSizeToContent">
-                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
-                                        <span class="fa fa-pen" aria-hidden="true"></span>
-                                    </button>
-                                    <DeleteButton DeleteAction="@(async() => await DeleteCompany(@company.Id))"></DeleteButton>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td class="autoSizeToContent">@company.Id</td>
+                            <td>@company.Name</td>
+                            <td>@company.ActivityText</td>
+                            <td class="autoSizeToContent">
+                                <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
+                                    <span class="fa fa-pen" aria-hidden="true"></span>
+                                </button>
+                                <DeleteButton DeleteAction="@(async() => await DeleteCompany(@company.Id))"></DeleteButton>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -48,12 +50,12 @@
 
     @functions {
 
-        public IList<BlazorTests.Models.Company> @Companies { get; set; }
+        public IList<BlazorTests.Data.Company> Companies { get; set; }
 
         protected override async Task OnInitAsync()
         {
             this.Title = "Liste des sociétés";
-            @Companies = await CompanyService.GetCompaniesAsync();
+            Companies = await CompanyService.GetCompanies();
         }
 
         public void AddCompany()
@@ -69,6 +71,7 @@
         public async Task DeleteCompany(int companyId)
         {
             await CompanyService.DeleteCompany(companyId);
+            this.Companies = await CompanyService.GetCompanies();
             this.StateHasChanged();
         }
     }

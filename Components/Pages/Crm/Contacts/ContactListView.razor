@@ -51,12 +51,12 @@
 
     @functions {
 
-        public IList<BlazorTests.Models.ContactView> Contacts { get; set; }
+        public IList<BlazorTests.Data.Contact> Contacts { get; set; }
 
         protected override async Task OnInitAsync()
         {
             this.Title = "Liste des contacts";
-            Contacts = await ContactService.GetContactsForList();
+            Contacts = await ContactService.GetContacts();
         }
 
         public void AddContact()
@@ -72,6 +72,7 @@
         public async Task DeleteContact(int contactId)
         {
             await ContactService.DeleteContact(contactId);
+            this.Contacts = await ContactService.GetContacts();
             this.StateHasChanged();
         }
     }

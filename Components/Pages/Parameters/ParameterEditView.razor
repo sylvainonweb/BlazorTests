@@ -25,14 +25,14 @@
 
     @functions {
 
-        BlazorTests.Models.Parameter Parameter { get; set; }
+        BlazorTests.Data.Parameter Parameter { get; set; }
 
         protected override void OnInit()
         {
             if (this.Id.HasValue == false)
             {
                 this.Title = "Nouveau paramètre";
-                this.Parameter = new BlazorTests.Models.Parameter();
+                this.Parameter = new BlazorTests.Data.Parameter();
             }
             else
             {

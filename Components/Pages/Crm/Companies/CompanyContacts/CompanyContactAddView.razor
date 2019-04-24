@@ -65,8 +65,8 @@
     }
 
     public string SearchFilter { get; set; }
-    public IList<ContactView> @UnassignedContacts { get; set; }
-    public IList<ContactView> @AssignedContacts { get; set; }
+    public IList<Contact> @UnassignedContacts { get; set; }
+    public IList<Contact> @AssignedContacts { get; set; }
 
     protected override async Task OnInitAsync()
     {

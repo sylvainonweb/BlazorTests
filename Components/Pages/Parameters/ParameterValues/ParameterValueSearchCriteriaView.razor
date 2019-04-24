@@ -1,6 +1,6 @@
 ﻿@inherits ComponentBaseEx
 
-@using BlazorTests.Models
+@using BlazorTests.Data
 
 @inject BlazorTests.Services.ParameterService ParameterService
 
@@ -57,7 +57,7 @@
 
 @functions {
 
-    public IList<BlazorTests.Models.Parameter> Parameters { get; set; }
+    public IList<BlazorTests.Data.Parameter> Parameters { get; set; }
     public int? ParameterId { get; set; }
     public DateTime StartDate { get; set; } // En attendant, les nullables ne sont pas acceptés pour les dates
     public DateTime EndDate { get; set; }   // En attendant, les nullables ne sont pas acceptés pour les dates

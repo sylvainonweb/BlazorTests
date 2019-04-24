@@ -1,6 +1,6 @@
 ﻿@inherits ComponentBaseEx
 
-@using BlazorTests.Models
+@using BlazorTests.Data
 @using Syncfusion.EJ2.RazorComponents.Charts
 
 @* Obligé de tester null sinon le binding plante. Surement corrigé avec des contrôles tiers mais bon *@
@@ -93,7 +93,7 @@ else
 
 @functions {
 
-    [Parameter] public BlazorTests.Models.ParameterValue[] ParameterValues { get; private set; }
+    [Parameter] public BlazorTests.Data.ParameterValue[] ParameterValues { get; private set; }
 
     // Pour le graphe
     public ChartSeriesType GraphType { get; set; }

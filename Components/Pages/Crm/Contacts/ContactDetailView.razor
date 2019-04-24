@@ -32,11 +32,11 @@
 
         @functions {
 
-            BlazorTests.Models.ContactView Contact { get; set; }
+            BlazorTests.Data.Contact Contact { get; set; }
 
             protected override async Task OnInitAsync()
             {
-                this.Contact = await ContactService.GetContactForDetail(this.Id.Value);
+                this.Contact = await ContactService.GetContact(this.Id.Value);
                 this.Title = $"{Contact.LastName} {Contact.FirstName}";
             }
 

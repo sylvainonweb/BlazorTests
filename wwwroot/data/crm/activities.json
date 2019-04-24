@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Text": "Informatique"
+  },
+  {
+    "Id": 2,
+    "Text": "Telephonie"
+  },
+  {
+    "Id": 3,
+    "Text": "Optique"
+  }
+]

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using BlazorTests.Models;
+using BlazorTests.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

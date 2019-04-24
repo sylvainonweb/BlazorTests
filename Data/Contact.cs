@@ -1,8 +1,8 @@
 using System;
 
-namespace BlazorTests.Models
+namespace BlazorTests.Data
 {
-    public class ContactView
+    public class Contact
     {
         public int Id { get; set; }
         public string LastName { get; set; }
