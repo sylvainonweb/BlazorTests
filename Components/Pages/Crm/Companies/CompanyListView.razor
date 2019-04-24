@@ -21,7 +21,7 @@
                             <th>Nom</th>
                             <th>
                                 <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddCompany())">
-                                    <span class="oi oi-plus" aria-hidden="true"></span>
+                                    <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
                         </tr>
@@ -34,7 +34,7 @@
                                 <td>@company.Name</td>
                                 <td class="autoSizeToContent">
                                     <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
-                                        <span class="oi oi-pencil" aria-hidden="true"></span>
+                                        <span class="fa fa-pen" aria-hidden="true"></span>
                                     </button>
                                     <DeleteButton DeleteAction="@(async() => await DeleteCompany(@company.Id))"></DeleteButton>
                                 </td>

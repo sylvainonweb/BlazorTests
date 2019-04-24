@@ -34,7 +34,7 @@
                 // Customisation du bouton d'export Excel (icone, couleur, ...)
                 buttons: [{
                     extend: 'excel',
-                    text: "<span class='oi oi-data-transfer-download' aria-hidden='true'></span> Exporter",
+                    text: "<span class='fa fa-download' aria-hidden='true'></span> Exporter",
                     className: 'btn btn-success excelButton',
                     exportOptions: {
                         modifier: {
