@@ -4,11 +4,15 @@
 #A FAIRE
 * Voir si possible d'ajouter un attribut ConvertToString à une propriété afin de regénérer une propriété du type Id / IdAsString
 * Voir si la notion de modèle proposée par LLBLGEN ne permettrait pas de générer les modèles à utiliser pour les écrans de saisie
-* Faire fonctionner le hot reload
 * Voir si possible d'utiliser du scss
 * Déployer le site via Docker (Alpine)
 
 #IMPORTANT
+* Le Live Reload (dotnet watch run) ne détecte par défaut que les changements effectués sur les fichiers cs (pas sur les fichiers razor)
+=> ajouter ça dans le fichier csproj 
+  <ItemGroup>
+    <Watch Include="**\*.razor"/>
+  </ItemGroup>
 * Pour pouvoir binder des champs nullables aux contrôles (notamment les dates), il faut forcément utiliser les contrôles 
   InputXXX (exemple : InputDate) sinon erreur du type "CS0029 Cannot implicitly convert type 'string' to 'System.DateTime?'
 
