@@ -28,9 +28,11 @@ namespace BlazorTests
             // SBD : Telerik
             services.AddTelerikBlazor();
 
-            // SBD : Services
+            // SBD : Services techniques
             services.AddSingleton<JsInteropService>();
+            services.AddScoped<ToastService>();
 
+            // SBD : Services métier
             services.AddSingleton<Repository>();
             services.AddSingleton<CompanyService>();
             services.AddSingleton<ContactService>();

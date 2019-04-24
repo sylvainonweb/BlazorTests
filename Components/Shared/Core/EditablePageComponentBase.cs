@@ -10,7 +10,10 @@ using System.Threading.Tasks;
 namespace BlazorTests.Components
 {
     public abstract class EditablePageComponentBase : DetailPageComponentBase
-    { 
+    {
+        [Inject]
+        public ToastService ToastService { get; set; }
+
         #region Gestion de la sauvegarde
 
         protected async Task Save()
@@ -18,7 +21,8 @@ namespace BlazorTests.Components
             IList<string> errors = CheckRequiredFields();
             if (errors.Count > 0)
             {
-                await JsInteropService.ShowAlert(string.Join("\r\n", errors));
+                ToastService.ShowToast(string.Join("\r\n", errors), ToastLevel.Error);
+                //await JsInteropService.ShowAlert(string.Join("\r\n", errors));
             }
             else
             {

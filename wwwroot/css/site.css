@@ -2,6 +2,7 @@
 
 /*doit se trouver dans le répertoire wwwroot et pas à côté du composant pour que cela fonctionne */
 @import url('search-button.css');
+@import url('toast.css');
 
 
 html, body {
