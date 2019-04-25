@@ -1,0 +1,35 @@
+﻿@using BlazorTests.Services
+@using Telerik.Blazor;
+@using Telerik.Blazor.Components.Grid
+
+
+    <h2>TelerikGrid</h2>
+
+<TelerikGrid Data="@customers" Pageable="true" Sortable="true">
+    <TelerikGridColumns>
+        <TelerikGridColumn Field="Id" Title="Customer Id" />
+        <TelerikGridColumn Field="FirstName" Title="First Name" />
+        <TelerikGridColumn Field="LastName" Title="Last Name" />
+    </TelerikGridColumns>
+</TelerikGrid>
+
+@functions {
+
+    public class Customer
+    {
+        public int Id { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    Customer[] customers = null;
+    protected override async Task OnInitAsync()
+    {
+        await Task.FromResult(Enumerable.Range(1, 5).Select(index => new Customer
+        {
+            Id = index,
+            FirstName = "Prénom " + index,
+            LastName = "Nom " + index
+        }).ToArray());
+    }
+}
