@@ -23,7 +23,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<ContactEntity>("data/contacts.json", ref contactEntities);
+                return GetList<ContactEntity>("Data/json/contacts.json", ref contactEntities);
             }
         }
 
@@ -32,7 +32,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<CompanyEntity>("data/companies.json", ref companyEntities);
+                return GetList<CompanyEntity>("Data/json/companies.json", ref companyEntities);
             }
         }
 
@@ -41,7 +41,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return  GetList<CivilityEntity>("data/civilities.json", ref civilityEntities);
+                return  GetList<CivilityEntity>("Data/json/civilities.json", ref civilityEntities);
             }
         }
 
@@ -50,7 +50,25 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<ActivityEntity>("data/activities.json", ref activityEntities);
+                return GetList<ActivityEntity>("Data/json/activities.json", ref activityEntities);
+            }
+        }
+
+        private IList<Parameter> parameters = null;
+        public IList<Parameter> Parameters
+        {
+            get
+            {
+                return GetList<Parameter>("Data/json/parameters.json", ref parameters);
+            }
+        }
+
+        private IList<ParameterValue> parameterValues = null;
+        public IList<ParameterValue> ParameterValues
+        {
+            get
+            {
+                return GetList<ParameterValue>("Data/json/parameters-values.json", ref parameterValues);
             }
         }
 
@@ -58,7 +76,7 @@ namespace BlazorTests.Services
         {
             if (entities == null)
             {
-                string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.WebRootPath, filePath));
+                string fileContent = File.ReadAllText(Path.Combine(WebHostEnvironment.ContentRootPath, filePath));
                 entities = JsonConvert.DeserializeObject<IList<T>>(fileContent);
             }
 

@@ -2,7 +2,7 @@
 using BlazorTests.Services;
 using System;
 
-namespace BlazorTests.Pages
+namespace BlazorTests.Core.Converters
 {
     public class StringToNullableIntConverter
     {

@@ -2,7 +2,7 @@
 using BlazorTests.Services;
 using System.Threading.Tasks;
 
-namespace BlazorTests.Pages
+namespace BlazorTests.Core
 {
     public abstract class PageComponentBase : ComponentBaseEx
     {

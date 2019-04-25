@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using BlazorTests.Services;
 
-namespace BlazorTests.Pages
+namespace BlazorTests.Core
 {
     public abstract class ComponentBaseEx : ComponentBase
     {

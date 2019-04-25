@@ -1,7 +1,8 @@
-﻿@inherits BlazorTests.Pages.EditablePageComponentBase
+﻿@inherits EditablePageComponentBase
 @page "/parameter/add"
 @page "/parameter/edit/{IdAsString}"
 @using BlazorTests.Data
+@using BlazorTests.Core
 @inject BlazorTests.Services.ParameterService ParameterService
 
 <EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">

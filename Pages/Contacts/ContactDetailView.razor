@@ -1,6 +1,7 @@
-﻿@inherits BlazorTests.Pages.DetailPageComponentBase
+﻿@inherits DetailPageComponentBase
 @page "/contact/detail/{IdAsString}"
 @using BlazorTests.Data
+@using BlazorTests.Core
 @inject BlazorTests.Services.ContactService ContactService
 
 <PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">

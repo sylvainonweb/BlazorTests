@@ -1,8 +1,10 @@
-﻿@inherits BlazorTests.Pages.PageComponentBase
+﻿@inherits PageComponentBase
 @page "/company-contact/add/{CompanyIdAsString}"
 
 @using BlazorTests.Data
 @using BlazorTests.Shared
+@using BlazorTests.Core
+@using BlazorTests.Core.Converters;
 @inject BlazorTests.Services.ContactService  ContactService
 @inject BlazorTests.Services.CompanyService CompanyService
 

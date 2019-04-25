@@ -1,13 +1,14 @@
-﻿@inherits BlazorTests.Pages.EditablePageComponentBase
+﻿@inherits EditablePageComponentBase
 @page "/company/add"
 @page "/company/edit/{IdAsString}"
 @using BlazorTests.Data
+@using BlazorTests.Core
 @inject BlazorTests.Services.CompanyService CompanyService
 @inject BlazorTests.Services.ReferenceService ReferenceService
 
 <EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
 
-    
+
     <EditForm Model="@Company" OnValidSubmit="@Save">
         <div class="row">
             <div class="col-12">
@@ -21,6 +22,15 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Activité :</label>
+                    @*<InputSelect class="col-md-4 col-12 custom-select" bind-Value="@Company.ActivityId">
+                        <option value=null></option>
+                        @foreach (var activity in Activities)
+                        {
+                            <option value="@activity.Id">@activity.Text</option>
+                        }
+                    </InputSelect>*@
+
+                    @*BUG : Si rien n'est sélectionné, l'id précédent est gardé et n'est pas mis à null*@
                     <select class="col-md-4 col-12 custom-select" bind="@Company.ActivityId">
                         <option value=null></option>
                         @foreach (var activity in Activities)

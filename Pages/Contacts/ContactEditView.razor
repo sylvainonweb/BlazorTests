@@ -1,8 +1,9 @@
-﻿@inherits BlazorTests.Pages.EditablePageComponentBase
+﻿@inherits EditablePageComponentBase
 @page "/contact/add"
 @page "/contact/edit/{IdAsString}"
 @using BlazorTests.Shared
 @using BlazorTests.Data
+@using BlazorTests.Core
 @using  System.ComponentModel.DataAnnotations
 @inject BlazorTests.Services.ContactService ContactService
 @inject BlazorTests.Services.ReferenceService ReferenceService
@@ -80,11 +81,15 @@
         // * l'id est obligatoire mais on ne peut pas placer un attribut Required (alors qu'il est obligatoire) sur ce champ car il est généré
         // * Si l'entitié est renseignée via 2 écrans, il faut 1 "modèle" par écran, chaque modèle ayant les attributs correspondant aux champs obligatoires de l'écran.
         // Du coup, il me semble mieux de reproduire la même chose qu'en WPF à savoir des propriétés propres à l'écran
-        [RequiredEx("Nom")]
+        [Required()]
+        [Display(Name = "Nom")]
+        //[RequiredEx("Nom")]
         public string LastName { get; set; }
         [RequiredEx("Prénom")]
         public string FirstName { get; set; }
         [RequiredEx("Civilité")]
+        //[Required()]
+        //[Display(Name = "Civilité")]
         public int? CivilityId { get; set; }
         [RequiredEx("Date de naissance")]
         public DateTime? BirthDate { get; set; }

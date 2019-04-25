@@ -1,5 +1,6 @@
-﻿@inherits BlazorTests.Pages.ComponentBaseEx
-
+﻿@inherits ComponentBaseEx
+@using BlazorTests.Core
+@using BlazorTests.Core.Converters
 @inject BlazorTests.Services.ParameterService ParameterService
 
 <div class="row">
@@ -18,7 +19,7 @@
                 </select>
             </div>
             <NavLink href="/parameter/list">
-                <span class="fa fa-pen" ></span>
+                <span class="fa fa-pen"></span>
             </NavLink>
         </div>
 
@@ -34,7 +35,7 @@
             <!-- Le filtre Date de fin -->
             <div class="col-3">Fin :</div>
             <div class="col-9">
-                 <input type="date" bind="@EndDate" format-value="yyyy-MM-dd" />
+                <input type="date" bind="@EndDate" format-value="yyyy-MM-dd" />
             </div>
         </div>
     </div>
@@ -68,8 +69,8 @@
     [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
     public void Search()
     {
-        OnSearchAsked?.Invoke(this.ParameterId, 
-            NullableDateTimeConverter.ConvertToNullableDateTime(StartDate), 
+        OnSearchAsked?.Invoke(this.ParameterId,
+            NullableDateTimeConverter.ConvertToNullableDateTime(StartDate),
             NullableDateTimeConverter.ConvertToNullableDateTime(EndDate));
     }
 

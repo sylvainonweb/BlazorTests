@@ -1,7 +1,8 @@
 ﻿using BlazorTests.Shared;
 using Microsoft.AspNetCore.Components;
+using BlazorTests.Core.Converters;
 
-namespace BlazorTests.Pages
+namespace BlazorTests.Core
 {
     public abstract class DetailPageComponentBase : PageComponentBase
     {

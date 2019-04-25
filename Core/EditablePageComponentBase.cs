@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace BlazorTests.Pages
+namespace BlazorTests.Core
 {
     public abstract class EditablePageComponentBase : DetailPageComponentBase
     {
@@ -21,7 +21,6 @@ namespace BlazorTests.Pages
             if (errors.Count > 0)
             {
                 ToastService.ShowToast(string.Join("\r\n", errors), ToastLevel.Error, "Erreur");
-                //await JsInteropService.ShowAlert(string.Join("\r\n", errors));
             }
             else
             {

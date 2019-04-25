@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\MyControl.razor" />
+    <Watch Remove="Pages\MyControl.razor" />
   </ItemGroup>
 
 </Project>
