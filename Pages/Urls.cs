@@ -7,6 +7,8 @@ namespace BlazorTests.Pages
 {
     public static class Urls
     {
+        public static string Home = "/"; 
+
         public static string CompanyList = "/company/list";
         public static string CompanyAdd = "/company/add";
         public static string CompanyEditSimple = "/company/edit/";

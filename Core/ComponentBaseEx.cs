@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using BlazorTests.Services;
+using System;
 
 namespace BlazorTests.Core
 {

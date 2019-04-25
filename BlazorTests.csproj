@@ -16,6 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Contacts\ContactEditView.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Watch Remove="Core\Controls\Error404View.razor" />
     <Watch Remove="Pages\MyControl.razor" />
   </ItemGroup>
 

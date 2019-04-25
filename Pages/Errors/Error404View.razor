@@ -1,0 +1,19 @@
+﻿@inherits BlazorTests.Core.ComponentBaseEx
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Url non trouvée</h1>
+                <button class="btn btn-danger" onclick="@ReturnToHome">Retour à la page d'accueil</button>
+            </div>
+        </div>
+    </div>
+
+@functions {
+    private void ReturnToHome()
+    {
+        UriHelper.NavigateTo(Urls.Home);
+    }
+}
+
+@*Voir App.razor FallBackComponent*@

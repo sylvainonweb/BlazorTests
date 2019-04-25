@@ -2,6 +2,7 @@
 @page "/parameter/list"
 @using BlazorTests.Core
 @using BlazorTests.Core.Controls.Buttons
+@using BlazorTests.Services
 @inject BlazorTests.Services.ParameterService ParameterService
 
 
@@ -15,7 +16,7 @@
     {
         <div class="form-group row">
             <div class="col-md-6 col-12">
-                <table class="table table-sm table-bordered table-striped table-hover">
+                <table id="parameterTable" class="table table-sm table-bordered table-striped table-hover">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -55,6 +56,12 @@
         {
             this.Title = "Liste des paramètres";
             Parameters = await ParameterService.GetParametersAsync();
+        }
+
+        protected override async Task OnAfterRenderAsync()
+        {
+            await JsInteropService.InitTable("parameterTable");
+            await base.OnAfterRenderAsync();
         }
 
         public void AddParameter()
