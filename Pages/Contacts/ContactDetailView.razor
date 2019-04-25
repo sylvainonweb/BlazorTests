@@ -1,0 +1,70 @@
+﻿@inherits BlazorTests.Pages.DetailPageComponentBase
+@page "/contact/detail/{IdAsString}"
+@using BlazorTests.Data
+@inject BlazorTests.Services.ContactService ContactService
+
+<PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Nom :</label>
+                <label class="col-md-4 col-12">@Contact.LastName</label>
+                <button class="col-auto fa fa-pen" onclick="@EditContact" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Prénom :</label>
+                <label class="col-md-4 col-12">@Contact.FirstName</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Civilité :</label>
+                <label class="col-md-4 col-12">@Contact.CivilityText</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Date de naissance :</label>
+                <label class="col-md-4 col-12">@Contact.BirthDate</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Marié :</label>
+                <input type="checkbox" class="col-auto" bind="@Contact.Married" disabled />
+            </div>
+        </div>
+    </div>
+
+    @functions {
+
+        Contact Contact { get; set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Contact = await ContactService.GetContact(this.Id.Value);
+            this.Title = $"{Contact.LastName} {Contact.FirstName}";
+        }
+
+        private void EditContact()
+        {
+            UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
+        }
+
+        protected async Task OnClose()
+        {
+            await ReturnToCallerPage();
+        }
+    }
+
+</PageComponentWrapper>

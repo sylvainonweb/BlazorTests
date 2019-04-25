@@ -45,35 +45,35 @@
         </div>
     }
 
-@functions {
+    @functions {
 
-    public IList<BlazorTests.Data.Parameter> Parameters { get; set; }
+        public IList<BlazorTests.Data.Parameter> Parameters { get; set; }
 
-    protected override async Task OnInitAsync()
-    {
-        this.Title = "Liste des paramètres";
-        Parameters = await ParameterService.GetParametersAsync();
+        protected override async Task OnInitAsync()
+        {
+            this.Title = "Liste des paramètres";
+            Parameters = await ParameterService.GetParametersAsync();
+        }
+
+        public void AddParameter()
+        {
+            UriHelper.NavigateTo(Urls.ParameterAdd);
+        }
+
+        public void EditParameter(int parameterId)
+        {
+            UriHelper.NavigateTo(Urls.ParameterEdit + parameterId);
+        }
+
+        public void DeleteParameter(int parameterId)
+        {
+            ParameterService.DeleteParameter(parameterId);
+            this.StateHasChanged();
+        }
+
+        public async Task OnClose()
+        {
+            await ReturnToCallerPage();
+        }
     }
-
-    public void AddParameter()
-    {
-        UriHelper.NavigateTo(Urls.ParameterAdd);
-    }
-
-    public void EditParameter(int parameterId)
-    {
-        UriHelper.NavigateTo(Urls.ParameterEdit + parameterId);
-    }
-
-    public void DeleteParameter(int parameterId)
-    {
-        ParameterService.DeleteParameter(parameterId);
-        this.StateHasChanged();
-    }
-
-    public async Task OnClose()
-    {
-        await ReturnToCallerPage();
-    }
-}
 </PageComponentWrapper>

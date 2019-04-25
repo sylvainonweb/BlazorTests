@@ -1,0 +1,52 @@
+﻿@inherits BlazorTests.Pages.DetailPageComponentBase
+@page "/company/detail/{IdAsString}"
+@using BlazorTests.Data
+@inject BlazorTests.Services.CompanyService CompanyService
+@inject BlazorTests.Services.ContactService ContactService
+
+<PageComponentWrapper Title="@Title" CloseAction="@(() => OnClose())">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Nom :</label>
+                <label class="col-md-4 col-12">@Company.Name</label>
+                <button class="col-auto fa fa-pen" onclick="@EditCompany" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label class="col-md-2 col-12">Activité :</label>
+                <label class="col-md-4 col-12">@Company.ActivityText</label>
+            </div>
+        </div>
+    </div>
+
+    <CompanyContactListView CompanyId="@Id.Value"></CompanyContactListView>
+
+    @functions {
+
+        Company Company { get; set; }
+        List<Contact> Contacts { get; set; }
+
+        protected override async Task OnInitAsync()
+        {
+            this.Company = await CompanyService.GetCompany(this.Id.Value);
+            this.Title = $"{Company.Name}";
+        }
+
+        private void EditCompany()
+        {
+            UriHelper.NavigateTo(Urls.CompanyEditSimple + this.Id);
+        }
+
+        protected Task OnClose()
+        {
+            UriHelper.NavigateTo(Urls.CompanyList);
+            return Task.FromResult(0);
+        }
+    }
+
+</PageComponentWrapper>

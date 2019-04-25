@@ -1,13 +1,13 @@
 ﻿@inherits BlazorTests.Pages.EditablePageComponentBase
 @page "/company/add"
 @page "/company/edit/{IdAsString}"
-
+@using BlazorTests.Data
 @inject BlazorTests.Services.CompanyService CompanyService
 @inject BlazorTests.Services.ReferenceService ReferenceService
 
 <EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
 
-
+    
     <EditForm Model="@Company" OnValidSubmit="@Save">
         <div class="row">
             <div class="col-12">
@@ -37,8 +37,8 @@
 
     @functions {
 
-        BlazorTests.Data.CompanyEntity Company { get; set; }
-        IList<BlazorTests.Data.ActivityEntity> Activities { get; set; }
+        CompanyEntity Company { get; set; }
+        IList<ActivityEntity> Activities { get; set; }
 
         protected override async Task OnInitAsync()
         {
@@ -47,7 +47,7 @@
             if (this.Id.HasValue == false)
             {
                 this.Title = "Nouvelle société";
-                this.Company = new BlazorTests.Data.CompanyEntity();
+                this.Company = new CompanyEntity();
             }
             else
             {

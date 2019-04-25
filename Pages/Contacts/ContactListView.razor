@@ -3,6 +3,7 @@
 @using BlazorTests.Data
 @inject BlazorTests.Services.ContactService ContactService
 
+<MyControl></MyControl>
 
 <PageComponentWrapper Title="@Title">
 
@@ -52,7 +53,7 @@
 
     @functions {
 
-        public IList<BlazorTests.Data.Contact> Contacts { get; set; }
+        public IList<Contact> Contacts { get; set; }
 
         protected override async Task OnInitAsync()
         {

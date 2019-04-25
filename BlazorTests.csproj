@@ -15,4 +15,8 @@
     <Watch Include="**\*.razor" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Pages\MyControl.razor" />
+  </ItemGroup>
+
 </Project>

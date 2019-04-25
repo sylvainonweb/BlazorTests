@@ -23,7 +23,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<ContactEntity>("data/crm/contacts.json", ref contactEntities);
+                return GetList<ContactEntity>("data/contacts.json", ref contactEntities);
             }
         }
 
@@ -32,7 +32,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<CompanyEntity>("data/crm/companies.json", ref companyEntities);
+                return GetList<CompanyEntity>("data/companies.json", ref companyEntities);
             }
         }
 
@@ -41,7 +41,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return  GetList<CivilityEntity>("data/crm/civilities.json", ref civilityEntities);
+                return  GetList<CivilityEntity>("data/civilities.json", ref civilityEntities);
             }
         }
 
@@ -50,7 +50,7 @@ namespace BlazorTests.Services
         {
             get
             {
-                return GetList<ActivityEntity>("data/crm/activities.json", ref activityEntities);
+                return GetList<ActivityEntity>("data/activities.json", ref activityEntities);
             }
         }
 

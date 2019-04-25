@@ -1,7 +1,7 @@
 ﻿@inherits BlazorTests.Pages.EditablePageComponentBase
 @page "/parameter/add"
 @page "/parameter/edit/{IdAsString}"
-
+@using BlazorTests.Data
 @inject BlazorTests.Services.ParameterService ParameterService
 
 <EditablePageComponentWrapper Title="@Title" SaveAction="@(() => Save())" CancelAction="@(() => Cancel())">
@@ -43,7 +43,8 @@
 
         protected override async Task OnSave()
         {
-            await Task.Factory.StartNew(() => {
+            await Task.Factory.StartNew(() =>
+            {
                 if (this.Id.HasValue == false)
                 {
                     ParameterService.AddParameter(this.Parameter);

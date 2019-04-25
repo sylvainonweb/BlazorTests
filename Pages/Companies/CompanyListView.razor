@@ -1,6 +1,7 @@
 ﻿@inherits BlazorTests.Pages.PageComponentBase
 @page "/"
 @page "/company/list"
+@using BlazorTests.Data
 @inject BlazorTests.Services.CompanyService CompanyService
 
 
@@ -50,7 +51,7 @@
 
     @functions {
 
-        public IList<BlazorTests.Data.Company> Companies { get; set; }
+        public IList<Company> Companies { get; set; }
 
         protected override async Task OnInitAsync()
         {
