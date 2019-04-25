@@ -25,6 +25,7 @@
     <Watch Remove="Pages\Tests\SyncfusionTests\EjsDatePickerTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\EjsDropDownListTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\EjsGridTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\EjsTextBoxTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />

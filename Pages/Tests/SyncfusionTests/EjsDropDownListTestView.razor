@@ -2,10 +2,7 @@
 @using BlazorTests.Data
 @inject BlazorTests.Services.ReferenceService ReferenceService
 
-<h2>EjsDropDownList : KO</h2>
-
-@*<EjsDropDownList DataSource="@Activities" fields="@DropDownFields" placeholder="Selectionner une activité" CssClass="e-textbox right" PopupHeight="220px"></EjsDropDownList>*@
-<Syncfusion.EJ2.RazorComponents.DropDowns.EjsDropDownList placeholder="Selectionner une activité"></Syncfusion.EJ2.RazorComponents.DropDowns.EjsDropDownList>
+<EjsDropDownList id="dropDownList" DataSource="@Activities" fields="@DropDownFields" placeholder="Selectionner une activité" CssClass="e-textbox right" PopupHeight="220px"></EjsDropDownList>
 
 
 @functions {

@@ -4,10 +4,7 @@
 @inject BlazorTests.Services.ContactService ContactService
 
 
-
-<h2>EjsGrid : OK</h2>
-
-<EjsGrid id="Grid" DataSource="@Contacts" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowFiltering="true">
+<EjsGrid id="grid" DataSource="@Contacts" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowFiltering="true">
     <GridColumns>
         <GridColumn Field=@nameof(Contact.LastName) HeaderText="Nom" Width="130"></GridColumn>
         <GridColumn Field=@nameof(Contact.FirstName) HeaderText="Prénom" Width="120"></GridColumn>
