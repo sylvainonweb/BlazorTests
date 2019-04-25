@@ -1,0 +1,20 @@
+﻿@using Syncfusion.EJ2.RazorComponents.DropDowns
+@using BlazorTests.Data
+@inject BlazorTests.Services.ReferenceService ReferenceService
+
+<h2>EjsDropDownList : KO</h2>
+
+@*<EjsDropDownList DataSource="@Activities" fields="@DropDownFields" placeholder="Selectionner une activité" CssClass="e-textbox right" PopupHeight="220px"></EjsDropDownList>*@
+<Syncfusion.EJ2.RazorComponents.DropDowns.EjsDropDownList placeholder="Selectionner une activité"></Syncfusion.EJ2.RazorComponents.DropDowns.EjsDropDownList>
+
+
+@functions {
+
+    public IList<ActivityEntity> Activities { get; set; }
+    public object DropDownFields { get; } = new { value = "Id", text = "Text" };
+
+    protected override async Task OnInitAsync()
+    {
+        this.Activities = await ReferenceService.GetActivityEntities();
+    }
+}

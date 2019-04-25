@@ -22,6 +22,9 @@
   <ItemGroup>
     <Watch Remove="Core\Controls\Error404View.razor" />
     <Watch Remove="Pages\MyControl.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\EjsDatePickerTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\EjsDropDownListTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\EjsGridTestView.razor" />
   </ItemGroup>
 
 </Project>
