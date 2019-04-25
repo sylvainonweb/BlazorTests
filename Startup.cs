@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using BlazorTests.Data;
 using BlazorTests.Services;
-using BlazorTests.Services.Business;
-using Microsoft.AspNetCore.Http.Extensions;
 
 namespace BlazorTests
 {

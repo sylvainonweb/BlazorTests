@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BlazorTests.Services.Business
+namespace BlazorTests.Services
 {
     public class Repository
     {

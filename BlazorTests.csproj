@@ -3,53 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Shared\Core\CloseablePageComponentBase.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Pages\Shared\Core\CloseablePageComponentWrapper.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MatBlazor" Version="0.9.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0-preview4-19216-03" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core.RazorComponents" Version="17.1.0.42" />
     <PackageReference Include="Telerik.UI.for.Blazor" Version="0.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Shared\Core\Wrappers\PageComponentWrapper.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Watch Include="**\*.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Watch Remove="Pages\Shared\Core\Wrappers\EditablePageComponentWrapper.razor" />
-    <Watch Remove="Pages\Shared\Core\Wrappers\PageComponentWrapper.razor" />
-    <Watch Remove="Pages\Crm\Companies\CompanyContacts\CompanyContactAddView.razor" />
-    <Watch Remove="Pages\Crm\Companies\CompanyContacts\CompanyContactListView.razor" />
-    <Watch Remove="Pages\Crm\Companies\CompanyDetailView.razor" />
-    <Watch Remove="Pages\Crm\Companies\CompanyEditView.razor" />
-    <Watch Remove="Pages\Crm\Companies\CompanyListView.razor" />
-    <Watch Remove="Pages\Crm\Contacts\ContactDetailView.razor" />
-    <Watch Remove="Pages\Crm\Contacts\ContactEditView.razor" />
-    <Watch Remove="Pages\Crm\Contacts\ContactListView.razor" />
-    <Watch Remove="Pages\Parameters\ParameterEditView.razor" />
-    <Watch Remove="Pages\Parameters\ParameterListView.razor" />
-    <Watch Remove="Pages\Parameters\ParameterValues\ParameterValueListView.razor" />
-    <Watch Remove="Pages\Parameters\ParameterValues\ParameterValueSearchCriteriaView.razor" />
-    <Watch Remove="Pages\Parameters\ParameterValues\ParameterValueSearchResultsView.razor" />
-    <Watch Remove="Pages\Tests\Libraries\MatBlazorTestView.razor" />
-    <Watch Remove="Pages\Tests\Libraries\SyncfusionTestView.razor" />
-    <Watch Remove="Pages\Tests\Libraries\TelerikTestView.razor" />
-    <Watch Remove="Pages\Tests\LongRunningProcessButtonTestView.razor" />
-    <Watch Remove="Pages\Tests\TestView.razor" />
-    <Watch Remove="Pages\_Imports.razor" />
   </ItemGroup>
 
 </Project>
