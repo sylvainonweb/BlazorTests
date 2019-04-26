@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2.RazorComponents.DropDowns
+﻿@using MatBlazor
 @using System.ComponentModel.DataAnnotations
 @using BlazorTests.Services
 @using BlazorTests.Data
@@ -12,7 +12,13 @@
 
     <div class="row">
         <div class="col-auto">
-            <EjsDropDownList id="dropDownList" bind-Value="@ActivityId" DataSource="@Activities" fields="@DropDownFields" placeholder="Selectionner une activité" CssClass="e-textbox right" PopupHeight="220px"></EjsDropDownList>
+            <MatSelect Label="PickSélectionner une activité" bind-Value="@ActivityId">
+                <MatOption Value=null></MatOption>
+                @foreach (var activity in @Activities)
+                {
+                    <MatOption Value=@activity.Id.ToString()>@activity.Text</MatOption>
+                }
+            </MatSelect>
         </div>
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
@@ -23,13 +29,10 @@
     <ValidationSummary />
 </EditForm>
 
-
 @functions {
-
     [Required]
     public string ActivityId { get; set; }
     public IList<ActivityEntity> Activities { get; set; }
-    public object DropDownFields { get; } = new { value = "Id", text = "Text" };
 
     protected override async Task OnInitAsync()
     {

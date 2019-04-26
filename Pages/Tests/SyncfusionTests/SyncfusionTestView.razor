@@ -3,28 +3,41 @@
 @using BlazorTests.Pages.Tests.SyncfusionTests
 
 
-    <TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
-        <TelerikTab Title="EjsTextBox">
-            <EjsTextBoxTestView></EjsTextBoxTestView>
-        </TelerikTab>
-        <TelerikTab Title="EjsDropDownList">
-            <EjsDropDownListTestView></EjsDropDownListTestView>
-        </TelerikTab>
-        <TelerikTab Title="EjsDatePicker">
-            <EjsDatePickerTestView></EjsDatePickerTestView>
-        </TelerikTab>
+<TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
+    <TelerikTab Title="EjsTextBox">
+        <EjsTextBoxTestView></EjsTextBoxTestView>
+    </TelerikTab>
+    <TelerikTab Title="EjsDropDownList">
+        <EjsDropDownListTestView></EjsDropDownListTestView>
+    </TelerikTab>
+    <TelerikTab Title="EjsDatePicker">
+        <EjsDatePickerTestView></EjsDatePickerTestView>
+    </TelerikTab>
 
-        <TelerikTab Title="EjsGrid">
-            <EjsGridTestView></EjsGridTestView>
-        </TelerikTab>
-    </TelerikTabStrip>
+    <TelerikTab Title="EjsGrid">
+        <EjsGridTestView></EjsGridTestView>
+    </TelerikTab>
+</TelerikTabStrip>
 <br>
 <br>
+<p><strong>Résumé de tests</strong></p>
+<br />
 <p>ATTENTION : tous les contrôles syncfusion nécessite que la propriété id soit renseigné sinon ils ne s'affichent pas</p>
+<ul>
+    <li>TextBox : binding pas encore géré</li>
+    <ul>
+        <li>
+            https://www.syncfusion.com/forums/143535/data-bind
+        </li>
+        <li>
+            https://www.syncfusion.com/feedback/5437/blazor-data-bind-model-support-for-input-components
+        </li>
+    </ul>
+    <li>Select : binding pas encore géré</li>
+</ul>
+<br>
 <br>
 <p>nuget : Syncfusion.EJ2.AspNet.Core.RazorComponents</p>
-<br>
-<br>
 <a href="https://ej2.syncfusion.com/home/aspnet-core-blazor.html">https://ej2.syncfusion.com/home/aspnet-core-blazor.html</a>
 <br>
 <a href="https://ej2.syncfusion.com/aspnet-core-razor-components/Calendar/DefaultFunctionalities">https://ej2.syncfusion.com/aspnet-core-razor-components/Calendar/DefaultFunctionalities</a>

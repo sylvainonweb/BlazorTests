@@ -2,12 +2,29 @@
 @using BlazorTests.Data
 @using Telerik.Blazor;
 @using Telerik.Blazor.Components.DropDownList
+@using System.ComponentModel.DataAnnotations
 @inject BlazorTests.Services.ContactService ContactService
 
-    <h2>TelerikDropDownList</h2>
 
-<TelerikDropDownList Data="@DropDownListData" bind-Value=@SelectedValue Height="40" PopupHeight="170" DefaultItem="@DefaultItem" ValueField="ProductId" TextField="ProductName">
-</TelerikDropDownList>
+<div style="height:400px;">
+
+    <EditForm Model="@this" OnValidSubmit="@(() => Save())">
+
+        <div class="row">
+            <div class="col-auto">
+                <TelerikDropDownList Data="@DropDownListData" bind-Value=@SelectedValue DefaultItem="@DefaultItem"
+                                     ValueField="ProductId" TextField="ProductName"></TelerikDropDownList>
+            </div>
+            <div class="col-auto">
+                <button type="submit">Sauvegarder</button>
+            </div>
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>   
+
+</div>
 
 @functions  {
     public IEnumerable<Product> DropDownListData { get; set; }
@@ -16,7 +33,9 @@
         ProductId = 0,
         ProductName = "Select a product..."
     };
-    public int SelectedValue { get; set; } = 2;
+
+    [Required]
+    public int? SelectedValue { get; set; } = 2;
 
     protected override void OnInit()
     {
@@ -32,6 +51,10 @@
 
         DropDownListData = products.AsQueryable();
         base.OnInit();
+    }
+
+    public void Save()
+    {
     }
 
     public class Product

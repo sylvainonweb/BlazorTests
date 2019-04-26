@@ -1,17 +1,14 @@
-﻿@using Syncfusion.EJ2.RazorComponents.Inputs
+﻿@using MatBlazor
 @using System.ComponentModel.DataAnnotations
 @using BlazorTests.Services
 @inject BlazorTests.Services.JsInteropService JsInteropService
 
-@*Le binding n'est pas encore géré (voir liens) *@
-@*https://www.syncfusion.com/forums/143535/data-bind*@
-@*https://www.syncfusion.com/feedback/5437/blazor-data-bind-model-support-for-input-components*@
 
 <EditForm Model="@this" OnValidSubmit="@(() => Save())">
 
     <div class="row">
         <div class="col-auto">
-            <EjsTextBox id="lastNameTextBox" placeholder="Nom" Value="@LastName" ShowClearButton="true" floatLabelType="@FloatLabelType.Auto"></EjsTextBox>
+            <MatTextField bind-Value="@LastName" Label="Standard"></MatTextField>
         </div>
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
@@ -28,6 +25,6 @@
 
     public void Save()
     {
-        JsInteropService.ShowAlert("Saved").GetAwaiter().GetResult();
+        JsInteropService.ShowAlert($"LastName = {LastName}").GetAwaiter().GetResult();
     }
 }

@@ -1,8 +1,20 @@
 ﻿@page "/libraries/matblazor"
+@using Telerik.Blazor.Components.TabStrip
 @using MatBlazor
 
-    <TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
-        <TelerikTab Title="MatBlazorTextBox">
-            <MatBlazorTextBoxTestView></MatBlazorTextBoxTestView>
-        </TelerikTab>      
-    </TelerikTabStrip>
+<TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
+    <TelerikTab Title="MatTextField">
+        <MatTextFieldTestView></MatTextFieldTestView>
+    </TelerikTab>
+    <TelerikTab Title="MatSelect">
+        <MatSelectTestView></MatSelectTestView>
+    </TelerikTab>
+</TelerikTabStrip>
+
+<p><strong>Résumé de tests</strong></p>
+<br />
+<ul>
+    <li>TextField : OK (champs obligatoires)</li>
+    <li>Select : KO (bind-Value doit être de type string)</li>
+    <li>DatePicker : KO (n'existe pas)</li>
+</ul>

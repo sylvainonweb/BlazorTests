@@ -2,19 +2,20 @@
 @using Telerik.Blazor;
 @using Telerik.Blazor.Components.DateInput
 
-<h2>TelerikDateInput</h2>
+    <div style="height:400px;">
+        <EditForm Model="@person">
+            <DataAnnotationsValidator />
 
-<EditForm Model="@person">
-    <DataAnnotationsValidator />
+            <strong> Hire Date</strong>
+            <TelerikDateInput bind-Value="@person.HireDate" Format="MM/dd/yyyy"></TelerikDateInput>
+            <ValidationMessage For="@(() => person.HireDate)"></ValidationMessage>
 
-    <strong> Hire Date</strong>
-    <TelerikDateInput bind-Value="@person.HireDate" Format="MM/dd/yyyy"></TelerikDateInput>
-    <ValidationMessage For="@(() => person.HireDate)"></ValidationMessage>
+            <strong> Interview Meeting Date</strong>
+            <TelerikDateInput bind-Value="@person.MeetingDate" Format="MM/dd/yyyy HH:mm:ss"></TelerikDateInput>
+            <ValidationMessage For="@(() => person.MeetingDate)"></ValidationMessage>
+        </EditForm>
+    </div>
 
-    <strong> Interview Meeting Date</strong>
-    <TelerikDateInput bind-Value="@person.MeetingDate" Format="MM/dd/yyyy HH:mm:ss"></TelerikDateInput>
-    <ValidationMessage For="@(() => person.MeetingDate)"></ValidationMessage>
-</EditForm>
 
 
 @functions  {
