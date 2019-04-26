@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-auto">
-            <EjsTextBox id="lastNameTextBox" placeholder="Nom" Value="@LastName" ShowClearButton="true" floatLabelType="@FloatLabelType.Auto"></EjsTextBox>
+            <EjsTextBox id="lastNameTextBox" placeholder="Nom" Value="@LastName" Change="@LastNameChanged" ShowClearButton="true" floatLabelType="@FloatLabelType.Auto"></EjsTextBox>
         </div>
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
@@ -21,6 +21,10 @@
 @functions {
     [Required]
     public string LastName { get; set; }
+    public void LastNameChanged(ChangedEventArgs args)
+    {
+        this.LastName = args.Value;
+    }
 
     public void Save()
     {

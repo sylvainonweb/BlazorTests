@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorTests.Data;
 using BlazorTests.Services;
+using System.Threading;
 
 namespace BlazorTests
 {
