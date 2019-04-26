@@ -93,7 +93,12 @@ else
     <p>Aucune donnée</p>
 }
 
-@functions {
+@functions { 
+
+    protected override Task OnInitAsync()
+    {
+        return base.OnInitAsync();
+    }
 
     protected override async Task OnAfterRenderAsync()
     {
@@ -101,12 +106,10 @@ else
         await base.OnAfterRenderAsync();
     }
 
-
-    [Microsoft.AspNetCore.Components.Parameter] public ParameterValue[] ParameterValues { get; private set; }
+    [Microsoft.AspNetCore.Components.Parameter] public ParameterValue[] ParameterValues { get; set; }
 
     // Pour le graphe
     public Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType GraphType { get; set; }
     public Object ParameterValuesGridxAxis = new { valueType = "DateTime", labelFormat = "dd/MM/yyyy", };
     public Object ParameterValuesGridyAxis = new { labelFormat = "{value}" };
 }
-

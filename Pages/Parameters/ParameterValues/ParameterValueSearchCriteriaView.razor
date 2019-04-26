@@ -66,21 +66,26 @@
         Parameters = await ParameterService.GetParametersAsync();
     }
 
+    public void ResetFilters()
+    {
+        Search(null, null, null);
+    }
+
     [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
     public void Search()
     {
-        OnSearchAsked?.Invoke(this.ParameterId,
-            NullableDateTimeConverter.ConvertToNullableDateTime(StartDate),
-            NullableDateTimeConverter.ConvertToNullableDateTime(EndDate));
+        /* Début : Sinon la grid Syncfusion n'est pas rafraichie */
+        Search(null, null, null);
+        /* Fin : Sinon la grid Syncfusion n'est pas rafraichie */
+
+        Search(this.ParameterId,
+            NullableDateTimeConverter.ConvertToNullableDateTime(this.StartDate),
+            NullableDateTimeConverter.ConvertToNullableDateTime(this.EndDate));
     }
 
-    public void ResetFilters()
+    private void Search(int? parameterId, DateTime? startDate, DateTime? endDate)
     {
-        this.ParameterId = null;
-        this.StartDate = NullableDateTimeConverter.ConvertToDateTime(null);
-        this.EndDate = NullableDateTimeConverter.ConvertToDateTime(null);
-
-        Search();
+        OnSearchAsked?.Invoke(parameterId, startDate, endDate);
     }
 }
 
