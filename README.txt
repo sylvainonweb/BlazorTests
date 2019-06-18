@@ -5,7 +5,7 @@
 #A FAIRE
 * Voir si possible d'ajouter un attribut ConvertToString à une propriété afin de regénérer une propriété du type Id / IdAsString
 * Voir si la notion de modèle proposée par LLBLGEN ne permettrait pas de générer les modèles à utiliser pour les écrans de saisie
-* Voir si possible d'utiliser du scss
+* Voir si possible d'utiliser du scss (Web Compiler)
 * Déployer le site via Docker (Alpine)
 
 #IMPORTANT

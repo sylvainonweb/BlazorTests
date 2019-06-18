@@ -2,17 +2,20 @@
 @using System.ComponentModel.DataAnnotations
 @using BlazorTests.Services
 @using BlazorTests.Data
+@using System.Linq
 @inject BlazorTests.Services.JsInteropService JsInteropService
 @inject BlazorTests.Services.ReferenceService ReferenceService
 
 
 
 
-<EditForm Model="@this" OnValidSubmit="@(() => Save())">
+<EditForm Model="@this" OnValidSubmit="@Save">
 
     <div class="row">
         <div class="col-auto">
-            <EjsDropDownList id="dropDownList" bind-Value="@ActivityId" DataSource="@Activities" fields="@DropDownFields" placeholder="Selectionner une activité" CssClass="e-textbox right" PopupHeight="220px"></EjsDropDownList>
+            <EjsDropDownList bind-value="@ActivityId" DataSource="@Activities" placeholder="Selectionner une activité" PopupHeight="220px">
+                <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
+            </EjsDropDownList>
         </div>
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
@@ -26,18 +29,22 @@
 
 @functions {
 
+    // [Required]
+    //public string ActivityId { get; set; }
+    //public IList<ActivityEntity> Activities { get; set; }
+
     [Required]
-    public string ActivityId { get; set; }
-    public IList<ActivityEntity> Activities { get; set; }
-    public object DropDownFields { get; } = new { value = "Id", text = "Text" };
+    public object ActivityId { get; set; }
+    public IList<object> Activities { get; set; }
 
     protected override async Task OnInitAsync()
     {
-        this.Activities = await ReferenceService.GetActivityEntities();
+        this.Activities = (await ReferenceService.GetActivityEntities())
+            .Select(o => o as object).ToList();
     }
 
-    public void Save()
+    public Task Save()
     {
-        JsInteropService.ShowAlert($"ActivityId = {ActivityId}").GetAwaiter().GetResult();
+        return JsInteropService.ShowAlert($"ActivityId = {this.ActivityId}");
     }
 }
