@@ -11,7 +11,7 @@
     <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
     <PackageReference Include="MatBlazor" Version="0.9.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Syncfusion.EJ2.AspNet.Core.RazorComponents" Version="17.1.0.48-beta" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core.RazorComponents" Version="17.1.0.52-beta" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="Telerik.UI.for.Blazor" Version="0.5.0" />
   </ItemGroup>
