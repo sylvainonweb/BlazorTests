@@ -17,7 +17,7 @@
                 {
                     <tr>
                         <td>
-                            <button onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
+                            <button @onclick="@(() => EditContact(@contact.Id))" class="buttonAsLink">@contact.LastName @contact.FirstName</button>
                         </td>
                     </tr>
                 }
@@ -28,11 +28,11 @@
 
 <div class="row">
     <div class="col-md-6 col-12">
-        <button class="btn btn-secondary" onclick="@ManageCompanyContacts">Gérer les contacts</button>
+        <button class="btn btn-secondary" @onclick="@ManageCompanyContacts">Gérer les contacts</button>
     </div>
 </div>
 
-@functions {
+@code {
     public IList<Contact> Contacts { get; private set; }
     [Parameter] public int CompanyId { get; private set; }
 

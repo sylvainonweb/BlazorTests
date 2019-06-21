@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label class="col-md-2 col-12">Nom :</label>
                 <label class="col-md-4 col-12">@Company.Name</label>
-                <button class="col-auto fa fa-pen" onclick="@EditCompany" />
+                <button class="col-auto fa fa-pen" @onclick="@EditCompany" />
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
 
     <CompanyContactListView CompanyId="@Id.Value"></CompanyContactListView>
 
-    @functions {
+    @code {
 
         Company Company { get; set; }
         List<Contact> Contacts { get; set; }

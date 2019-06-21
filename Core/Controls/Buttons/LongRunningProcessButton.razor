@@ -8,10 +8,10 @@
 }
 else
 {
-    <button class="@CssClass" onclick="@OnProcessAsync">@Text</button>
+    <button class="@CssClass" @onclick="@OnProcessAsync">@Text</button>
 }
 
-@functions {
+@code {
 
     protected bool IsProcessing { get; set; }
     [Parameter] private Func<Task> Action { get; set; }

@@ -24,7 +24,7 @@
                             <th>Nom</th>
                             <th>Activité</th>
                             <th>
-                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddCompany())">
+                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" @onclick="@(() => AddCompany())">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
@@ -38,7 +38,7 @@
                                 <td>@company.Name</td>
                                 <td>@company.ActivityText</td>
                                 <td class="autoSizeToContent">
-                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditCompany(@company.Id))">
+                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" @onclick="@(() => EditCompany(@company.Id))">
                                         <span class="fa fa-pen" aria-hidden="true"></span>
                                     </button>
                                     <BlazorTests.Core.Controls.Buttons.DeleteButton DeleteAction="@(async() => await DeleteCompany(@company.Id))"></BlazorTests.Core.Controls.Buttons.DeleteButton>
@@ -51,7 +51,7 @@
         </div>
     }
 
-    @functions {
+    @code {
 
         public IList<Company> Companies { get; set; }
 

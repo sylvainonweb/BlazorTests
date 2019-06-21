@@ -15,8 +15,8 @@
                     <label>Libellé :</label>
                 </div>
                 <div class="col-md-6 col-12">
-                    <InputText id="text" bind-Value="@Parameter.Text" />
-                    @*<input type="text" bind="@Parameter.Text" /> Required ne marche pas avec le input normal *@
+                    <InputText id="text" @bind-Value="@Parameter.Text" />
+                    @*<input type="text" @bind="@Parameter.Text" /> Required ne marche pas avec le input normal *@
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <ValidationSummary />
     </EditForm>
 
-    @functions {
+    @code {
 
         BlazorTests.Data.Parameter Parameter { get; set; }
 

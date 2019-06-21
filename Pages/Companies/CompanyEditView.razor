@@ -14,7 +14,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Nom :</label>
-                    <InputText Class="col-md-4 col-12" bind-Value="@Company.Name" />
+                    <InputText Class="col-md-4 col-12" @bind-Value="@Company.Name" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Activité :</label>
-                    @*<InputSelect class="col-md-4 col-12 custom-select" bind-Value="@Company.ActivityId">
+                    @*<InputSelect class="col-md-4 col-12 custom-select" @ind-Value="@Company.ActivityId">
                         <option value=null></option>
                         @foreach (var activity in Activities)
                         {
@@ -31,7 +31,7 @@
                     </InputSelect>*@
 
                     @*BUG : Si rien n'est sélectionné, l'id précédent est gardé et n'est pas mis à null*@
-                    <select class="col-md-4 col-12 custom-select" bind="@Company.ActivityId">
+                    <select class="col-md-4 col-12 custom-select" @bind="@Company.ActivityId">
                         <option value=null></option>
                         @foreach (var activity in Activities)
                         {
@@ -45,7 +45,7 @@
         <ValidationSummary />
     </EditForm>
 
-    @functions {
+    @code {
 
         CompanyEntity Company { get; set; }
         IList<ActivityEntity> Activities { get; set; }

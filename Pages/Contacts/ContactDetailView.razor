@@ -10,7 +10,7 @@
             <div class="form-group">
                 <label class="col-md-2 col-12">Nom :</label>
                 <label class="col-md-4 col-12">@Contact.LastName</label>
-                <button class="col-auto fa fa-pen" onclick="@EditContact" />
+                <button class="col-auto fa fa-pen" @onclick="@EditContact" />
             </div>
         </div>
     </div>
@@ -42,12 +42,12 @@
         <div class="col-12">
             <div class="form-group">
                 <label class="col-md-2 col-12">Marié :</label>
-                <input type="checkbox" class="col-auto" bind="@Contact.Married" disabled />
+                <input type="checkbox" class="col-auto" @bind="@Contact.Married" disabled />
             </div>
         </div>
     </div>
 
-    @functions {
+    @code {
 
         Contact Contact { get; set; }
 

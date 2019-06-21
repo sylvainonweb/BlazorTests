@@ -10,7 +10,7 @@
             <!-- Le filtre Paramètre -->
             <div class="col-3">Paramètre :</div>
             <div class="col-8">
-                <select class="custom-select" bind=@ParameterId>
+                <select class="custom-select" @bind=@ParameterId>
                     <option value=null></option>
                     @foreach (var parameter in Parameters)
                     {
@@ -27,7 +27,7 @@
             <!-- Le filtre Date de début -->
             <div class="col-3">Début :</div>
             <div class="col-9">
-                <input type="date" bind="@StartDate" format-value="yyyy-MM-dd" />
+                <input type="date" @bind="@StartDate" @bind:format="yyyy-MM-dd" />
             </div>
         </div>
 
@@ -35,7 +35,7 @@
             <!-- Le filtre Date de fin -->
             <div class="col-3">Fin :</div>
             <div class="col-9">
-                <input type="date" bind="@EndDate" format-value="yyyy-MM-dd" />
+                <input type="date" @bind="@EndDate" @bind:format="yyyy-MM-dd" />
             </div>
         </div>
     </div>
@@ -44,17 +44,17 @@
         <div class="form-group row">
             <!-- Le bouton Rechercher -->
             <div class="col-auto">
-                <button onclick="@Search" class="btn btn-primary">Rechercher</button>
+                <button @onclick="@Search" class="btn btn-primary">Rechercher</button>
             </div>
             <!-- Le bouton Réinitialiser -->
             <div class="col-auto">
-                <button onclick="@ResetFilters" class="btn btn-primary">Réinitialiser</button>
+                <button @onclick="@ResetFilters" class="btn btn-primary">Réinitialiser</button>
             </div>
         </div>
     </div>
 </div>
 
-@functions {
+@code {
 
     public IList<BlazorTests.Data.Parameter> Parameters { get; set; }
     public int? ParameterId { get; set; }

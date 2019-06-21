@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Nom :</label>
-                    <InputText Class="col-md-4 col-12" bind-Value="@LastName" />
+                    <InputText Class="col-md-4 col-12" @bind-Value="@LastName" />
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Prénom :</label>
-                    <InputText Class="col-md-4 col-12" bind-Value="@FirstName" />
+                    <InputText Class="col-md-4 col-12" @bind-Value="@FirstName" />
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label class="col-md-2 col-12">Civilité :</label>
                     @*Pas de cadre rouge autour du controle en cas d'erreur*@
-                    <select class="col-md-4 col-12 custom-select" bind="@CivilityId">
+                    <select class="col-md-4 col-12 custom-select" @bind="@CivilityId">
                         <option value=null></option>
                         @foreach (var civility in Civilities)
                         {
@@ -42,7 +42,7 @@
                     </select>
 
                     @*Passe tout debout lors de la validation des champs obligatoires*@
-                    @*<InputSelect class="col-md-4 col-12 custom-select" bind-Value="@CivilityId">
+                    @*<InputSelect class="col-md-4 col-12 custom-select" @bind-Value="@CivilityId">
                             <option value=""></option>
                             @foreach (var civility in Civilities)
                             {
@@ -57,7 +57,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Date de naissance :</label>
-                    <InputDate class="col-md-4 col-12" bind-Value="@BirthDate" />
+                    <InputDate class="col-md-4 col-12" @bind-Value="@BirthDate" />
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="col-md-2 col-12">Marié :</label>
-                    <InputCheckbox class="col-auto" bind-Value="@Married" />
+                    <InputCheckbox class="col-auto" @bind-Value="@Married" />
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <ValidationSummary />
     </EditForm>
 
-    @functions {
+    @code {
 
         // La validation des champs obligatoires ne peut pas se faire sur les entités directement car :
         // * l'id est obligatoire mais on ne peut pas placer un attribut Required (alors qu'il est obligatoire) sur ce champ car il est généré

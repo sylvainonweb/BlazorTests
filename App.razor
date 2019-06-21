@@ -1,7 +1,7 @@
-﻿@*
-    The Router component displays whichever component has a @page
-    directive matching the current URI.
-*@
-@*FallbackComponent permet de rediriger les erreurs d'url vers la page spécifiée*@
-<Router AppAssembly="typeof(Startup).Assembly" 
-        FallbackComponent="typeof(BlazorTests.Pages.Errors.Error404View)"/>
+﻿<CascadingAuthenticationState>
+    <Router AppAssembly="typeof(Startup).Assembly">
+        <NotFoundContent>
+            <BlazorTests.Pages.Errors.Error404View></BlazorTests.Pages.Errors.Error404View>
+        </NotFoundContent>
+    </Router>
+</CascadingAuthenticationState>

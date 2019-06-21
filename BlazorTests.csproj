@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Tests\**" />
+    <Content Remove="Pages\Tests\**" />
+    <EmbeddedResource Remove="Pages\Tests\**" />
+    <None Remove="Pages\Tests\**" />
+    <Watch Remove="Pages\Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Pages\Contacts\ContactEditView.razor.cs" />
   </ItemGroup>
 
@@ -27,7 +36,7 @@
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Watch Remove="Core\Controls\Error404View.razor" />
     <Watch Remove="Pages\MyControl.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\MatBlazorTestView.razor" />
@@ -42,7 +51,7 @@
     <Watch Remove="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <None Include="compilerconfig.json" />

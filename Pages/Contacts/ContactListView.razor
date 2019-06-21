@@ -26,7 +26,7 @@
                             <th>Prénom</th>
                             <th>Civilité</th>
                             <th>
-                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" onclick="@(() => AddContact())">
+                                <button type="button" class="btn btn-outline btn-xs gridColumnButton" @onclick="@(() => AddContact())">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
                             </th>
@@ -41,7 +41,7 @@
                                 <td>@contact.FirstName</td>
                                 <td>@contact.CivilityText</td>
                                 <td class="autoSizeToContent">
-                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" onclick="@(() => EditContact(@contact.Id))">
+                                    <button type="button" class="btn btn-outline-success btn-xs gridColumnButton" @onclick="@(() => EditContact(@contact.Id))">
                                         <span class="fa fa-pen" aria-hidden="true"></span>
                                     </button>
                                     <DeleteButton DeleteAction="@(async () => await DeleteContact(@contact.Id))"></DeleteButton>
@@ -54,7 +54,7 @@
         </div>
     }
 
-    @functions {
+    @code {
 
         public IList<Contact> Contacts { get; set; }
 
