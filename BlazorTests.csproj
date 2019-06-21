@@ -55,6 +55,12 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <Content Include="Pages\Tests\SyncfusionTests\EjsDatePickerTestView.razor" />
+    <Content Include="Pages\Tests\SyncfusionTests\EjsDropDownListTestView.razor" />
+    <Content Include="Pages\Tests\SyncfusionTests\EjsGridTestView.razor" />
+    <Content Include="Pages\Tests\SyncfusionTests\EjsTextBoxTestView.razor" />
+    <Content Include="Pages\Tests\SyncfusionTests\SyncfusionTestView.razor" />
+    <Content Include="Pages\Tests\TestView.razor" />
   </ItemGroup>
 
 </Project>

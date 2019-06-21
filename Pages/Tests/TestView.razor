@@ -1,11 +1,11 @@
 ﻿@page "/test"
-@using Telerik.Blazor.Components.TabStrip
+@*@using Telerik.Blazor.Components.TabStrip*@
 @using BlazorTests.Pages.Tests.SyncfusionTests
-@using BlazorTests.Pages.Tests.TelerikTests
-@using BlazorTests.Pages.Tests.MatBlazorTests
+@*@using BlazorTests.Pages.Tests.TelerikTests
+    @using BlazorTests.Pages.Tests.MatBlazorTests*@
 
 
-    <TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
+@*<TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
         <TelerikTab Title="Telerik">
             <TelerikTestView></TelerikTestView>
         </TelerikTab>
@@ -19,4 +19,12 @@
             <LongRunningProcessButtonTestView></LongRunningProcessButtonTestView>
         </TelerikTab>
 
-    </TelerikTabStrip>
+    </TelerikTabStrip>*@
+
+
+<SyncfusionTestView></SyncfusionTestView>
+
+@*
+    <TelerikTestView></TelerikTestView>
+    <MatBlazorTestView></MatBlazorTestView>
+    <LongRunningProcessButtonTestView></LongRunningProcessButtonTestView>*@
