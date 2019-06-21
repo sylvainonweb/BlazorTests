@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using BlazorTests.Data;
 using BlazorTests.Services;
 using System.Threading;
+using EmbeddedBlazorContent;
 
 namespace BlazorTests
 {
@@ -52,6 +53,9 @@ namespace BlazorTests
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Nécessaire pour MatBlazor
+            app.UseEmbeddedBlazorContent(typeof(MatBlazor.BaseMatComponent).Assembly);
 
             app.UseHttpsRedirection();
 

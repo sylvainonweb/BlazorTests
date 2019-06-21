@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-auto">
-            <MatTextField bind-Value="@LastName" Label="Standard"></MatTextField>
+            <MatTextField @bind-Value="@LastName" Label="Standard"></MatTextField>
         </div>
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
@@ -19,12 +19,12 @@
     <ValidationSummary />
 </EditForm>
 
-@functions {
+@code {
     [Required]
     public string LastName { get; set; }
 
-    public void Save()
+    public Task Save()
     {
-        JsInteropService.ShowAlert($"LastName = {LastName}").GetAwaiter().GetResult();
+        return JsInteropService.ShowAlert($"LastName = {LastName}");
     }
 }

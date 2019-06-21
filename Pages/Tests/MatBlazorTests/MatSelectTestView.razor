@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-auto">
-            <MatSelect Label="PickSélectionner une activité" bind-Value="@ActivityId">
+            <MatSelect Label="PickSélectionner une activité" @bind-Value="@ActivityId">
                 <MatOption Value=null></MatOption>
                 @foreach (var activity in @Activities)
                 {
@@ -29,7 +29,7 @@
     <ValidationSummary />
 </EditForm>
 
-@functions {
+@code {
     [Required]
     public string ActivityId { get; set; }
     public IList<ActivityEntity> Activities { get; set; }
@@ -39,8 +39,8 @@
         this.Activities = await ReferenceService.GetActivityEntities();
     }
 
-    public void Save()
+    public Task Save()
     {
-        JsInteropService.ShowAlert($"ActivityId = {ActivityId}").GetAwaiter().GetResult();
+        return JsInteropService.ShowAlert($"ActivityId = {ActivityId}");
     }
 }
