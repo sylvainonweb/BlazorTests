@@ -1,6 +1,10 @@
 ﻿#BLOQUANT
 * Doublon entre OnValidSubmit du EditForm et SaveAction du wrapper
 
+#NE FONCTIONNE PAS
+* Composants Syncfusion (dû au changement du modèle de binding)
+* Le bouton Fermer de l'écran Détail d'un contact.
+  Scénario : éditer un contact, le sauvegarder puis cliquer sur le bouton Fermer => cela réouvre l'écran de saisie
 
 #A FAIRE
 * Voir si possible d'ajouter un attribut ConvertToString à une propriété afin de regénérer une propriété du type Id / IdAsString
