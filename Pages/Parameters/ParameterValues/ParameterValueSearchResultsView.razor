@@ -3,7 +3,7 @@
 @using BlazorTests.Data
 @using BlazorTests.Core
 @using BlazorTests.Services
-@using Syncfusion.EJ2.RazorComponents.Charts
+@using Syncfusion.EJ2.Blazor.Charts
 
 @* Obligé de tester null sinon le binding plante. Surement corrigé avec des contrôles tiers mais bon *@
 @if (ParameterValues != null && ParameterValues.Length > 0)
@@ -51,37 +51,37 @@
             <div class="form-group row">
                 <div class="col-12">
                     <select class="custom-select" @bind=@GraphType>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Line>Line</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Column>Column</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Area>Area</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Bar>Bar</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Histogram>Histogram</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingColumn>StackingColumn</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingArea>StackingArea</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingLine>StackingLine</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingBar>StackingBar</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StepLine>StepLine</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StepArea>StepArea</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.SplineArea>SplineArea</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Scatter>Scatter</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Spline>Spline</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingColumn100>StackingColumn100</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingBar100>StackingBar100</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingLine100>StackingLine100</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.StackingArea100>StackingArea100</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.RangeColumn>RangeColumn</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Hilo>Hilo</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.HiloOpenClose>HiloOpenClose</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Waterfall>Waterfall</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.RangeArea>RangeArea</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Bubble>Bubble</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Candle>Candle</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Polar>Polar</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Radar>Radar</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.BoxAndWhisker>BoxAndWhisker</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.MultiColoredLine>MultiColoredLine</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.MultiColoredArea>MultiColoredArea</option>
-                        <option value=@Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType.Pareto>Pareto</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Line>Line</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Column>Column</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Area>Area</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Bar>Bar</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Histogram>Histogram</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingColumn>StackingColumn</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingArea>StackingArea</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingLine>StackingLine</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingBar>StackingBar</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StepLine>StepLine</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StepArea>StepArea</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.SplineArea>SplineArea</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Scatter>Scatter</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Spline>Spline</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingColumn100>StackingColumn100</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingBar100>StackingBar100</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingLine100>StackingLine100</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.StackingArea100>StackingArea100</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.RangeColumn>RangeColumn</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Hilo>Hilo</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.HiloOpenClose>HiloOpenClose</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Waterfall>Waterfall</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.RangeArea>RangeArea</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Bubble>Bubble</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Candle>Candle</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Polar>Polar</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Radar>Radar</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.BoxAndWhisker>BoxAndWhisker</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.MultiColoredLine>MultiColoredLine</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.MultiColoredArea>MultiColoredArea</option>
+                        <option value=@Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Pareto>Pareto</option>
                     </select>
                 </div>
             </div>
@@ -109,7 +109,7 @@ else
     [Microsoft.AspNetCore.Components.Parameter] public ParameterValue[] ParameterValues { get; set; }
 
     // Pour le graphe
-    public Syncfusion.EJ2.RazorComponents.Charts.ChartSeriesType GraphType { get; set; }
-    public Object ParameterValuesGridxAxis = new { valueType = "DateTime", labelFormat = "dd/MM/yyyy", };
-    public Object ParameterValuesGridyAxis = new { labelFormat = "{value}" };
+    public Syncfusion.EJ2.Blazor.Charts.ChartSeriesType GraphType { get; set; }
+    public ChartPrimaryXAxis ParameterValuesGridxAxis = new ChartPrimaryXAxis { ValueType = Syncfusion.EJ2.Blazor.Charts.ValueType.DateTime, LabelFormat = "dd/MM/yyyy", };
+    public ChartPrimaryYAxis ParameterValuesGridyAxis = new ChartPrimaryYAxis { LabelFormat = "{value}" };
 }
