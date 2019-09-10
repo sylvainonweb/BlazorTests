@@ -23,9 +23,9 @@
 
     @code {
 
-        public ParameterValue[] ParameterValues { get; set; }
+        public BlazorTests.Data.ParameterValue[] ParameterValues { get; set; }
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
             this.Title = "Tableau de bord";
         }
@@ -38,7 +38,7 @@
             }
             else
             {
-                ParameterValues = new ParameterValue[0];
+                ParameterValues = new BlazorTests.Data.ParameterValue[0];
             }
             this.StateHasChanged();
         }

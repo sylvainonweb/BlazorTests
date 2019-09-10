@@ -34,7 +34,7 @@
     public string ActivityId { get; set; }
     public IList<ActivityEntity> Activities { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         this.Activities = await ReferenceService.GetActivityEntities();
     }

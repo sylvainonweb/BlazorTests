@@ -34,20 +34,20 @@
 
 @code {
     public IList<Contact> Contacts { get; private set; }
-    [Parameter] public int CompanyId { get; private set; }
+    [Parameter] public int CompanyId { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         this.Contacts = await ContactService.GetCompanyContacts(this.CompanyId);
     }
 
     public void EditContact(int contactId)
     {
-        UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
+        NavigationManager.NavigateTo(Urls.ContactEditFull + contactId);
     }
 
     public void ManageCompanyContacts()
     {
-        UriHelper.NavigateTo(Urls.CompanyContactAdd + this.CompanyId);
+        NavigationManager.NavigateTo(Urls.CompanyContactAdd + this.CompanyId);
     }
 }

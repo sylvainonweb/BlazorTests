@@ -55,26 +55,26 @@
 
         public IList<Company> Companies { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Title = "Liste des sociétés";
             Companies = await CompanyService.GetCompanies();
         }
 
-        protected override async Task OnAfterRenderAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await JsInteropService.InitTable("companyTable");
-            await base.OnAfterRenderAsync();
+            await base.OnAfterRenderAsync(firstRender);
         }
 
         public void AddCompany()
         {
-            UriHelper.NavigateTo(Urls.CompanyAdd);
+            NavigationManager.NavigateTo(Urls.CompanyAdd);
         }
 
         public void EditCompany(int companyId)
         {
-            UriHelper.NavigateTo(Urls.CompanyEditFull + companyId);
+            NavigationManager.NavigateTo(Urls.CompanyEditFull + companyId);
         }
 
         public async Task DeleteCompany(int companyId)

@@ -98,7 +98,7 @@
 
         IList<CivilityEntity> Civilities { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Civilities = await ReferenceService.GetCivilityEntities();
 
@@ -139,7 +139,7 @@
             }
 
             // On redirige vers la vue complète d'un contact
-            UriHelper.NavigateTo(Urls.ContactEditFull + Id);
+            NavigationManager.NavigateTo(Urls.ContactEditFull + Id);
         }
 
         protected override async Task OnCancel()

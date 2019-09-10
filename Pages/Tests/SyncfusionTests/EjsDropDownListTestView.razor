@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-auto">
-            <EjsDropDownList @bind-value="@ActivityId" DataSource="@Activities" placeholder="Selectionner une activité" PopupHeight="220px">
+            <EjsDropDownList @bind-Value="ActivityId" DataSource="Activities" placeholder="Selectionner une activité" PopupHeight="220px">
                 <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
             </EjsDropDownList>
         </div>
@@ -29,19 +29,13 @@
 
 @code {
 
-    //[Required]
-    //public int ActivityId { get; set; }
-    //public IList<ActivityEntity> Activities { get; set; }
-
     [Required]
-    public object ActivityId { get; set; }
-    public IList<object> Activities { get; set; }
+    public int? ActivityId { get; set; }
+    public IList<ActivityEntity> Activities { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
-        //this.Activities = await ReferenceService.GetActivityEntities();
-        this.Activities = (await ReferenceService.GetActivityEntities())
-            .Select(o => o as object).ToList();
+        this.Activities = await ReferenceService.GetActivityEntities();
     }
 
     public Task Save()

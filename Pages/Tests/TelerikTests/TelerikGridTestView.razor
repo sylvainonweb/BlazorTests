@@ -4,7 +4,7 @@
 
 
 <div style="height:400px;">
-    <TelerikGrid Data="@customers" Pageable="true" Sortable="true">
+    <TelerikGrid Data="customers" Pageable="true" Sortable="true" TItem="Customer">
         <TelerikGridColumns>
             <TelerikGridColumn Field="Id" Title="Customer Id" />
             <TelerikGridColumn Field="FirstName" Title="First Name" />
@@ -23,7 +23,7 @@
         }
 
         Customer[] customers = null;
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             await Task.FromResult(Enumerable.Range(1, 5).Select(index => new Customer
             {

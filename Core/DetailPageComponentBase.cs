@@ -7,7 +7,7 @@ namespace BlazorTests.Core
     public abstract class DetailPageComponentBase : PageComponentBase
     {
         [Parameter]
-        protected string IdAsString { get; set; }
+        public string IdAsString { get; set; }
 
         protected int? Id
         {

@@ -14,9 +14,9 @@ else
 @code {
 
     protected bool IsProcessing { get; set; }
-    [Parameter] private Func<Task> Action { get; set; }
-    [Parameter] private string Text { get; set; }
-    [Parameter] private string CssClass { get; set; }
+    [Parameter] public Func<Task> Action { get; set; }
+    [Parameter] public string Text { get; set; }
+    [Parameter] public string CssClass { get; set; }
 
     public async Task OnProcessAsync()
     {

@@ -62,7 +62,7 @@
 
 @code {
 
-    [Parameter] public string CompanyIdAsString { get; private set; }
+    [Parameter] public string CompanyIdAsString { get; set; }
     protected int CompanyId
     {
         get { return StringToNullableIntConverter.ConvertToInt(CompanyIdAsString).Value; }
@@ -73,14 +73,14 @@
     public IList<Contact> UnassignedContacts { get; set; }
     public IList<Contact> AssignedContacts { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         var company = await CompanyService.GetCompany(this.CompanyId);
         this.AssignedContacts = await ContactService.GetCompanyContacts(this.CompanyId);
         this.Title = $"Gérer les contacts de la société {company.Name}";
     }
 
-    public async Task Search(UIKeyboardEventArgs args)
+    public async Task Search(KeyboardEventArgs args)
     {
         this.UnassignedContacts = await ContactService.GetUnassignedCompanyContacts(SearchFilter, this.CompanyId);
     }

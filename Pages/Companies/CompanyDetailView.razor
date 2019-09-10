@@ -33,7 +33,7 @@
         Company Company { get; set; }
         List<Contact> Contacts { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Company = await CompanyService.GetCompany(this.Id.Value);
             this.Title = $"{Company.Name}";
@@ -41,12 +41,12 @@
 
         private void EditCompany()
         {
-            UriHelper.NavigateTo(Urls.CompanyEditSimple + this.Id);
+            NavigationManager.NavigateTo(Urls.CompanyEditSimple + this.Id);
         }
 
         protected Task OnClose()
         {
-            UriHelper.NavigateTo(Urls.CompanyList);
+            NavigationManager.NavigateTo(Urls.CompanyList);
             return Task.FromResult(0);
         }
     }

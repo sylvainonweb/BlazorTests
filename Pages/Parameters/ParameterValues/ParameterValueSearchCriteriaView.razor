@@ -61,7 +61,7 @@
     public DateTime StartDate { get; set; } // En attendant, les nullables ne sont pas acceptés pour les dates
     public DateTime EndDate { get; set; }   // En attendant, les nullables ne sont pas acceptés pour les dates
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         Parameters = await ParameterService.GetParametersAsync();
     }
@@ -71,7 +71,7 @@
         Search(null, null, null);
     }
 
-    [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; private set; }
+    [Parameter] public Func<int?, DateTime?, DateTime?, Task> OnSearchAsked { get; set; }
     public void Search()
     {
         /* Début : Sinon la grid Syncfusion n'est pas rafraichie */

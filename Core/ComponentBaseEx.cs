@@ -7,7 +7,7 @@ namespace BlazorTests.Core
     public abstract class ComponentBaseEx : ComponentBase
     {
         [Inject]
-        protected IUriHelper UriHelper { get; set; }
+        protected NavigationManager NavigationManager { get; set; }
 
         [Inject]
         protected JsInteropService JsInteropService { get; set; }

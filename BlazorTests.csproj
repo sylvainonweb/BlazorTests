@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
-    <PackageReference Include="EmbeddedBlazorContent" Version="1.2.0" />
-    <PackageReference Include="MatBlazor" Version="1.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Syncfusion.EJ2.Blazor" Version="17.2.0.35-beta" />
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="EmbeddedBlazorContent" Version="1.7.0" />
+    <PackageReference Include="MatBlazor" Version="1.7.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1" />
+    <PackageReference Include="Syncfusion.EJ2.Blazor" Version="17.2.0.50-beta" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="Telerik.UI.for.Blazor" Version="0.5.0" />
   </ItemGroup>
@@ -22,42 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Tests\**" />
-    <Content Remove="Pages\Tests\**" />
-    <EmbeddedResource Remove="Pages\Tests\**" />
-    <None Remove="Pages\Tests\**" />
-    <Watch Remove="Pages\Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Pages\Contacts\ContactEditView.razor.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Pages\Tests\TestViewHelper.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-    <Content Include="Pages\Tests\MatBlazorTests\MatBlazorTestView.razor" />
-    <Content Include="Pages\Tests\MatBlazorTests\MatSelectTestView.razor" />
-    <Content Include="Pages\Tests\MatBlazorTests\MatTextFieldTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
-    <Content Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />
-    <Content Include="Pages\Tests\SyncfusionTests\EjsDatePickerTestView.razor" />
-    <Content Include="Pages\Tests\SyncfusionTests\EjsDropDownListTestView.razor" />
-    <Content Include="Pages\Tests\SyncfusionTests\EjsGridTestView.razor" />
-    <Content Include="Pages\Tests\SyncfusionTests\EjsTextBoxTestView.razor" />
-    <Content Include="Pages\Tests\SyncfusionTests\SyncfusionTestView.razor" />
-    <Content Include="Pages\Tests\TestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,7 @@ using Telerik.Blazor.Components.DatePicker;
 using Telerik.Blazor.Components.TabStrip;
 using Syncfusion.EJ2.Blazor.Calendars;
 using Syncfusion.EJ2.Blazor.Inputs;
+using Telerik.Blazor.Components.Grid;
 
 namespace BlazorTests.Pages.Tests
 {
@@ -21,7 +22,7 @@ namespace BlazorTests.Pages.Tests
             //datePicker.Change
 
             EjsTextBox textBox = new EjsTextBox();
-            textBox.ValueChange = (Syncfusion.EJ2.Blazor.Inputs.ChangedEventArgs args) => { };
+            //textBox.ValueChange = (Syncfusion.EJ2.Blazor.Inputs.ChangedEventArgs args) => { };
         }
     }
 }

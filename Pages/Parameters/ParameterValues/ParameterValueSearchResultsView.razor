@@ -39,7 +39,7 @@
             <div class="form-group row">
                 <div class="col-12">
                     <EjsChart id="bar" primaryXAxis="@ParameterValuesGridxAxis" primaryYAxis="@ParameterValuesGridyAxis">
-                        <ChartTooltipsettings enable="true"></ChartTooltipsettings>
+                        <ChartTooltipSettings enable="true"></ChartTooltipSettings>
                         <ChartSeriesCollection>
                             <ChartSeries dataSource="@ParameterValues" xName="Date" yName="Value"
                                          name="Valeur du paramètre" width=5 type="@GraphType">
@@ -95,21 +95,30 @@ else
 
 @code {
 
-    protected override Task OnInitAsync()
+    protected override Task OnInitializedAsync()
     {
-        return base.OnInitAsync();
+        return base.OnInitializedAsync();
     }
 
-    protected override async Task OnAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         //await JsInteropService.InitTable("resultTable");
-        await base.OnAfterRenderAsync();
+        await base.OnAfterRenderAsync(firstRender);
     }
 
-    [Microsoft.AspNetCore.Components.Parameter] public ParameterValue[] ParameterValues { get; set; }
+    [Microsoft.AspNetCore.Components.Parameter] public BlazorTests.Data.ParameterValue[] ParameterValues { get; set; }
 
     // Pour le graphe
     public Syncfusion.EJ2.Blazor.Charts.ChartSeriesType GraphType { get; set; }
-    public ChartPrimaryXAxis ParameterValuesGridxAxis = new ChartPrimaryXAxis { ValueType = Syncfusion.EJ2.Blazor.Charts.ValueType.DateTime, LabelFormat = "dd/MM/yyyy", };
-    public ChartPrimaryYAxis ParameterValuesGridyAxis = new ChartPrimaryYAxis { LabelFormat = "{value}" };
+
+    public ChartPrimaryXAxis ParameterValuesGridxAxis = new ChartPrimaryXAxis 
+    { 
+        ValueType = Syncfusion.EJ2.Blazor.Charts.ValueType.DateTime, 
+        LabelFormat = "dd/MM/yyyy", 
+    };
+
+    public ChartPrimaryYAxis ParameterValuesGridyAxis = new ChartPrimaryYAxis 
+    { 
+        LabelFormat = "{value}" 
+    };
 }

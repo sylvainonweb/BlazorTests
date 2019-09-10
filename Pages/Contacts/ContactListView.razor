@@ -6,8 +6,6 @@
 @using BlazorTests.Services
 @inject BlazorTests.Services.ContactService ContactService
 
-<MyControl></MyControl>
-
 <PageComponentWrapper Title="@Title">
 
     @if (@Contacts == null)
@@ -58,26 +56,26 @@
 
         public IList<Contact> Contacts { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Title = "Liste des contacts";
             Contacts = await ContactService.GetContacts();
         }
 
-        protected override async Task OnAfterRenderAsync()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await JsInteropService.InitTable("contactTable");
-            await base.OnAfterRenderAsync();
+            await base.OnAfterRenderAsync(firstRender);
         }
 
         public void AddContact()
         {
-            UriHelper.NavigateTo(Urls.ContactAdd);
+            NavigationManager.NavigateTo(Urls.ContactAdd);
         }
 
         public void EditContact(int contactId)
         {
-            UriHelper.NavigateTo(Urls.ContactEditFull + contactId);
+            NavigationManager.NavigateTo(Urls.ContactEditFull + contactId);
         }
 
         public async Task DeleteContact(int contactId)

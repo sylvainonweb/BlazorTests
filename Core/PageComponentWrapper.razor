@@ -22,9 +22,9 @@
     </div>
 
 @code {
-    [Parameter] private RenderFragment ChildContent { get; set; }
-    [Parameter] private string Title { get; set; }
-    [Parameter] private Func<Task> CloseAction { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Title { get; set; }
+    [Parameter] public Func<Task> CloseAction { get; set; }
 
     #region  Fermeture
 

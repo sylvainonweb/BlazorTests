@@ -51,7 +51,7 @@
 
         Contact Contact { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Contact = await ContactService.GetContact(this.Id.Value);
             this.Title = $"{Contact.LastName} {Contact.FirstName}";
@@ -59,7 +59,7 @@
 
         private void EditContact()
         {
-            UriHelper.NavigateTo(Urls.ContactEditSimple + this.Id);
+            NavigationManager.NavigateTo(Urls.ContactEditSimple + this.Id);
         }
 
         protected async Task OnClose()

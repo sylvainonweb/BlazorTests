@@ -14,7 +14,7 @@ namespace BlazorTests.Services
         protected string BackgroundCssClass { get; set; }
         protected string IconCssClass { get; set; }
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
             ToastService.OnShow += ShowToast;
             ToastService.OnHide += HideToast;
@@ -24,13 +24,13 @@ namespace BlazorTests.Services
         {
             BuildToastSettings(level, message, heading);
             IsVisible = true;
-            Invoke(() => StateHasChanged());
+            this.StateHasChanged();
         }
 
         private void HideToast()
         {
             IsVisible = false;
-            Invoke(() => StateHasChanged());
+            this.StateHasChanged();
         }
 
         private void BuildToastSettings(ToastLevel level, string message, string heading)

@@ -28,7 +28,7 @@
 
         BlazorTests.Data.Parameter Parameter { get; set; }
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
             if (this.Id.HasValue == false)
             {
@@ -56,12 +56,12 @@
                 }
             });
 
-            UriHelper.NavigateTo(Urls.ParameterList);
+            NavigationManager.NavigateTo(Urls.ParameterList);
         }
 
         protected override Task OnCancel()
         {
-            UriHelper.NavigateTo(Urls.ParameterList);
+            NavigationManager.NavigateTo(Urls.ParameterList);
             return Task.FromResult(0);
         }
     }

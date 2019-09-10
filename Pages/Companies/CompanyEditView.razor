@@ -50,7 +50,7 @@
         CompanyEntity Company { get; set; }
         IList<ActivityEntity> Activities { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             this.Activities = await ReferenceService.GetActivityEntities();
 
@@ -79,7 +79,7 @@
             }
 
             // On redirige vers la vue complète d'une société
-            UriHelper.NavigateTo(Urls.CompanyEditFull + Id);
+            NavigationManager.NavigateTo(Urls.CompanyEditFull + Id);
         }
 
         protected override async Task OnCancel()

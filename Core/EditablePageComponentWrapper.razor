@@ -23,16 +23,16 @@
     #region Propriétés bindées
 
     [Parameter]
-    protected RenderFragment ChildContent { get; set; }
+    public RenderFragment ChildContent { get; set; }
 
     [Parameter]
-    protected string Title { get; set; }
+    public string Title { get; set; }
 
     [Parameter]
-    private Func<Task> SaveAction { get; set; }
+    public Func<Task> SaveAction { get; set; }
 
     [Parameter]
-    private Func<Task> CancelAction { get; set; }
+    public Func<Task> CancelAction { get; set; }
 
     #endregion
 

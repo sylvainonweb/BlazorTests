@@ -1,4 +1,4 @@
-﻿@inherits Microsoft.AspNetCore.Components.Layouts.LayoutComponentBase
+﻿@inherits LayoutComponentBase
 @using  BlazorTests.Services.Technical.Toast
 @inject Microsoft.JSInterop.IJSRuntime JSRuntime
 @*SBD : Toast *@
@@ -24,7 +24,7 @@
 
 @code {
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
         // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
         // on utilise le 1er composant de l'application pour définir manuellement la propriété

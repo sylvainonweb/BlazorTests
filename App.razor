@@ -1,7 +1,10 @@
 ﻿<CascadingAuthenticationState>
-    <Router AppAssembly="typeof(Startup).Assembly">
-        <NotFoundContent>
+    <Router AppAssembly="typeof(Program).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
+        </Found>
+        <NotFound>
             <BlazorTests.Pages.Errors.Error404View></BlazorTests.Pages.Errors.Error404View>
-        </NotFoundContent>
+        </NotFound>
     </Router>
 </CascadingAuthenticationState>

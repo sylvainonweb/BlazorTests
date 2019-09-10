@@ -12,7 +12,7 @@
 
         <div class="row">
             <div class="col-auto">
-                <TelerikDropDownList Data="@DropDownListData" @bind-Value=@SelectedValue DefaultItem="@DefaultItem"
+                <TelerikDropDownList Data="DropDownListData" @bind-Value="SelectedValue" DefaultItem="@DefaultItem" TItem="Product" TValue="int?"
                                      ValueField="ProductId" TextField="ProductName"></TelerikDropDownList>
             </div>
             <div class="col-auto">
@@ -26,7 +26,7 @@
 
 </div>
 
-@functions  {
+@code {
     public IEnumerable<Product> DropDownListData { get; set; }
     public Product DefaultItem { get; set; } = new Product()
     {
@@ -35,9 +35,9 @@
     };
 
     [Required]
-    public int? SelectedValue { get; set; } = 2;
+    public int? SelectedValue { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
         List<Product> products = new List<Product>();
         for (int i = 0; i < 5; i++)
@@ -50,7 +50,7 @@
         }
 
         DropDownListData = products.AsQueryable();
-        base.OnInit();
+        base.OnInitialized();
     }
 
     public void Save()
