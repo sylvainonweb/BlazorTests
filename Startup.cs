@@ -38,6 +38,9 @@ namespace BlazorTests
             services.AddSingleton<ReferenceService>();
 
             services.AddSingleton<ParameterService>();
+
+            // Afin d'afficher le détail des erreurs
+            services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

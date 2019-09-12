@@ -6,6 +6,6 @@ namespace BlazorTests.Data
     {
         public int ParameterId { get; set; }
         public DateTime Date { get; set; }
-        public string Value { get; set; }
+        public double Value { get; set; }
     }
 }
