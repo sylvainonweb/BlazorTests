@@ -3,6 +3,23 @@ using System.Timers;
 
 namespace BlazorTests.Services
 {
+    /// <summary>
+    /// L'utilisation des notifications Toast nécessitent :
+    /// 
+    /// * ajouter les classes ToastService, ToastBase.cs et Toast.razor
+    /// 
+    /// * ajouter le fichier toast.css dans wwwroot\css
+    /// 
+    /// * ajouter l'import du fichier toast.css dans site.css comme suit : @import url('toast.css');
+    /// 
+    /// * ajouter le code suivant dans MainLayout
+    /// 
+    ///    @using Neptune.Hyperviseur.Services.Technical.Toast
+    /// 
+    ///    <!-- Composant permettant d'afficher les notifications Toast -->
+    ///    <Toast></Toast>
+    /// 
+    /// </summary>
     public class ToastService
     {
         public event Action<string, ToastLevel, string> OnShow;
@@ -19,7 +36,7 @@ namespace BlazorTests.Services
         {
             if (Countdown == null)
             {
-                Countdown = new Timer(2000);
+                Countdown = new Timer(5000);
                 Countdown.Elapsed += HideToast;
                 Countdown.AutoReset = false;
             }
