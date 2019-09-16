@@ -4,42 +4,24 @@
 
 
 
-<div id="EjsTextBox" style="display: none">
-    <EjsTextBoxTestView></EjsTextBoxTestView>
+<div id="InputTestView" style="display: none">
+    <InputTestView></InputTestView>
 </div>
-<div id="EjsDropDownList" style="display: none">
-    <EjsDropDownListTestView></EjsDropDownListTestView>
-</div>
-<div id="EjsDatePickerTestView" style="display: none">
-    <EjsDatePickerTestView></EjsDatePickerTestView>
-</div>
-<div id="EjsGridTestView" style="display: none">
-    <EjsGridTestView></EjsGridTestView>
+<div id="GridTestView" style="display: none">
+    <GridTestView></GridTestView>
 </div>
 
 <EjsTab>
     <TabItems>
-        <TabItem Content="#EjsTextBox">
+        <TabItem Content="#InputTestView">
             <ChildContent>
-                <TabHeader Text="EjsTextBox"></TabHeader>
+                <TabHeader Text="Inputs"></TabHeader>
             </ChildContent>
         </TabItem>
 
-        <TabItem Content="#EjsDropDownList">
+        <TabItem Content="#GridTestView">
             <ChildContent>
-                <TabHeader Text="EjsDropDownList"></TabHeader>
-            </ChildContent>
-        </TabItem>
-
-        <TabItem Content="#EjsDatePickerTestView">
-            <ChildContent>
-                <TabHeader Text="EjsDatePickerTestView"></TabHeader>
-            </ChildContent>
-        </TabItem>
-
-        <TabItem Content="#EjsGridTestView">
-            <ChildContent>
-                <TabHeader Text="EjsGridTestView"></TabHeader>
+                <TabHeader Text="Grid"></TabHeader>
             </ChildContent>
         </TabItem>
 
@@ -52,11 +34,37 @@
 <br />
 <p>ATTENTION : tous les contrôles syncfusion nécessite que la propriété id soit renseigné sinon ils ne s'affichent pas (signe qu'il ne s'agit pas de composants natifs mais de wrapper javascript</p>
 <ul>
-    <li>Tous les contrôles : depuis la preview 9, le binding ne semble plus fonctionner. Exemple : si je reprends l'exemple présent sur leur site pour le TextBox, impossible de modifier la valeur</li>
     <li>
-        TabControl : ne gère pas la notion de Template => impossible de définir le contenu d'un TabItem directement.
+        Tous les contrôles : depuis la preview 9, le binding ne semble plus fonctionner. De plus, la vérification des champs obligatoires ne semble pas fonctionner avec ValidationSummary et DataAnnotationsValidator
+        Exemple : si je reprends l'exemple présent sur leur site pour le TextBox, impossible de modifier la valeur
+    </li>
+    <li>TextBox : Binding KO, Champs obligatoires KO</li>
+    <li>DropDownList : Binding KO (la liste s'affiche mais pas de synchro de la valeur sélectionnée), Champs obligatoires KO</li>
+    <li>DatePicker : </li>
+    <li>TimePicker : </li>
+    <li>NumericTextBox : </li>
+    <li>CheckBox : </li>
+    <li>RadioButton : </li>
+    <li>Button : </li>
+    <li>
+        Tab : KO car ne gère pas la notion de Template => impossible de définir le contenu d'un TabItem directement.
         Il faut passer par un div caché contenant le contenu à afficher (voir dans le source de cette page) => code pourri
     </li>
+    <li>Grid : Mitigé car fonctionne mais :
+        <ul>
+            <li>
+                Impossible d'afficher une date française (yMd et reconnu mais pas dMy)
+            </li>
+            <li>
+                Par défaut, le filtrage fonctionne si on saisit le texte complet mais pas le début
+            </li>
+        </ul>
+    </li>
+    <li>Menu : </li>
+    <li>Dialog : </li>
+    <li>Toast : </li>
+    <li>ListBox : </li>
+    <li>DateTimePicker : </li>
 </ul>
 <br>
 <br>

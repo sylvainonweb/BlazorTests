@@ -1,0 +1,158 @@
+﻿@using Syncfusion.EJ2.Blazor.Inputs
+@using Syncfusion.EJ2.Blazor.DropDowns
+@using Syncfusion.EJ2.Blazor.Calendars
+@using System.ComponentModel.DataAnnotations
+@inject BlazorTests.Services.JsInteropService JsInteropService
+@inject BlazorTests.Services.ReferenceService ReferenceService
+@inject BlazorTests.Services.ContactService ContactService
+
+
+
+<EditForm Model="@this" OnValidSubmit="@(() => Save())">
+
+    <div class="row">
+        <div class="col-2">
+            TextBox :
+        </div>
+        <div class="col-auto">
+            <EjsTextBox ID="textbox" @bind-Value="TextBox_Text"></EjsTextBox>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DropDownList :
+        </div>
+        <div class="col-auto">
+            <EjsDropDownList ID="dropDownList" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
+                <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
+            </EjsDropDownList>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (Date) :
+        </div>
+        <div class="col-auto">
+            <EjsDatePicker ID="datepicker" @bind-value="DatePicker_Date" ShowClearButton="true"></EjsDatePicker>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (Time) :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (DateTime) :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            NumericTextBox (Entier) :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            NumericTextBox (Décimal) :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            Checkbox :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            RadioButton (Actif) :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            ListBox :
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <button type="submit">Sauvegarder</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+        </div>
+    </div>
+
+</EditForm>
+
+@code {
+    [Required]
+    public string TextBox_Text { get; set; }
+
+    [Required]
+    public int? DropDownList_Id { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_Date { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_Time { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_DateTime { get; set; }
+
+    //[Required]
+    //public int? NumericTextBox_Int { get; set; }
+
+    [Required]
+    public decimal? NumericTextBox_Decimal { get; set; }
+
+    [Required]
+    public bool CheckBox_Checked { get; set; }
+
+    [Required]
+    public string RadioButton_Value { get; set; }
+
+    //[Required]
+    public string ListBox_Value { get; set; }
+
+
+    public IList<ActivityEntity> Activities { get; set; }
+    public IList<Contact> Contacts { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.Activities = await ReferenceService.GetActivityEntities();
+    }
+
+    public Task Save()
+    {
+        return JsInteropService.ShowAlert("Sauvegarde effectuée");
+    }
+}
