@@ -1,30 +1,62 @@
 ﻿@page "/libraries/syncfusion"
-@using Telerik.Blazor.Components.TabStrip
+@using Syncfusion.EJ2.Blazor.Navigations
 @using BlazorTests.Pages.Tests.SyncfusionTests
 
 
-<TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
-        <TelerikTab Title="EjsTextBox">
-            <EjsTextBoxTestView></EjsTextBoxTestView>
-        </TelerikTab>
-        <TelerikTab Title="EjsDropDownList">
-            <EjsDropDownListTestView></EjsDropDownListTestView>
-        </TelerikTab>
-        <TelerikTab Title="EjsDatePicker">
-            <EjsDatePickerTestView></EjsDatePickerTestView>
-        </TelerikTab>
 
-        <TelerikTab Title="EjsGrid">
-            <EjsGridTestView></EjsGridTestView>
-        </TelerikTab>
-    </TelerikTabStrip>
+<div id="EjsTextBox" style="display: none">
+    <EjsTextBoxTestView></EjsTextBoxTestView>
+</div>
+<div id="EjsDropDownList" style="display: none">
+    <EjsDropDownListTestView></EjsDropDownListTestView>
+</div>
+<div id="EjsDatePickerTestView" style="display: none">
+    <EjsDatePickerTestView></EjsDatePickerTestView>
+</div>
+<div id="EjsGridTestView" style="display: none">
+    <EjsGridTestView></EjsGridTestView>
+</div>
+
+<EjsTab>
+    <TabItems>
+        <TabItem Content="#EjsTextBox">
+            <ChildContent>
+                <TabHeader Text="EjsTextBox"></TabHeader>
+            </ChildContent>
+        </TabItem>
+
+        <TabItem Content="#EjsDropDownList">
+            <ChildContent>
+                <TabHeader Text="EjsDropDownList"></TabHeader>
+            </ChildContent>
+        </TabItem>
+
+        <TabItem Content="#EjsDatePickerTestView">
+            <ChildContent>
+                <TabHeader Text="EjsDatePickerTestView"></TabHeader>
+            </ChildContent>
+        </TabItem>
+
+        <TabItem Content="#EjsGridTestView">
+            <ChildContent>
+                <TabHeader Text="EjsGridTestView"></TabHeader>
+            </ChildContent>
+        </TabItem>
+
+    </TabItems>
+</EjsTab>
+
 <br>
 <br>
 <p><strong>Résumé de tests</strong></p>
 <br />
-<p>ATTENTION : tous les contrôles syncfusion nécessite que la propriété id soit renseigné sinon ils ne s'affichent pas</p>
+<p>ATTENTION : tous les contrôles syncfusion nécessite que la propriété id soit renseigné sinon ils ne s'affichent pas (signe qu'il ne s'agit pas de composants natifs mais de wrapper javascript</p>
 <ul>
-    <li>DropDownList : binding de la valeur sélectionnée obligatoirement vers une propriété de type object </li>
+    <li>Tous les contrôles : depuis la preview 9, le binding ne semble plus fonctionner. Exemple : si je reprends l'exemple présent sur leur site pour le TextBox, impossible de modifier la valeur</li>
+    <li>
+        TabControl : ne gère pas la notion de Template => impossible de définir le contenu d'un TabItem directement.
+        Il faut passer par un div caché contenant le contenu à afficher (voir dans le source de cette page) => code pourri
+    </li>
 </ul>
 <br>
 <br>

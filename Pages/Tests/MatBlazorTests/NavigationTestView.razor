@@ -1,0 +1,32 @@
+﻿@using MatBlazor
+@inject BlazorTests.Services.ContactService ContactService
+
+
+<div class="row">
+    <div class="col-auto">
+        Menu : 
+    </div>
+    <div class="col-auto">
+        <MatButton Label="Fichier" OnClick="@OnClick" RefBack="@buttonForwardRef"></MatButton>
+        <MatMenu @ref="FileMenu" TargetForwardRef="@buttonForwardRef">
+            <MatList>
+                <MatListItem>Nouveau</MatListItem>
+                <MatListItem>Ouvrir</MatListItem>
+                <MatListItem>Quitter</MatListItem>
+            </MatList>
+        </MatMenu>
+    </div>
+</div>
+
+@code
+        {
+    ForwardRef buttonForwardRef = new ForwardRef();
+    BaseMatMenu FileMenu;
+
+    public void OnClick(MouseEventArgs e)
+    {
+        this.FileMenu.OpenAsync();
+    }
+}
+
+

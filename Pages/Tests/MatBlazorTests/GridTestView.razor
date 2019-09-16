@@ -1,0 +1,37 @@
+﻿@using MatBlazor
+@inject BlazorTests.Services.ContactService ContactService
+
+
+<div class="row">
+    <div class="col-2">
+        Grid :
+    </div>
+    <div class="col-auto">
+        <MatTable Items="@Contacts" class="mat-elevation-z5">
+            <MatTableHeader>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Civilité</th>
+                <th>Date de naissance</th>
+                <th>Marrié</th>
+            </MatTableHeader>
+            <MatTableRow>
+                <td>@context.LastName</td>
+                <td>@context.FirstName</td>
+                <td>@context.CivilityText</td>
+                <td>@context.BirthDate</td>
+                <td>@context.Married</td>
+            </MatTableRow>
+        </MatTable>
+    </div>
+</div>
+
+@code {
+
+    public IList<Contact> Contacts { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.Contacts = await ContactService.GetContacts();
+    }
+}

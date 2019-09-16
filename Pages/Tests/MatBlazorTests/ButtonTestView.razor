@@ -1,0 +1,21 @@
+﻿@using MatBlazor
+
+
+<div class="row">
+    <div class="col-auto">
+        Button : 
+    </div>
+    <div class="col-auto">
+        <MatButton Label="Afficher un message" OnClick="@OnButtonClick"></MatButton>
+    </div>
+</div>
+
+@code
+{
+    public void OnButtonClick(MouseEventArgs e)
+    {
+        JsInteropService.ShowAlert("Le message tant attendu");
+    }
+}
+
+

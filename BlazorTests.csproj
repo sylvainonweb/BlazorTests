@@ -22,12 +22,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Watch Remove="Pages\Tests\MatBlazorTests\ButtonTestView.razor" />
+    <Watch Remove="Pages\Tests\MatBlazorTests\GridTestView.razor" />
+    <Watch Remove="Pages\Tests\MatBlazorTests\InputTestView.razor" />
+    <Watch Remove="Pages\Tests\MatBlazorTests\LayoutTestView.razor" />
+    <Watch Remove="Pages\Tests\MatBlazorTests\NavigationTestView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Docs\" />
   </ItemGroup>
 
 </Project>

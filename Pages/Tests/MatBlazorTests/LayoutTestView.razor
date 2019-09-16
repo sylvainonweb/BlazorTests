@@ -1,0 +1,38 @@
+﻿@using MatBlazor
+
+
+<div class="row">
+    <div class="col-auto">
+        Dialog :
+    </div>
+    <div class="col-auto">
+        <MatButton Label="Afficher une fenêtre" OnClick="@ShowDialogButtonClick"></MatButton>
+        @if(this.Result.HasValue)
+        {
+            <p>Résultat : @Result</p>
+        }
+    </div>
+</div>
+
+<MatDialog @bind-IsOpen="@IsDialogOpen">
+    <MatDialogTitle>Titre</MatDialogTitle>
+    <MatDialogContent>
+        <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e => { this.Result = false; this.IsDialogOpen = false; })">Annuler</MatButton>
+        <MatButton OnClick="@(e => { this.Result = true; this.IsDialogOpen = false; })">OK</MatButton>
+    </MatDialogActions>
+</MatDialog>
+
+@code
+{
+    private bool? Result { get; set; } = null;
+    private bool IsDialogOpen { get; set; } = false;
+    public void ShowDialogButtonClick(MouseEventArgs e)
+    {
+        this.IsDialogOpen = true;
+    }
+}
+
+

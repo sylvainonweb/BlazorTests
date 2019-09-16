@@ -1,29 +1,37 @@
 ﻿@using Syncfusion.EJ2.Blazor.Inputs
-@using System.ComponentModel.DataAnnotations
-@using BlazorTests.Services
 @inject BlazorTests.Services.JsInteropService JsInteropService
 
-<EditForm Model="@this" OnValidSubmit="@Save">
+<p>TextBox value is: @Name</p>
 
-    <div class="row">
-        <div class="col-auto">
-            <EjsTextBox id="lastNameTextBox" placeholder="Nom" @bind-value="@LastName" ShowClearButton="true" floatLabelType="@FloatLabelType.Auto"></EjsTextBox>
-        </div>
-        <div class="col-auto">
-            <button type="submit">Sauvegarder</button>
-        </div>
-    </div>
-
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-</EditForm>
+<EjsTextBox @bind-Value="@Name"></EjsTextBox>
 
 @code {
-    [Required]
-    public string LastName { get; set; }
 
-    public async Task Save()
-    {
-        await JsInteropService.ShowAlert($"LastName : {LastName}");
-    }
+        private string name = "Syncfusion";
+        public string Name { get; set; }
 }
+
+@*<EditForm Model="@this" OnValidSubmit="@Save">
+
+        <div class="row">
+            <div class="col-auto">
+                <EjsTextBox id="lastNameTextBox" placeholder="Nom" @bind-Value="LastName" ShowClearButton="true" floatLabelType="@FloatLabelType.Auto"></EjsTextBox>
+            </div>
+            <div class="col-auto">
+                <button type="submit">Sauvegarder</button>
+            </div>
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+
+    @code {
+        [Required]
+        public string LastName { get; set; }
+
+        public async Task Save()
+        {
+            await JsInteropService.ShowAlert($"LastName : {LastName}");
+        }
+    }*@

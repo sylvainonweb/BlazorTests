@@ -1,0 +1,153 @@
+﻿@using MatBlazor
+@using System.ComponentModel.DataAnnotations
+@inject BlazorTests.Services.JsInteropService JsInteropService
+@inject BlazorTests.Services.ReferenceService ReferenceService
+
+
+<EditForm Model="@this" OnValidSubmit="@(() => Save())">
+
+    <div class="row">
+        <div class="col-2">
+            TextBox :
+        </div>
+        <div class="col-auto">
+            <MatTextField @bind-Value="@TextBox_Text" Label="Standard"></MatTextField>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            TextBox :
+        </div>
+        <div class="col-auto">
+            <MatSelect Label="..." @bind-Value="DropDownList_Id">
+                <MatOption Value=""></MatOption>
+                @foreach (var activity in @Activities)
+                {
+                    <MatOption Value=@activity.Id.ToString()>@activity.Text</MatOption>
+                }
+            </MatSelect>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (Date) :
+        </div>
+        <div class="col-auto">
+            <MatDatePicker @bind-Value="@DatePicker_Date"></MatDatePicker>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (Time) :
+        </div>
+        <div class="col-auto">
+            <MatDatePicker @bind-Value="@DatePicker_Time" EnableTime=true DateFormat="H:i" NoCalendar=true></MatDatePicker>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            DatePicker (DateTime) :
+        </div>
+        <div class="col-auto">
+            <MatDatePicker @bind-Value="@DatePicker_DateTime" EnableTime=true DateFormat="Y-m-d H:i"></MatDatePicker>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            NumericTextBox (Entier) :
+        </div>
+        <div class="col-auto">
+            @*<MatNumericUpDownField Label="Entier" @bind-Value=@NumericTextBox_Int Step="0.01m" DecimalPlaces="0" Type="int?" ></MatNumericUpDownField>*@
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            NumericTextBox (Décimal) :
+        </div>
+        <div class="col-auto">
+            <MatNumericUpDownField Label="Décimal" @bind-Value=@NumericTextBox_Decimal Step="0.01m" DecimalPlaces=2></MatNumericUpDownField>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            Checkbox :
+        </div>
+        <div class="col-auto">
+            <MatCheckbox @bind-Checked="@CheckBox_Checked">Actif</MatCheckbox>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            RadioButton (Actif) :
+        </div>
+        <div class="col-auto">
+            <MatRadioGroup @bind-Value="@RadioButton_Value">
+                <MatRadioButton Value="1" Label="Prospect"></MatRadioButton>
+                <MatRadioButton Value="2" Label="Client"></MatRadioButton>
+            </MatRadioGroup>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <button type="submit">Sauvegarder</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+        </div>
+    </div>
+
+</EditForm>
+
+@code {
+    [Required]
+    public string TextBox_Text { get; set; }
+
+    [Required]
+    public string DropDownList_Id { get; set; }
+    public IList<ActivityEntity> Activities { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_Date { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_Time { get; set; }
+
+    [Required]
+    public DateTime? DatePicker_DateTime { get; set; }
+
+    //[Required]
+    //public int? NumericTextBox_Int { get; set; }
+
+    [Required]
+    public decimal? NumericTextBox_Decimal { get; set; }
+
+    [Required]
+    public bool CheckBox_Checked { get; set; }
+
+    [Required]
+    public string RadioButton_Value { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.Activities = await ReferenceService.GetActivityEntities();
+    }
+
+    public Task Save()
+    {
+        return JsInteropService.ShowAlert("Sauvegarde effectuée");
+    }
+}

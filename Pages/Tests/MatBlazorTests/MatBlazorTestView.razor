@@ -1,21 +1,46 @@
 ﻿@page "/libraries/matblazor"
-@using Telerik.Blazor.Components.TabStrip
-@using BlazorTests.Pages.Tests.MatBlazorTests
 @using MatBlazor
 
-<TelerikTabStrip TabPosition="Telerik.Blazor.Components.TabStrip.TabPosition.Top">
-    <TelerikTab Title="MatTextField">
-        <MatTextFieldTestView></MatTextFieldTestView>
-    </TelerikTab>
-    <TelerikTab Title="MatSelect">
-        <MatSelectTestView></MatSelectTestView>
-    </TelerikTab>
-</TelerikTabStrip>
-
-<p><strong>Résumé de tests</strong></p>
+<div class="row">
+    <div class="col-12">
+        <MatTabGroup>
+            <MatTab Label="Inputs">
+                <InputTestView></InputTestView>
+            </MatTab>
+            <MatTab Label="Buttons">
+                <ButtonTestView></ButtonTestView>
+            </MatTab>
+            <MatTab Label="Grids">
+                <GridTestView></GridTestView>
+            </MatTab>
+            <MatTab Label="Navigation">
+                <NavigationTestView></NavigationTestView>
+            </MatTab>
+            <MatTab Label="Layout">
+                <LayoutTestView></LayoutTestView>
+            </MatTab>
+        </MatTabGroup>
+    </div>
+</div>
 <br />
-<ul>
-    <li>TextField : OK (champs obligatoires)</li>
-    <li>Select : KO (bind-Value doit être de type string)</li>
-    <li>DatePicker : KO (n'existe pas)</li>
-</ul>
+<br />
+<div class="row">
+    <p><strong>Résumé de tests</strong></p>
+    <br />
+    <ul>
+        <li>TextBox : Binding OK, Champs obligatoires OK</li>
+        <li>DropDownList : Binding KO (uniquement string et pas int?)n Champs obligatoires KO  (fonctionne mais pas de trait sous le controle en cas d'erreur)</li>
+        <li>DatePicker : Binding OK, Champs obligatoires OK</li>
+        <li>TimePicker : Binding OK, Champs obligatoires KO (impossible de supprimer la valeur une fois mise)</li>
+        <li>NumericTextBox : Binding OK/KO (uniquement decimal? et pas int?), Champs obligatoires KO (fonctionne mais pas de trait sous le controle en cas d'erreur)</li>
+        <li>CheckBox : Binding OK/KO (si bool et pas bool?), Champs obligatoires KO (bool? impossible)</li>
+        <li>RadioButton : Binding KO (string uniquement et pas int?), Champs obligatoires OK</li>
+        <li>Button : </li>
+        <li>Tab : OK</li>
+        <li>Grid : KO (System.InvalidOperationException: Cannot provide a value for property 'Http')</li>
+        <li>Menu : </li>
+        <li>Dialog : </li>
+        <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
+        <li>Application Bar : ? Je ne trouve pas d'exemple où il y a un menu. Du coup, sert juste à afficher le titre de l'application donc...</li>
+    </ul>
+</div>
