@@ -1,0 +1,25 @@
+﻿@using MatBlazor
+@inject IMatToaster Toaster
+
+
+<MatToastContainer />
+
+<div class="row">
+    <div class="col-auto">
+        Toast :
+    </div>
+    <div class="col-auto">
+        <MatButton Raised="true" Class="mdc-toast-danger" OnClick="@ShowNotificationButtonClick">Afficher une notification</MatButton>
+    </div>
+</div>
+
+@code
+    {
+    void ShowNotificationButtonClick(MouseEventArgs e)
+    {
+        Toaster.Configuration.Position = MatToastPosition.TopFullWidth;
+        Toaster.Add("Ceci est une notification", MatToastType.Info, "Information");
+    }
+}
+
+

@@ -19,6 +19,9 @@
             <MatTab Label="Layout">
                 <LayoutTestView></LayoutTestView>
             </MatTab>
+            <MatTab Label="Notification">
+                <NotificationTestView></NotificationTestView>
+            </MatTab>
         </MatTabGroup>
     </div>
 </div>
@@ -38,8 +41,10 @@
         <li>Button : </li>
         <li>Tab : OK</li>
         <li>Grid : KO (System.InvalidOperationException: Cannot provide a value for property 'Http')</li>
-        <li>Menu : </li>
-        <li>Dialog : </li>
+        <li>Menu : OK</li>
+        <li>Dialog : Mitigé car fonctionne très bien mais nécessite d'ajouter le code de boite de dialogue dans la page HTML</li>
+        <li>Toast : OK</li>
+        <li>ListBox : KO. Les données s'affichent mais je n'arrive pas à binder la valeur à ma propriété</li>
         <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
         <li>Application Bar : ? Je ne trouve pas d'exemple où il y a un menu. Du coup, sert juste à afficher le titre de l'application donc...</li>
     </ul>

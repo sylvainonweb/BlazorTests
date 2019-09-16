@@ -12,6 +12,7 @@ using BlazorTests.Data;
 using BlazorTests.Services;
 using System.Threading;
 using EmbeddedBlazorContent;
+using MatBlazor;
 
 namespace BlazorTests
 {
@@ -26,6 +27,10 @@ namespace BlazorTests
 
             // SBD : Telerik
             services.AddTelerikBlazor();
+
+            // SBD : Telerik
+            services.AddScoped<MatToastConfiguration>();
+            services.AddScoped<IMatToaster, MatToaster>();
 
             // SBD : Services techniques
             services.AddSingleton<JsInteropService>();

@@ -27,6 +27,7 @@
     <Watch Remove="Pages\Tests\MatBlazorTests\InputTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\LayoutTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\NavigationTestView.razor" />
+    <Watch Remove="Pages\Tests\MatBlazorTests\NotificationTestView.razor" />
   </ItemGroup>
 
   <ItemGroup>
