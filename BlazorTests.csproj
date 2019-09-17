@@ -14,7 +14,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1" />
     <PackageReference Include="Syncfusion.EJ2.Blazor" Version="17.2.0.50-beta" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
-    <PackageReference Include="Telerik.UI.for.Blazor" Version="0.5.0" />
+    <PackageReference Include="Telerik.UI.for.Blazor.Trial" Version="1.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,12 +34,13 @@
     <Watch Remove="Pages\Tests\SyncfusionTests\LayoutTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\NavigationTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\NotificationTestView.razor" />
+    <Watch Remove="Pages\Tests\TelerikTests\InputTestView.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\TelerikDatePickerTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\InputTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />

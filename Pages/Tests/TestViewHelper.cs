@@ -12,7 +12,7 @@ namespace BlazorTests.Pages.Tests
         public void TestTelerik()
         {
             TelerikTab tab = new TelerikTab();
-            TelerikDatePicker datePicker = new TelerikDatePicker();
+            //TelerikDatePicker datePicker = new TelerikDatePicker();
             //datePicker.ValueChanged
         }
 

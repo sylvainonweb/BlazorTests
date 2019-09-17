@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @using  BlazorTests.Services.Technical.Toast
+@using Telerik.Blazor.Components.RootComponent
 @inject Microsoft.JSInterop.IJSRuntime JSRuntime
-
 @*SBD : Toast *@
 <Toast></Toast>
 
@@ -12,24 +12,25 @@
     <NavMenu />
 </div>
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="https://docs.microsoft.com/en-us/aspnet/" target="_blank" class="ml-md-auto">About</a>
+<TelerikRootComponent>
+    <div class="main">
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/en-us/aspnet/" target="_blank" class="ml-md-auto">About</a>
+        </div>
+
+        <div class="content px-4">
+            @Body
+        </div>
     </div>
+</TelerikRootComponent>
 
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+        @code {
 
-
-@code {
-
-    protected override void OnInitialized()
-    {
-        // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
-        // on utilise le 1er composant de l'application pour définir manuellement la propriété
-        // statique de JsInteropService.
-        BlazorTests.Services.JsInteropService.JSRuntime = JSRuntime;
-    }
-}
+            protected override void OnInitialized()
+            {
+                // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
+                // on utilise le 1er composant de l'application pour définir manuellement la propriété
+                // statique de JsInteropService.
+                BlazorTests.Services.JsInteropService.JSRuntime = JSRuntime;
+            }
+        }

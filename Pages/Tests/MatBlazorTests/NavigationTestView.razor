@@ -28,9 +28,9 @@
         this.FileMenu.OpenAsync();
     }
 
-    public void OpenButtonClick(MouseEventArgs e)
+    public async Task OpenButtonClick(MouseEventArgs e)
     {
-        JsInteropService.ShowAlert("Clic sur le bouton 'Ouvrir'");
+        await JsInteropService.ShowAlert("Clic sur le bouton 'Ouvrir'");
     }
 }
 

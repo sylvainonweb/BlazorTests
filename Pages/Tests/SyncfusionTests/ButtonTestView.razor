@@ -12,9 +12,9 @@
 
 @code
 {
-    public void OnButtonClick(MouseEventArgs e)
+    public async Task OnButtonClick(MouseEventArgs e)
     {
-        JsInteropService.ShowAlert("Le message tant attendu");
+        await JsInteropService.ShowAlert("Le message tant attendu");
     }
 }
 
