@@ -1,0 +1,21 @@
+﻿@using Syncfusion.EJ2.Blazor.Buttons
+
+
+<div class="row">
+    <div class="col-auto">
+        Button :
+    </div>
+    <div class="col-auto">
+        <EjsButton @onclick="OnButtonClick" IsPrimary="true">Primary</EjsButton>
+    </div>
+</div>
+
+@code
+{
+    public void OnButtonClick(MouseEventArgs e)
+    {
+        JsInteropService.ShowAlert("Le message tant attendu");
+    }
+}
+
+

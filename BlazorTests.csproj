@@ -28,8 +28,12 @@
     <Watch Remove="Pages\Tests\MatBlazorTests\LayoutTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\NavigationTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\NotificationTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\ButtonTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\GridTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\InputTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\LayoutTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\NavigationTestView.razor" />
+    <Watch Remove="Pages\Tests\SyncfusionTests\NotificationTestView.razor" />
   </ItemGroup>
 
   <ItemGroup>

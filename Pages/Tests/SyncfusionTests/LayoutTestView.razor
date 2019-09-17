@@ -1,0 +1,33 @@
+﻿
+@using Syncfusion.EJ2.Blazor
+@using Syncfusion.EJ2.Blazor.Popups
+@using Syncfusion.EJ2.Blazor.Buttons
+
+
+<div class="row">
+    <div class="col-auto">
+        Dialog :
+    </div>
+    <div class="col-auto" id="target">
+        <EjsButton @onclick="@ShowDialogButtonClick">Afficher une fenêtre</EjsButton>
+        <EjsDialog @ref="DialogObj" Target="#target" Height="270px" Width="500px" ShowCloseIcon="true">
+            <DialogTemplates>
+                <Header>Titre </Header>
+                <Content> <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p> </Content>
+            </DialogTemplates>
+            <DialogButtons>
+                @*<DialogButton ButtonModel="@DialogBtn"></DialogButton>*@
+            </DialogButtons>
+        </EjsDialog>
+    </div>
+</div>
+
+@code
+{
+    EjsDialog DialogObj;
+    public void ShowDialogButtonClick(MouseEventArgs e)
+    {
+        this.DialogObj.Show();
+    }
+}
+

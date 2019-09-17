@@ -2,6 +2,7 @@
 @using Syncfusion.EJ2.Blazor.DropDowns
 @using Syncfusion.EJ2.Blazor.Calendars
 @using System.ComponentModel.DataAnnotations
+@using Syncfusion.EJ2.Blazor.Buttons
 @inject BlazorTests.Services.JsInteropService JsInteropService
 @inject BlazorTests.Services.ReferenceService ReferenceService
 @inject BlazorTests.Services.ContactService ContactService
@@ -44,6 +45,7 @@
             DatePicker (Time) :
         </div>
         <div class="col-auto">
+            <EjsTimePicker @bind-value="TimePicker_Time"></EjsTimePicker>
         </div>
     </div>
 
@@ -52,6 +54,7 @@
             DatePicker (DateTime) :
         </div>
         <div class="col-auto">
+            <EjsDateTimePicker @bind-value="DateTimePicker_DateTime"></EjsDateTimePicker>
         </div>
     </div>
 
@@ -60,6 +63,7 @@
             NumericTextBox (Entier) :
         </div>
         <div class="col-auto">
+            <EjsNumericTextBox TValue="int?" @bind-Value="NumericTextBox_Int"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -68,6 +72,7 @@
             NumericTextBox (Décimal) :
         </div>
         <div class="col-auto">
+            <EjsNumericTextBox TValue="decimal?" @bind-Value="NumericTextBox_Decimal"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -76,6 +81,7 @@
             Checkbox :
         </div>
         <div class="col-auto">
+            <EjsCheckBox @bind-Checked="CheckBox_Checked"></EjsCheckBox>
         </div>
     </div>
 
@@ -84,6 +90,8 @@
             RadioButton (Actif) :
         </div>
         <div class="col-auto">
+            <EjsRadioButton Value="1" Label="Valeur 1" @bind-Checked="RadioButton1_Checked" Name="Group"></EjsRadioButton>
+            <EjsRadioButton Value="2" Label="Valeur 2" @bind-Checked="RadioButton2_Checked" Name="Group"></EjsRadioButton>
         </div>
     </div>
 
@@ -92,6 +100,7 @@
             ListBox :
         </div>
         <div class="col-auto">
+            <EjsListBox Value=@ListBox_Value DataSource="@Activities" TValue="ActivityEntity"></EjsListBox>
         </div>
     </div>
 
@@ -121,13 +130,13 @@
     public DateTime? DatePicker_Date { get; set; }
 
     [Required]
-    public DateTime? DatePicker_Time { get; set; }
+    public DateTime? TimePicker_Time { get; set; }
 
     [Required]
-    public DateTime? DatePicker_DateTime { get; set; }
+    public DateTime? DateTimePicker_DateTime { get; set; }
 
-    //[Required]
-    //public int? NumericTextBox_Int { get; set; }
+    [Required]
+    public int? NumericTextBox_Int { get; set; }
 
     [Required]
     public decimal? NumericTextBox_Decimal { get; set; }
@@ -136,10 +145,11 @@
     public bool CheckBox_Checked { get; set; }
 
     [Required]
-    public string RadioButton_Value { get; set; }
+    public bool RadioButton1_Checked { get; set; }
+    public bool RadioButton2_Checked { get; set; }
 
-    //[Required]
-    public string ListBox_Value { get; set; }
+    [Required]
+    public ActivityEntity ListBox_Value { get; set; }
 
 
     public IList<ActivityEntity> Activities { get; set; }

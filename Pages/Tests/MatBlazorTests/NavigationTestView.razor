@@ -1,17 +1,17 @@
 ﻿@using MatBlazor
-@inject BlazorTests.Services.ContactService ContactService
+@inject BlazorTests.Services.JsInteropService JsInteropService
 
 
 <div class="row">
     <div class="col-auto">
-        Menu : 
+        Menu :
     </div>
     <div class="col-auto">
-        <MatButton Label="Fichier" OnClick="@OnClick" RefBack="@buttonForwardRef"></MatButton>
+        <MatButton Label="Fichier" OnClick="@FileMenuClick" RefBack="@buttonForwardRef"></MatButton>
         <MatMenu @ref="FileMenu" TargetForwardRef="@buttonForwardRef">
             <MatList>
-                <MatListItem>Nouveau</MatListItem>
-                <MatListItem>Ouvrir</MatListItem>
+                <MatListItem @onclick="OpenButtonClick">Ouvrir</MatListItem>
+                <MatListItem>Sauvegarder</MatListItem>
                 <MatListItem>Quitter</MatListItem>
             </MatList>
         </MatMenu>
@@ -23,9 +23,14 @@
     ForwardRef buttonForwardRef = new ForwardRef();
     BaseMatMenu FileMenu;
 
-    public void OnClick(MouseEventArgs e)
+    public void FileMenuClick(MouseEventArgs e)
     {
         this.FileMenu.OpenAsync();
+    }
+
+    public void OpenButtonClick(MouseEventArgs e)
+    {
+        JsInteropService.ShowAlert("Clic sur le bouton 'Ouvrir'");
     }
 }
 

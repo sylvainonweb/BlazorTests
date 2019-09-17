@@ -1,0 +1,32 @@
+﻿@using MatBlazor
+@using Syncfusion.EJ2.Blazor.Navigations
+
+
+<div class="row">
+    <div class="col-auto">
+        Menu :
+    </div>
+    <div class="col-auto">
+        <EjsMenu Items="@menuItems"></EjsMenu>
+    </div>
+</div>
+
+@code
+        {
+    private List<MenuItem> menuItems = new List<MenuItem>{
+        new MenuItem
+        {
+            Text = "File",
+            IconCss = "em-icons e-file",
+            Items = new List<MenuItem>
+            {
+                new MenuItem { Text= "Ouvrir", IconCss= "em-icons e-open" },
+                new MenuItem { Text= "Sauvegarder", IconCss= "em-icons e-save" },
+                new MenuItem { Separator= true },
+                new MenuItem { Text= "Quitter" }
+            }
+        }
+    };
+}
+
+
