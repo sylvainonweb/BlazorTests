@@ -29,10 +29,8 @@
         </div>
         <div class="col-auto">
             <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
+                                 DefaultItem="@DropDownList_DefaultItem"
                                  TItem="ActivityEntity" TValue="int?" Height="40px" PopupHeight="170px"></TelerikDropDownList>
-
-            @*DefaultItem="@DefaultItem"*@
-
         </div>
     </div>
 
@@ -126,6 +124,7 @@
 
     [Required]
     public int? DropDownList_Id { get; set; }
+    public ActivityEntity DropDownList_DefaultItem { get; set; } = new ActivityEntity { Id = -1, Text = "..." };
 
     [Required]
     public DateTime? DatePicker_Date { get; set; }
