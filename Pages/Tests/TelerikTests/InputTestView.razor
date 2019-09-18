@@ -1,7 +1,11 @@
 ﻿
 @using Telerik.Blazor;
 @using Telerik.Blazor.Components.DatePicker
+@using Telerik.Blazor.Components.TimePicker
+@using Telerik.Blazor.Components.TextBox
+@*@using Telerik.Blazor.Components.DateTimePicker*@
 @using Telerik.Blazor.Components.DropDownList
+@using Telerik.Blazor.Components.NumericTextBox
 @using System.ComponentModel.DataAnnotations
 @inject BlazorTests.Services.JsInteropService JsInteropService
 @inject BlazorTests.Services.ReferenceService ReferenceService
@@ -15,6 +19,7 @@
             TextBox :
         </div>
         <div class="col-auto">
+            <TelerikTextBox @bind-Value="TextBox_Text"></TelerikTextBox>
         </div>
     </div>
 
@@ -23,8 +28,8 @@
             DropDownList :
         </div>
         <div class="col-auto">
-            @*<TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
-                TItem="ActivityEntity" TValue="int?" Height="40px" PopupHeight="170px"></TelerikDropDownList>*@
+            <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
+                                 TItem="ActivityEntity" TValue="int?" Height="40px" PopupHeight="170px"></TelerikDropDownList>
 
             @*DefaultItem="@DefaultItem"*@
 
@@ -36,7 +41,7 @@
             DatePicker (Date) :
         </div>
         <div class="col-auto">
-            <TelerikDatePicker @bind-Value="DatePicker_Date"></TelerikDatePicker>
+            <TelerikDatePicker @bind-Value="DatePicker_Date" T="DateTime?"></TelerikDatePicker>
         </div>
     </div>
 
@@ -45,6 +50,7 @@
             DatePicker (Time) :
         </div>
         <div class="col-auto">
+            <TelerikTimePicker @bind-Value="DatePicker_Time" T="DateTime?"></TelerikTimePicker>
         </div>
     </div>
 
@@ -53,6 +59,7 @@
             DatePicker (DateTime) :
         </div>
         <div class="col-auto">
+            @*<TelerikDateTimePicker @bind-Value="DatePicker_DateTime" T="DateTime"></TelerikDateTimePicker>*@
         </div>
     </div>
 
@@ -61,6 +68,7 @@
             NumericTextBox (Entier) :
         </div>
         <div class="col-auto">
+            <TelerikNumericTextBox T="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></TelerikNumericTextBox>
         </div>
     </div>
 
@@ -69,6 +77,7 @@
             NumericTextBox (Décimal) :
         </div>
         <div class="col-auto">
+            <TelerikNumericTextBox T="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></TelerikNumericTextBox>
         </div>
     </div>
 
@@ -127,8 +136,8 @@
     [Required]
     public DateTime? DatePicker_DateTime { get; set; }
 
-    //[Required]
-    //public int? NumericTextBox_Int { get; set; }
+    [Required]
+    public int? NumericTextBox_Int { get; set; }
 
     [Required]
     public decimal? NumericTextBox_Decimal { get; set; }
@@ -139,7 +148,7 @@
     [Required]
     public string RadioButton_Value { get; set; }
 
-    //[Required]
+    [Required]
     public string ListBox_Value { get; set; }
 
 
