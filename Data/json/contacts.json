@@ -5,7 +5,7 @@
     "FirstName": "Robert",
     "CivilityId": 1,
     "BirthDate": null,
-    "Married": false,
+    "Married": true,
     "Email": "robert.patterson@gmail.com",
     "PhoneNumber": "07 65 78 78 98",
     "CompanyId": 1

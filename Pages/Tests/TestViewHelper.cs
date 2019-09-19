@@ -1,5 +1,5 @@
 using System;
-using Telerik.Blazor.Components.TabStrip;
+using Telerik.Blazor.Components;
 using Syncfusion.EJ2.Blazor.Calendars;
 using Syncfusion.EJ2.Blazor.Inputs;
 using Telerik.Blazor.Components.Grid;

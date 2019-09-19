@@ -1,0 +1,47 @@
+﻿@using Telerik.Blazor
+@using Telerik.Blazor.Components
+@using BlazorTests.Data
+@inject BlazorTests.Services.ReferenceService ReferenceService
+@inject BlazorTests.Services.ContactService ContactService
+
+
+    <TelerikGrid Data="Contacts" TItem="Contact" Pageable="true" Sortable="true" Groupable="true" FilterMode="GridFilterMode.FilterRow"
+                  @bind-SelectedItems="SelectedContacts" SelectionMode="GridSelectionMode.Multiple">
+        <GridColumns>
+            <GridCheckboxColumn></GridCheckboxColumn>
+            <GridColumn Field=@nameof(Contact.LastName) Title="Nom" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(Contact.FirstName) Title="Prénom" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(Contact.CivilityText) Title="Civilité" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(Contact.BirthDate) Title="Date de naissance" Width="150">
+                <Template>
+                    @(String.Format("{0:d}", (context as Contact).BirthDate))
+                </Template>
+            </GridColumn>
+            <GridColumn Field=@nameof(Contact.Married) Title="Marrié" Width="150">
+                <Template>
+                    @if ((context as Contact).Married)
+                    {
+                        <input type="checkbox" disabled checked />
+                    }
+                    else
+                    {
+                        <input type="checkbox" disabled/>
+                    }
+                </Template>
+            </GridColumn>
+        </GridColumns>
+    </TelerikGrid>
+
+
+
+@code {
+
+    public IList<Contact> Contacts { get; set; }
+    public IEnumerable<Contact> SelectedContacts { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.Contacts = await ContactService.GetContacts();
+        this.SelectedContacts = this.Contacts.Where(o => o.Married == true).ToList();
+    }
+}

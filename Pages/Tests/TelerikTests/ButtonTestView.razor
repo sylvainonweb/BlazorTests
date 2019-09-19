@@ -1,0 +1,21 @@
+﻿@using Telerik.Blazor.Components
+
+
+<div class="row">
+    <div class="col-auto">
+        Button :
+    </div>
+    <div class="col-auto">
+        <TelerikButton OnClick="OnButtonClick">Afficher un message</TelerikButton>
+    </div>
+</div>
+
+@code
+{
+    public async Task OnButtonClick(MouseEventArgs e)
+    {
+        await JsInteropService.ShowAlert("Le message tant attendu");
+    }
+}
+
+

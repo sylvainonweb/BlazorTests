@@ -34,15 +34,16 @@
     <Watch Remove="Pages\Tests\SyncfusionTests\LayoutTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\NavigationTestView.razor" />
     <Watch Remove="Pages\Tests\SyncfusionTests\NotificationTestView.razor" />
+    <Watch Remove="Pages\Tests\TelerikTests\ButtonTestView.razor" />
+    <Watch Remove="Pages\Tests\TelerikTests\ChartTestView.razor" />
+    <Watch Remove="Pages\Tests\TelerikTests\GridTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\InputTestView.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Tests\TelerikTests\TelerikChartTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\TelerikDateInputTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\ChartTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\InputTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\TelerikDropDownListTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\TelerikGridTestView.razor" />
+    <None Include="Pages\Tests\TelerikTests\GridTestView.razor" />
     <None Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />
   </ItemGroup>
 

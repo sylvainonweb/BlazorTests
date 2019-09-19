@@ -15,12 +15,13 @@
     <TabStripTab Title="Inputs">
         <InputTestView></InputTestView>
     </TabStripTab>
-    @*<TabStripTab Title="Buttons">
-            <ButtonTestView></ButtonTestView>
-        </TabStripTab>
-        <TabStripTab Title="Grids">
-            <GridTestView></GridTestView>
-        </TabStripTab>
+    <TabStripTab Title="Buttons">
+        <ButtonTestView></ButtonTestView>
+    </TabStripTab>
+    <TabStripTab Title="Grids">
+        <GridTestView></GridTestView>
+    </TabStripTab>
+    @*
         <TabStripTab Title="Navigation">
             <NavigationTestView></NavigationTestView>
         </TabStripTab>
@@ -43,19 +44,23 @@
     <li>DropDownList : Binding OK, Champs obligatoires KO</li>
     <li>DatePicker : Binding OK</li>
     <li>TimePicker : Binding OK</li>
-    <li>NumericTextBox : Binding OK, Champs obligatoires KO (pas de trait rouge car à la sauvegarde il me remet une valeur)</li>
+    <li>NumericTextBox : Binding OK, Champs obligatoires OK</li>
     <li>CheckBox : NA</li>
     <li>RadioButton : NA</li>
     <li>Button : OK </li>
     <li>Tab : OK</li>
     <li>
-        Grid : 
+        Grid : OK. Triable, filtrable, groupable, sélectionnable par case à cocher. Reste quelques soucis à savoir :
+        <ul>
+            <li>Pas de moyen simple d'afficher une colonne CheckBox (Template avec input type="checkbox" bindé sur la propriété)</li>
+            <li>Pas d'export Excel</li>
+        </ul>
     </li>
     <li>Menu : </li>
     <li>Dialog : </li>
     <li>Toast : </li>
     <li>ListBox : </li>
-    <li>DateTimePicker : </li>
+    <li>DateTimePicker : OK</li>
 </ul>
 <br>
 <br>
