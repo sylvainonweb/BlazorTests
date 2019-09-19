@@ -1,33 +1,58 @@
-﻿@*@using Telerik.Blazor.Components
+﻿@using Telerik.Blazor.Components
 @using Telerik.Blazor
 
-<div style="height:400px;">
 
-    <TelerikChart>
-        <ChartTitle Text="Site Visitors Stats"></ChartTitle>
-        <ChartLegend Visible="false"></ChartLegend>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <TelerikChart Height="230px">
+                <ChartTitle Text="Température (°C) et Vent (km/h)" />
 
-        <ChartSeriesItems>
-            <ChartSeries Type="ChartSeriesType.Bar" Name="Total Visits" Data="@Series1Data">
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Bar" Name="Unique visitors" Data="@Series2Data">
-            </ChartSeries>
-        </ChartSeriesItems>
+                <ChartSeriesItems>
+                    <ChartSeries Data="@chartData" Field="@nameof(CategoryData.temp)" Type="ChartSeriesType.Column"  
+                                 Name="Température"  CategoryField="@nameof(CategoryData.day)" Axis="tempAxis"/>
 
-        <ChartValueAxes>
-            <ChartValueAxis Max="140000"></ChartValueAxis>
-        </ChartValueAxes>
+                    <ChartSeries Data="@chartData" Field="@nameof(CategoryData.wind)" Type="ChartSeriesType.Line" 
+                                 Name="Vent" Axis="windAxis"/>
+                </ChartSeriesItems>
 
-        <ChartCategoryAxes>
-            <ChartCategoryAxis Categories="@Categories"></ChartCategoryAxis>
-        </ChartCategoryAxes>
+                <ChartValueAxes>
 
-    </TelerikChart>
+                    <ChartValueAxis Name="windAxis">
+                        <ChartValueAxisTitle Text="km/h" />
+                        <ChartValueAxisMajorGridLines Visible="false" />
+                    </ChartValueAxis>
+
+                    <ChartValueAxis Name="tempAxis">
+                        <ChartValueAxisTitle Text="°C" />
+                        <ChartValueAxisMajorGridLines Visible="false" />
+                    </ChartValueAxis>
+
+                </ChartValueAxes>
+
+                <ChartCategoryAxes>
+                    <ChartCategoryAxis AxisCrossingValue="@(new object[] { 7, 0 })" />
+                </ChartCategoryAxes>
+            </TelerikChart>
+        </div>
+    </div>
 </div>
 
-    @code {
-
-        public List<object> Series1Data = new List<object>() { 56000, 63000, 74000, 91000, 117000, 138000 };
-        public List<object> Series2Data = new List<object>() { 52000, 34000, 23000, 48000, 67000, 83000 };
-        public string[] Categories = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" };
-    }*@
+@code {
+    public class CategoryData
+    {
+        public string day { get; set; }
+        public double temp { get; set; }
+        public double wind { get; set; }
+    }
+    public List<CategoryData> chartData = new List<CategoryData>
+{
+                new CategoryData { day = "L", temp = 20, wind = 0 },
+                new CategoryData { day = "M", temp = 30, wind = 15},
+                new CategoryData { day = "M", temp = 28, wind = 50 },
+                new CategoryData { day = "J", temp = 22, wind = 200 },
+                new CategoryData { day = "V", temp = 18, wind = 180 },
+                new CategoryData { day = "S", temp = 15, wind = 12},
+                new CategoryData { day = "D", temp = 10, wind = 0 },
+             };
+}

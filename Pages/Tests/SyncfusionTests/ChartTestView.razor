@@ -1,0 +1,65 @@
+﻿@using Syncfusion.EJ2.Blazor.Charts
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <EjsChart Title="Température (°C) et Vent (km/h)">
+
+                <ChartSeriesCollection>
+
+                    <ChartSeries DataSource="@chartData" XName="day" YName="temp" YAxisName="tempAxis" Opacity="1" Name="Température" Width=2 Type="Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Column">
+                        <ChartMarker Visible="true" Height="10" Width="10">
+                        </ChartMarker>
+                    </ChartSeries>
+
+                    <ChartSeries DataSource="@chartData" XName="day" YName="wind" YAxisName="windAxis" Opacity="1" Name="Vent" Width=2 Type="Syncfusion.EJ2.Blazor.Charts.ChartSeriesType.Line">
+                        <ChartMarker Visible="true" Height="10" Width="10">
+                            <ChartMarkerBorder Color="#F8AB1D" Width="2"></ChartMarkerBorder>
+                        </ChartMarker>
+                    </ChartSeries>
+
+                </ChartSeriesCollection>
+
+                <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+
+                <ChartPrimaryXAxis ValueType="Syncfusion.EJ2.Blazor.Charts.ValueType.Category" Title="Jour">
+                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                </ChartPrimaryXAxis>
+
+                <ChartPrimaryYAxis Name="tempAxis" LabelFormat="{value}°C" Minimum="0" Maximum="35" Interval="20">
+                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                </ChartPrimaryYAxis>
+
+                <ChartAxes>
+                    <ChartAxis Name="windAxis" LabelFormat="{value}°km/h" Minimum="0" Maximum="250" Interval="20" OpposedPosition="true" RowIndex="0">
+                        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                    </ChartAxis>
+                </ChartAxes>
+
+                <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                <ChartLegendSettings Visible="false"></ChartLegendSettings>
+            </EjsChart>
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+    public class CategoryData
+    {
+        public string day { get; set; }
+        public double temp { get; set; }
+        public double wind { get; set; }
+    }
+    public List<CategoryData> chartData = new List<CategoryData>
+{
+                new CategoryData { day = "L", temp = 20, wind = 0 },
+                new CategoryData { day = "M", temp = 30, wind = 15},
+                new CategoryData { day = "M", temp = 28, wind = 50 },
+                new CategoryData { day = "J", temp = 22, wind = 200 },
+                new CategoryData { day = "V", temp = 18, wind = 180 },
+                new CategoryData { day = "S", temp = 15, wind = 12},
+                new CategoryData { day = "D", temp = 10, wind = 0 },
+             };
+}
