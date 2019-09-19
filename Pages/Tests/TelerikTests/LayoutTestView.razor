@@ -1,0 +1,46 @@
+﻿@using Telerik.Blazor.Components
+
+
+<div class="row">
+    <div class="col-auto">
+        Dialog :
+    </div>
+    <div class="col-auto" id="target">
+        <TelerikButton OnClick="ShowDialogButtonClick">Afficher/Cacher popup</TelerikButton>
+
+        <TelerikWindow Visible="@IsVisible">
+            <WindowTitle>
+                <strong>@Title</strong>
+            </WindowTitle>
+            <WindowContent>
+                @Message
+                <TelerikButton OnClick="OKButtonClick">OK</TelerikButton>
+            </WindowContent>
+            <WindowActions>
+                <WindowAction Name="Minimize"></WindowAction>
+                <WindowAction Name="Maximize"></WindowAction>
+                <WindowAction Name="Close"></WindowAction>
+            </WindowActions>
+        </TelerikWindow>
+    </div>
+</div>
+
+@code
+{
+    private bool IsVisible { get; set; } = false;
+    private string Title { get; set; }
+    private string Message { get; set; }
+
+    public void ShowDialogButtonClick(MouseEventArgs e)
+    {
+        this.Title = "Information";
+        this.Message = "Ceci est un message";
+        this.IsVisible = !this.IsVisible;
+    }
+
+    public void OKButtonClick(MouseEventArgs e)
+    {
+        this.IsVisible = false;
+    }    
+}
+

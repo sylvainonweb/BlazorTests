@@ -1,0 +1,39 @@
+﻿@using Telerik.Blazor.Components
+
+
+<div class="row">
+    <div class="col-auto">
+        Menu :
+    </div>
+    <div class="col-auto">
+        <TelerikMenu Data="@menuItems" TextField="Text" UrlField="Url">
+        </TelerikMenu>
+</div>
+</div>
+
+@code
+    {
+
+    public class MenuItem
+    {
+        public string Text { get; set; }
+        public string Url { get; set; }
+        public List<MenuItem> Items { get; set; }
+    }
+
+    private List<MenuItem> menuItems = new List<MenuItem>{
+        new MenuItem
+        {
+            Text = "Fichier",
+            Items = new List<MenuItem>
+            {
+                new MenuItem { Text= "Ouvrir", Url = "https://www.google.fr" },
+                new MenuItem { Text= "Sauvegarder", Url = "https://www.google.fr" },
+                //new MenuItem { Separator= true },
+                new MenuItem { Text= "Quitter", Url = "https://www.google.fr" }
+            }
+        }
+    };
+}
+
+

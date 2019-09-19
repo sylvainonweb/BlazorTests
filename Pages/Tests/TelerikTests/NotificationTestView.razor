@@ -1,0 +1,28 @@
+﻿@using Telerik.Blazor.Components
+
+    <style>
+        .my-popup {
+            background: red;
+            color:white;
+        }
+    </style>
+
+<TelerikAnimationContainer @ref="myPopupRef" Top="0px" Width="500px" Height="150px"
+                           AnimationType="AnimationType.ZoomOut" Class="my-popup">
+   <p><strong>Information</strong></p>
+    <p>Ceci est un message</p>
+</TelerikAnimationContainer>
+
+<TelerikButton OnClick="@ToggleNotification">Afficher/ Cacher notification</TelerikButton>
+
+@code {
+    Telerik.Blazor.Components.TelerikAnimationContainer myPopupRef;
+
+    public async void ToggleNotification()
+    {
+        myPopupRef.ShowAsync();
+        await Task.Delay(3000);
+        myPopupRef.HideAsync();
+    }
+}
+

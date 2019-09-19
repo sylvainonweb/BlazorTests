@@ -11,27 +11,26 @@
 @*https://www.telerik.com/blogs/telerik-ui-for-blazor-grid-component-basics*@
 
 
-<TelerikTabStrip TabPosition="TabPosition.Top">
-    <TabStripTab Title="Inputs">
-        <InputTestView></InputTestView>
-    </TabStripTab>
-    <TabStripTab Title="Buttons">
-        <ButtonTestView></ButtonTestView>
-    </TabStripTab>
-    <TabStripTab Title="Grids">
-        <GridTestView></GridTestView>
-    </TabStripTab>
-    @*
+    <TelerikTabStrip TabPosition="TabPosition.Top">
+        <TabStripTab Title="Inputs">
+            <InputTestView></InputTestView>
+        </TabStripTab>
+        <TabStripTab Title="Buttons">
+            <ButtonTestView></ButtonTestView>
+        </TabStripTab>
+        <TabStripTab Title="Grids">
+            <GridTestView></GridTestView>
+        </TabStripTab>
         <TabStripTab Title="Navigation">
             <NavigationTestView></NavigationTestView>
         </TabStripTab>
         <TabStripTab Title="Layout">
             <LayoutTestView></LayoutTestView>
-        </TabStripTab>
+        </TabStripTab>        
         <TabStripTab Title="Notification">
             <NotificationTestView></NotificationTestView>
-        </TabStripTab>*@
-</TelerikTabStrip>
+        </TabStripTab>
+    </TelerikTabStrip>
 
 
 
@@ -56,9 +55,15 @@
             <li>Pas d'export Excel</li>
         </ul>
     </li>
-    <li>Menu : </li>
-    <li>Dialog : </li>
-    <li>Toast : </li>
+    <li>
+        Menu : mitigé car :
+        <ul>
+            <li>j'ai l'impression qu'il faut utiliser obligatoirement une url (je n'ai pas trouvé de moyen de gérer le clic sur le menu).</li>
+            <li>on ne peut pas créer le menu dans le HTML. Il faut le faire par code</li>
+        </ul>
+    </li>
+    <li>Dialog : OK. Tout simplement génial.</li>
+    <li>Toast : Cette notion n'existe pas vraiment. Il est possible d'arriver au même résultat avec un peu de code et de css</li>
     <li>ListBox : </li>
     <li>DateTimePicker : OK</li>
 </ul>

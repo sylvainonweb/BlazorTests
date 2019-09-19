@@ -1,26 +1,26 @@
-﻿@*@using Telerik.Blazor.Components.Chart
+﻿@*@using Telerik.Blazor.Components
 @using Telerik.Blazor
 
 <div style="height:400px;">
 
     <TelerikChart>
-        <TelerikChartTitle Text="Site Visitors Stats"></TelerikChartTitle>
-        <TelerikChartLegend Visible="false"></TelerikChartLegend>
+        <ChartTitle Text="Site Visitors Stats"></ChartTitle>
+        <ChartLegend Visible="false"></ChartLegend>
 
-        <TelerikChartSeriesItems>
-            <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Total Visits" Data="@Series1Data">
-            </TelerikChartSeries>
-            <TelerikChartSeries Type="ChartSeriesType.Bar" Name="Unique visitors" Data="@Series2Data">
-            </TelerikChartSeries>
-        </TelerikChartSeriesItems>
+        <ChartSeriesItems>
+            <ChartSeries Type="ChartSeriesType.Bar" Name="Total Visits" Data="@Series1Data">
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Bar" Name="Unique visitors" Data="@Series2Data">
+            </ChartSeries>
+        </ChartSeriesItems>
 
-        <TelerikChartValueAxes>
-            <TelerikChartValueAxis Max="140000"></TelerikChartValueAxis>
-        </TelerikChartValueAxes>
+        <ChartValueAxes>
+            <ChartValueAxis Max="140000"></ChartValueAxis>
+        </ChartValueAxes>
 
-        <TelerikChartCategoryAxes>
-            <TelerikChartCategoryAxis Categories="@Categories"></TelerikChartCategoryAxis>
-        </TelerikChartCategoryAxes>
+        <ChartCategoryAxes>
+            <ChartCategoryAxis Categories="@Categories"></ChartCategoryAxis>
+        </ChartCategoryAxes>
 
     </TelerikChart>
 </div>
