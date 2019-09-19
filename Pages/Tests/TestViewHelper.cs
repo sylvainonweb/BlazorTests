@@ -1,5 +1,4 @@
 using System;
-using Telerik.Blazor.Components.DatePicker;
 using Telerik.Blazor.Components.TabStrip;
 using Syncfusion.EJ2.Blazor.Calendars;
 using Syncfusion.EJ2.Blazor.Inputs;
@@ -11,7 +10,7 @@ namespace BlazorTests.Pages.Tests
     {
         public void TestTelerik()
         {
-            TelerikTab tab = new TelerikTab();
+            //TelerikTab tab = new TelerikTab();
             //TelerikDatePicker datePicker = new TelerikDatePicker();
             //datePicker.ValueChanged
         }

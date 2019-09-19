@@ -2,7 +2,7 @@
 @using Telerik.Blazor;
 @using Telerik.Blazor.Components.DatePicker
 @using Telerik.Blazor.Components.TimePicker
-@using Telerik.Blazor.Components.TextBox
+@using Telerik.Blazor.Components
 @*@using Telerik.Blazor.Components.DateTimePicker*@
 @using Telerik.Blazor.Components.DropDownList
 @using Telerik.Blazor.Components.NumericTextBox
@@ -30,7 +30,7 @@
         <div class="col-auto">
             <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
                                  DefaultItem="@DropDownList_DefaultItem"
-                                 TItem="ActivityEntity" TValue="int?" Height="40px" PopupHeight="170px"></TelerikDropDownList>
+                                 TItem="ActivityEntity" TValue="int?"></TelerikDropDownList>
         </div>
     </div>
 
