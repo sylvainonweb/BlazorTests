@@ -63,7 +63,7 @@
             NumericTextBox (Entier) :
         </div>
         <div class="col-auto">
-            <EjsNumericTextBox TValue="int?" @bind-Value="NumericTextBox_Int"></EjsNumericTextBox>
+            <EjsNumericTextBox TValue="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -72,7 +72,7 @@
             NumericTextBox (Décimal) :
         </div>
         <div class="col-auto">
-            <EjsNumericTextBox TValue="decimal?" @bind-Value="NumericTextBox_Decimal"></EjsNumericTextBox>
+            <EjsNumericTextBox TValue="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
             Checkbox :
         </div>
         <div class="col-auto">
-            <EjsCheckBox @bind-Checked="CheckBox_Checked"></EjsCheckBox>
+            <EjsCheckBox @bind-Checked="CheckBox_Checked" ></EjsCheckBox>
         </div>
     </div>
 
@@ -100,7 +100,10 @@
             ListBox :
         </div>
         <div class="col-auto">
-            <EjsListBox Value=@ListBox_Value DataSource="@Activities" TValue="ActivityEntity"></EjsListBox>
+            <EjsListBox Value=@ListBox_Value DataSource="@Activities" TValue="ActivityEntity">
+                <ListBoxFieldSettings Value="Id" Text="Text" />
+
+            </EjsListBox>
         </div>
     </div>
 

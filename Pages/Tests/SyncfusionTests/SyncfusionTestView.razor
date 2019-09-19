@@ -86,13 +86,13 @@
         Tous les contrôles : pas encore compatible avec la preview 9 => le binding ne fonctionne plus.
         A REVOIR car le fichier css n'était pas bon.
     </li>
-    <li>TextBox : Binding KO, Champs obligatoires KO</li>
+    <li>TextBox : Binding OK, Champs obligatoires OK</li>
     <li>DropDownList : Binding KO (la liste s'affiche mais pas de synchro de la valeur sélectionnée), Champs obligatoires KO</li>
-    <li>DatePicker : Binding KO</li>
-    <li>TimePicker : Binding KO</li>
-    <li>NumericTextBox : Binding KO</li>
-    <li>CheckBox : Binding KO</li>
-    <li>RadioButton : Binding KO</li>
+    <li>DatePicker : Binding OK, Champs obligatoires OK</li>
+    <li>TimePicker : Binding OK, Champs obligatoires OK</li>
+    <li>NumericTextBox : Binding OK, Champs obligatoires OK</li>
+    <li>CheckBox : Binding OK, Champs obligatoires KO (pas possible de binder sur un champ non nullable)</li>
+    <li>RadioButton : Binding OK, Champs obligatoires KO (pas possible de binder sur un champ non nullable)</li>
     <li>Button : OK </li>
     <li>
         Tab : KO car ne gère pas la notion de Template => impossible de définir le contenu d'un TabItem directement.
@@ -110,11 +110,11 @@
         </ul>
     </li>
     <li>Menu : KO : il faut définir le menu dans le code et je ne vois pas comment appeler une méthode du composant (uniquement une uri)</li>
-    <li>Dialog : KO. Je n'arrive pas à le faire fonctionner et en plus ça me paraît vraiement "vieille école"</li>
+    <li>Dialog : KO. Je n'arrive pas à le faire fonctionner et en plus ça me paraît vraiment "vieille école"</li>
     <li>Toast : KO. Ne fonctionne pas. J'ai repris le code de l'exemple de leur site, rien n'y fait</li>
-    <li>ListBox : Binding KO</li>
-    <li>DateTimePicker : Binding KO</li>
-    <li>Chart : </li>
+    <li>ListBox : Binding KO : je ne sais pas comment binder la valeur sélectionné</li>
+    <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
+    <li>Chart : OK</li>
 </ul>
 <br>
 <br>
