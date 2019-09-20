@@ -42,13 +42,7 @@
     <Watch Remove="Pages\Tests\TelerikTests\LayoutTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\NavigationTestView.razor" />
     <Watch Remove="Pages\Tests\TelerikTests\NotificationTestView.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Tests\TelerikTests\ChartTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\InputTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\GridTestView.razor" />
-    <None Include="Pages\Tests\TelerikTests\TelerikTestView.razor" />
+    <Watch Remove="Pages\Tests\TelerikTests\TelerikTestView.razor" />
   </ItemGroup>
 
   <ItemGroup>

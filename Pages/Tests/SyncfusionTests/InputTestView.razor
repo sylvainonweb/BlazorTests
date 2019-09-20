@@ -110,6 +110,7 @@
     <div class="row">
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
+            <button type="button" @onclick="@Cancel">Annuler</button>
         </div>
     </div>
 
@@ -167,5 +168,21 @@
     public Task Save()
     {
         return JsInteropService.ShowAlert("Sauvegarde effectuée");
+    }
+
+    public void Cancel()
+    {
+        // le fait de remettre null plante à l'exécution pour les DatePickers
+        this.TextBox_Text = null;
+        this.DropDownList_Id = null;
+        this.DatePicker_Date = null;
+        this.TimePicker_Time = null;
+        this.DateTimePicker_DateTime = null;
+        this.NumericTextBox_Int = null;
+        this.NumericTextBox_Decimal = null;
+        this.CheckBox_Checked = false;
+        this.RadioButton1_Checked = false;
+        this.RadioButton2_Checked = false;
+        this.ListBox_Value = null;
     }
 }

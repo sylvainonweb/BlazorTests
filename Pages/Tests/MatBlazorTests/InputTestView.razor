@@ -118,6 +118,7 @@
     <div class="row">
         <div class="col-auto">
             <button type="submit">Sauvegarder</button>
+            <button type="button" @onclick="@Cancel">Annuler</button>
         </div>
     </div>
 
@@ -174,5 +175,19 @@
     public Task Save()
     {
         return JsInteropService.ShowAlert("Sauvegarde effectuée");
+    }
+
+    public void Cancel()
+    {
+        this.TextBox_Text = null;
+        this.DropDownList_Id = null;
+        this.DatePicker_Date = null;
+        this.DatePicker_Time = null;
+        this.DatePicker_DateTime = null;
+        //this.NumericTextBox_Int = null;
+        this.NumericTextBox_Decimal = null;
+        this.CheckBox_Checked = false;
+        this.RadioButton_Value = null;
+        this.ListBox_Value = null;
     }
 }

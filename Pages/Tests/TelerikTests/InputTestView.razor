@@ -12,110 +12,111 @@
 @inject BlazorTests.Services.ContactService ContactService
 
 
-<EditForm Model="@this" OnValidSubmit="@(() => Save())">
+    <EditForm Model="@this" OnValidSubmit="@Save">
 
-    <div class="row">
-        <div class="col-2">
-            TextBox :
+        <div class="row">
+            <div class="col-2">
+                TextBox :
+            </div>
+            <div class="col-auto">
+                <TelerikTextBox @bind-Value="TextBox_Text"></TelerikTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikTextBox @bind-Value="TextBox_Text"></TelerikTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DropDownList :
+        <div class="row">
+            <div class="col-2">
+                DropDownList :
+            </div>
+            <div class="col-auto">
+                <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
+                                     TItem="DropDownListItem" TValue="int?"></TelerikDropDownList>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
-                                 TItem="DropDownListItem" TValue="int?"></TelerikDropDownList>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (Date) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (Date) :
+            </div>
+            <div class="col-auto">
+                <TelerikDatePicker @bind-Value="DatePicker_Date" T="DateTime?"></TelerikDatePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikDatePicker @bind-Value="DatePicker_Date" T="DateTime?"></TelerikDatePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (Time) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (Time) :
+            </div>
+            <div class="col-auto">
+                <TelerikTimePicker @bind-Value="DatePicker_Time" T="DateTime?"></TelerikTimePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikTimePicker @bind-Value="DatePicker_Time" T="DateTime?"></TelerikTimePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (DateTime) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (DateTime) :
+            </div>
+            <div class="col-auto">
+                <TelerikDateTimePicker @bind-Value="DatePicker_DateTime" T="DateTime?"></TelerikDateTimePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikDateTimePicker @bind-Value="DatePicker_DateTime" T="DateTime?"></TelerikDateTimePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            NumericTextBox (Entier) :
+        <div class="row">
+            <div class="col-2">
+                NumericTextBox (Entier) :
+            </div>
+            <div class="col-auto">
+                <TelerikNumericTextBox T="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></TelerikNumericTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikNumericTextBox T="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></TelerikNumericTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            NumericTextBox (Décimal) :
+        <div class="row">
+            <div class="col-2">
+                NumericTextBox (Décimal) :
+            </div>
+            <div class="col-auto">
+                <TelerikNumericTextBox T="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></TelerikNumericTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <TelerikNumericTextBox T="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></TelerikNumericTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            Checkbox :
+        <div class="row">
+            <div class="col-2">
+                Checkbox :
+            </div>
+            <div class="col-auto">
+            </div>
         </div>
-        <div class="col-auto">
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            RadioButton (Actif) :
+        <div class="row">
+            <div class="col-2">
+                RadioButton (Actif) :
+            </div>
+            <div class="col-auto">
+            </div>
         </div>
-        <div class="col-auto">
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            ListBox :
+        <div class="row">
+            <div class="col-2">
+                ListBox :
+            </div>
+            <div class="col-auto">
+            </div>
         </div>
-        <div class="col-auto">
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-auto">
-            <button type="submit">Sauvegarder</button>
+        <div class="row">
+            <div class="col-auto">
+                <button type="submit">Sauvegarder</button>
+                <button type="button" @onclick="@Cancel">Annuler</button>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-auto">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+        <div class="row">
+            <div class="col-auto">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+            </div>
         </div>
-    </div>
 
-</EditForm>
+    </EditForm>
 
 @code {
     [Required]
@@ -164,5 +165,20 @@
     public Task Save()
     {
         return JsInteropService.ShowAlert("Sauvegarde effectuée");
-    }   
+    }
+
+    public void Cancel()
+    {
+        this.DropDownList_Id = null;
+        this.TextBox_Text = null;
+        this.DropDownList_Id = null;
+        this.DatePicker_Date = null;
+        this.DatePicker_Time = null;
+        this.DatePicker_DateTime = null;
+        this.NumericTextBox_Int = null;
+        this.NumericTextBox_Decimal = null;
+        this.CheckBox_Checked = false;
+        this.RadioButton_Value = string.Empty;
+        this.ListBox_Value = null;
+    }
 }
