@@ -29,8 +29,7 @@
         </div>
         <div class="col-auto">
             <TelerikDropDownList Data="@Activities" @bind-Value="DropDownList_Id" ValueField="Id" TextField="Text"
-                                 DefaultItem="@DropDownList_DefaultItem"
-                                 TItem="ActivityEntity" TValue="int?"></TelerikDropDownList>
+                                 TItem="DropDownListItem" TValue="int?"></TelerikDropDownList>
         </div>
     </div>
 
@@ -124,7 +123,6 @@
 
     [Required]
     public int? DropDownList_Id { get; set; }
-    public ActivityEntity DropDownList_DefaultItem { get; set; } = new ActivityEntity { Id = -1, Text = "..." };
 
     [Required]
     public DateTime? DatePicker_Date { get; set; }
@@ -151,17 +149,20 @@
     public string ListBox_Value { get; set; }
 
 
-    public IList<ActivityEntity> Activities { get; set; }
+    public IList<DropDownListItem> Activities { get; set; }
     public IList<Contact> Contacts { get; set; }
-
 
     protected override async Task OnInitializedAsync()
     {
-        this.Activities = await ReferenceService.GetActivityEntities();
+        this.Activities = DropDownListItemHelper.Convert(await ReferenceService.GetActivityEntities(), (ActivityEntity source, DropDownListItem destination) =>
+        {
+            destination.Id = source.Id;
+            destination.Text = source.Text;
+        }, true);
     }
 
     public Task Save()
     {
         return JsInteropService.ShowAlert("Sauvegarde effectuée");
-    }
+    }   
 }
