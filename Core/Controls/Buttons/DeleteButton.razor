@@ -1,18 +1,18 @@
 ﻿@inherits ComponentBase
-@*@using Telerik.Blazor.Components.Window*@
+@using Telerik.Blazor.Components
 
 <button class="btn btn-outline-danger btn-xs gridColumnButton" @onclick="Show">
     <span class="fa fa-trash" aria-hidden="true"></span>
 </button>
 
-@*<TelerikWindow Width="500" Height="200" Centered="true" Visible="IsVisible">
-    <TelerikWindowTitle>
+<TelerikWindow Width="500" Height="200" Centered="true" Visible="IsVisible">
+    <WindowTitle>
         <strong>Confirmation de suppression</strong>
-    </TelerikWindowTitle>
-    <TelerikWindowActions>
-        <TelerikWindowAction Name="Close"></TelerikWindowAction>
-    </TelerikWindowActions>
-    <TelerikWindowContent>
+    </WindowTitle>
+    <WindowActions>
+        <WindowAction Name="Close"></WindowAction>
+    </WindowActions>
+    <WindowContent>
         <form class="k-form">
 
             <p>Etes vous sûr de vouloir supprimer cet enregistrement ?</p>
@@ -21,8 +21,8 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="Hide">Annuler</button>
 
         </form>
-    </TelerikWindowContent>
-</TelerikWindow>*@
+    </WindowContent>
+</TelerikWindow>
 
 @code {
     [Parameter] public Action DeleteAction { get; set; }
