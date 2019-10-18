@@ -55,5 +55,15 @@ namespace BlazorTests.Services
         {
             await JSRuntime.InvokeAsync<string>("JavascriptFunctions.initTable", tableId);
         }
+
+        public static async Task<string> GetElementByName(string name)
+        {
+            return await JSRuntime.InvokeAsync<string>("JavascriptFunctions.getElementByName", name);
+        }
+
+        public async Task SubmitForm(string path, object fields)
+        {
+            await JSRuntime.InvokeAsync<string>("JavascriptFunctions.submitForm", path, fields);
+        }
     }
 }

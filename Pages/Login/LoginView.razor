@@ -1,0 +1,30 @@
+﻿@inherits DetailPageComponentBase
+@page "/login"
+@attribute  [AllowAnonymous]
+@using BlazorTests.Core
+@using System.ComponentModel.DataAnnotations
+
+    <EditForm Model="@this" OnValidSubmit="@Login">
+
+        <input type="text" placeholder="Login" value="test" />
+        <input type="text" placeholder="Mot de passe" value="test" />
+        <input type="submit" value="Se connecter" />
+
+    </EditForm>
+
+@code {
+    [Required]
+    protected string NomUtilisateur { get; set; } = "test";
+
+    [Required]
+    protected string MotDePasse { get; set; } = "test";
+
+    protected async void Login()
+    {
+        // Le login devant obligatoirement se faire via un post (attention HttpClient.PostAsync ne fonctionne pas),
+        // on utilise Jasvascript pour effectuer un submit de la form avec des champs cachés contenant les informations nécessaires
+        //string antiforgerytoken = await JsInteropService.GetElementByName("__RequestVerificationToken");
+        var fields = new { username = NomUtilisateur, password = MotDePasse };
+        await JsInteropService.SubmitForm("/login/", fields);
+    }
+}

@@ -13,6 +13,11 @@ using BlazorTests.Services;
 using System.Threading;
 using EmbeddedBlazorContent;
 using MatBlazor;
+using System.Net.Http;
+using BlazorTests.Services.Technical.Authentication;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BlazorTests
 {
@@ -35,6 +40,7 @@ namespace BlazorTests
             // SBD : Services techniques
             services.AddSingleton<JsInteropService>();
             services.AddScoped<ToastService>();
+            services.AddAuthenticationServices();
 
             // SBD : Services métier
             services.AddSingleton<Repository>();
@@ -49,8 +55,11 @@ namespace BlazorTests
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
+            var userInitializer = (IdentityUserStoreInitializer)serviceProvider.GetService(typeof(IdentityUserStoreInitializer));
+            userInitializer.CreateUsers();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -71,11 +80,66 @@ namespace BlazorTests
 
             app.UseRouting();
 
+            // Pour l'authentification
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+
+                // Pour l'authentification
+                endpoints.MapControllers();
             });
+        }
+    }
+
+    public static class DependencyInjectionHelper
+    {
+        public static IServiceCollection AddAuthenticationServices(this IServiceCollection services)
+        {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
+            // Nécessaire afin de pouvoir utiliser Identity pour la gestion des droits (voir AuthenticationController)
+            services
+              .AddIdentity<IdentityUser, IdentityRole>(
+              option =>
+              {
+                  option.Password.RequireDigit = false;
+                  option.Password.RequiredLength = 1;
+                  option.Password.RequireNonAlphanumeric = false;
+                  option.Password.RequireUppercase = false;
+                  option.Password.RequireLowercase = false;
+                  option.SignIn.RequireConfirmedEmail = false;
+              })
+              .AddUserStore<IdentityUserStore>()
+              .AddRoleStore<IdentityRoleStore>();
+
+            // Nécessaire pour pouvoir appeler les services web exposés par AuthenticationController
+            services.AddScoped<HttpClient>(serviceProvider =>
+            {
+                var navigationManager = serviceProvider.GetRequiredService<NavigationManager>();
+                var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
+                var authToken = httpContextAccessor.HttpContext.Request.Cookies[".AspNetCore.Identity.Application"];
+                var client = new HttpClient(new HttpClientHandler { UseCookies = false });
+                if (authToken != null)
+                {
+                    client.DefaultRequestHeaders.Add("Cookie", ".AspNetCore.Identity.Application=" + authToken);
+                }
+                client.BaseAddress = new Uri(navigationManager.BaseUri);
+                return client;
+            });
+
+            services.AddScoped<IdentityUserStoreInitializer>();
+
+            return services;
         }
     }
 }

@@ -2,6 +2,8 @@
 @using  BlazorTests.Services.Technical.Toast
 @using Telerik.Blazor.Components
 @inject Microsoft.JSInterop.IJSRuntime JSRuntime
+@inject JsInteropService JsInteropService
+
 @*SBD : Toast *@
 <Toast></Toast>
 
@@ -15,7 +17,14 @@
 <TelerikRootComponent>
     <div class="main">
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/en-us/aspnet/" target="_blank" class="ml-md-auto">About</a>
+            <AuthorizeView>
+                <Authorized>
+                    <div class="ml-md-auto">
+                        @context.User.Identity.Name
+                        <TelerikButton OnClick="@Logout">Se déconnecter</TelerikButton>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
         </div>
 
         <div class="content px-4">
@@ -24,13 +33,19 @@
     </div>
 </TelerikRootComponent>
 
-        @code {
+@code {
 
-            protected override void OnInitialized()
-            {
-                // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
-                // on utilise le 1er composant de l'application pour définir manuellement la propriété
-                // statique de JsInteropService.
-                BlazorTests.Services.JsInteropService.JSRuntime = JSRuntime;
-            }
-        }
+    protected override void OnInitialized()
+    {
+        // SBD : JSRuntime n'étant pas injectable dans une classe qui n'est pas un composant,
+        // on utilise le 1er composant de l'application pour définir manuellement la propriété
+        // statique de JsInteropService.
+        BlazorTests.Services.JsInteropService.JSRuntime = JSRuntime;
+    }
+
+    private async void Logout()
+    {
+        var fields = new { };
+        await JsInteropService.SubmitForm("/logout/", fields);
+    }
+}
