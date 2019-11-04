@@ -1,0 +1,40 @@
+﻿@inherits ComponentBase
+
+<div class="row">
+    <div class="col-auto">
+        <ChildView @ref="ChildViewRef" OnIncrementFromChild="IncrementCounterFromChild" />
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            Compteur (parent) : @parentCounter
+            <Button @onclick="@OnParentButtonClick">Incrémenter (depuis parent)</Button>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    private int parentCounter = 0;
+
+    private ChildView ChildViewRef;
+    public void OnParentButtonClick()
+    {
+        IncrementParentCounter();
+        ChildViewRef.IncrementCounterFromParent();
+    }
+
+    private Task IncrementCounterFromChild()
+    {
+        IncrementParentCounter();
+        return Task.FromResult(0);
+    }
+
+    private void IncrementParentCounter()
+    {
+        this.parentCounter++;
+        this.StateHasChanged();
+    }
+}
+
+

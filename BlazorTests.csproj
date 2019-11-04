@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Watch Remove="Pages\Login\LoginView.razor" />
+    <Watch Remove="Pages\Tests\ParentChildTests\ChildView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\ButtonTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\GridTestView.razor" />
     <Watch Remove="Pages\Tests\MatBlazorTests\InputTestView.razor" />

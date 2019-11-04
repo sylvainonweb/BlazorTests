@@ -3,11 +3,14 @@
 @using BlazorTests.Pages.Tests.SyncfusionTests
 @using BlazorTests.Pages.Tests.TelerikTests
 @using BlazorTests.Pages.Tests.MatBlazorTests
+@using BlazorTests.Pages.Tests.ParentChildTests
 
 
 <button @onclick="ShowSyncfusionTestView">Syncfusion</button>
 <button @onclick="ShowTelerikTestView">Telerik</button>
 <button @onclick="ShowMatBlazorTestView">MatBlazor</button>
+@*<button @onclick="ShowLongRunningProcessButtonTestView">Bouton avec îcônes</button>*@
+<button @onclick="ShowParentChildTestView">Parent / Enfant</button>
 
 <div style="@(IsSyncfusionTestViewVisible ? null : "display:none")">
     <p>Syncfusion</p>
@@ -29,12 +32,18 @@
     <LongRunningProcessButtonTestView></LongRunningProcessButtonTestView>
 </div>
 
+<div style="@(IsParentChildTestViewVisible ? null : "display:none")">
+    <p>Tests parent / enfant</p>
+    <ParentView></ParentView>
+</div>
+
 @code {
 
     bool IsSyncfusionTestViewVisible = false;
     bool IsTelerikTestViewVisible = false;
     bool IsMatBlazorTestViewVisible = false;
     bool IsLongRunningProcessButtonTestViewVisible = false;
+    bool IsParentChildTestViewVisible = false;
 
     void ShowSyncfusionTestView()
     {
@@ -42,6 +51,7 @@
         IsTelerikTestViewVisible = false;
         IsMatBlazorTestViewVisible = false;
         IsLongRunningProcessButtonTestViewVisible = false;
+        IsParentChildTestViewVisible = false;
     }
 
     void ShowTelerikTestView()
@@ -50,6 +60,7 @@
         IsTelerikTestViewVisible = true;
         IsMatBlazorTestViewVisible = false;
         IsLongRunningProcessButtonTestViewVisible = false;
+        IsParentChildTestViewVisible = false;
     }
 
     void ShowMatBlazorTestView()
@@ -58,13 +69,24 @@
         IsTelerikTestViewVisible = false;
         IsMatBlazorTestViewVisible = true;
         IsLongRunningProcessButtonTestViewVisible = false;
+        IsParentChildTestViewVisible = false;
     }
 
-        void ShowLongRunningProcessButtonTestView()
+    void ShowLongRunningProcessButtonTestView()
     {
         IsSyncfusionTestViewVisible = false;
         IsTelerikTestViewVisible = false;
         IsMatBlazorTestViewVisible = false;
         IsLongRunningProcessButtonTestViewVisible = true;
+        IsParentChildTestViewVisible = false;
+    }
+
+    void ShowParentChildTestView()
+    {
+        IsSyncfusionTestViewVisible = false;
+        IsTelerikTestViewVisible = false;
+        IsMatBlazorTestViewVisible = false;
+        IsLongRunningProcessButtonTestViewVisible = false;
+        IsParentChildTestViewVisible = true;
     }
 }

@@ -1,0 +1,28 @@
+﻿@inherits ComponentBase
+Compteur (enfant) : @childCounter
+<Button @onclick="@OnChildButtonClick">Incrémenter (depuis enfant)</Button>
+
+@code
+{
+    private int childCounter = 0;
+    public void IncrementCounterFromParent()
+    {
+        IncrementChildCounter();
+    }
+
+    [Parameter]
+    public Func<Task> OnIncrementFromChild { get; set; }
+    private void OnChildButtonClick()
+    {
+        IncrementChildCounter();
+        OnIncrementFromChild.Invoke();
+    }
+
+    private void IncrementChildCounter()
+    {
+        childCounter++;
+        this.StateHasChanged(); // Obligatoire sinon l'interface n'est pas rafraichie
+    }
+}
+
+
