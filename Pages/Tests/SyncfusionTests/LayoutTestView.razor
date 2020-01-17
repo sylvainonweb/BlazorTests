@@ -3,22 +3,25 @@
 @using Syncfusion.EJ2.Blazor.Popups
 @using Syncfusion.EJ2.Blazor.Buttons
 
-
 <div class="row">
     <div class="col-auto">
         Dialog :
     </div>
-    <div class="col-auto" id="target">
-        @*<EjsButton @onclick="@ShowDialogButtonClick">Afficher une fenêtre</EjsButton>
-        <EjsDialog @ref="DialogObj" Target="#target" Height="270px" Width="500px" ShowCloseIcon="true">
+
+    <div class="col-auto">
+       <EjsButton @onclick="@ShowDialogButtonClick">Afficher une fenêtre</EjsButton>
+        <EjsDialog @ref="DialogObj" Width="500px" Height="800px" ShowCloseIcon="true">
             <DialogTemplates>
-                <Header>Titre </Header>
-                <Content> <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p> </Content>
+                <Header> About SYNCFUSION succinctly series </Header>
+                <Content>
+                    <p>In the Succinctly series, Syncfusion created a robust, free library of more than 130 technical e - books formatted for PDF, Kindle, and EPUB.<br> <br>The Succinctly series was born in 2012 out of a desire to provide concise technical e-books for software developers.Each title in the Succinctly series is written by a carefully chosen expert and provides essential content in about 100 pages.</p>
+                    <EjsButton @onclick="@CloseDialogButtonClick">Fermer</EjsButton>
+                </Content>
             </DialogTemplates>
             <DialogButtons>
                 <DialogButton ButtonModel="@DialogBtn"></DialogButton>
             </DialogButtons>
-        </EjsDialog>*@
+        </EjsDialog>
     </div>
 </div>
 
@@ -29,5 +32,12 @@
     {
         this.DialogObj.Show();
     }
+
+    public void CloseDialogButtonClick(MouseEventArgs e)
+    {
+        this.DialogObj.Hide();
+    }
+
+    public ButtonModel DialogBtn = new ButtonModel { Content = "<a id='newTab' href='https://www.syncfusion.com/company/about-us' target='_blank'>Learn More</a>", IsPrimary = true };
 }
 

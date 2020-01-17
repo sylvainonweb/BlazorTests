@@ -80,36 +80,26 @@
 <br />
 <p>ATTENTION : tous les contrôles syncfusion nécessite que la propriété id soit renseigné sinon ils ne s'affichent pas (signe qu'il ne s'agit pas de composants natifs mais de wrapper javascript</p>
 <ul>
-    <li>
-        Tous les contrôles : pas encore compatible avec la preview 9 => le binding ne fonctionne plus.
-        A REVOIR car le fichier css n'était pas bon.
-    </li>
     <li>TextBox : Binding OK, Champs obligatoires OK</li>
-    <li>DropDownList : Binding KO (la liste s'affiche mais pas de synchro de la valeur sélectionnée), Champs obligatoires KO</li>
+    <li>DropDownList : Binding OK, Champs obligatoires KO</li>
     <li>DatePicker : Binding OK, Champs obligatoires OK</li>
     <li>TimePicker : Binding OK, Champs obligatoires OK</li>
     <li>NumericTextBox : Binding OK, Champs obligatoires OK</li>
     <li>CheckBox : Binding OK, Champs obligatoires KO (pas possible de binder sur un champ non nullable)</li>
     <li>RadioButton : Binding OK, Champs obligatoires KO (pas possible de binder sur un champ non nullable)</li>
     <li>Button : OK </li>
-    <li>
-        Tab : KO car ne gère pas la notion de Template => impossible de définir le contenu d'un TabItem directement.
-        Il faut passer par un div caché contenant le contenu à afficher (voir dans le source de cette page) => code pourri
-    </li>
+    <li>Tab : OK</li>
     <li>
         Grid : Mitigé car fonctionne mais :
         <ul>
             <li>
                 Impossible d'afficher une date française (yMd et reconnu mais pas dMy)
             </li>
-            <li>
-                Par défaut, le filtrage fonctionne si on saisit le texte complet mais pas le début
-            </li>
         </ul>
     </li>
     <li>Menu : KO : il faut définir le menu dans le code et je ne vois pas comment appeler une méthode du composant (uniquement une uri)</li>
-    <li>Dialog : KO. Je n'arrive pas à le faire fonctionner et en plus ça me paraît vraiment "vieille école"</li>
-    <li>Toast : KO. Ne fonctionne pas. J'ai repris le code de l'exemple de leur site, rien n'y fait</li>
+    <li>Dialog : OK. Voir si on peut utiliser un PopupService</li>
+    <li>Toast : OK</li>
     <li>ListBox : Binding KO : je ne sais pas comment binder la valeur sélectionné</li>
     <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
     <li>Chart : OK</li>

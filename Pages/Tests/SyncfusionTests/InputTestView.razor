@@ -25,7 +25,7 @@
             DropDownList :
         </div>
         <div class="col-auto">
-            <EjsDropDownList ID="dropDownList" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
+            <EjsDropDownList TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
                 <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
             </EjsDropDownList>
         </div>
@@ -100,9 +100,8 @@
             ListBox :
         </div>
         <div class="col-auto">
-            <EjsListBox Value=@ListBox_Value DataSource="@Activities" TValue="ActivityEntity">
+            <EjsListBox @bind-Value=@ListBox_Value DataSource="@Activities" TValue="int?">
                 <ListBoxFieldSettings Value="Id" Text="Text" />
-
             </EjsListBox>
         </div>
     </div>
@@ -153,7 +152,7 @@
     public bool RadioButton2_Checked { get; set; }
 
     [Required]
-    public ActivityEntity ListBox_Value { get; set; }
+    public int? ListBox_Value { get; set; }
 
 
     public IList<ActivityEntity> Activities { get; set; }
