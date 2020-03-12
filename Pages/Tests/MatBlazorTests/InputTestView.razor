@@ -22,13 +22,13 @@
             DropDownList :
         </div>
         <div class="col-auto">
-            <MatSelect Label="" @bind-Value="DropDownList_Id">
-                <MatOption Value=""></MatOption>
-                @foreach (var activity in @Activities)
-                {
-                    <MatOption Value=@activity.Id.ToString()>@activity.Text</MatOption>
-                }
-            </MatSelect>
+            <MatSelect Label="DropDownList" @bind-Value="@DropDownList_Id">
+            <MatOption TValue="int" Value="-1"></MatOption>
+            @foreach (var activity in @Activities)
+            {
+                <MatOption TValue="int" Value=@activity.Id>@activity.Text</MatOption>
+            }
+        </MatSelect>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
             DatePicker (Date) :
         </div>
         <div class="col-auto">
-            <MatDatePicker @bind-Value="@DatePicker_Date"></MatDatePicker>
+            <MatDatePicker Label="Date" @bind-Value="@DatePicker_Date"></MatDatePicker>
         </div>
     </div>
 
@@ -46,7 +46,7 @@
             DatePicker (Time) :
         </div>
         <div class="col-auto">
-            <MatDatePicker @bind-Value="@DatePicker_Time" EnableTime=true DateFormat="H:i" NoCalendar=true></MatDatePicker>
+            <MatDatePicker Label="Time" @bind-Value="@DatePicker_Time" EnableTime=true DateFormat="H:i" NoCalendar=true></MatDatePicker>
         </div>
     </div>
 
@@ -55,18 +55,18 @@
             DatePicker (DateTime) :
         </div>
         <div class="col-auto">
-            <MatDatePicker @bind-Value="@DatePicker_DateTime" EnableTime=true DateFormat="Y-m-d H:i"></MatDatePicker>
+            <MatDatePicker Label="DateTime" @bind-Value="@DatePicker_DateTime" EnableTime=true DateFormat="Y-m-d H:i"></MatDatePicker>
         </div>
     </div>
 
-    <div class="row">
+    @*<div class="row">
         <div class="col-2">
             NumericTextBox (Entier) :
         </div>
         <div class="col-auto">
-            @*<MatNumericUpDownField Label="Entier" @bind-Value=@NumericTextBox_Int Step="0.01m" DecimalPlaces="0" Type="int?" ></MatNumericUpDownField>*@
+            <MatNumericUpDownField Label="Entier" @bind-Value=@NumericTextBox_Int Step="1" DecimalPlaces="0" Type="int?" ></MatNumericUpDownField>
         </div>
-    </div>
+    </div>*@
 
     <div class="row">
         <div class="col-2">
@@ -82,7 +82,7 @@
             Checkbox :
         </div>
         <div class="col-auto">
-            <MatCheckbox @bind-Checked="@CheckBox_Checked">Actif</MatCheckbox>
+            <MatCheckbox Label="Checkbox" Indeterminate="true" TValue="bool?" @bind-Value="@CheckBox_Checked">Actif</MatCheckbox>
         </div>
     </div>
 
@@ -91,9 +91,7 @@
             RadioButton (Actif) :
         </div>
         <div class="col-auto">
-            <MatRadioGroup @bind-Value="@RadioButton_Value">
-                <MatRadioButton Value="1" Label="Prospect"></MatRadioButton>
-                <MatRadioButton Value="2" Label="Client"></MatRadioButton>
+            <MatRadioGroup @bind-Value="@RadioButton_Value" Items="@(Enum.GetValues(typeof(Sex)).Cast<Sex>())">
             </MatRadioGroup>
         </div>
     </div>
@@ -117,8 +115,8 @@
 
     <div class="row">
         <div class="col-auto">
-            <button type="submit">Sauvegarder</button>
-            <button type="button" @onclick="@Cancel">Annuler</button>
+            <MatButton type="submit">Sauvegarder</MatButton>
+            <MatButton type="button" @onclick="@Cancel">Annuler</MatButton>
         </div>
     </div>
 
@@ -136,7 +134,7 @@
     public string TextBox_Text { get; set; }
 
     [Required]
-    public string DropDownList_Id { get; set; }
+    public int DropDownList_Id { get; set; }
 
     [Required]
     public DateTime? DatePicker_Date { get; set; }
@@ -154,10 +152,10 @@
     public decimal? NumericTextBox_Decimal { get; set; }
 
     [Required]
-    public bool CheckBox_Checked { get; set; }
+    public bool? CheckBox_Checked { get; set; }
 
     [Required]
-    public string RadioButton_Value { get; set; }
+    public Sex RadioButton_Value { get; set; }
 
     //[Required]
     public string ListBox_Value { get; set; }
@@ -180,14 +178,22 @@
     public void Cancel()
     {
         this.TextBox_Text = null;
-        this.DropDownList_Id = null;
+        this.DropDownList_Id = 1;
         this.DatePicker_Date = null;
         this.DatePicker_Time = null;
         this.DatePicker_DateTime = null;
         //this.NumericTextBox_Int = null;
         this.NumericTextBox_Decimal = null;
         this.CheckBox_Checked = false;
-        this.RadioButton_Value = null;
+        this.RadioButton_Value = Sex.Male;
         this.ListBox_Value = null;
+    }
+
+    public enum Sex
+    {
+        None,
+        Male,
+        Female,
+        Other
     }
 }

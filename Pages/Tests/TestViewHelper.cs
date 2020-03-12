@@ -17,7 +17,7 @@ namespace BlazorTests.Pages.Tests
 
         public void TestSyncfusion()
         {
-            EjsDatePicker datePicker = new EjsDatePicker();
+            EjsDatePicker<DateTime?> datePicker = new EjsDatePicker<DateTime?>();
             //datePicker.Change
 
             EjsTextBox textBox = new EjsTextBox();

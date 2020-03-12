@@ -34,17 +34,17 @@
         <li>TextBox : Binding OK, Champs obligatoires OK</li>
         <li>DropDownList : Binding KO (uniquement string et pas int?)n Champs obligatoires KO  (fonctionne mais pas de trait sous le controle en cas d'erreur)</li>
         <li>DatePicker : Binding OK, Champs obligatoires OK</li>
-        <li>TimePicker : Binding OK, Champs obligatoires KO (impossible de supprimer la valeur une fois mise)</li>
-        <li>NumericTextBox : Binding OK/KO (uniquement decimal? et pas int?), Champs obligatoires KO (fonctionne mais pas de trait sous le controle en cas d'erreur)</li>
-        <li>CheckBox : Binding OK/KO (si bool et pas bool?), Champs obligatoires KO (bool? impossible)</li>
-        <li>RadioButton : Binding KO (string uniquement et pas int?), Champs obligatoires OK</li>
-        <li>Button : </li>
+        <li>TimePicker : Binding OK, Champs obligatoires OK</li>
+        <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
+        <li>NumericTextBox : Binding OK/KO (uniquement decimal? et pas int?), Champs obligatoires OK</li>
+        <li>CheckBox : Binding OK, Champs obligatoires OK (indeterminate="true" mais une fois mis, impossible de ne rien mettre)</li>
+        <li>RadioButton : Binding OK, Champs obligatoires KO (pas possible de ne rien mettre)</li>
+        <li>Button : OK</li>
         <li>Tab : OK</li>
         <li>Grid : KO (System.InvalidOperationException: Cannot provide a value for property 'Http')</li>
         <li>Menu : OK</li>
         <li>Dialog : Mitigé car fonctionne très bien mais nécessite d'ajouter le code de boite de dialogue dans la page HTML</li>
         <li>Toast : OK</li>
         <li>ListBox : KO. Les données s'affichent mais je n'arrive pas à binder la valeur à ma propriété</li>
-        <li>DateTimePicker : Binding OK, Champs obligatoires OK</li>
     </ul>
 </div>

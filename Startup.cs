@@ -30,6 +30,9 @@ namespace BlazorTests
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            // SBD : Syncfusion
+            services.AddScoped<Syncfusion.EJ2.Blazor.SyncfusionBlazorService>();
+
             // SBD : Telerik
             services.AddTelerikBlazor();
 
