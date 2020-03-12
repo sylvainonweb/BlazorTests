@@ -16,7 +16,7 @@
             TextBox :
         </div>
         <div class="col-auto">
-            <EjsTextBox ID="textbox" @bind-Value="TextBox_Text"></EjsTextBox>
+            <EjsTextBox FloatLabelType="@FloatLabelType.Auto"  Placeholder="TextBox"  ID="textbox" @bind-Value="TextBox_Text"></EjsTextBox>
         </div>
     </div>
 
@@ -25,7 +25,7 @@
             DropDownList :
         </div>
         <div class="col-auto">
-            <EjsDropDownList TItem="ActivityEntity" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
+            <EjsDropDownList FloatLabelType="@FloatLabelType.Auto"  Placeholder="DropDownList" TItem="ActivityEntity" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
                 <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
             </EjsDropDownList>
         </div>
@@ -36,7 +36,7 @@
             DatePicker (Date) :
         </div>
         <div class="col-auto">
-            <EjsDatePicker ID="datepicker" TValue="DateTime?" @bind-value="DatePicker_Date" ShowClearButton="true"></EjsDatePicker>
+            <EjsDatePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="Date" ID="datepicker" TValue="DateTime?" @bind-value="DatePicker_Date" ShowClearButton="true"></EjsDatePicker>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
             DatePicker (Time) :
         </div>
         <div class="col-auto">
-            <EjsTimePicker @bind-value="TimePicker_Time"></EjsTimePicker>
+            <EjsTimePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="Time" @bind-value="TimePicker_Time"></EjsTimePicker>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
             DatePicker (DateTime) :
         </div>
         <div class="col-auto">
-            <EjsDateTimePicker TValue="DateTime?" @bind-value="DateTimePicker_DateTime"></EjsDateTimePicker>
+            <EjsDateTimePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="DateTime" TValue="DateTime?" @bind-value="DateTimePicker_DateTime"></EjsDateTimePicker>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
             NumericTextBox (Entier) :
         </div>
         <div class="col-auto">
-            <EjsNumericTextBox TValue="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></EjsNumericTextBox>
+            <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto"  Placeholder="Entier" TValue="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -72,7 +72,7 @@
             NumericTextBox (Décimal) :
         </div>
         <div class="col-auto">
-            <EjsNumericTextBox TValue="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></EjsNumericTextBox>
+            <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto" Placeholder="Décimal" TValue="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></EjsNumericTextBox>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
             Checkbox :
         </div>
         <div class="col-auto">
-            <EjsCheckBox @bind-Checked="CheckBox_Checked" ></EjsCheckBox>
+            <EjsCheckBox Label="CheckBox" @bind-Checked="CheckBox_Checked" ></EjsCheckBox>
         </div>
     </div>
 
@@ -101,15 +101,15 @@
         </div>
         <div class="col-auto">
             <EjsListBox @bind-Value=@ListBox_Value DataSource="@Activities" TValue="int?">
-                <ListBoxFieldSettings Value="Id" Text="Text" />
+                <ListBoxFieldSettings Value="Id" Text="Text"  />
             </EjsListBox>
         </div>
     </div>
 
     <div class="row">
         <div class="col-auto">
-            <button type="submit">Sauvegarder</button>
-            <button type="button" @onclick="@Cancel">Annuler</button>
+            <EjsButton type="submit">Sauvegarder</EjsButton>
+            <EjsButton type="button" @onclick="@Cancel">Annuler</EjsButton>
         </div>
     </div>
 
