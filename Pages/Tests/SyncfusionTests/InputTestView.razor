@@ -11,116 +11,116 @@
 
 <EditForm Model="@this" OnValidSubmit="@(() => Save())">
 
-    <div class="row">
-        <div class="col-2">
-            TextBox :
+        <div class="row">
+            <div class="col-2">
+                TextBox :
+            </div>
+            <div class="col-auto">
+                <EjsTextBox FloatLabelType="@FloatLabelType.Auto" Placeholder="TextBox" @bind-Value="TextBox_Text"></EjsTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsTextBox FloatLabelType="@FloatLabelType.Auto"  Placeholder="TextBox"  ID="textbox" @bind-Value="TextBox_Text"></EjsTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DropDownList :
+        <div class="row">
+            <div class="col-2">
+                DropDownList :
+            </div>
+            <div class="col-auto">
+                <EjsDropDownList FloatLabelType="@FloatLabelType.Auto" Placeholder="DropDownList" TItem="ActivityEntity" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
+                    <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
+                </EjsDropDownList>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsDropDownList FloatLabelType="@FloatLabelType.Auto"  Placeholder="DropDownList" TItem="ActivityEntity" TValue="int?" @bind-value="DropDownList_Id" DataSource="Activities" PopupHeight="220px">
-                <DropDownListFieldSettings value="Id" text="Text"></DropDownListFieldSettings>
-            </EjsDropDownList>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (Date) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (Date) :
+            </div>
+            <div class="col-auto">
+                <EjsDatePicker FloatLabelType="@FloatLabelType.Auto" Placeholder="Date" TValue="DateTime?" @bind-value="DatePicker_Date" ShowClearButton="true"></EjsDatePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsDatePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="Date" ID="datepicker" TValue="DateTime?" @bind-value="DatePicker_Date" ShowClearButton="true"></EjsDatePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (Time) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (Time) :
+            </div>
+            <div class="col-auto">
+                <EjsTimePicker FloatLabelType="@FloatLabelType.Auto" Placeholder="Time" @bind-value="TimePicker_Time"></EjsTimePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsTimePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="Time" @bind-value="TimePicker_Time"></EjsTimePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            DatePicker (DateTime) :
+        <div class="row">
+            <div class="col-2">
+                DatePicker (DateTime) :
+            </div>
+            <div class="col-auto">
+                <EjsDateTimePicker FloatLabelType="@FloatLabelType.Auto" Placeholder="DateTime" TValue="DateTime?" @bind-value="DateTimePicker_DateTime"></EjsDateTimePicker>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsDateTimePicker FloatLabelType="@FloatLabelType.Auto"  Placeholder="DateTime" TValue="DateTime?" @bind-value="DateTimePicker_DateTime"></EjsDateTimePicker>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            NumericTextBox (Entier) :
+        <div class="row">
+            <div class="col-2">
+                NumericTextBox (Entier) :
+            </div>
+            <div class="col-auto">
+                <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto" Placeholder="Entier" TValue="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></EjsNumericTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto"  Placeholder="Entier" TValue="int?" @bind-Value="NumericTextBox_Int" Decimals="0"></EjsNumericTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            NumericTextBox (Décimal) :
+        <div class="row">
+            <div class="col-2">
+                NumericTextBox (Décimal) :
+            </div>
+            <div class="col-auto">
+                <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto" Placeholder="Décimal" TValue="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></EjsNumericTextBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsNumericTextBox FloatLabelType="@FloatLabelType.Auto" Placeholder="Décimal" TValue="decimal?" @bind-Value="NumericTextBox_Decimal" Decimals="2"></EjsNumericTextBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            Checkbox :
+        <div class="row">
+            <div class="col-2">
+                Checkbox :
+            </div>
+            <div class="col-auto">
+                <EjsCheckBox Label="CheckBox" @bind-Checked="CheckBox_Checked"></EjsCheckBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsCheckBox Label="CheckBox" @bind-Checked="CheckBox_Checked" ></EjsCheckBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            RadioButton (Actif) :
+        <div class="row">
+            <div class="col-2">
+                RadioButton (Actif) :
+            </div>
+            <div class="col-auto">
+                <EjsRadioButton Value="1" Label="Valeur 1" @bind-Checked="RadioButton1_Checked" Name="Group"></EjsRadioButton>
+                <EjsRadioButton Value="2" Label="Valeur 2" @bind-Checked="RadioButton2_Checked" Name="Group"></EjsRadioButton>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsRadioButton Value="1" Label="Valeur 1" @bind-Checked="RadioButton1_Checked" Name="Group"></EjsRadioButton>
-            <EjsRadioButton Value="2" Label="Valeur 2" @bind-Checked="RadioButton2_Checked" Name="Group"></EjsRadioButton>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-2">
-            ListBox :
+        <div class="row">
+            <div class="col-2">
+                ListBox :
+            </div>
+            <div class="col-auto">
+                <EjsListBox @bind-Value=@ListBox_Value DataSource="@Activities" TValue="int?">
+                    <ListBoxFieldSettings Value="Id" Text="Text" />
+                </EjsListBox>
+            </div>
         </div>
-        <div class="col-auto">
-            <EjsListBox @bind-Value=@ListBox_Value DataSource="@Activities" TValue="int?">
-                <ListBoxFieldSettings Value="Id" Text="Text"  />
-            </EjsListBox>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-auto">
-            <EjsButton type="submit">Sauvegarder</EjsButton>
-            <EjsButton type="button" @onclick="@Cancel">Annuler</EjsButton>
+        <div class="row">
+            <div class="col-auto">
+                <EjsButton type="submit">Sauvegarder</EjsButton>
+                <EjsButton type="button" @onclick="@Cancel">Annuler</EjsButton>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-auto">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+        <div class="row">
+            <div class="col-auto">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+            </div>
         </div>
-    </div>
 
-</EditForm>
+    </EditForm>
 
 @code {
     [Required]
